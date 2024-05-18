@@ -77,16 +77,9 @@ Page({
 
 
   onPullDownRefresh() {
-    console.log("123");
     this.getList()
   },
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-    console.log("456");
-    this.getList()
-  },
+
 
   /**
    * 用户点击右上角分享

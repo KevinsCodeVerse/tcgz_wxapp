@@ -5,5 +5,6 @@
     "van-button": "/miniprogram/miniprogram_npm/@vant/weapp/button/index",
     "van-loading": "/miniprogram/miniprogram_npm/@vant/weapp/loading/index",
     "van-empty": "/miniprogram/miniprogram_npm/@vant/weapp/empty/index"
-  }
+  },
+  "enablePullDownRefresh": true
 }

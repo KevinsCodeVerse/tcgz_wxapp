@@ -10,6 +10,6 @@
     "van-rate": "/miniprogram/miniprogram_npm/@vant/weapp/rate/index",
     "van-empty": "/miniprogram/miniprogram_npm/@vant/weapp/empty/index"
   },
-  "navigationBarTitleText": "人脉"
-  
+  "navigationBarTitleText": "人脉",
+  "enablePullDownRefresh": true
 }
