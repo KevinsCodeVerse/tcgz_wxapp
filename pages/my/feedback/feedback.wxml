@@ -1,0 +1,14 @@
+<!-- pages/order/evaluate/evaluate.wxml -->
+<view>
+    <view class="mytextarea">
+        <textarea maxlength="100" placeholder="请填写反馈" bindinput="bindContent"></textarea>
+        <view class="uploadimg">
+            <van-uploader file-list="{{fileList}}" max-count="3" preview-size="130rpx" bind:after-read="afterRead" bind:delete="removeImg" />
+        </view>
+    </view>
+    <view class="btn">
+        <view class="mybtn" bindtap="toSubmit">提交反馈</view>
+    </view>
+    <view class="mybtn btn" bindtap="toList">查看反馈记录</view>
+
+</view>

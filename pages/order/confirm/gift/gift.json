@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-loading": "/miniprogram/miniprogram_npm/@vant/weapp/loading/index",
+    "van-popup": "/miniprogram/miniprogram_npm/@vant/weapp/popup/index",
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index"
+  },
+  "navigationBarTitleText": ""
+}

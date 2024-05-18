@@ -1,0 +1,130 @@
+<wxs module="util" src="../../utils/util.wxs" />
+<view class="news_list">
+  <block wx:for="{{list}}" wx:key="id">
+    <block wx:if="{{item.isVideo == 1 && showVideo}}">
+      <block wx:if="{{recommendType == 4}}">
+        <view class="news_item news_img" data-type="{{item.type}}" data-id="{{item.id}}" bindtap="toVideo">
+          <image class="cover" mode="aspectFill" src="{{util.fullPath(item.image[0])}}"></image>
+          <view class="info">
+            <text class="title">{{item.title}}</text>
+            <view class="other_info">
+              <text class="text">{{item.source}}</text>
+              <text class="text">{{util.tenNum(item.reading)}}人浏览</text>
+              <text class="text">{{util.tenNum(item.comment)}}评论</text>
+              <text class="text">{{util.tenNum(item.releaseTime)}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="news_item news_video" data-type="{{item.type}}" data-id="{{item.id}}" bindtap="toVideo">
+          <text class="title">{{item.title}}</text>
+          <view class="video_cover">
+            <image class="cover" mode="aspectFill" src="{{util.fullPath(item.image[0])}}"></image>
+            <image class="player" src="/img/common/player.png"></image>
+          </view>
+          <!-- <video auto-pause-if-navigate auto-pause-if-open-native data-index="{{index}}" bindplay="playChange" src="{{util.fullPath(item.video)}}" id="video{{index}}"></video> -->
+          <view class="info">
+            <view>
+              <text>{{item.source}}</text>
+              <text>{{item.releaseTime}}</text>
+            </view>
+            <text class="textc_comment">{{util.tenNum(item.reading)}}人浏览</text>
+            <!-- <text class="textc_comment" style="">{{util.tenNum(item.comment)}}评论</text> -->
+            <!-- <text class="commenttext">{{item.comment}}评论</text> -->
+          </view>
+        </view>
+      </block>
+    </block>
+    <block wx:else>
+      <block wx:if="{{item.articleType || item.articleType === 0}}">
+        <view wx:if="{{item.articleType == 0}}" class="news_item news_img_three" data-type="{{item.type}}" data-id="{{item.id}}" bindtap="toNews">
+          <text class="title">{{item.title}}</text>
+          <view class="info">
+            <text class="text">{{item.source}}</text>
+            <text class="text">{{util.tenNum(item.reading)}}人浏览</text>
+            <!-- <text class="text">{{item.comment}}评论</text>
+              <text class="text">{{item.releaseTime}}</text> -->
+          </view>
+        </view>
+        <view wx:if="{{item.articleType == 1}}" class="news_item news_img" data-type="{{item.type}}" data-id="{{item.id}}" bindtap="toNews">
+          <image class="cover" mode="aspectFill" src="{{util.fullPath(item.image[0])}}"></image>
+          <view class="info">
+            <text class="title">{{item.title}}</text>
+            <view class="other_info">
+              <text class="text">{{item.source}}</text>
+              <text class="text">{{util.tenNum(item.reading)}}人浏览</text>
+              <text class="text">{{util.tenNum(item.comment)}}评论</text>
+              <text class="text">{{util.tenNum(item.releaseTime)}}</text>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{item.articleType == 2}}" class="news_item news_img_three" data-type="{{item.type}}" data-id="{{item.id}}" bindtap="toNews">
+          <text class="title">{{item.title}}</text>
+          <view class="img_list">
+            <image class="image" wx:for="{{item.image}}" wx:for-item="imgitem" class="cover" mode="aspectFill" src="{{util.fullPath(imgitem)}}" wx:key="imgitem"></image>
+          </view>
+          <view class="info">
+            <text class="text">{{item.source}}</text>
+            <text class="text">{{util.tenNum(item.reading)}}人浏览</text>
+            <text class="text">{{util.tenNum(item.comment)}}评论</text>
+            <text class="text">{{util.tenNum(item.releaseTime)}}</text>
+          </view>
+        </view>
+        <view wx:if="{{item.articleType == 3}}" class="news_item news_img_big" data-type="{{item.type}}" data-id="{{item.id}}" bindtap="toNews">
+          <text class="title">{{item.title}}</text>
+          <image class="cover" mode="aspectFill" src="{{util.fullPath(item.image[0])}}"></image>
+          <view class="info">
+            <view>
+              <text>{{item.source}}</text>
+              <text>{{item.releaseTime}}</text>
+            </view>
+            <text class="textc_comment">{{util.tenNum(item.reading)}}人浏览</text>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view wx:if="{{item.image.length == 0}}" class="news_item news_img_three" data-type="{{item.type}}" data-id="{{item.id}}" bindtap="toNews">
+          <text class="title">{{item.title}}</text>
+          <view class="info">
+            <text class="text">{{item.source}}</text>
+            <text class="text">{{util.tenNum(item.reading)}}人浏览</text>
+            <text class="text">{{util.tenNum(item.comment)}}评论</text>
+            <text class="text">{{util.tenNum(item.releaseTime)}}</text>
+          </view>
+        </view>
+        <view wx:if="{{item.image.length > 0 && item.image.length < 3}}" class="news_item news_img" data-type="{{item.type}}" data-id="{{item.id}}" bindtap="toNews">
+          <image class="cover" mode="aspectFill" src="{{util.fullPath(item.image[0])}}"></image>
+          <view class="info">
+            <text class="title">{{item.title}}</text>
+            <view class="other_info">
+              <text class="text">{{item.source}}</text>
+              <text class="text">{{util.tenNum(item.reading)}}人浏览</text>
+              <text class="text">{{util.tenNum(item.comment)}}评论</text>
+              <text class="text">{{util.tenNum(item.releaseTime)}}</text>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{item.image.length >= 3}}" class="news_item news_img_three" data-type="{{item.type}}" data-id="{{item.id}}" bindtap="toNews">
+          <text class="title">{{item.title}}</text>
+          <view class="img_list">
+            <image class="image" wx:for="{{item.image}}" wx:for-item="imgitem" class="cover" mode="aspectFill" src="{{util.fullPath(imgitem)}}" wx:key="imgitem"></image>
+          </view>
+          <view class="info">
+            <text class="text">{{item.source}}</text>
+            <!-- <text class="text">{{item.reading}}人浏览</text> -->
+            <text class="text">{{util.tenNum(item.releaseTime)}}</text>
+            <text class="textc_comment">{{item.comment}}评论</text>
+          </view>
+        </view>
+      </block>
+    </block>
+  </block>
+  <view class="loading">
+    <view wx:if="{{!isRecomm && loading}}" size="24px" class="loading_view">
+      <van-loading color="#0DC3FF">加载中...</van-loading>
+    </view>
+    <text class="finish" wx:if="{{finish && list.length==0}}">暂无数据</text>
+    <view class="finish" wx:if="{{!isRecomm && finish && list.length!=0}}">-已经到底啦-</view>
+  </view>
+</view>

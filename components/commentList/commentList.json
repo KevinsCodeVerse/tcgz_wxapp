@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "commentItem": "./commentItem/commentItem",
+    "footers": "/components/content/footers/footers"
+  }
+}

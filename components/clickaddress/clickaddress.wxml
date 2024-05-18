@@ -1,0 +1,12 @@
+<!-- 城市筛选 -->
+<!-- <van-action-sheet show="{{ showArea }}" round="{{false}}" position="top"></van-action-sheet> -->
+<van-popup show="{{ showArea }}" custom-class="pa" position="top" custom-style="height: 1000rpx;z-index:995;">
+    <view class="box"></view>
+    <van-search value="{{ value }}" placeholder="请输入城市" show-action bind:change="changesearch" bind:search="" bind:cancel="toAreaCal" />
+    <scroll-view scroll-x="{{true}}" class="box1">
+        <view class="box2">
+            <text class="item" wx:for="{{arrName}}" wx:key="code" data-info="{{item}}"  bindtap="clickItem">{{item.name}}</text>
+        </view>
+    </scroll-view>
+    <van-area area-list="{{ areaList }}" columns-num="{{ 2 }}" value="{{adcode}}" bind:change="onAreaChange" bind:cancel="toAreaCal" bind:confirm="toAreaCrm" show-toolbar />
+</van-popup>

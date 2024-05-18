@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "custom-tabbar": "/components/custom-tabbar/custom-tabbar",
+    "van-search": "/miniprogram/miniprogram_npm/@vant/weapp/search/index",
+    "van-button": "/miniprogram/miniprogram_npm/@vant/weapp/button/index",
+    "van-loading": "/miniprogram/miniprogram_npm/@vant/weapp/loading/index",
+    "van-empty": "/miniprogram/miniprogram_npm/@vant/weapp/empty/index"
+  }
+}

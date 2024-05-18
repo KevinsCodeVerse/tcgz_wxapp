@@ -1,0 +1,183 @@
+<!-- pages/my/spread/level/level.wxml -->
+<wxs module="util" src="../../../../utils/util.wxs" />
+<view class="city_news">
+  <view class="header">
+    <!-- <van-search shape="round" value="{{ searchValue }}" bind:change="searchChange" placeholder="请输入搜索内容" bind:search="onSearch" use-action-slot>
+      <view class="search_btn" slot="action" bind:tap="onSearch">搜索</view>
+    </van-search> -->
+    <van-tabs active="{{active}}" color="#fff" border="{{false}}" title-inactive-color="#afd3ff" title-active-color="#fff" nav-class="tabs_class" bind:change="tabChange">
+      <van-tab title="用户等级" name="1"></van-tab>
+      <van-tab title="商家等级" name="2"></van-tab>
+      <!-- <van-tab wx:for="{{categoryList}}" title="{{item.name}}" name="{{item.id}}"></van-tab> -->
+    </van-tabs>
+  </view>
+  <!-- 内容 -->
+  <view class="level">
+    <view class="levelbg"></view>
+    <!-- 平台 -->
+    <view wx:if="{{active==1}}">
+      <view class="info" wx:if="{{info.level!=4}}">
+        <view class="info_box">
+          <view class="inname" wx:if="{{info.level}}">{{levelList[info.level].name}}</view>
+          <view class="remark">
+            距离升级{{info.name}}还差
+      {{(info.conditionOne - info.directly)>0 ? (info.conditionOne - info.directly): 0}}
+      个直推业绩和
+      {{(info.conditionTwo - info.inDirectly)> 0 ? (info.conditionTwo - info.inDirectly): 0}}
+      个团队业绩
+          </view>
+        </view>
+        <view class="myprogress">
+          <text>直推业绩</text>
+          <view class="mypors">
+            <van-progress percentage="{{gpa}}" color="#fff" text-color="#3994FF" track-color="#bfbfbf" />
+          </view>
+        </view>
+        <view class="myprogress">
+          <text>团队业绩</text>
+          <view class="mypors">
+            <van-progress percentage="{{groupGpa}}" color="#fff" text-color="#3994FF" track-color="#bfbfbf" />
+          </view>
+        </view>
+      </view>
+      <view class="info" wx:else>
+        <view class="inname" wx:if="{{info.level}}">{{levelList[info.level].name}}</view>
+        <view class="extreme">
+          <view>你已获得商家入驻推广权限！</view>
+          <view>享受商家交易流水与购买服务分配吧！</view>
+        </view>
+      </view>
+    </view>
+    <!-- 升级列表 -->
+    <view wx:if="{{active==1}}">
+      <view class="upgradelist" wx:if="{{upgradeList.length>0}}">
+        <view class="upcard" wx:for="{{upgradeList}}" wx:key="index">
+          <view class="d_card">
+            <image class="levelimg" mode="heightFix" src="{{util.fullPath(item.img)}}"></image>
+            <view>需累计{{item.count1}}个直推业绩和{{item.count2}}个团队业绩</view>
+          </view>
+          <view class="mybtn btn" bindtap="goGiftC" data-level="{{item.level}}">立即升级</view>
+        </view>
+      </view>
+    </view>
+    <view class="myrule" wx:if="{{active==1}}">
+      <view class="rutit">业务推广规则：</view>
+      <view class="rucard">
+        <view class="runame">普通会员</view>
+        <view class="rutext">条件：无需业绩条件</view>
+        <view class="rutext">权限：每推荐集体组织入驻，直推奖励{{member[0]}}元，间推奖励{{member[1]}}元</view>
+        <view class="rutext ml20">每推荐商家入驻购买应用后，直推奖励{{member[2]}}元，间推奖励{{member[3]}}元</view>
+      </view>
+      <view class="rucard">
+        <view class="runame">黄金会员</view>
+        <view class="rutext">条件：需累计{{goldMember[0]}}个直推业绩和{{goldMember[1]}}个团队业绩</view>
+        <view class="rutext ml20">或购买黄金会员产品礼包立即升级</view>
+        <view class="rutext">权限：每推荐集体组织入驻，直推奖励{{goldMember[2]}}元，间推奖励{{goldMember[3]}}元</view>
+        <view class="rutext ml20">每推荐市级代理入驻，直推奖励{{goldMember[4]}}元，间推奖励{{goldMember[5]}}元</view>
+        <view class="rutext ml20">每推荐商家入驻购买应用后，直推奖励{{goldMember[6]}}元，间推奖励{{goldMember[7]}}元</view>
+      </view>
+      <view class="rucard">
+        <view class="runame">合伙人</view>
+        <view class="rutext">条件：需累计{{partner[0]}}个直推业绩和{{partner[1]}}个团队业绩</view>
+        <view class="rutext ml20">或购买合伙人产品礼包立即升级</view>
+        <view class="rutext">权限：每推荐集体组织入驻，直推奖励{{partner[2]}}元，间推奖励{{partner[3]}}元</view>
+        <view class="rutext ml20">每推荐市级代理入驻，直推奖励{{partner[4]}}元，间推奖励{{partner[5]}}元</view>
+        <view class="rutext ml20">每推荐商家入驻购买应用后，直推奖励{{partner[6]}}元，间推奖励{{partner[7]}}元</view>
+      </view>
+      <view class="rucard">
+        <view class="runame">至尊合伙人</view>
+        <view class="rutext">条件：需累计{{superPartner[0]}}个直推业绩和{{superPartner[1]}}个团队业绩</view>
+        <view class="rutext ml20">或购买合伙人产品礼包立即升级</view>
+        <view class="rutext">权限：每推荐集体组织入驻，直推奖励{{superPartner[2]}}元，间推奖励{{superPartner[3]}}元</view>
+        <view class="rutext ml20">每推荐市级代理入驻，直推奖励{{superPartner[4]}}元，间推奖励{{superPartner[5]}}元</view>
+        <view class="rutext ml20">
+          每推荐商家入驻购买应用，直推奖励{{superPartner[6]}}元，间推奖励{{superPartner[7]}}元
+        </view>
+      </view>
+    </view>
+    <!-- 商铺 -->
+    <view wx:if="{{!isshowShop&&shopList[list.invite.grade].name}}">
+      <view class="" wx:if="{{active==2}}">
+        <van-cell-group inset border="{{false}}" custom-class="cellgroup_class">
+          <van-cell is-link value="切换商家" value-class="cellvalue_class" custom-class="cell_class" border="{{false}}" bind:tap="handshow">
+            <view slot="title" class="celltitle">
+              <image src="{{util.fullPath(activeShop.shopPhoto)}}" />
+              <view class="text">{{activeShop.name}}</view>
+            </view>
+          </van-cell>
+        </van-cell-group>
+        <view class="info" wx:if="{{list.invite.grade!=3}}">
+          <view class="info_box">
+            <view class="inname">{{shopList[list.invite.grade].name}}</view>
+            <view class="remark">
+              距离升级{{shopList[list.invite.grade+1].name}}还差{{list.subPersonAmount}}元直推佣金和{{list.subTeamAmount}}元团队业绩
+            </view>
+          </view>
+          <view class="myprogress">
+            <text>直推业绩</text>
+            <view class="mypors">
+              <van-progress percentage="{{gpa2}}" color="#fff" text-color="#3994FF" track-color="#bfbfbf" />
+            </view>
+          </view>
+          <view class="myprogress">
+            <text>团队业绩</text>
+            <view class="mypors">
+              <van-progress percentage="{{groupGpa2}}" color="#fff" text-color="#3994FF" track-color="#bfbfbf" />
+            </view>
+          </view>
+        </view>
+        <view class="info" wx:else>
+          <view class="inname">{{shopList[list.invite.grade].name}}</view>
+          <view class="extreme">
+            <view>你已是该店铺最高等级推广员！</view>
+            <view>享受团队成员交易流水与间推佣金吧！</view>
+          </view>
+        </view>
+      </view>
+      <view class="myrule" wx:if="{{active==2}}">
+        <view class="rutit">业务推广规则：</view>
+        <view class="rucard">
+          <view class="runame">普通会员</view>
+          <view class="rutext">条件：无需业绩条件</view>
+          <view class="rutext ml20">
+            每直接推荐用户下单奖励{{list.userDirect}}%元，间接推荐下单奖励{{list.userIndirect}}%元
+          </view>
+        </view>
+        <view class="rucard">
+          <view class="runame">黄金会员</view>
+          <view class="rutext">条件：需累计{{list.goldPerson}}直推业绩和{{list.goldTeam}}团队业绩</view>
+          <view class="rutext ml20">
+            每直接推荐用户下单奖励{{list.goldDirect}}%元，间接推荐下单奖励{{list.goldIndirect}}%元
+          </view>
+        </view>
+        <view class="rucard">
+          <view class="runame">合伙人</view>
+          <view class="rutext">条件：需累计{{list.partnerPerson}}直推业绩和{{list.partnerTeam}}团队业绩</view>
+          <view class="rutext ml20">
+            每直接推荐用户下单奖励{{list.partnerDirect}}%元，间接推荐下单奖励{{list.partnerIndirect}}%元
+          </view>
+        </view>
+        <view class="rucard">
+          <view class="runame">至尊合伙人</view>
+          <view class="rutext">条件：需累计{{list.superPartnerPerson}}直推业绩和{{list.superPartnerTeam}}团队业绩</view>
+          <view class="rutext ml20">
+            每直接推推荐用户下单奖励{{list.superPartnerDirect}}%元，间接推推荐下单奖励{{list.superPartnerIndirect}}%元
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="info" wx:if="{{actions&&active==2&&isshow}}">
+      <view class="inname">您还不是推广员, 去店铺申请吧</view>
+    </view>
+  </view>
+</view>
+<!-- <van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:close="onClose" bind:select="onSelect" /> -->
+<van-popup show="{{ show }}" z-index="2000" round position="bottom" custom-style="height: 600rpx;z-index:2000;" bind:close="onClose" custom-class="popup_class">
+  <view class="popupTitle">切换商家</view>
+  <view class="Pmain_box">
+    <view class="shopitem_box" wx:for="{{actions}}" data-id="{{item.id}}" data-info="{{item}}" bindtap="onSelect">
+      <image src="{{util.fullPath(item.shopPhoto)}}"></image>
+      <view class="{{item.id==activeShop.id?'text_active':'text'}}">{{item.name}}</view>
+    </view>
+  </view>
+</van-popup>

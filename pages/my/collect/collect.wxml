@@ -1,0 +1,46 @@
+<!-- <view class="nodata">您还没有收藏商品哦</view> -->
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="collect"> 
+  <view class="tabs">
+    <text class="{{active==''? 'active':''}}" data-status="" bindtap="toTabs">全部产品</text>
+    <text class="{{active=='1'? 'active':''}}" data-status="1" bindtap="toTabs">普通商品</text>
+    <text class="{{active=='3'? 'active':''}}" data-status="3" bindtap="toTabs">团购商品</text>
+    <text class="{{active=='2'? 'active':''}}" data-status="2" bindtap="toTabs">秒杀商品</text>
+  </view>
+
+  <view class="goods_list">
+    <view wx:for="{{list}}" wx:key="index" class="goods_item" bindtap="goDetail" data-obj="{{item}}">
+      <view class="goods_cover">
+        <image mode="aspectFill" src="{{util.fullPath(item.avatar)}}"></image>
+        <view wx:if="{{item.type == 2&&item.spikeTime}}" class="countdown"><van-count-down time="{{ item.spikeTime*1000<0?0:item.spikeTime }}" /></view>
+        <view wx:if="{{item.type == 2&&item.spikeTime<0}}" class="countdown">已结束</view>
+        
+      </view>
+      <view class="goods_info">
+        <view>
+          <text class="goods_title">{{item.title}}</text>
+          <view class="inventory">
+            <!-- <text wx:if="{{item.type == 1}}" class="countrymen">佣金最高￥{{item.maxReward}}</text> -->
+            <text wx:if="{{item.type == 1}}" class="inventory_num">已售{{item.sales}}</text>
+            <text wx:if="{{item.type == 3}}" class="group">{{item.peopleCount}}人团</text>
+            <text wx:if="{{item.type == 3}}" class="inventory_num">已拼{{item.inventory}}</text>
+            <text wx:if="{{item.type == 2}}" class="seckill">限购{{item.buyCount}}件</text>
+            <text wx:if="{{item.type == 2}}" class="inventory_num">剩余{{item.stock}}件</text>
+          </view>
+        </view>
+        <view class="price">
+          <text class="new {{item.type == 2?'seckill':''}}">￥{{item.price}}</text>
+          <text class="old">￥{{item.originPrice}}</text>
+        </view>
+        <button class="buy_btn" wx:if="{{item.type == 1 && item.status==1}}" >前往购买</button>
+        <image wx:if="{{item.type == 3 && item.status==1}}" mode="heightFix" class="btn" src="/img/group/group-btn.png"></image>
+        <image wx:if="{{item.type == 2 && item.status==1}}" mode="heightFix" class="btn" src="/img/seckill/seckill-btn.png"></image>
+        <button class="buy_btn btn2" wx:if="{{item.status!=1}}" data-obj="{{item}}">已下架</button>
+      </view>
+    </view>
+  </view>
+  <view class="loading">
+    <van-loading wx:if="{{loading}}" size="24px" color="#0DC3FF">加载中...</van-loading>
+    <text class="finish" wx:if="{{finish}}">{{list.length>0?'没有更多了': '您还没有收藏商品哦'}}</text>
+  </view>
+</view>

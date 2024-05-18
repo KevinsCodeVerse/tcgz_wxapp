@@ -1,0 +1,48 @@
+<!--pages/goods/g_video/index.wxml-->
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="g_video">
+  <navigation isWhite="{{true}}">
+    <view class="myback">
+      <navigator class="back" open-type="navigateBack"><van-icon name="arrow-left" /></navigator>
+      <navigator class="back" url="/pages/index/index" open-type="switchTab"><van-icon name="wap-home" /></navigator>
+    </view>
+  </navigation>
+
+  <view class="mySwiper">
+    <swiper style="height: 100vh" snap-to-edge="true" circular vertical bindchange="swiperChange">
+      <block wx:for="{{list}}" wx:key="id">
+        <swiper-item >
+          <view class="switem">
+            <!-- <video class="myvideo" wx:if="{{index==changeIndex}}" autoplay="true" src="https://www.tcgz.store/files/video/26300186815395.mp4"></video> -->
+            <video class="myvideo" wx:if="{{index==changeIndex}}" autoplay="true" src="{{util.fullPath(item.video)}}"></video>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!-- <video class="myvideo" src="https://www.tcgz.store/files/video/26300186815395.mp4"></video> -->
+
+  <!-- 底部商品栏 -->
+  <view class="foot">
+    <image src="{{util.fullPath(goods.cover)}}" mode="aspectFill"></image>
+    <view class="name">
+      <view class="tit">{{goods.name}}</view>
+      <view class="foprice">
+        <view>
+          <text class="curr">￥{{util.tenNum(goods.price)}}</text>
+          <text class="origial">￥{{goods.originalPrice}}</text>
+        </view>
+        <view>已售{{goods.deal}}</view>
+      </view>
+    </view>
+    <image class="payimg" bindtap="goDetail" src="/img/common/pay.png"></image>
+  </view>
+</view>
+
+<!-- 弹框 -->
+<van-overlay show="{{ show }}" bind:click="onClose" z-index="199">
+  <view class="slide_top">
+    <image src="/img/common/slide_top.png"></image>
+  </view>
+</van-overlay>

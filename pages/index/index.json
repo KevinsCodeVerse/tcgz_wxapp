@@ -1,0 +1,16 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "navigation": "/components/navigation/navigation",
+    "van-search": "/miniprogram/miniprogram_npm/@vant/weapp/search/index",
+    "van-sticky": "/miniprogram/miniprogram_npm/@vant/weapp/sticky/index",
+    "van-dropdown-menu": "/miniprogram/miniprogram_npm/@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "/miniprogram/miniprogram_npm/@vant/weapp/dropdown-item/index",
+    "van-loading": "/miniprogram/miniprogram_npm/@vant/weapp/loading/index",
+    "clickaddress": "/components/clickaddress/clickaddress",
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "van-count-down": "/miniprogram/miniprogram_npm/@vant/weapp/count-down/index"
+  }
+}

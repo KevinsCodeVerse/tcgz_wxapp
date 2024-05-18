@@ -1,0 +1,32 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+
+<view class="city_news"> 
+  <view class="header">
+    <van-search shape="round" value="{{ searchValue }}" bind:change="searchChange" placeholder="请输入搜索内容" bind:search="onSearch" use-action-slot>
+      <view class="search_btn" slot="action" bind:tap="onSearch">搜索</view>
+    </van-search>
+    <van-tabs active="{{active}}" color="#3994FF" title-active-color="#3994FF" bind:change="tabChange">
+      <van-tab title="全部" name="-1"></van-tab>
+      <van-tab wx:for="{{categoryList}}" title="{{item.name}}" name="{{item.id}}"></van-tab>
+    </van-tabs>
+  </view>
+  <view class="goods_box" wx:for="{{goodslist}}" data-id="{{item.id}}" data-type="{{item.type}}" bind:tap="navgoodsPage">
+    <view class="img">
+        <image mode="widthFix" src="{{util.fullPath(item.cover)}}"></image>
+    </view>
+    <view class="info">
+        <view class="title">{{item.name}}</view>
+        <view class="price">￥{{item.price}}</view>
+        <view class="yongjin">佣金最高￥<text>{{item.maxReward}}</text></view>
+    </view>
+    <view class="btn" >
+      <view class="detail" data-id="{{item.id}}" data-type="{{item.type}}"   >详情</view>
+      <view class="shars" catchtap="getShareInfo" data-type="{{item.type}}" data-cover="{{item.cover}}"  data-name="{{item.name}}" data-id="{{item.id}}">分享</view>
+    </view>
+  </view>
+</view>
+<view class="tishi" wx:if="{{islist}}">没有更多了...</view>
+<view class="tishi" wx:if="{{!islist}}">加载中...</view>
+
+<goodscanvas ids="{{id}}" id="goodscanvas" bindimg="goodscanvasImg"></goodscanvas>
+

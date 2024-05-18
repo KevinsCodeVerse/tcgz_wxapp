@@ -1,0 +1,15 @@
+{
+  "usingComponents": {
+    "van-tab": "./../../../miniprogram/miniprogram_npm/@vant/weapp/tab/index",
+    "van-tabs": "./../../../miniprogram/miniprogram_npm/@vant/weapp/tabs/index",
+    "van-icon": "./../../../miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "van-field": "./../../../miniprogram/miniprogram_npm/@vant/weapp/field/index",
+    "van-cell": "./../../../miniprogram/miniprogram_npm/@vant/weapp/cell/index",
+    "van-cell-group": "./../../../miniprogram/miniprogram_npm/@vant/weapp/cell-group/index",
+    "van-notify": "./../../../miniprogram/miniprogram_npm/@vant/weapp/notify/index",
+    "van-sticky": "./../../../miniprogram/miniprogram_npm/@vant/weapp/sticky/index",
+    "van-popup": "/miniprogram/miniprogram_npm/@vant/weapp/popup/index"
+
+  },
+  "navigationBarTitleText": "活动详情"
+}

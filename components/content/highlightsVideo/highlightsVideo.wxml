@@ -1,0 +1,14 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="highlights_list">
+    <view class="highlights_item" bindtap="toDetail">
+        <text class="title">{{videoInfo.title}}</text>
+        <text class="desc">{{videoInfo.description}}</text>
+        <view class="cover">
+            <image class="player" src="/img/common/player2.png" ></image>
+            <image mode="aspectFill" src="{{util.fullPath(videoInfo.image)}}"></image>
+            <view class="text">
+                <text>{{videoInfo.videoCount}}集全</text>
+            </view>
+        </view>
+    </view>
+</view>

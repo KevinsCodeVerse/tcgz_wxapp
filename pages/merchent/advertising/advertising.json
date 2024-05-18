@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "推广服务",
+  "usingComponents": {
+    "van-search": "/miniprogram/miniprogram_npm/@vant/weapp/search/index"
+  }
+}

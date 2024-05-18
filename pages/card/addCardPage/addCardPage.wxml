@@ -1,0 +1,44 @@
+<!--pages/card/addCardPage/addCardPage.wxml-->
+<view class="myCard" style="background-image: url('https://tcgz-1323511707.cos.ap-nanjing.myqcloud.com/bgc.png');background-size: cover; ">
+  <view class="bgc-img">
+    <image style="margin-top: 180rpx;" src="https://tcgz-1323511707.cos.ap-nanjing.myqcloud.com/bgc-img.png" mode="heightFix" />
+  </view>
+  <view class="box1">
+    <text class="text1">一张名片</text>
+  </view>
+  <view class="box1 m">
+    <text class="text2">开启职业和商业新机遇</text>
+  </view>
+  <view class="box2">
+    <view>
+      <view class="item">
+        <image class="icon" src="/img/card/yes.png" mode="aspectFill" />
+        <text>拓展人脉</text>
+      </view>
+      <view class="item">
+        <image class="icon" src="/img/card/yes.png" mode="aspectFill" />
+        <text>个性展示</text>
+      </view>
+    </view>
+    <view>
+      <view class="item">
+        <image class="icon" src="/img/card/yes.png" mode="aspectFill" />
+        <text>一键分享</text>
+      </view>
+      <view class="item">
+        <image class="icon" src="/img/card/yes.png" mode="aspectFill" />
+        <text>名片管理</text>
+      </view>
+    </view>
+
+  </view>
+  <view class="box3 m">
+    <view style="background-image: url('https://tcgz-1323511707.cos.ap-nanjing.myqcloud.com/text-bgc.png');background-size: cover; background-size: 100% 100%; background-position: center center;">
+      <text>平台赋能双向资源匹配，无缝对接资源与需求，完美匹配无论您是资源的提供者还是需求者我们的平台都能为您找到理想的对接点</text>
+    </view>
+  </view>
+
+  <view>
+    <view class="foot" bindtap="addCard">创建名片</view>
+  </view>
+</view>

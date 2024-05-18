@@ -1,0 +1,50 @@
+<!--pages/card/SelectCardTemplate/SelectCardTemplate.wxml-->
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="page">
+  <view class="card" style="background-image: url({{background}});background-size:cover;background-position: center; ">
+    <view class="top">
+      <view class="left">
+        <view class="name">xxxx</view>
+        <text class="pos" wx:key="index">
+          <text>CEO</text>
+        </text>
+
+      </view>
+      <view class="right">
+        <image src="https://tcgz-1323511707.cos.ap-nanjing.myqcloud.com/tcgzlogo.png" mode="" />
+      </view>
+    </view>
+    <view>
+      <image class="icon" src="/img/card/card-phone.png" mode="" />
+      <text>1888888888</text>
+    </view>
+    <view>
+      <image class="icon" src="/img/card/corporation.png" mode="" />
+      <text>广东幕后瑛雄信息技术有限公司</text>
+    </view>
+    <view>
+      <image class="icon" src="/img/card/orientation.png" mode="" />
+      <text>惠城区中惠国际大厦1004</text>
+    </view>
+  </view>
+  <view class="box">
+    <text>选择背景</text>
+    <view>
+      <view class="box-bgc">
+        <view wx:for="{{list}}" class="image-box" wx:key="id">
+          <view bindtap="selectImage" data-index="{{index}}" data-item="{{item}}">
+            <image class="bgc" src="{{item.img}}" style="{{index === selected ? 'border: 2px solid #0080ff;' : ''}}" mode="" />
+            <image wx:if="{{index === selected}}" class="check-icon" src="/img/card/checkYes.png" mode="" />
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+</view>
+<view class="foot">
+  <van-button bindtap="saveCardTemplate" size="large" round type="info">
+    保 存
+  </van-button>
+</view>

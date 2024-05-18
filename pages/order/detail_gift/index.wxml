@@ -1,0 +1,143 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="detail_order">
+  <view class="progress" wx:if="{{status==0}}">
+    <view>订单未支付，系统将在15分钟后自动关闭，请尽快支付！</view>
+    <view class="mydown"><van-count-down time="{{ timedown }}" />后关闭</view>
+  </view>
+  <view class="progress progress2" wx:if="{{status==1}}">
+    <view>支付成功！请等待商家发货</view>
+  </view>
+  <view class="progress progress3" wx:if="{{status==2}}">
+    <view>商家已发货！请等待物流运输并确认收货</view>
+  </view>
+
+  <!-- 商品信息 -->
+  <view class="orcard">  
+    <view class="shop">
+      <view class="house">
+        <image class="shopimg" mode="aspectFill" src="{{util.fullPath(goods.shopAvatar)}}"></image>
+        <view class="shname">{{goods.shopName}}</view>
+      </view>
+      <!-- <view class="goshop" bindtap="goShopDetail">
+        <text>进店逛逛</text>
+        <van-icon name="arrow" />
+      </view> -->
+    </view>
+    <view class="goods">
+      <image class="cover" mode="aspectFill" src="{{util.fullPath(goods.avatar)}}"></image>
+      <view class="goinfo"> 
+        <view class="gotit">{{goods.title}}</view>
+        <view class="gospec">{{goods.remark}}</view>
+        <view class="count">
+          <view class="coprice">
+            <text class="goprice">￥{{order.price}}</text>
+            <text class="original">￥{{order.originalPrice}}</text>
+            <!-- <text class="bag">秒杀价</text> -->
+          </view>
+          <view class="gonum">x{{order.count}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="handle">
+      <view class="total">
+        <text>合计:</text>
+        <text class="money">￥{{order.payAmount}}</text>
+      </view>
+      <view class="active1">{{order.textStatus}}</view>
+    </view>
+  </view>
+
+  <!-- 商家信息 -->
+  <!-- <view class="contact" bindtap="toNo">
+    <view class="cotit">商家信息</view>
+    <view class="d_contact">
+      <view class="phone">
+        <view class="address">
+          <text style="width: 110rpx">营业时间</text> 
+          <text >{{shop.startTime ? shop.startTime + '-' + shop.endTime : '无'}}</text>
+        </view>
+        <view class="address">
+          <text>电话</text> 
+          <text>{{shop.phone? shop.phone: '无'}}</text>
+        </view>
+        <view class="address">
+          <text>地址</text>
+          <text class="addre">{{shop.address}}</text>
+        </view>
+      </view>
+      <view>
+        <view class="mybtn cobtn" bindtap="freeTell">
+          <image src="/img/myicon/phone.png"></image>
+          <text>致电</text>
+        </view>
+        <view class="mybtn cobtn" bindtap="toOpenNav">
+          <image src="/img/myicon/navigation.png"></image>
+          <text>导航</text>
+        </view>
+      </view>
+    </view>
+  </view> -->
+
+  <!-- 订单信息 -->
+  <view class="basics">
+    <view class="cotit">订单信息</view>
+    <view class="balist">
+      <view class="bacard">
+        <view>订单编号　{{order.id}}</view>
+        <view class="label" bindtap="toCopy">复制</view>
+      </view>
+      <view class="bacard" wx:if="{{order.createTime}}">
+        <view>创建时间　{{util.formatDateLong(order.createTime)}}</view>
+      </view>
+      <!-- <view class="bacard">
+        <view>预留手机　{{order.phone}}</view>
+      </view> -->
+      <view class="bacard">
+        <view>配送方式　快递</view>
+      </view>
+      <view class="bacard" wx:if="{{order.express}}">
+        <view>快递公司　{{order.express}}</view>
+      </view>
+      <view class="bacard" wx:if="{{order.expressNum}}">
+        <view>快递单号　{{order.expressNum}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 收货地址 -->
+  <view class="basics">
+    <view class="cotit">收货地址信息</view>
+    <view class="delivery">
+      <view><text class="name">{{order.qrCode}}</text>{{order.phone}}</view>
+      <view>{{order.address}}</view>
+    </view>
+  </view>
+
+  <!-- 商品评价 -->
+  <view class="evaluate" wx:if="{{evaluate.nick}}">
+    <view class="cotit">商品评价</view>
+    <view style="padding: 20rpx 40rpx;">
+      <view class="evcard">
+        <image class="avatar" mode="aspectFill" src="{{evaluate.avatar}}"></image>
+        <view class="name">
+          <view class="time">
+            <text>{{evaluate.nick}}</text>
+            <text>{{util.formatDateShort(evaluate.createTime)}}</text>
+          </view>
+          <van-rate readonly value="{{ evaluate.level }}" bind:change="onChange" color="#FF7800" size="30rpx" gutter="0px"/>
+        </view>
+      </view>
+      <view class="evcon">{{evaluate.content}}</view>
+      <view class="evimgs">
+        <image mode="aspectFill" wx:for="{{evaluate.imgArr}}" wx:for-item="i" src="{{util.fullPath(i)}}"></image>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="floor">-已经到底啦-</view>
+  <view class="mybtn foot" wx:if="{{status==0}}" bindtap="wechatPay">立即支付</view>
+  <view class="mybtn foot" wx:if="{{status==2}}" bindtap="toDelivery">确认收货</view>
+  <view class="mybtn foot" wx:if="{{status==3}}" bindtap="goEvaluate">立即评价</view>
+
+</view>

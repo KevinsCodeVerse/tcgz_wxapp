@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "集锦详情",
+  "usingComponents": {
+    "newList": "/components/newList/newList",
+    "commentList": "/components/commentList/commentList",
+    "van-popup": "/miniprogram/miniprogram_npm/@vant/weapp/popup/index",
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index"
+
+  }
+}

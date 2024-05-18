@@ -1,0 +1,157 @@
+<!-- pages/shop/detail/detail.wxml -->
+<wxs module="util" src="../../../utils/util.wxs" />
+<view style="margin-bottom:100rpx">
+  <view class="bannimg">
+    <image mode="widthFix" src="{{util.fullPath(shop.banner)}}"></image>
+  </view>
+  <view class="tesu">
+    <view class="info">
+      <view class="name">
+        <image class="avatar" mode="aspectFill" src="{{util.fullPath(shop.shopPhoto)}}"></image>
+        <view class="titlename">{{shop.name}}</view>
+      </view>
+      <view class="iolist">
+        <view class="iocard">
+          <image class="toad" src="/img/shop/detail-1.png"></image>
+          <view>距{{distance}}km</view>
+        </view>
+        <view class="iocard">
+          <image class="toad" src="/img/shop/detail-2.png"></image>
+          <view>{{shop.pv}}浏览</view>
+        </view>
+        <view class="iocard">
+          <button class="tesubtn" open-type="share" id="button">
+            <image class="toad" src="/img/shop/detail-3.png"></image>
+          </button>
+          <view>分享</view>
+        </view>
+        <view class="iocard" bindtap="toCollet" data-type="{{1}}">
+          <image class="toad" wx:if="{{isAttent!=-1}}" src="/img/shop/detail-active-4.png"></image>
+          <image class="toad" wx:else src="/img/shop/detail-4.png"></image>
+          <view>{{shop.attention}}关注</view>
+        </view>
+        <view class="iocard" bindtap="toCollet" data-type="{{2}}">
+          <image class="toad" wx:if="{{isLike!=-1}}" src="/img/shop/detail-active-5.png"></image>
+          <image class="toad" wx:else src="/img/shop/detail-5.png"></image>
+          <view>{{shop.like}}点赞</view>
+        </view>
+      </view>
+      <view class="contact">
+        <view class="phone">
+          <view class="address">
+            <text style="width: 110rpx">营业时间</text>
+            <text wx:if="{{shop.startTime}}">{{shop.startTime}}-{{shop.endTime}}</text>
+            <text wx:else>暂无</text>
+          </view>
+          <view class="address">
+            <text>电话</text>
+            <text>{{shop.phone}}</text>
+          </view>
+          <view class="address">
+            <text>地址</text>
+            <text class="addre">{{shop.address}}</text>
+          </view>
+        </view>
+        <view>
+          <view class="mybtn cobtn" bindtap="freeTell">
+            <image src="/img/myicon/phone.png"></image>
+            <text>致电</text>
+          </view>
+          <view class="mybtn cobtn" bindtap="toOpenNav">
+            <image src="/img/myicon/navigation.png"></image>
+            <text>导航</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 标签栏 -->
+  <van-tabs wx:if="{{shop.id}}"active="{{ active }}" bind:change="onChange" color="#3994FF" custom-class="mytabs" nav-class="mytabs">
+    <van-tab title="产品推荐" wx:if="{{showVideo==1}}">
+      <view class="goods_list">
+        <!-- 优惠券列表 -->
+        <!-- 商品列表 -->
+        <block wx:for="{{goodsList}}" wx:key="index">
+          <block wx:if="{{item.type != 4}}">
+            <view class="goods_item" bindtap="goDetail" data-obj="{{item}}">
+              <view class="goods_cover">
+                <image mode="aspectFill" src="{{util.fullPath(item.cover)}}"></image>
+                <view wx:if="{{item.type == 2}}" class="countdown">
+                  <van-count-down class="mydown" time="{{ item.time*1000+900 }}" bind:finish="onFinish" />
+                </view>
+              </view>
+              <view class="goods_info">
+                <view>
+                  <text class="goods_title">{{item.name}}</text>
+                  <view class="inventory">
+                    <!-- 佣金 提示2.0.18 版本关闭 -->
+                    <!-- <text wx:if="{{item.isInvite == 1}}" class="countrymen">佣金最高￥{{item.maxReward}}</text> -->
+                    <text wx:if="{{item.type == 1}}" class="inventory_num">已售{{item.deal}}</text>
+                    <text wx:if="{{item.type == 3}}" class="group">{{item.count}}人团</text>
+                    <text wx:if="{{item.type == 3}}" class="inventory_num">已拼{{item.sales}}</text>
+                    <text wx:if="{{item.type == 2}}" class="seckill">限购{{item.count}}件</text>
+                    <text wx:if="{{item.type == 2}}" class="inventory_num">剩余{{item.stock}}件</text>
+                  </view>
+                </view>
+                <view class="price">
+                  <text class="new {{item.type == 2?'seckill':''}}">￥{{item.price}}</text>
+                  <text class="old">￥{{item.originalPrice}}</text>
+                </view>
+                <button class="buy_btn" wx:if="{{item.type == 1}}" >
+                  前往购买
+                </button>
+                <image wx:if="{{item.type == 3}}" mode="heightFix" class="btn" src="/img/group/group-btn.png"></image>
+                <image wx:if="{{item.type == 2}}" mode="heightFix" class="btn" src="/img/seckill/seckill-btn.png"></image>
+              </view>
+            </view>
+          </block>
+          <block wx:if="{{item.type == 4}}">
+            <view class="cncard">
+              <view class="price">{{item.price}}</view>
+              <view class="cninfo">
+                <view>
+                  <view class="money">
+                    <text style="margin-right: 10rpx">{{item.name}}</text>
+                    <text class="meet">满{{item.originalPrice}}可用</text>
+                    <text class="meet">{{item.status==1?'到店使用':'线上使用'}}</text>
+                    <text wx:if="{{item.isShop==1}}" class="meet" style="font-size: 20rpx;margin-left: 15rpx;">
+                <text>到店使用</text>
+              </text>
+              <text wx:if="{{item.isShop==0}}" class="meet" style="font-size: 20rpx;margin-left: 15rpx;">
+                <text>线上使用</text>
+              </text>
+                  </view>
+                  <view class="time">限 {{util.formatDateShort(item.useStartTime,'.')}} 至 {{util.formatDateShort(item.useEndTime,'.')}} 使用</view>
+                </view>
+                <view class="handle">
+                  <view class="attr">
+                    <view>
+                      <text class="meet">每人领{{item.count==-1?'999':item.count}}张</text>
+                      <text class="time" wx:if="{{item.stock!=-1}}">剩{{item.stock}}张</text>
+                    </view>
+                    <view class="time issue">发放时间 {{util.formatDateShort(item.sendStartTime,'.')}} 至 {{util.formatDateShort(item.sendEndTime,'.')}}</view>
+                  </view>
+                  <view class="mybtn btn" data-id="{{item.id}}" bindtap="bindCoupon">领取</view>
+                </view>
+              </view>
+            </view>
+          </block>
+        </block>
+        <view class="floor">- 已经到底啦 -</view>
+      </view>
+    </van-tab>
+    <van-tab title="详情介绍">
+      <view class="intro">
+        <rich-text nodes="{{shop.content}}"></rich-text>
+        <view class="nodata" wx:if="{{!shop.content}}">暂无介绍</view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>
+<!-- 申请成为分销 -->
+<!-- <view class="bottom_btn_box" wx:if="{{showInvite == 1&&isInvite === 0}}">
+  <view class="text">申请成为商家分销员，享受高额佣金</view>
+  <view class="btn" bind:tap="applyStaff">申请成为分销</view>
+</view> -->
+<!-- 分销弹框 -->
+<!-- <van-dialog id="van-dialog" /> -->

@@ -1,0 +1,145 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<van-tabs tab-active-class="tab_active_class" active="all" bind:click="tabClick">
+    <van-tab title="全部资讯" name="all">
+        <view class="box">
+            <view class="item_box" bind:tap="handTapNav" wx:for="{{list[tabIndex].list}}" wx:key="id" data-type="{{item.type}}" data-id="{{item.id}}" data-isvideo="{{item.is_video}}">
+                <image class="player" src="/img/common/player2.png" wx:if="{{item.is_video==1}}"></image>
+                <!-- <text class="text_select" wx:if="{{item.type==5}}">第1集</text> -->
+                <image class="" src="{{util.fullPath(item.image[0])}}" mode="aspectFill" />
+                <view class="text_box">
+                    <view class="title">{{item.title}}</view>
+                    <view class="title" style="font-size:22rpx;color:#999999;margin-top:5rpx" wx:if="{{item.type==5}}">{{item.description}}</view>
+                    <view class="name_box">
+                        <text class="name" wx:if="{{item.type==5}}"></text>
+                        <text class="name" wx:else>{{item.source}}</text>
+                        <text class="info_message" wx:if="{{item.type==2}}">{{util.tenNum(item.comment)}} 评论</text>
+                        <text class="info_message" wx:else>{{util.tenNum(item.reading)}} 预览</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view style="padding:20rpx 0 40rpx 0; text-align: center;" wx:if="{{list[tabIndex].total>5}}">
+            {{isshow?'没用更多了':'加载中...'}}
+        </view>
+        <view style="padding:-20rpx 0 40rpx 0; text-align: center;" wx:if="{{!list[tabIndex].total}}">
+            您没有收藏该咨询
+        </view>
+    </van-tab>
+    <van-tab title="城市资讯" name="message">
+        <view class="box">
+            <view class="item_box" bind:tap="handTapNav" wx:for="{{list[tabIndex].list}}" wx:key="id" data-type="{{item.type}}" data-id="{{item.id}}" data-isvideo="{{item.is_video}}">
+                <image class="player" src="/img/common/player2.png" wx:if="{{item.is_video==1}}"></image>
+                <!-- <text class="text_select" wx:if="{{item.type==5}}">第一集</text> -->
+                <image class="" src="{{util.fullPath(item.image[0])}}" mode="aspectFill" />
+                <view class="text_box">
+                    <view class="title">{{item.title}}</view>
+                    <view class="name_box">
+                        <text class="name">{{item.source}}</text>
+                        <text class="info_message" wx:if="{{item.type==2}}">{{util.tenNum(item.comment)}} 评论</text>
+                        <text class="info_message" wx:else>{{util.tenNum(item.reading)}} 预览</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view style="padding:20rpx 0 40rpx 0; text-align: center;" wx:if="{{list[tabIndex].total>5}}">
+            {{isshow?'没用更多了':'加载中...'}}
+        </view>
+        <view style="padding:-20rpx 0 40rpx 0; text-align: center;" wx:if="{{!list[tabIndex].total}}">
+            您没有收藏的咨询
+        </view>
+    </van-tab>
+    <van-tab title="政府政策" name="policy">
+        <view class="box">
+            <view class="item_box" bind:tap="handTapNav" wx:for="{{list[tabIndex].list}}" wx:key="id" data-type="{{item.type}}" data-id="{{item.id}}" data-isvideo="{{item.is_video}}">
+                <image class="player" src="/img/common/player2.png" wx:if="{{item.is_video==1}}"></image>
+                <!-- <text class="text_select" wx:if="{{item.type==5}}">第一集</text> -->
+                <image class="" src="{{util.fullPath(item.image[0])}}" mode="aspectFill" />
+                <view class="text_box">
+                    <view class="title">{{item.title}}</view>
+                    <view class="name_box">
+                        <text class="name">{{item.source}}</text>
+                        <text class="info_message" wx:if="{{item.type==2}}">{{util.tenNum(item.comment)}} 评论</text>
+                        <text class="info_message" wx:else>{{util.tenNum(item.reading)}} 预览</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view style="padding:20rpx 0 40rpx 0; text-align: center;" wx:if="{{list[tabIndex].total>5}}">
+            {{isshow?'没用更多了':'加载中...'}}
+        </view>
+        <view style="padding:-20rpx 0 40rpx 0; text-align: center;" wx:if="{{!list[tabIndex].total}}">
+            您没有收藏的咨询
+        </view>
+    </van-tab>
+    <van-tab title="游玩政策" name="play">
+        <view class="box">
+            <view class="item_box" bind:tap="handTapNav" wx:for="{{list[tabIndex].list}}" wx:key="id" data-type="{{item.type}}" data-id="{{item.id}}" data-isvideo="{{item.is_video}}">
+                <image class="player" src="/img/common/player2.png" wx:if="{{item.is_video==1}}"></image>
+                <!-- <text class="text_select" wx:if="{{item.type==5}}">第一集</text> -->
+                <image class="" src="{{util.fullPath(item.image[0])}}" mode="aspectFill" />
+                <view class="text_box">
+                    <view class="title">{{item.title}}</view>
+                    <view class="name_box">
+                        <text class="name">{{item.source}}</text>
+                        <text class="info_message" wx:if="{{item.type==2}}">{{util.tenNum(item.comment)}} 评论</text>
+                        <text class="info_message" wx:else>{{util.tenNum(item.reading)}} 预览</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view style="padding:20rpx 0 40rpx 0; text-align: center;" wx:if="{{list[tabIndex].total>5}}">
+            {{isshow?'没用更多了':'加载中...'}}
+        </view>
+        <view style="padding:-20rpx 0 40rpx 0; text-align: center;" wx:if="{{!list[tabIndex].total}}">
+            您没有收藏的咨询
+        </view>
+    </van-tab>
+    <van-tab title="精彩视频" name="video">
+        <view class="box">
+            <view class="item_box" bind:tap="handTapNav" wx:for="{{list[tabIndex].list}}" wx:key="id" data-type="{{item.type}}" data-id="{{item.id}}" data-isvideo="{{item.is_video}}">
+                <image class="player" src="/img/common/player2.png" wx:if="{{item.is_video==1}}"></image>
+                <!-- <text class="text_select" wx:if="{{item.type==5}}">第一集</text> -->
+                <image class="" src="{{util.fullPath(item.image[0])}}" mode="aspectFill" />
+                <view class="text_box">
+                    <view class="title">{{item.title}}</view>
+                    <view class="name_box">
+                        <text class="name">{{item.source}}</text>
+                        <text class="info_message" wx:if="{{item.type==2}}">{{util.tenNum(item.comment)}} 评论</text>
+                        <text class="info_message" wx:else>{{util.tenNum(item.reading)}} 预览</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view style="padding:20rpx 0 40rpx 0; text-align: center;" wx:if="{{list[tabIndex].total>5}}">
+            {{isshow?'没用更多了':'加载中...'}}
+        </view>
+        <view style="padding:-20rpx 0 40rpx 0; text-align: center;" wx:if="{{!list[tabIndex].total}}">
+            您没有收藏的咨询
+        </view>
+    </van-tab>
+    <van-tab title="视频锦集" name="collection">
+        <view class="box">
+            <view class="item_box" bind:tap="handTapNav" wx:for="{{list[tabIndex].list}}" wx:key="id" data-type="{{item.type}}" data-id="{{item.id}}" data-isvideo="{{item.is_video}}">
+                <image class="player" src="/img/common/player2.png" wx:if="{{item.is_video==1}}"></image>
+                <!-- <text class="text_select" wx:if="{{item.type==5}}">第1集</text> -->
+                <image class="" src="{{util.fullPath(item.image[0])}}" mode="aspectFill" />
+                <view class="text_box">
+                    <view class="title">{{item.title}}</view>
+                    <view class="title" style="font-size:22rpx;color:#999999;margin-top:5rpx" wx:if="{{item.type==5}}">{{item.description}}</view>
+                    <view class="name_box">
+                        <text class="name" wx:if="{{item.type==5}}"></text>
+                        <text class="name" wx:else>{{item.source}}</text>
+                        <text class="info_message" wx:if="{{item.type==2}}">{{util.tenNum(item.comment)}} 评论</text>
+                        <text class="info_message" wx:else>{{util.tenNum(item.reading)}} 预览</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view style="padding:20rpx 0 40rpx 0; text-align: center;" wx:if="{{list[tabIndex].total>5}}">
+            {{isshow?'没用更多了':'加载中...'}}
+        </view>
+        <view style="padding:-20rpx 0 40rpx 0; text-align: center;" wx:if="{{!list[tabIndex].total}}">
+            您没有收藏的咨询
+        </view>
+    </van-tab>
+</van-tabs>

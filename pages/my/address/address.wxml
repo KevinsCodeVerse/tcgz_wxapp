@@ -1,0 +1,19 @@
+<!--pages/my/address/address.wxml-->
+<view class="address">
+  <view class="ascard" wx:for="{{list}}" wx:key="index">
+    <view class="ascon" bindtap="goOrder" data-id="{{item.id}}">
+      <view class="name">
+        <text class="d_name">{{item.name}}</text>
+        <text>{{item.phone}}</text>
+        <text class="label" wx:if="{{item.isDefault==1}}">默认</text>
+      </view>
+      <view>{{item.region}} {{item.address}}</view>
+    </view>
+    <view class="mybtn btn" bindtap="goAddAddress" data-id="{{item.id}}">编辑</view>
+  </view>
+
+  <view wx:if="{{list.length==0}}" class="nodata">暂无地址</view>
+
+  <view class="mybtn btn2" bindtap="goAddAddress">添加收货地址</view>
+</view>
+

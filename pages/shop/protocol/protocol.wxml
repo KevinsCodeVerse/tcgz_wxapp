@@ -1,0 +1,4 @@
+<!-- pages/protocol/protocol.wxml -->
+<view class="protocol">
+  <rich-text  nodes="{{info}}"></rich-text>
+</view>

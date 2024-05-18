@@ -1,0 +1,96 @@
+Page{
+}
+.goods_item {
+    background-color: #ffffff;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.116);
+    margin: 25rpx;
+	padding: 25rpx 25rpx;
+}
+.goods_box{
+    display: flex;
+
+}
+.img_box {
+	height: 120rpx;
+	width: 120rpx;
+	margin-right: 20rpx;
+}
+.time{
+    margin-top: 10rpx;
+    color:#999;
+    font-size: 24rpx;
+}
+.img_box image {
+	height: 100%;
+	width: 100%;
+}
+.text{
+    color: #888;
+}
+.info {
+	flex: 1;
+}
+.goods_title {
+	font-weight: 600;
+}
+.df {
+	display: flex;
+	align-items: flex-end;
+}
+.search_box {
+	padding: 0 25rpx;
+}
+.select_btn {
+	margin-top: 40rpx;
+	margin-left: 20rpx;
+	margin-right: 20rpx;
+	width: 125rpx;
+	height: 58rpx;
+	background: #3994ff;
+	border-radius: 29rpx;
+	text-align: center;
+	line-height: 58rpx;
+	color: #ffffff;
+	font-size: 30rpx;
+}
+.select_btn2{
+	background: #6666;
+	color: #ffffff;
+}
+.van-search__action {
+	margin-right: 0 !important;
+	padding-right: 0 !important;
+}
+.price {
+	margin-top: 15rpx;
+	margin-right: 20rpx;
+	font-size: 42rpx;
+	font-weight: 800;
+	text-align: left;
+	color: #ff7800;
+}
+/* 滑动加载 */
+.loading {
+	text-align: center;
+}
+.loading_view {
+	padding: 30rpx 0;
+}
+.finish {
+	display: block;
+	font-size: 28rpx;
+	color: #999999;
+	padding: 30rpx 0;
+}
+.floor {
+	padding: 0 20rpx;
+}
+.textc_comment {
+	float: right;
+}
+.titles {
+	margin-bottom: 25rpx;
+	font-weight: 600;
+	display: flex;
+	justify-content: space-between;
+}

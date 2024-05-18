@@ -1,0 +1,39 @@
+<!--pages/contacts/contacts.wxml-->
+<wxs module="util" src="../../../utils/util.wxs" />
+
+<view class="page">
+  <view class="top">
+    <van-sticky offset-top="{{ 0 }}">
+      <van-search bind:change="changeValue" bind:clear="clearKeyword" model:value="{{ keywords }}" shape="round" background="#fff" placeholder="手机号/姓名/公司搜索" clearable />
+      <view class="tabs">
+        <view class="tab-item {{ activeTab === 0 ? 'active' : '' }}" bind:tap="switchTab" data-index="0">我的人脉</view>
+        <view class="tab-item {{ activeTab === 1 ? 'active' : '' }}" bind:tap="switchTab" data-index="1">我关注的</view>
+      </view>
+    </van-sticky>
+    <view>
+    </view>
+  </view>
+  <view class="main">
+    <view class="main-box">
+      <view bind:tap="goCardView" wx:for="{{list}}" class="flex" wx:key="id" data-item="{{item}}">
+        <view>
+          <image src="{{util.fullPath(item.avatar)}}" mode="" />
+        </view>
+        <view class="right">
+          <view class="name">
+            <text>{{item.name}}</text>
+            <text class="text">{{item.position}}</text>
+          </view>
+          <view class="txt">
+            {{item.company}}
+          </view>
+        </view>
+      </view>
+      <view class="loading">
+        <van-loading wx:if="{{loading}}" size="24px" color="#0DC3FF">加载中...</van-loading>
+        <text class="finish" wx:if="{{finish}}">{{list.length>0?'没有更多了': '暂无数据'}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<custom-tabbar />

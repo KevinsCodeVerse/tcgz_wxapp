@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "van-count-down": "/miniprogram/miniprogram_npm/@vant/weapp/count-down/index",
+    "van-rate": "/miniprogram/miniprogram_npm/@vant/weapp/rate/index"
+  },
+  "navigationBarBackgroundColor": "#86CC14",
+  "navigationBarTitleText": "拼团详情",
+  "enablePullDownRefresh": true
+}

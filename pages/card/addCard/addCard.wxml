@@ -1,0 +1,776 @@
+<!--pages/card/addCardPage/addCardPage.wxml-->
+<wxs module="util" src="../../../utils/util.wxs" />
+<view hidden="{{preViewCard}}" class="myCard">
+  <!-- <van-sticky  offset-top="{{ 0 }}">
+    <van-notice-bar id="myNoticeBar" wrapable scrollable="{{ false }}" text="名片完善度：90%，超过全国20%同行,继续完善再接再厉">
+    </van-notice-bar>
+  </van-sticky> -->
+  <view class="main">
+    <view class="box">
+      <van-cell-group inset>
+        <van-cell bind:click="addTemplate" title="名片模版" clickable center="true" value="{{backgroundName?backgroundName:'选择模版'}}" is-link />
+      </van-cell-group>
+    </view>
+    <van-cell-group inset center>
+      <van-cell title="个人信息">
+      </van-cell>
+      <van-cell class="upload" required>
+        <view class="avatar-flex">
+          <view class="tit">头像</view>
+          <view>
+            <van-uploader class="upload-avatar" file-list="{{ util.fullPath(avatar)}}" bind:after-read="imgSelect">
+              <image wx:if="{{avatar}}" class="box_img" src="{{util.fullPath(avatar)}}"></image>
+            </van-uploader>
+          </view>
+
+        </view>
+      </van-cell>
+      <van-cell-group>
+        <van-field label="姓名" required model:value="{{ name }}" placeholder="请输入姓名" />
+      </van-cell-group>
+      <van-cell-group>
+        <van-field bind:input="handlePhoneInput" label="手机" required model:value="{{ phone  }}" placeholder="请输入手机号" />
+      </van-cell-group>
+      <!-- vip -->
+      <van-cell-group>
+        <van-cell class="upload">
+          <view class="code-img">
+            <view class="text">微信二维码</view>
+            <van-uploader bind:tap="checkVip" disabled="{{disabled}}" data-item="开通VIP，解锁微信二维码，公开分享客户快速添加联系方式" file-list="{{ util.fullPath(wxQrcode) }}" bind:after-read="CodeimgSelect">
+              <image wx:if="{{wxQrcode}}" class="code_img" src="{{util.fullPath(wxQrcode)}}"></image>
+            </van-uploader>
+          </view>
+        </van-cell>
+      </van-cell-group>
+    </van-cell-group>
+    <view class="box">
+      <van-cell-group inset center>
+        <van-cell title="公司信息">
+        </van-cell>
+        <van-field label="公司" required model:value="{{ company }}" placeholder="请输入公司名称" />
+        <van-cell-group>
+          <van-field label="地址" model:value="{{ address }}" use-button-slot placeholder="请输入地址">
+            <view bindtap="moveToLocation" class="mapText" slot="button">地图选址</view>
+          </van-field>
+        </van-cell-group>
+        <view wx:for="{{position}}" wx:key="id">
+          <van-cell-group>
+            <van-field bind:input="fieldchange" label="职务" model:value="{{ item  }}" data-index="{{index}}" placeholder="请输入职务">
+              <view wx:if="{{index !==0}}" catchtap="removePos" data-index="{{index}}" slot="right-icon">
+                <image style="width: 36rpx;height: 36rpx;margin-top:7rpx;" src="/img/card/close.png" mode="aspectFill" />
+              </view>
+            </van-field>
+          </van-cell-group>
+        </view>
+
+        <van-cell-group>
+          <van-cell>
+            <view bindtap="addPos" class="text-c">
+              <van-icon color="#0080ff" name="plus" />添加职务
+            </view>
+          </van-cell>
+        </van-cell-group>
+      </van-cell-group>
+    </view>
+    <view class="box">
+      <van-cell-group inset center>
+        <van-cell title="个人简介">
+        </van-cell>
+
+        <van-field model:value="{{ introduction }}" maxlength="300" show-word-limit type="textarea" placeholder="请输入个人简介" autosize />
+      </van-cell-group>
+    </view>
+    <view class="box">
+      <van-cell-group inset center>
+        <!-- 组件 -->
+        <view class="container">
+          <view class="tit">
+            <text>业务介绍</text>
+          </view>
+          <!-- bind:customEvent="vipShow"  -->
+          <rich bind:checkVip="checkVip" id="RichEditor" />
+        </view>
+      </van-cell-group>
+    </view>
+    <view class="box">
+      <view class="shop-view">
+        <!-- <van-cell title="关联商户">
+        </van-cell> -->
+        <view class="tit">
+          <text>关联商户</text>
+        </view>
+        <view wx:if="{{merchant.length>0}}" class="shop-box">
+          <view class="box-flex" wx:for="{{merchant}}" wx:key="id">
+            <view class="left">
+              <image class="pic" src="{{util.fullPath(item.shopPhoto) }}" mode="" />
+            </view>
+            <view class="center">
+              <view class="name">
+                <view>{{item.name}}</view>
+                <view wx:if="{{merchant.length>0}}" catchtap="removeShop" data-index="{{index}}" slot="right-icon">
+                  <image style="width: 36rpx;height: 36rpx;margin-top:7rpx;" src="/img/card/close.png" mode="aspectFill" />
+                </view>
+              </view>
+
+              <view class="text-list">
+                <van-icon color="#FF7800" name="star" /><text class="star-text">{{item.score}}</text><text class="distance">{{item.distance}}</text>
+              </view>
+              <view class="distance">{{item.address}}</view>
+            </view>
+          </view>
+        </view>
+        <view>
+          <view bind:tap="RelevanceShow" class="shop-btn">
+            点击关联我的商户
+          </view>
+        </view>
+        <van-cell bind:click="toPublicJoin">
+          <view class="text-c">没有商户？立即入驻，让产品直接触达客户 ></view>
+        </van-cell>
+
+      </view>
+
+    </view>
+    <!-- 我的需求  -->
+    <view class="box">
+      <van-cell-group inset center>
+        <van-cell title="我的需求">
+        </van-cell>
+        <view wx:for="{{RequirementData}}" wx:key="id">
+
+          <view bind:tap="editRequirement" data-item="{{item}}" data-index="{{index}}">
+            <van-field wx:if="{{item.title}}" value="{{ item.title }}" data-index="{{index}}" readonly>
+              <view data-index="{{index}}" slot="left-icon" class="circle-icon">
+                {{index+1}}
+              </view>
+              <view  catchtap="removeRequirement" data-index="{{index}}" slot="right-icon">
+                <image style="width: 36rpx;height: 36rpx;margin-top:7rpx;" src="/img/card/close.png" mode="aspectFill" />
+              </view>
+            </van-field>
+            <view class="RequirementTag" slot="label">
+              <van-tag size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.className}}</van-tag>
+              <van-tag size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.industryName}}</van-tag>
+              <van-tag size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.city}}</van-tag>
+            </view>
+          </view>
+        </view>
+        <van-cell-group>
+          <van-cell bind:tap="popupShowRequirement">
+            <view class="text-c">
+              <van-icon color="#0080ff" name="plus" />添加需求
+            </view>
+          </van-cell>
+        </van-cell-group>
+      </van-cell-group>
+    </view>
+    <!-- 我的资源 -->
+    <view class="box">
+      <van-cell-group inset center>
+        <van-cell title="我的资源">
+        </van-cell>
+        <view bind:tap="editAssets" wx:for="{{AssetsData}}" wx:key="id" data-item="{{item}}" data-index="{{index}}">
+          <view>
+            <van-field wx:if="{{item.title}}" value="{{ item.title }}" readonly>
+              <view data-index="{{index}}" slot="left-icon" class="circle-icon">
+                {{index+1}}
+              </view>
+              <view  catchtap="removeAssets" data-index="{{index}}" slot="right-icon">
+                <image style="width: 36rpx;height: 36rpx;margin-top:7rpx;" src="/img/card/close.png" mode="aspectFill" />
+              </view>
+            </van-field>
+            <view class="RequirementTag" slot="label">
+              <van-tag size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.className}}</van-tag>
+              <van-tag size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.industryName}}</van-tag>
+              <van-tag size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.city}}</van-tag>
+            </view>
+          </view>
+        </view>
+        <van-cell-group>
+          <van-cell bind:tap="popupShowAssets">
+            <view class="text-c">
+              <van-icon color="#0080ff" name="plus" />添加资源
+            </view>
+          </van-cell>
+        </van-cell-group>
+      </van-cell-group>
+    </view>
+
+  </view>
+  <!-- 底部 -->
+  <!-- 非vip -->
+  <view class="footer">
+    <view class="foot-btn">
+      <view bind:tap="preview" class="btn1">
+        <image class="search" src="/img/card/search.png" mode="" />
+        <view class="text">预览</view>
+      </view>
+      <view class="btn2">
+        <van-button bind:tap="addCard" round type="info" size="large">{{isEdit===1?'创建名片':'保存'}}</van-button>
+      </view>
+    </view>
+  </view>
+  <view class="{{isVip===0?'vipfooter':'Notvipfooter'}}">
+    <van-notice-bar wx:if="{{isVip===0}}" bind:click="vipShow" mode="link" color="#1989fa" background="#ecf9ff" wrapable scrollable="{{ false }}">
+      <view slot="">
+        <view class="foot-text">
+          开通VIP，解锁更多名片权益，打造更完善的个人IP，
+          享受多方人脉助力，资源精准匹配促进商业合作共赢!
+        </view>
+      </view>
+    </van-notice-bar>
+    <view class="foot-btn">
+      <view class="btn1">
+        <image class="search" src="/img/card/search.png" mode="" />
+        <view class="text">预览名片</view>
+      </view>
+      <view class="btn2">
+        <van-button bind:tap="addCard" round type="info" size="large">创建名片</van-button>
+      </view>
+    </view>
+  </view>
+
+</view>
+<van-sticky wx:if="{{preViewCard}}">
+  <van-button bind:tap="preview" size="large" type="info">取消预览</van-button>
+</van-sticky>
+<!-- util.fullPath(backgroundImg) -->
+<view hidden="{{!preViewCard}}" class="pre">
+  <view class="card" style="background-image: url({{backgroundImg}});background-size:cover;background-position: center; ">
+    <view class="top">
+      <view class="left">
+        <view class="name">{{name?name:"暂未填写姓名"}}</view>
+        <view wx:for="{{position}}" wx:key="id">
+          <text wx:if="{{item}}">{{item}}</text>
+          <text wx:else>暂未填写职务</text>
+        </view>
+        <!-- <view wx:for="{{position}}" class="pos" wx:key="id">
+          <text>{{item?item:"暂未填写职务"}}</text>
+          <text wx:if="{{index}}">、</text>
+        </view> -->
+      </view>
+      <view class="right">
+        <image src="{{util.fullPath(avatar)}}" mode="aspectFill" />
+      </view>
+    </view>
+    <view>
+      <image class="icon" src="/img/card/card-phone.png" mode="aspectFill" />
+      <text>{{phone?phone:'暂未填写手机号'}}</text>
+    </view>
+    <view>
+      <image class="icon" src="/img/card/corporation.png" mode="aspectFill" />
+      <text>{{company?company:'暂未填写公司名'}}</text>
+    </view>
+    <view>
+      <image class="icon" src="/img/card/orientation.png" mode="aspectFill" />
+      <text>{{address?address:'暂未填写地址'}}</text>
+    </view>
+  </view>
+
+  <view class="data">
+    <view class="label-title">
+      个人简介
+    </view>
+    <view class="label-text" slot="label">
+      {{introduction?introduction:'暂未填写'}}
+    </view>
+    <view>
+    </view>
+  </view>
+
+  <view class="data">
+    <view class="label-title">
+      我的商户
+    </view>
+    <view class="label-text" wx:if="{{merchant.length===0}}">
+      暂未选择
+    </view>
+    <view class="shop-box">
+      <view class="box-flex" wx:for="{{merchant}}" wx:key="id">
+        <view class="left">
+          <image class="pic" src="{{util.fullPath(item.shopPhoto) }}" mode="aspectFill" />
+        </view>
+        <view class="center">
+          <view class="name">{{item.name}}</view>
+          <view class="text-list">
+            <van-icon color="#FF7800" name="star" /><text class="star-text">{{item.score}}</text><text class="distance">{{item.distance}}</text>
+          </view>
+          <view class="distance">{{item.address}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{cardPicture.length>0}}" class="element">
+    <view wx:for="{{cardPicture}}" wx:key="id">
+      <view wx:if="{{item.type === 'text'}}">
+        <view class="label-title">
+          <text>业务介绍：</text>
+        </view>
+        <view class="label-text">
+          {{item.content }}
+        </view>
+      </view>
+      <view wx:elif="{{item.type === 'image'}}">
+
+        <image class="img" src="{{util.fullPath(item.content)}}" mode="widthFix"></image>
+      </view>
+      <view wx:elif="{{item.type === 'video'}}">
+
+        <video class="video" src="{{item.content}}" controls autoplay="true"></video>
+      </view>
+
+    </view>
+  </view>
+  <!-- 需求 -->
+  <view class="data">
+    <view class="label-title">我的需求</view>
+    <view class="label-text" wx:if="{{RequirementData.length===0}}">
+      暂未选择
+    </view>
+    <view class="label-text">
+      {{item.content }}
+    </view>
+    <view wx:for="{{RequirementData}}" wx:key="id">
+      <text>{{index+1}}. {{ item.title}}</text>
+      <view class="tag-flex" slot="label">
+        <van-tag size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.className}}</van-tag>
+        <van-tag size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.industryName}}</van-tag>
+        <van-tag size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.city}}</van-tag>
+      </view>
+    </view>
+  </view>
+  <!-- 资源 -->
+  <view class="data">
+    <text class="label-title">我的资源</text>
+    <view class="label-text" wx:if="{{AssetsData.length===0}}">
+      暂未选择
+    </view>
+    <view class="label-text">
+      {{item.content }}
+    </view>
+    <view wx:for="{{AssetsData}}" wx:key="id">
+      <text>{{index+1}}. {{ item.title}}</text>
+      <view class="tag-flex" slot="label">
+        <van-tag wx:if="{{item.className}}" size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.className}}</van-tag>
+        <van-tag wx:if="{{item.industryName}}" size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.industryName}}</van-tag>
+        <van-tag wx:if="{{item.city}}" size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.city}}</van-tag>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!-- 关联商户弹窗 -->
+<van-action-sheet title="关联商户" show="{{ show }}" round bind:close="onClose" bind:select="onSelect" close-on-click-overlay="{{false}}">
+  <view class="action-sheet">
+    <view class="box">
+      <scroll-view scrollbar="none" scroll-y="{{true}}">
+        <view class="scroll-box">
+          <!-- merchant -->
+          <view wx:for="{{ merchantList }}" bindtap="toggleSelection" data-index="{{index}}" data-selected="{{item.selected}}" class="{{'box-item ' + (item.selected ? 'box-item-border' : '')}}" wx:key="index" wx:for-item="item">
+            <view class="left">
+              <image class="pic" src="{{util.fullPath(item.shopPhoto) }}" mode="" />
+            </view>
+            <view class="center">
+              <view class="name">{{item.name}}</view>
+              <view class="text-list">
+                <van-icon color="#FF7800" name="star" /><text class="star-text">{{item.score}}</text><text class="distance">{{item.distance}}</text>
+              </view>
+              <view class="distance">{{item.address}}</view>
+            </view>
+            <!-- <view class="right">
+          <view class="circle-icon">
+            <view class="circle-yes">
+              <van-icon color="#fff;" size="large" name="success" />
+            </view>
+          </view>
+        </view> -->
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="foot-btn">
+      <view class="action-sheet-foot-btn">
+        <van-button bind:tap="ConfirmAssociation" disabled="{{isShopBtn!==true}}" block round type="info" size="large">确认关联</van-button>
+      </view>
+    </view>
+  </view>
+
+</van-action-sheet>
+<!-- 添加需求弹框 -->
+<van-popup z-index="99" show="{{ RequirementShow }}" position="bottom" round custom-style="height: 40%;" bind:close="onCloseRequirementPopup" close-on-click-overlay="{{false}}">
+  <view>
+    <view class="title">添加需求</view>
+    <view>
+      <van-cell-group inset center>
+        <van-field bind:input="onChangeRequirement" value="{{ RequirementForm.title }}" label="需求" placeholder="请输入需求" />
+      </van-cell-group>
+      <van-cell-group inset center>
+        <van-field label="需求分类" value="{{ RequirementForm.className }}" placeholder="请选择需求分类" bindtap="toRequirementCal" clickable right-icon="arrow" border readonly />
+      </van-cell-group>
+      <van-cell-group inset center>
+        <van-field label="行业" value="{{ RequirementForm.industryName }}" placeholder="请选择行业" bindtap="toIndustryCal" clickable right-icon="arrow" border readonly />
+      </van-cell-group>
+      <van-cell-group inset center>
+        <van-field label="地区" value="{{ RequirementForm.city }}" placeholder="请选择地区" bindtap="tosel" clickable right-icon="arrow" border readonly />
+      </van-cell-group>
+    </view>
+    <view class="foot-requirement">
+      <van-button size="large" bind:tap="onCloseRequirementPopup" class="close" round>取消</van-button>
+      <van-button bind:tap="addRequirement" disabled="{{RequirementBtnShow===false}}" size="large" class="add" type="info" round>{{isEditRequirement===false?'确认添加':'确认编辑'}}</van-button>
+    </view>
+  </view>
+</van-popup>
+
+<!-- 添加资源框 -->
+<van-popup z-index="99" show="{{ AssetsShow }}" position="bottom" round custom-style="height: 42%;" bind:close="onCloseAssetsPopup" close-on-click-overlay="{{false}}">
+  <view>
+    <view class="title">添加资源</view>
+    <view>
+      <van-cell-group inset center>
+        <van-field bind:input="onChangeAssets" value="{{ AssetsForm.title }}" label="资源" placeholder="请输入资源" />
+      </van-cell-group>
+      <van-cell-group inset center>
+        <van-field label="资源分类" value="{{ AssetsForm.className }}" placeholder="请选择资源分类" bindtap="toAssetsCal" clickable right-icon="arrow" border readonly />
+      </van-cell-group>
+      <van-cell-group inset center>
+        <van-field label="行业" value="{{ AssetsForm.industryName }}" placeholder="请选择行业" bindtap="toAssetsIndustryCal" clickable right-icon="arrow" border readonly />
+      </van-cell-group>
+      <van-cell-group inset center>
+        <van-field label="地区" value="{{ AssetsForm.city }}" placeholder="请选择地区" bindtap="toAssetssel" clickable right-icon="arrow" border readonly />
+      </van-cell-group>
+    </view>
+    <view class="foot-requirement">
+      <van-button bind:tap="onCloseAssetsPopup" size="large" class="close" round>取消</van-button>
+      <van-button bind:tap="addAssets" disabled="{{AssetsBtnShow===false}}" size="large" class="add" type="info" round>{{isEditAssets===false?'确认添加':'确认编辑'}}</van-button>
+    </view>
+  </view>
+</van-popup>
+
+<!-- 需求分类 -->
+<van-action-sheet z-index="101" show="{{ showRequirement }}">
+  <view>
+
+    <block wx:if="{{vipInfo.maturityTime}}">
+      <van-picker columns="{{ vipColumns }}" bind:cancel="toRequirementCal" bind:confirm="tovipRequirementCrm" show-toolbar bind:change="onpVipChange" />
+    </block>
+    <block wx:else>
+      <van-picker columns="{{ ClassColumns }}" bind:cancel="toRequirementCal" bind:confirm="toRequirementCrm" show-toolbar />
+    </block>
+  </view>
+</van-action-sheet>
+<!-- 资源分类 -->
+<van-action-sheet z-index="101" show="{{ showAssets }}">
+  <view>
+    <block wx:if="{{vipInfo.maturityTime}}">
+      <!-- bind:change="toAssetsIndustryCrm" -->
+      <van-picker columns="{{ vipColumns }}" bind:cancel="toAssetsCal" bind:confirm="tovipAssetsCrm" show-toolbar bind:change="onpVipChange" />
+    </block>
+    <block wx:else>
+      <van-picker columns="{{ ClassColumns }}" bind:cancel="toAssetsCal" bind:confirm="toAssetsCrm" show-toolbar />
+    </block>
+  </view>
+</van-action-sheet>
+<!-- 需求行业 -->
+<van-action-sheet z-index="101" show="{{ showIndustry }}">
+  <view>
+    <van-picker columns="{{ columns }}" bind:cancel="toIndustryCal" bind:confirm="toIndustryCrm" show-toolbar />
+  </view>
+</van-action-sheet>
+<!-- 需求地区 -->
+<van-popup z-index="101" show="{{ showAddress }}" position="bottom">
+  <van-area columns-num="{{ 2 }}" area-list="{{ area }}" value="110100" bind:cancel="tosel" bind:confirm="toRegionCrm" />
+</van-popup>
+<!-- 资源行业 -->
+<van-action-sheet z-index="101" show="{{ showAssetsIndustry }}">
+  <view>
+    <van-picker columns="{{ columns }}" bind:cancel="toAssetsIndustryCal" bind:confirm="toAssetsIndustryCrm" show-toolbar />
+
+  </view>
+</van-action-sheet>
+<!-- 资源地区 -->
+<van-popup z-index="101" show="{{ showAssetsAddress }}" position="bottom">
+  <van-area columns-num="{{ 2 }}" area-list="{{ area }}" value="110100" bind:cancel="toAssetssel" bind:confirm="toAssetsRegionCrm" />
+</van-popup>
+<!-- 开通vip -->
+<van-popup custom-style="height: 97%" round bind:close="onCloseVip" z-index="101" show="{{ showVip }}" position="bottom" closeable>
+  <view class="sheet-box">
+    <view class="title">开通VIP</view>
+    <view class="vip-page" style="height: 1200rpx;background-image: url('https://tcgz-1323511707.cos.ap-nanjing.myqcloud.com/vip-bgc.png');background-size: cover; ">
+      <view class="top-text">开通VIP,加入六度人脉权益</view>
+      <view class="main">
+        <view class="tit">VIP权益</view>
+        <view class="item">
+          <view class="item-flex">
+            <view class="left">
+              <image src="/img/card/vip-icon1.png" mode="aspectFill" />
+            </view>
+            <view>
+              <view class="t-text">VIP专属标识</view>
+              <view class="b-text">尊贵的VIP身份专属标识展示</view>
+            </view>
+          </view>
+          <view class="item-flex">
+            <view class="left">
+              <image src="/img/card/vip-icon2.png" mode="aspectFill" />
+            </view>
+            <view>
+              <view class="t-text">尊贵身份信用提升</view>
+              <view class="b-text">尊贵的VIP身份，人脉圈信用值加分</view>
+            </view>
+          </view>
+          <view class="item-flex">
+            <view class="left">
+              <image src="/img/card/vip-icon3.png" mode="aspectFill" />
+            </view>
+            <view>
+              <view class="t-text">解锁名片视频介绍</view>
+              <view class="b-text">支持上传介绍视频，丰富名片内容，更直观您的价值</view>
+            </view>
+          </view>
+          <view class="item-flex">
+            <view class="left">
+              <image src="/img/card/vip-icon4.png" mode="aspectFill" />
+            </view>
+            <view>
+              <view class="t-text">添加微信，增加人脉</view>
+              <view class="b-text">支持上传微信二维码，让客户快速添加微信好友</view>
+            </view>
+          </view>
+          <view class="item-flex">
+            <view class="left">
+              <image src="/img/card/vip-icon5.png" mode="aspectFill" />
+            </view>
+            <view>
+              <view class="t-text">个性设置，任意选择</view>
+              <view class="b-text">支持更多名片个性设置，打造个人主题品牌形象</view>
+            </view>
+          </view>
+          <view class="item-flex">
+            <view class="left">
+              <image src="/img/card/vip-icon6.png" mode="aspectFill" />
+            </view>
+            <view>
+              <view class="t-text">解锁创建多张名片</view>
+              <view class="b-text">支持创建多张名片，不同项目或圈子，随意切换精准打造个人IP</view>
+            </view>
+          </view>
+          <view class="item-flex">
+            <view class="left">
+              <image src="/img/card/vip-icon7.png" mode="aspectFill" />
+            </view>
+            <view>
+              <view class="t-text">访客查看，随心预览</view>
+              <view class="b-text">支持查看所有访客成员及详情，不错过任何商业和职业对接机会</view>
+
+            </view>
+          </view>
+          <view class="item-flex">
+            <view class="left">
+              <image src="/img/card/vip-icon8.png" mode="aspectFill" />
+            </view>
+            <view>
+              <view class="t-text">深度理解，精确匹配</view>
+              <view class="b-text">更深入了解具体需求和资源特点，确保最佳匹配，高效资源对接加速项目融合</view>
+
+            </view>
+          </view>
+          <view class="item-flex">
+            <view class="left">
+              <image src="/img/card/vip-icon9.png" mode="aspectFill" />
+            </view>
+            <view>
+              <view class="t-text">多方助力，连接无界</view>
+              <view class="b-text">精确主动寻求集体组织，城市运营，借助平台六度人脉体系的强大数据为您匹配资源</view>
+
+            </view>
+          </view>
+          <view class="item-flex">
+            <view class="left">
+              <image src="/img/card/vip-icon10.png" mode="aspectFill" />
+            </view>
+            <view>
+              <view class="t-text">高效匹配，无缝对接</view>
+              <view class="b-text">后台AI人工智能精准高效自动匹配，替您寻求潜在的合作伙伴</view>
+
+            </view>
+          </view>
+          <view class="item-flex">
+            <view class="left">
+              <image src="/img/card/vip-icon11.png" mode="aspectFill" />
+            </view>
+            <view>
+              <view class="t-text">专业专员，贴心服务</view>
+              <view class="b-text">线下专员随时协助，后台桥梁作用为您精准筛选资源，专业服务协助沟通确保每一个对接都精确高效</view>
+
+            </view>
+          </view>
+          <view class="item-flex">
+            <view class="left">
+              <image src="/img/card/vip-icon12.png" mode="aspectFill" />
+            </view>
+            <view>
+              <view class="t-text">尊贵身份，更多权益</view>
+              <view class="b-text">获得尊贵的VIP身份，获得申请升级平台黄金会员业务推广权限，推广获得更高分配收益</view>
+
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="box-footer">
+        <view>
+          <van-button bind:tap="openVip" round type="info" size="large">{{vipPrice}}/年 立即开通</van-button>
+          <view class="text">
+            开通VIP，加入六度人脉，让世界看到更好的您！
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="box-footer">
+    <view>
+      <van-button bind:tap="openVip" round type="info" size="large">{{vipPrice}}/年 立即开通</van-button>
+      <view class="text">
+        开通VIP，加入六度人脉，让世界看到更好的您！
+      </view>
+    </view>
+  </view>
+</van-popup>
+
+<van-popup z-index="120" show="{{ showVipPopup }}" round position="bottom" custom-style="height: 49%" bind:close="openVip">
+  <view class="vip-title">开通VIP</view>
+  <view class="show">
+    <view>
+      <view class="tit1">请选择助力角色</view>
+      <view class="tit2">解锁更多名片功能，打造更完善的个人IP，</view>
+      <view class="tit2">请求所在城市运营或服务团队助力精准资源匹配。</view>
+      <view>
+        <van-cell bind:tap="openSociety" title="助力的集体" is-link value="{{SocietyName?SocietyName:'请选择集体'}}" />
+        <van-cell bind:tap="openCity" title="助力的城市" is-link value="{{CityName?CityName:'请选择城市'}}" />
+      </view>
+      <!-- vip -->
+      <!-- <view>
+        <van-cell title="选择您代表的身份">
+        </van-cell>
+        <van-cell>
+          <van-radio-group value="{{ identity }}" bind:change="onChange">
+            <view class="flex">
+              <van-radio name="1">个人</van-radio>
+              <van-radio name="2">企业</van-radio>
+              <van-radio name="3">社会集体/政府</van-radio>
+            </view>
+          </van-radio-group>
+
+        </van-cell>
+
+      </view> -->
+      <view class="protocol">
+        <image class="radio" src="/img/myicon/radio.png" wx:if="{{!flag}}" bindtap="toAgree"></image>
+        <image class="radio" src="/img/myicon/radio_active3.png" wx:else bindtap="toAgree"></image>
+        <text bindtap="toAgree">(勾选)购买表示您同意</text>
+        <navigator url="/pages/shop/protocol/protocol">人脉圈VIP技术服务协议</navigator>
+      </view>
+
+    </view>
+    <view class="btn-footer">
+      <van-button bind:tap="buyVip" round type="info" size="large">立即开通</van-button>
+    </view>
+  </view>
+</van-popup>
+
+<!-- 集体 -->
+<van-popup z-index="120" show="{{ showSociety }}" round position="bottom" custom-style="height: 43%" bind:close="openSociety">
+  <view class="title">选择集体</view>
+  <view wx:if="{{SocietyItems.length>0}}" class="box">
+    <view class="box-view">
+      <view class="label-flex" wx:for="{{SocietyItems}}" wx:key="value">
+        <view bindtap="checkboxChangeSociety" data-item="{{item.value}}">
+          <view class="flex">
+            <view>
+              <view class="left-flex">
+                <image class="shop_avatar" src="{{util.fullPath(item.firmInfo.avatar) }}" mode="aspectFill" />
+                <view class="name">{{item.firmInfo.name}}</view>
+              </view>
+            </view>
+            <view style="margin: 5rpx 0;">
+              <van-icon wx:if="{{item.checked}}" size="40rpx" color="#0080ff" name="passed" />
+            </view>
+          </view>
+        </view>
+
+      </view>
+
+    </view>
+  </view>
+  <view class="not" wx:else>
+    <view class="not-text">当前未加入任何集体，请选择加入集体或跳过</view>
+    <view class="button-container">
+      <van-button bind:tap="goSociety" round type="info" size="large">
+        <view>加入集体</view>
+        <view>(加入集体享受集体福利，资源融助力)</view>
+      </van-button>
+    </view>
+    <view class="button-container">
+      <van-button bind:tap="openSociety" round type="info" size="large">
+        <view>跳过</view>
+        <view>(暂无集体，请注意开通后无法继续设置)</view>
+      </van-button>
+    </view>
+
+  </view>
+
+</van-popup>
+<!-- 城市 -->
+<van-popup z-index="120" show="{{ showCity}}" round position="bottom" custom-style="height: 43%" bind:close="openCity">
+  <view class="title">选择城市运营商</view>
+  <view class="box">
+    <view class="box-view">
+      <view class="label-flex" wx:for="{{CityItems}}" wx:key="id">
+        <view bind:tap="checkboxChangeCity" data-item="{{item.value}}">
+          <view class="flex">
+            <view>
+              <view class="left-flex">
+                <view class="name">{{item.cityName}}</view>
+              </view>
+            </view>
+            <view>
+              <view style="margin: 5rpx 0;">
+                <van-icon wx:if="{{item.checked}}" size="40rpx" color="#0080ff" name="passed" />
+              </view>
+            </view>
+          </view>
+        </view>
+
+      </view>
+
+
+
+    </view>
+  </view>
+
+</van-popup>
+
+
+<!-- 商户验证 -->
+<van-dialog bind:confirm="toShopCrm" bind:close="toShopClose" title="关联我的商户" round show="{{ showRelevance }}" id="van-dialog" confirm-button-color="#2E3033" show-cancel-button="{{true}}" adjust-position="{{false}}" use-slot>
+  <view class="dialog">
+    <van-cell-group>
+      <van-field model:value="{{shopPhone}}" placeholder="请填写手机号" maxlength="18" />
+    </van-cell-group>
+    <van-cell-group>
+      <van-field model:value="{{ phoneCode }}" clearable placeholder="请输入验证码" use-button-slot>
+        <view bindtap="getSms" wx:if="{{smsShow}}" style="color: #0080ff;font-weight:400" slot="button" size="small" type="info">
+          获取验证码
+        </view>
+        <view wx:if="{{!smsShow}}" style="color: #0080ff;font-weight:400" slot="button" size="small" type="info">
+          {{getVerification}}
+        </view>
+      </van-field>
+    </van-cell-group>
+  </view>
+</van-dialog>
+<van-dialog title="提示" class="dialog" bind:confirm="toVipCrm" bind:cancel="toVipClose" round show="{{ showOpenVip }}" id="van-dialog" showCancelButton="{{true}}" use-slot>
+  <view class="text">
+    {{vipText}}
+  </view>
+</van-dialog>

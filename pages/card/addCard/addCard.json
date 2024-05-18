@@ -1,0 +1,24 @@
+{
+  "usingComponents": {
+    "van-button": "/miniprogram/miniprogram_npm/@vant/weapp/button/index",
+    "van-notice-bar": "/miniprogram/miniprogram_npm/@vant/weapp/notice-bar",
+    "van-cell": "/miniprogram/miniprogram_npm/@vant/weapp/cell/index",
+    "van-cell-group": "/miniprogram/miniprogram_npm/@vant/weapp/cell-group/index",
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "van-field": "/miniprogram/miniprogram_npm/@vant/weapp/field/index",
+    "van-uploader": "/miniprogram/miniprogram_npm/@vant/weapp/uploader/index",
+    "van-sticky": "/miniprogram/miniprogram_npm/@vant/weapp/sticky/index",
+    "van-radio": "/miniprogram/miniprogram_npm/@vant/weapp/radio/index",
+    "van-radio-group": "/miniprogram/miniprogram_npm/@vant/weapp/radio-group/index",
+    "van-checkbox": "/miniprogram/miniprogram_npm/@vant/weapp/checkbox/index",
+    "van-checkbox-group": "/miniprogram/miniprogram_npm/@vant/weapp/checkbox-group/index",
+    "van-popup": "/miniprogram/miniprogram_npm/@vant/weapp/popup/index",
+    "van-action-sheet": "/miniprogram/miniprogram_npm/@vant/weapp/action-sheet/index",
+    "van-picker": "/miniprogram/miniprogram_npm/@vant/weapp/picker/index",
+    "van-area": "/miniprogram/miniprogram_npm/@vant/weapp/area/index",
+    "van-tag": "/miniprogram/miniprogram_npm/@vant/weapp/tag/index",
+    "rich": "/components/rich/rich",
+    "van-dialog": "/miniprogram/miniprogram_npm/@vant/weapp/dialog/index"
+  },
+  "navigationBarTitleText": "创建名片"
+}

@@ -1,0 +1,39 @@
+<!-- components/rich-editor/rich-editor.wxml -->
+<wxs module="util" src="../../utils/util.wxs" />
+<view>
+
+  <!-- 添加元素列表 -->
+  <view wx:for="{{elements}}" wx:key="id">
+    <view class="element">
+      <view class="controls">
+        <view wx:if="{{item.type === 'text'}}">
+          <view>文字</view>
+        </view>
+        <view wx:elif="{{item.type === 'image'}}">
+          <view>图片</view>
+        </view>
+        <view wx:elif="{{item.type === 'video'}}">
+          <view>视频</view>
+        </view>
+        <view>
+          <van-button bindtap="moveUp" disabled="{{index === 0}}" data-index="{{index}}" type="default" size="small" round>上移</van-button>
+          <van-button bindtap="moveDown" disabled="{{index === elements.length - 1}}" data-index="{{index}}" type="default" size="small" round>下移</van-button>
+          <van-button bindtap="deleteElement" data-index="{{index}}" type="default" size="small" round>删除</van-button>
+        </view>
+      </view>
+      <!-- 具体元素内容 -->
+      <view wx:if="{{item.type === 'text'}}">
+        <van-field bindinput="onTextInput" value="{{ item.content }}" data-index="{{index}}" maxlength="50" show-word-limit type="textarea" placeholder="请填写业务介绍" autosize border="{{ false }}" />
+      </view>
+      <image class="img" wx:elif="{{item.type === 'image'}}" src="{{util.fullPath(item.content)}}" mode="widthFix"></image>
+      <video objectFit="fill" class="video" wx:elif="{{item.type === 'video'}}" src="{{util.fullPath(item.content)}}" controls autoplay="true"></video>
+    </view>
+  </view>
+  <van-cell-group>
+    <van-cell bindtap="showActionSheet">
+      <view class="text-c">
+        <van-icon color="#0080ff" name="plus" />添加内容
+      </view>
+    </van-cell>
+  </van-cell-group>
+</view>

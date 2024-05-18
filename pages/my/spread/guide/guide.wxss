@@ -1,0 +1,129 @@
+/* pages/my/spread/guide/guide.wxss */
+.info{
+  background-color: #3994FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 50rpx 0;
+}
+.info .ewmimg{
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 15rpx;
+}
+.gulist .ed{
+  position: absolute;
+  z-index: 10;
+  left: 58rpx;
+  top: 30rpx;
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+}
+.info .inremark{
+  font-size: 40rpx;
+  font-weight: bold;
+}
+.info .inbtn{
+  font-size: 24rpx;
+  font-weight: bold;
+  border: 1px solid #fff;
+  height: 54rpx;
+  width: 168rpx;
+  border-radius: 54rpx;
+  text-align: center;
+  line-height: 54rpx;
+  margin-top: 10rpx;
+}
+/* 列表 */
+.gulist{
+  padding: 30rpx;
+  position: relative;
+}
+.gucard{
+  position: relative;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10rpx;
+  padding: 20rpx 0;
+  margin-bottom: 24rpx;
+}
+.gucard .time{
+  width: 190rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #666;
+  border-right: 1px solid #ddd;
+}
+
+.gucard .name .tits{
+  /* white-space: nowrap; */
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-weight: bold;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+}
+.gucard .name{
+  width: calc(100% - 190rpx);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+}
+.gucard .name .tit{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-weight: bold;
+}
+.gucard .name .subtit{
+  overflow:hidden;
+  text-overflow: ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  font-size: 20rpx;
+  color: #999;
+}
+.gucard2{
+  height: 140rpx;
+  padding: 0;
+  overflow: hidden;
+}
+.gucard2 image{
+  width: 190rpx;
+  height: 100%;
+}
+.gucard2 .name{
+  overflow:hidden;
+  text-overflow: ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  font-weight: bold;
+  height: 150rpx;
+  margin-top: 20rpx;
+}
+
+.loading {
+  text-align: center;
+  padding: 20rpx 0;
+}
+.finish {
+  font-size: 28rpx;
+  color: #999999;
+  padding-bottom: 20rpx;
+}
+.tabs_class {
+	background-color: rgb(245,245,245)!important;
+	color: #111 !important;
+  padding-bottom: 2rpx;
+}
+.active_tab{
+  font-weight: 600 !important;
+}

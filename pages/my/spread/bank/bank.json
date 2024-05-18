@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-toast": "/miniprogram/miniprogram_npm/@vant/weapp/toast/index",
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index"
+
+  },
+  "navigationBarTitleText": ""
+}

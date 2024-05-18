@@ -1,0 +1,55 @@
+<wxs module="util" src="../../../../utils/util.wxs" />
+
+<view class="contact">
+    <view class="house">
+        <view class="housename">香满楼栋企鸡</view>
+    </view>
+    <view class="d_contact">
+        <view>
+            <image class="defaultimage" src="{{util.fullPath(detail.avatar)}}"></image>
+        </view>
+        <view class="contact_text">
+            <view class="title">{{detail.title}}</view>
+            <view class="prosonNum">{{detail.pepoleCount}}人拼团</view>
+            <view class="count">
+                <view class="coprice">
+                    <text class="goprice">￥{{detail.proPrice}}</text>
+                    <text class="original">￥{{detail.proOriginPrice}}</text>
+                    <view class="bag">
+                        <text>拼团价￥</text>
+                        <text class="bigpr">{{detail.price}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 参团 -->
+<view class="grolist">
+    <view class="house">
+        <view class="housename">拼团列表</view>
+    </view>
+    <view class="d_grolist" wx:if="{{list.length>0}}">
+        <view class="grocard" wx:for="{{list}}" wx:key="id">
+            <view class="gruser">
+                <image src="{{util.fullPath(item.avatar)}}"></image>
+                <text>{{item.nick}}</text>
+            </view>
+            <view class="attr">
+                <view class="sttime">
+                    <view>正在开团，可直接参与</view>
+                    <view>
+                        剩余时间
+                        <van-count-down class="control-count-down" bind:finish="onFinish"  time="{{ item.overTime*1000 }}" />
+
+                    </view>
+                </view>
+                <view class="mybtn grbtn" data-teamId="{{item.teamId}}" bind:tap="goConfirms">去参团</view>
+            </view>
+        </view>
+    </view>
+    <view class="d_grolist" wx:else>
+        <view class="null_text">暂时没有拼团的小伙伴 您可以直接发起拼团</view>
+        <button class="btn" bindtap="goConfirm">发起拼团</button>
+    </view>
+</view>

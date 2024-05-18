@@ -1,0 +1,99 @@
+/* pages/login/login.wxss */
+.login{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.login .logo {
+  padding-top: 100rpx;
+}
+
+.login .logo image {
+  width: 108rpx;
+  height: 108rpx;
+  border-radius: 50%;
+  margin-bottom: 20rpx;
+}
+.login .logo text {
+  display: block;
+  text-align: center;
+  font-size: 32rpx;
+  margin-top: 10rpx;
+}
+
+.authority {
+  width: 90%;
+  margin: 0 auto;
+  border-top: 1rpx solid #eeeeee;
+  padding-top: 30rpx;
+  margin-top: 30rpx;
+}
+
+.authority .title {
+  display: block;
+  font-size: 32rpx;
+}
+
+.authority .li {
+  color: #999999;
+  display: block;
+  position: relative;
+  height: 28rpx;
+  line-height: 28rpx;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  padding-left: 16rpx;
+}
+
+.authority .li::before {
+  content: " ";
+  position: absolute;
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 50%;
+  left: 0;
+  top: 11rpx;
+  background-color: #999999;
+}
+
+.login .btns {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 1vw 0 1vw;
+
+}
+
+.login .btns text {
+  display: block;
+  font-size: 32rpx;
+  text-align: center;
+}
+
+.login .btns button {
+  width: 45vw;
+  margin-top: 20rpx;
+  border-radius: 10rpx;
+  font-size: 32rpx;
+  margin-left: 1.5vw;
+  margin-right: 1.5vw;
+  height: 84rpx;
+}
+.login .btns .get_info {
+  background-color: #3994FF;
+  color: white;
+}
+.login .btns .get_cancel{
+  background-color: #fff;
+  border: 1px solid #707070;
+}
+.login .btns .to_business {
+  border: 1px solid #0DC3FF;
+  color: #0DC3FF;
+  background-color: transparent;
+}

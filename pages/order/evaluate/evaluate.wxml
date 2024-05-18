@@ -1,0 +1,17 @@
+<!--pages/order/evaluate/evaluate.wxml-->
+<view>
+  <view class="score">
+    <text>评分</text>
+    <van-rate value="{{ value }}" bind:change="onChange" color="#FF7800" size="32rpx"/>
+  </view>
+  <view class="mytextarea">
+    <textarea maxlength="100" placeholder="请填写评价" bindinput="bindContent"></textarea>
+    <view class="uploadimg">
+      <van-uploader file-list="{{fileList}}" max-count="3" preview-size="130rpx" 
+          bind:after-read="afterRead" bind:delete="removeImg"/>
+    </view>
+  </view>
+  <view class="btn">
+    <view class="mybtn" bindtap="toSubmit">提交评价</view>
+  </view>
+</view>

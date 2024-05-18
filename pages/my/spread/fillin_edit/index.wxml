@@ -1,0 +1,38 @@
+<!--pages/my/spread/fillin_edit/index.wxml-->
+<wxs module="util" src="../../../../utils/util.wxs" />
+<view class="fillin_edit">
+  <view class="myinput">
+    <view class="labl">设置账号</view>
+    <input placeholder="请输入账号" value="{{account}}" placeholder-class="pholder" maxlength="11" bindinput="bindAccount"></input>
+  </view>
+  <view class="myinput">
+    <view class="labl">集体名称</view>
+    <input placeholder="请输入集体名称" value="{{name}}" placeholder-class="pholder" maxlength="11" bindinput="bindName"></input>
+  </view>
+  <view class="myinput">
+    <view class="labl">初始密码</view>
+    <input placeholder="请输入初始密码" placeholder-class="pholder" maxlength="11" bindinput="bindPwd"></input>
+  </view>
+  <view class="myinput">
+    <view class="labl">打款金额</view>
+    <input placeholder="请输入打款金额" value="{{price}}" placeholder-class="pholder" maxlength="11" bindinput="bindPrice"></input>
+  </view>
+  <view class="myinput">
+    <view class="labl">支付渠道</view>
+    <input placeholder="请输入支付渠道" value="{{channel}}" placeholder-class="pholder" maxlength="11" bindinput="bindChannel"></input>
+  </view>
+  <view class="myinput">
+    <view class="labl">收款账号</view>
+    <text>{{bankCard}}</text>
+  </view>
+  <view class="myinput nobor">
+    <view class="labl">上传凭证</view>
+    <view>
+      <van-uploader file-list="{{fileList}}" max-count="1" preview-size="130rpx" 
+        bind:after-read="afterRead" bind:delete="removeImg">
+        <image class="feimg" src="{{util.fullPath(img)}}"></image>
+      </van-uploader>
+    </view>
+  </view>
+  <view class="mybtn fillbtn" bindtap="toSubmit">提交</view>
+</view>

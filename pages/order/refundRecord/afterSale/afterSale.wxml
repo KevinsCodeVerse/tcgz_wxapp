@@ -1,0 +1,207 @@
+<wxs module="util" src="/utils/util.wxs" />
+<view class="detail_order" wx:if="{{order.id}}">
+    <view class="progress" wx:if="{{status==1||status==2||status==3}}">
+        <view style="font-weight: 700;" wx:if="{{order.afterSellType==2}}">
+            {{status == 1?'请等待商家处理':(status == 2?'商家已同意退货退款，请寄回商品':(status == 3?'已寄回商品，请等待商家确认收货':'已退款'))}}
+        </view>
+        <view style="font-weight: 700;" wx:else>{{status == 1?'请等待商家处理':'已退款'}}</view>
+        <view class="mydown" wx:if="{{status == 1}}">
+            还剩:
+            <van-count-down class="mydown" time="{{ time*1000 }}" format="HH时mm分ss秒" bind:finish="onFinish" />
+        </view>
+        <view class="times">{{util.formatDateLongSS(userAfterSell.updateTime)}}</view>
+        <!-- 步骤 -->
+        <van-steps steps="{{ order.afterSellType==1?steps1:(order.carriage==2?steps2:steps1) }}" active="{{ active }}" custom-class="stepsCla" desc-class="descCla" active-color="#fff" inactive-color="#ffffff90" active-icon="/img/order/yuan1.svg" inactive-icon="/img/order/yuan2.svg" />
+    </view>
+    <view class="progress progress2 " wx:if="{{status==0||status==4||status==5||status==7}}">
+        <view>商家不同意退款，请再次申请或联系平台客服</view>
+        <view class="times">{{util.formatDateLongSS(userAfterSell.updateTime)}}</view>
+    </view>
+    <view class="progress progress4 " wx:if="{{status==10}}">
+        <view>退款成功</view>
+        <view class="times">{{util.formatDateLongSS(userAfterSell.updateTime)}}</view>
+    </view>
+    <view class="text_box" wx:if="{{status==10}}">
+        <view wx:if="{{userAfterSell.auditBy != -1}}">商家已同意退款，系统将原路提款给您</view>
+        <view wx:else hover-class=" active1">因商家超时未处理，系统自动退款</view>
+        <view style="color: #FF7800;margin-top: 15rpx;">退款总金额：￥{{userAfterSell.amount}}</view>
+    </view>
+    <view class="progress progress3 " wx:if="{{status==8}}">
+        <view>售后已取消, 可在再次申请</view>
+        <view class="times">{{util.formatDateLongSS(userAfterSell.updateTime)}}</view>
+    </view>
+    <view class="text_box" wx:if="{{status == 3}}">
+        因商家超时未处理，系统自动同意，请按回寄地址将退款商品寄回后提交快递信息，等待商家确认收货方可退款
+    </view>
+    <view class="text_box" wx:if="{{status == 2}}">
+        商家已同意退货退款，请按回寄地址将退款商品寄回后提交快递信息，等待商家确认收货方可退款
+    </view>
+    <view class="text_box" wx:if="{{status == 1}}">
+        您已成功发起退款申请，请耐心等待商家处理
+        <view class="times" style="margin-top: 15rpx;">
+            商家同意或者超时未处理，系统将退款给您 如果商家拒绝，您可以修改退款申请后再次发起，商家会重新处理
+        </view>
+    </view>
+    <view class="text_box" wx:if="{{status == 11||status == 4||status == 5}}">
+        <text style="color: #FF3333;">原因：{{userAfterSell.rejectReason}}</text>
+    </view>
+    <!-- 商家信息 -->
+    <view class="contact" wx:if="{{status==3||status==2}}">
+        <view class="cotit">寄回信息</view>
+        <view class="d_contact">
+            <view class="phone">
+                <view class="address">
+                    <text style="width: 125rpx">地址</text>
+                    <text class="addre">{{merchantInfo.addr}}</text>
+                </view>
+                <view class="address">
+                    <text style="width: 124rpx;">收件人</text>
+                    <text>{{merchantInfo.name? merchantInfo.name: '无'}}</text>
+                </view>
+                <view class="address bor">
+                    <text style="width: 124rpx;">联系电话</text>
+                    <text>{{merchantInfo.phone? merchantInfo.phone: '无'}}</text>
+                </view>
+                <view wx:if="{{status == 3}}">
+                    <view class="address ">
+                        <text style="width: 124rpx;">快递公司</text>
+                        <text>{{userAfterSell.refundShip}}</text>
+                    </view>
+                    <view class="address ">
+                        <view class="bacard">
+                            <view>快递单号　{{userAfterSell.refundShipNo}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view>
+                <view class="mybtn cobtn" bindtap="toCopyShopInfo">
+                    <text>全部复制</text>
+                </view>
+                <view class="mybtn cobtn" bindtap="freeTell">
+                    <image src="/img/myicon/phone.png"></image>
+                    <text>致电</text>
+                </view>
+                <view class="mybtn cobtn btt" bindtap="toCopyShipNo" wx:if="{{status == 3}}">
+                    <text>复制</text>
+                </view>
+                <!-- <view class="mybtn cobtn" bindtap="toOpenNav" wx:if="{{order.carriage == 1}}">
+                    <image src="/img/myicon/navigation.png"></image>
+                    <text>导航</text>
+                </view> -->
+            </view>
+        </view>
+    </view>
+    <!-- 商品信息 -->
+    <view class="orcard">
+        <view class="shop">
+            <view class="house">
+                <view class="shname">退款信息</view>
+            </view>
+            <!-- <view class="house">
+                <image class="shopimg" mode="aspectFill" src="{{util.fullPath(shop.shopPhoto)}}"></image>
+                <view class="shname">{{shop.name}}</view>
+            </view>
+            <view class="goshop" bindtap="goShopDetail">
+                <text>进店逛逛</text>
+                <van-icon name="arrow" />
+            </view> -->
+        </view>
+        <view class="goods" bindtap="goGoodsDetail">
+            <image class="cover" mode="aspectFill" src="{{util.fullPath(goods.avatar)}}"></image>
+            <view class="goinfo">
+                <view class="gotit">
+                    <view>{{goods.title}}</view>
+                    <text class="logistics" wx:if="{{order.carriage == 2}}">物流配送</text>
+                    <text class="local" wx:else>线下核销</text>
+                </view>
+                <view class="gospec">{{goods.remark}}</view>
+                <view class="count">
+                    <view class="coprice">
+                        <text class="goprice">￥{{order.price||order.payAmount}}</text>
+                        <text class="original">￥{{order.originalPrice}}</text>
+                        <text class="freight" wx:if="{{order.freight}}">运费￥{{order.freight}}</text>
+                        <text class="freight" wx:if="{{!order.freight}}">包邮</text>
+                        <!-- <text class="bag">秒杀价</text> -->
+                    </view>
+                    <view class="gonum">x{{order.count}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="basics">
+            <view class="balist">
+                <view class="bacard">
+                    <view>订单编号　{{order.id}}</view>
+                    <view class="label" bindtap="toCopy">复制</view>
+                </view>
+                <view class="bacard" wx:if="{{order.createTime}}">
+                    <view>申请时间　{{util.formatDateLong(order.createTime)}}</view>
+                </view>
+                <view class="bacard">
+                    <view>
+                        <text style=" color: #eb765f;"></text>
+                        合计　　　￥{{order.payAmount}}
+                    </view>
+                </view>
+                <view class="bacard">
+                    <view>退款原因　{{userAfterSell.reason}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="handle">
+            <view class="total">
+                <text>退款金额:</text>
+                <text class="money">￥{{userAfterSell.amount}}</text>
+            </view>
+        </view>
+    </view>
+    <!-- 核销二维码 -->
+    <!-- <view class="ewm" wx:if="{{(status==1 || status==2) && order.type==2}}">
+        <view class="cotit">核销二维码</view>
+        <view class="ewmcon">
+            <view>请向商家出示二维码</view>
+            <view class="ewmimg">
+                <image class="ewmimage" mode="widthFix" src="{{util.fullPath(order.qrCode)}}"></image>
+                <view class="shade" wx:if="{{status==2}}">
+                    <image class="finish" src="/img/order/finish.png"></image>
+                </view>
+            </view>
+        </view>
+    </view> -->
+    <!-- 订单信息 -->
+    <view class="basics">
+        <view class="cotit">补充描述和凭证</view>
+        <view class="balist">
+            <view class="bacard">{{userAfterSell.remark?userAfterSell.remark:'无'}}</view>
+            <view class="image_list_box">
+                <block wx:for="{{userAfterSell.img}}" wx:key="index">
+                    <image mode="aspectFill" src="{{util.fullPath(item)}}" data-image="{{item}}" bindtap="ontapImg"></image>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view class="floor">-已经到底啦-</view>
+    <view class="pay_box foot" wx:if="{{status==1||(status==2&&userOrderPay.carriage==1)}}">
+        <view class="{{type==2?'mybtn bgwhie2':'mybtn'}}" bindtap="NoApply">取消申请</view>
+        <view class="{{type==2?'seckill mybtn':'mybtn'}}" bindtap="freeTell">联系卖家</view>
+    </view>
+    <view class="pay_box foot" wx:if="{{status==4||status==5||status==7}}">
+        <view class="{{type==2?'mybtn bgwhie2':'mybtn'}}" bindtap="goRefund">再次申请</view>
+        <view class="{{type==2?'seckill mybtn':'mybtn'}}" bindtap="freeTell">联系卖家</view>
+    </view>
+    <view class="pay_box foot" wx:if="{{status==2||(status==2&&userOrderPay.carriage!=1)}}">
+        <view class="{{type==2?'mybtn bgwhie2':'mybtn'}}" bindtap="NoApply">取消申请</view>
+        <view class="{{type==2?'seckill mybtn':'mybtn'}}" bindtap="isShowLog">前往寄回</view>
+    </view>
+    <view class="mybtn foot" wx:if="{{status==3}}" bindtap="NoApply">取消申请</view>
+    <view class="mybtn foot" wx:if="{{status==10}}" bindtap="freeTell">联系卖家</view>
+    <!-- <view class="mybtn foot" wx:if="{{status==2}}" bindtap="goEvaluate">立即评价</view> -->
+    <!-- <view class="mybtn foot" wx:if="{{status==11}}" bindtap="toDelivery">确认收货</view> -->
+</view>
+<van-dialog id="van-dialog" />
+<van-dialog use-slot title="请输入物流信息 " show="{{ isLogShow }}" show-cancel-button confirm-button-open-type="getUserInfo" bind:close="onLogisticsClose" bind:getuserinfo="getLogisticsInfo">
+    <view style="padding: 30rpx;">
+        <van-field model:value="{{ logisticsTitle }}" placeholder="请输入快递公司" border="{{ false }}" custom-style="background-color:#99999911;border-radius:50rpx;margin-bottom:25rpx" />
+        <van-field model:value="{{ logisticsNum }}" placeholder="请输入快递单号" border="{{ false }}" custom-style="background-color:#99999911;border-radius:50rpx" />
+    </view>
+</van-dialog>

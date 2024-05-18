@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "navigation": "/components/navigation/navigation",
+    "van-popup": "/miniprogram/miniprogram_npm/@vant/weapp/popup/index",
+    "van-loading": "/miniprogram/miniprogram_npm/@vant/weapp/loading/index",
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "van-picker": "/miniprogram/miniprogram_npm/@vant/weapp/picker/index",
+    "van-action-sheet": "/miniprogram/miniprogram_npm/@vant/weapp/action-sheet/index",
+    "van-area": "/miniprogram/miniprogram_npm/@vant/weapp/area/index"
+  },
+  "navigationBarTitleText": "寻找集体"
+}

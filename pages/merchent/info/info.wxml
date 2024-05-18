@@ -1,0 +1,135 @@
+<!-- pages/merchent/info/info.wxml -->
+<wxs module="util" src="../../../utils/util.wxs" />
+<view>
+  <view class="mercbg"></view>
+  <view class="name">
+    <view wx:if="{{info.name}}">{{info.name}}</view>
+    <view wx:if="{{!info.name}}">请重新登录再试</view>
+    <text class="mybtn outbtn" bindtap="logout" >退出登录</text>
+    <text class="mybtn aoOutbtn" bindtap="bindUserId" wx:if="{{info.name}}">接收订单退款推送</text>
+  </view>
+  <view class="balance">
+    <image class="ba_bg" src="/img/merchent/bg1.png"></image>
+    <view class="baremark">我的余额(元)</view>
+    <view class="brprice">{{amount}}</view>
+    <view class="baremark" style="margin-top: 10rpx;">冻结余额(元)</view>
+    <view class="brprice">{{frozenMoney}}</view>
+    <view class="withdraw" bindtap="toWithdraw">前往提现</view>
+  </view>
+  <view class="inlist">
+    <view class="balance" style="height:168rpx">
+      <image class="ba_bg" src="/img/merchent/bg2.png"></image>
+      <view class="baremark">订单数</view>
+      <view class="brprice">{{orderCount}}</view>
+    </view>
+    <view class="balance" style="height:168rpx">
+      <image class="ba_bg" src="/img/merchent/bg3.png"></image>
+      <view class="baremark">店铺数</view>
+      <view class="brprice">{{shopCount}}</view>
+    </view>
+  </view>
+  <view class="use" bindtap="handUse">
+    <view class="text">应用服务市场</view>
+    <van-icon name="arrow" />
+  </view>
+  <view class="use" bindtap="handAdvertising">
+    <view class="text">推广服务</view>
+    <van-icon name="arrow" />
+  </view>
+  <view class="use" bindtap="onTopUpopen">
+    <view class="text">充值</view>
+    <van-icon name="arrow" />
+  </view>
+  <view class="use" bindtap="onFlow">
+    <view class="text">收支明细</view>
+    <van-icon name="arrow" />
+  </view>
+  <view class="mybtn scanbtn" bindtap="toScan">扫码核销</view>
+  <navigator class="mylink" url="{{'/pages/collective/firmlink/firmlink?type=2&account='+account}}">
+    电脑版商家后台
+  </navigator>
+</view>
+<!-- 订单弹框 -->
+<van-popup show="{{ show }}" custom-style="border-radius: 16rpx;">
+  <view class="mypop">
+    <view class="potit">
+      <van-icon class="poicon" name="clear" style="opacity: 0" />
+      <text>确认订单信息</text>
+      <van-icon class="poicon" name="clear" bindtap="toColse" />
+    </view>
+    <!-- 商品核销 -->
+    <block wx:if="{{resu.type==1}}">
+      <view class="poinfo">
+        <view class="count">x{{order.count}}</view>
+        <image class="poimg" mode="aspectFill" src="{{util.fullPath(order.proInfo.avatar)}}"></image>
+        <view class="poname">
+          <view class="potitl">{{order.proInfo.title}}</view>
+          <view class="spec">{{order.proInfo.remark}}</view>
+        </view>
+      </view>
+      <view class="poplist">
+        <view class="popcard">
+          <text>订单编号</text>
+          <text class="popcon">{{order.id}}</text>
+        </view>
+        <view class="popcard">
+          <text>支付金额</text>
+          <text class="popcon" style="color:red">￥{{order.price}}</text>
+        </view>
+        <view class="popcard">
+          <text>规格信息</text>
+          <text class="popcon">{{order.proInfo.specName}}</text>
+        </view>
+        <view class="popcard">
+          <text>商品类型</text>
+          <text class="popcon" wx:if="{{order.type == 1}}">普通商品</text>
+          <text class="popcon" wx:if="{{order.type == 2}}">秒杀商品</text>
+          <text class="popcon" wx:if="{{order.type == 3}}">拼团商品</text>
+        </view>
+        <view class="popcard">
+          <text>创建时间</text>
+          <text class="popcon">{{util.formatDateLong(order.createTime)}}</text>
+        </view>
+        <view class="popcard">
+          <text>预留手机</text>
+          <text class="popcon">{{order.phone}}</text>
+        </view>
+      </view>
+    </block>
+    <!-- 优惠卷核销 -->
+    <block wx:if="{{resu.type==9}}">
+      <view class="poplist">
+        <view class="popcard">
+          <text>优惠券名</text>
+          <text class="popcon b">{{order.name}}</text>
+        </view>
+        <view class="popcard">
+          <text>优惠金额</text>
+          <text class="popcon" style="color:red">￥{{order.amount}}</text>
+        </view>
+        <view class="popcard">
+          <text>门槛金额</text>
+          <text class="popcon" style="color:rgb(255, 123, 0)">￥{{order.useAmount}}</text>
+        </view>
+        <view class="popcard">
+          <text>订单编号</text>
+          <text class="popcon">{{order.id}}</text>
+        </view>
+        <view class="popcard" style="display: block;">
+          <text>使用范围</text>
+          <text style="margin-left:32rpx" wx:if="{{order.isPro == 1}}">普通商品</text>
+          <text style="margin-left:32rpx" wx:if="{{order.isSpike == 1}}">秒杀商品</text>
+          <text style="margin-left:32rpx" wx:if="{{order.isGroup == 1}}">拼团商品</text>
+        </view>
+        <view class="popcard">
+          <text>创建时间</text>
+          <text class="popcon">{{util.formatDateLong(order.createTime)}}</text>
+        </view>
+      </view>
+    </block>
+    <view class="mybtn popbtn" bindtap="toUse">确认核销</view>
+  </view>
+</van-popup>
+<van-popup show="{{ showTopUp }}" position="bottom" custom-style="height: 45%;" bind:close="onTopUpClose">
+  <topUp bindpay="pay"></topUp>
+</van-popup>

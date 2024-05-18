@@ -1,0 +1,17 @@
+<!--pages/collective/news/news.wxml-->
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="inlist">
+  <view class="incard" wx:for="{{newsList}}" wx:key="index" bindtap="goInformation" data-id="{{item.id}}">
+    <image class="cover" mode="aspectFill" src="{{util.fullPath(item.banner)}}"></image>
+    <view class="riht">
+      <view class="tit">{{item.title}}</view>
+      <view class="con">{{item.overview}}</view>
+      <view class="con time">
+        <text>{{util.formatDateShort(item.createTime)}}</text>
+        <van-icon name="eye-o" size="34rpx"/>
+        <text style="margin-left: 4rpx;">{{item.pv}}已读</text>
+      </view>
+    </view>
+  </view>
+  <view class="floor">-已经到底了-</view>
+</view>

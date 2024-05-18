@@ -1,0 +1,80 @@
+.tab_active_class {
+    color: rgb(57, 148, 253) !important;
+}
+.box {
+    padding: 30rpx;
+}
+
+.van-tabs__line {
+    background-color: rgb(57, 148, 253) !important;
+}
+
+.item_box {
+    background-color: #fff;
+    border-radius: 25rpx;
+    height: 180rpx;
+    padding: 20rpx;
+    display: flex;
+    position: relative;
+    margin-bottom: 30rpx;
+}
+.item_box image {
+    width: 260rpx;
+    height: 180rpx;
+    border-radius: 15rpx;
+    margin-right: 20rpx;
+}
+.item_box .text_box {
+    width: 60%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 25rpx;
+    height: 100%;
+}
+.item_box .text_box .name_box{
+    height: 18%;
+    position: absolute;
+    bottom: 2%;
+    font-size: 24rpx;
+    color: #b6b6b6;
+    overflow: hidden;
+    display: flex;
+}
+.text_box .title{
+    display: -webkit-box;
+    margin-right: 16rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.item_box .player{
+    position: absolute;
+    left: 110rpx;
+    top : 70rpx;
+    width: 80rpx;
+    height: 80rpx;
+}
+.item_box .text_select{
+    position: absolute;
+    left: 179rpx;
+    top : 161rpx;
+    border-radius: 10rpx;
+    color: #fff;
+    font-size: 22rpx;
+    padding: 1rpx 10rpx;
+    background-color: rgba(0, 0, 0, 0.089);
+}
+.text_box .name_box .info_message {
+}
+.text_box .name_box .name, .text_box .name_box .info_message{
+    display: -webkit-box;
+    margin-right: 16rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    max-width: 80%;
+}   

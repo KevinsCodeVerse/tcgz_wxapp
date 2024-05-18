@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-rate": "/miniprogram/miniprogram_npm/@vant/weapp/rate/index",
+    "van-uploader": "/miniprogram/miniprogram_npm/@vant/weapp/uploader/index"
+  },
+  "navigationBarTitleText": "反馈"
+}

@@ -1,0 +1,22 @@
+<view class="city_news">
+  <view class="header">
+    <van-search shape="round" value="{{ searchValue }}" bind:change="searchChange" placeholder="请输入搜索内容" bind:search="onSearch" use-action-slot>
+      <view class="search_btn" slot="action" bind:tap="onSearch">搜索</view>
+    </van-search>
+    <van-tabs class="vanclass" active="{{active}}" type="card" border="{{false}}" dot="{{true}}" color="#333" custom-class="custom_class" title-active-color="#3994FF" nav-class="nav_class" tab-class="tab_class" tab-active-class="tab_active_class" bind:change="tabChange">
+      <van-tab wx:for="{{categoryList}}" title="{{item.name}}" name="{{item.id}}"></van-tab>
+    </van-tabs>
+    <view wx:if="{{!categoryList[index].categoryList[0].id}}" style="text-align: center;margin: 15rpx;color: rgb(165, 165, 165);">
+      暂无分类
+    </view>
+    <van-tabs wx:else active="{{categoryList[index].categoryList[0].id}}" type="card" border="{{false}}" dot="{{true}}" color="#333" custom-class="custom_class2" title-active-color="#000" nav-class="nav_class2" tab-class="tab_class2" tab-active-class="tab_active_class2" bind:change="tabChange2">
+      <van-tab wx:for="{{categoryList[index].categoryList}}" title="{{item.name}}" name="{{item.id}}"></van-tab>
+    </van-tabs>
+    
+  </view>
+  
+  <view style="margin-top: 70rpx;">
+    <newList id="newList" title="{{title}}" active="{{active2}}" type="{{3}}" />
+    
+  </view>
+</view>

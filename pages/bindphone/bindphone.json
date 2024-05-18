@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "imgCode": "../../components/imgCode/imgCode"
+  },
+  "navigationBarTitleText": "绑定手机"
+}

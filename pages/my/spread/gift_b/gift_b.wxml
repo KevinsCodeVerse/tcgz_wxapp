@@ -1,0 +1,20 @@
+<!--pages/my/spread/gift_b/gift_b.wxml-->
+<wxs module="util" src="../../../../utils/util.wxs" />
+
+<view class="gilist">
+  <view class="gicard" wx:for="{{list}}" wx:key="index">
+    <image class="avatar" mode="aspectFill" src="{{util.fullPath(item.cover)}}"></image>
+    <view class="gicon">
+      <view class="gitit">{{item.name}}</view>
+      <view class="giprice">
+        <text>￥{{item.price}}</text>
+        <view class="mybtn btn" bindtap="goDetail" data-id="{{item.id}}">前往购买</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="loading">
+    <van-loading wx:if="{{loading}}" size="24px" color="#0DC3FF">加载中...</van-loading>
+    <text class="finish" wx:if="{{finish}}">{{list.length>0?'没有更多了': '暂无数据'}}</text>
+  </view>
+</view>

@@ -1,0 +1,247 @@
+/* pages/my/spread/level/level.wxss */
+.levelbg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: #3994ff;
+	height: 600rpx;
+	z-index: -1;
+}
+.info {
+	margin-top: 20rpx;
+	color: #fff;
+	position: relative;
+	text-align: center;
+	padding-bottom: 20rpx;
+	padding: 0 40rpx 30rpx 40rpx;
+}
+.info_box {
+	background-color: #61aaff;
+	padding: 10rpx;
+	border-radius: 20rpx;
+	margin-bottom: 20rpx;
+}
+.info .inname {
+	text-shadow:0rpx 0rpx 5rpx#faff5a7a;
+	font-size: 32rpx;
+	font-weight: 900;
+	padding-top: 20rpx;
+}
+.info .remark {
+	font-size: 24rpx;
+	margin-top: 16rpx;
+	margin-bottom: 40rpx;
+}
+.info .myprogress {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 20rpx;
+}
+.info .mypors {
+	width: calc(100% - 180rpx);
+}
+.info .extreme {
+	font-size: 24rpx;
+	margin-top: 30rpx;
+}
+/* 升级列表 */
+.upgradelist {
+	background-color: #fff;
+	border-radius: 20rpx;
+	margin: 0 20rpx;
+	padding: 36rpx 0;
+}
+.upgradelist .levelimg {
+	height: 34rpx;
+	width: auto;
+}
+.upgradelist .upcard {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: #999;
+	font-size: 20rpx;
+	padding: 0 26rpx;
+	margin-bottom: 30rpx;
+}
+.upgradelist .upcard:last-child {
+	margin-bottom: 0;
+}
+.upgradelist .upcard .d_card {
+	width: calc(100% - 160rpx);
+}
+.upgradelist .btn {
+	width: 144rpx;
+	height: 60rpx;
+	border: 1px solid #3994ff;
+	border-radius: 60rpx;
+	text-align: center;
+	line-height: 60rpx;
+	color: #3994ff;
+	font-size: 24rpx;
+}
+/* 规则 */
+.myrule {
+	background-color: #fff;
+	border-radius: 20rpx;
+	margin: 20rpx;
+	padding: 24rpx 24rpx;
+}
+.myrule .rutit {
+	color: #333;
+	font-weight: bold;
+}
+.myrule .rucard {
+	padding: 16rpx 0;
+}
+.myrule .runame {
+	font-size: 24rpx;
+	color: #666;
+	font-weight: bold;
+}
+.myrule .rutext {
+	font-size: 20rpx;
+	color: #999;
+}
+
+.ml20{
+	margin-left: 60rpx;
+}
+
+.cell_class {
+	background-color: #3994ff !important;
+	color: #fff !important;
+	padding: 15rpx 30rpx !important;
+	padding-top: 15rpx !important;
+}
+.cell_class image {
+	padding: 0 !important;
+	margin: 0 !important;
+	width: 60rpx !important;
+	height: 60rpx !important;
+	display: inline-block !important;
+	border-radius: 50%;
+}
+.classlist {
+	position: absolute;
+	color: rgb(228, 255, 221) !important;
+	right: 5rpx;
+	top: 0;
+	margin: 5rpx 15rpx;
+}
+.city_news {
+	padding-top: 100rpx;
+	box-sizing: border-box;
+}
+.city_news .header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
+}
+.search_btn {
+	width: 120rpx;
+	border-radius: 50px;
+	background-color: #3994ff;
+	color: #ffffff;
+	text-align: center;
+}
+.tabs_class {
+	background-color: #3994ff !important;
+	color: #afd3ff;
+	padding-bottom: 2rpx;
+	z-index: 50 !important;
+}
+
+.cell_class {
+	background-color: #7ebaff !important;
+	border-radius: 20rpx;
+}
+
+.cellgroup_class {
+	background-color: #3994ff !important;
+	padding: 0 40rpx;
+}
+
+.cellvalue_class {
+	color: #ffffff !important;
+}
+.van-cell__right-icon-wrap {
+	color: #ffffff !important;
+}
+
+.celltitle {
+	width: 450rpx;
+	display: flex !important;
+	align-items: center !important;
+}
+
+.celltitle .text {
+	margin-left: 15rpx;
+	width: 380rpx;
+	display: -webkit-box !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	word-break: break-all !important;
+	-webkit-box-orient: vertical !important;
+	-webkit-line-clamp: 2 !important;
+	line-height: 36rpx;
+}
+.van-cell {
+	display: flex !important;
+	align-items: center !important;
+}
+.popup_class{
+  background-color: #F7F7F7 !important;
+}
+.van-overlay{
+	z-index: 1001 !important;
+}
+.popupTitle {
+	height: 90rpx;
+	font-size: 32rpx;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.Pmain_box{
+  padding:20rpx 40rpx;
+}
+.shopitem_box {
+  height: 90rpx;
+  padding: 0 30rpx;
+	opacity: 1;
+	background: #ffffff;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  margin: 20rpx 0;
+}
+.shopitem_box .text{
+  display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+}
+.text_active{
+  color: #3994FF;
+  display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+}
+.shopitem_box image{
+  height: 64rpx;
+  max-width: 64rpx;
+  border-radius: 50%;
+  margin: 0 10rpx;
+}
+

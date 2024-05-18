@@ -1,0 +1,49 @@
+<!--pages/my/spread/team/team.wxml-->
+<wxs module="util" src="../../../../utils/util.wxs" />
+<view class="team">
+  <view class="heinfo">
+    <image src="{{util.fullPath(avatar)}}"></image>
+    <text>{{nick}}</text>
+  </view>
+  <view class="teamtotal">
+    <view class="tocard">
+      <view class="count">{{directCount}}</view>
+      <view>直推团队</view>
+    </view>
+    <view class="tocard">
+      <view class="count">{{indriectCount}}</view>
+      <view>间推团队</view>
+    </view>
+    <view class="tocard">
+      <view class="count">{{totalCount}}</view>
+      <view>全部成员</view>
+    </view>
+  </view>
+  <view class="telist">
+    <view class="tecard" wx:for="{{list}}" wx:key="index">
+      <view class="d_card">
+        <image class="avatar" mode="aspectFill" src="{{util.fullPath(item.avatar)}}"></image>
+        <view>
+          <view> 
+            <text class="name">{{item.name}}　</text>
+            <text class="time">注册时间:{{util.formatDateShort(item.createTime)}}</text>
+          </view>
+          <view class="telab">
+            <image class="levelimg" mode="heightFix" wx:if="{{item.icon}}" src="{{util.fullPath(item.icon)}}"></image>
+            <text class="earnings">累计收益:{{item.royal}}</text>
+          </view>
+          <view>今日开单:{{item.dayCount}}　总开单:{{item.totalCount}} 　直推:{{item.driectProCount}}　间推:{{item.indriectProCount}}</view>
+        </view>
+      </view>
+      <view class="handle">
+        <view class="mybtn tebtn" bindtap="goOrderHe" data-id="{{item.id}}">开单记录</view>
+        <view class="tehand" bindtap="goHeTeam" data-id="{{item.id}}">查看团队<van-icon name="arrow" /></view>
+      </view>
+    </view>
+
+    <view class="loading">
+      <van-loading wx:if="{{loading}}" size="24px" color="#0DC3FF">加载中...</van-loading>
+      <text class="finish" wx:if="{{finish}}">{{list.length>0?'没有更多了': '暂无数据'}}</text>
+    </view>
+  </view>
+</view>

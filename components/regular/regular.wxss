@@ -1,0 +1,60 @@
+/* components/regular/regular.wxss */
+.confirm{
+  background-color: rgba(0, 0, 0, .5);
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+}
+.confirm .conf{
+  background-color: #fff;
+  margin: 0 60rpx;
+  border-radius: 16rpx;
+  padding-top: 40rpx;
+  overflow: hidden;
+}
+.confirm .cocard{
+  display: flex;
+  align-items: center;
+  padding: 0 40rpx;
+  margin-bottom: 20rpx;
+}
+.confirm .corenark{
+  width: calc(100% - 235rpx);
+  box-sizing: border-box;
+  padding-right: 20rpx;
+}
+.confirm .money{
+  width: 235rpx;
+  background-color: #FFF4F2;
+  color: #FF3333;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  text-align: center;
+  box-sizing: border-box;
+  font-weight: bold;
+
+}
+.confirm .rowtwo{
+  color: #FF7800;
+  background-color: #FFF8F2;
+}
+
+.confirm .handle{
+  display: flex;
+  margin-top: 60rpx;
+}
+.confirm .btn2{
+  color: #fff;
+  background-color: #3994FF;
+  height: 90rpx;
+  line-height: 90rpx;
+  width: 100%;
+  border-top: 1px solid #3994FF;
+  text-align: center;
+}

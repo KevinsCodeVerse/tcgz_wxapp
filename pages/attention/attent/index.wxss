@@ -1,0 +1,265 @@
+/* pages/collective/map/map.wxss */
+.attent{
+  padding-top: 44px;
+  box-sizing: border-box;
+  height: 100vh;
+  overflow: hidden;
+}
+.mymap{
+  width: 100%;
+  height: calc(100vh - 44px);
+}
+.mainly{
+  width: 100%;
+  position: absolute;
+  top: 44px;
+  left: 0;
+  padding: 30rpx;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+/* 头部 */
+.myhead{
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3994FF;
+  color: #fff;
+  padding: 14rpx 30rpx;
+  top: 0;
+  box-sizing: border-box;
+}
+.myhead .avatar{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+.myhead .dmselect{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.myhead .selcon{
+  font-size: 32rpx;
+  margin: 0 16rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 314rpx;
+}
+.myhead .mysearch{
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  border: 1px solid #fff;
+  border-radius: 40rpx;
+  padding: 6rpx 14rpx;
+}
+.myhead .mysearch image{
+  width: 21rpx;
+  height: 24rpx;
+  margin-right: 8rpx;
+}
+
+/* 搜索框 */
+.search{
+  background-color: #fff;
+  height: 88rpx;
+  border-radius: 88rpx;
+  box-shadow: 0px 6rpx 10rpx rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  margin: 20rpx 0;
+}
+.search .icon{
+  width: 28rpx;
+  height: 32rpx;
+  margin-right: 20rpx;
+}
+.search .input{
+  width: 450rpx;
+}
+.search .cover-input{
+  display: flex;
+  align-items: center;
+}
+/* 通告栏 */
+.mynotice{
+  margin: 30rpx;
+  border-radius: 50rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 98rpx;
+  z-index: 500;
+  /* top: 198rpx; */
+  left: 0;
+  right: 0;
+}
+
+/* 覆盖vant */
+.van-ellipsis{
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.van-notice-bar{
+  background-color: #F2F8FF!important;
+  height: 60rpx!important;
+}
+.van-sticky{
+  background-color: #fff;
+  padding: 0 30rpx;
+}
+.sidebar{
+  position: fixed;
+  left: 30rpx;
+  top: 310rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  box-shadow: 0px 0px 10rpx rgba(0, 0, 0, 0.3);
+  padding: 0 20rpx;
+}
+.sidebar .sbcard{
+  font-size: 20rpx;
+  color: #3994FF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1px solid #eee;
+}
+.sidebar .sbimg{
+  width: 52rpx;
+  height: 52rpx;
+  margin-bottom: 10rpx;
+}
+/* 底部 */
+.foot{
+  position: absolute;
+  bottom: 0;
+  right: 30rpx;
+  left: 30rpx;
+  background-color: #fff;
+  border-radius: 20rpx 20rpx 0 0;
+  box-shadow: 0px 0px 14rpx rgba(0, 0, 0, 0.3);
+  padding: 44rpx 34rpx 0 34rpx;
+  z-index: 1000;
+}
+.foot .fotit{
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.foot .subtit{
+  border-bottom: 1px solid #f1f1f1;
+  padding: 20rpx 0;
+  display: flex;
+  align-items: center;
+}
+.foot .subtit .address{
+  white-space: normal;
+}
+.foot .sense{
+  border-right: 1px solid #f1f1f1;
+  padding-right: 20rpx;
+  margin-right: 20rpx;
+}
+.foot .handle{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 0;
+}
+.foot .halef{
+  display: flex;
+  justify-content: space-between;
+  width: 150rpx;
+}
+.foot .icon{
+  width: 32rpx;
+  height: 32rpx;
+  margin-bottom: 10rpx;
+}
+.foot .hacard{
+  height: 66rpx;
+  font-size: 20rpx;
+  text-align: center;
+  background-color: #ffffff;
+  margin: 0;
+}
+.foot .tesubtn .text {
+  margin-top: -13rpx;
+}
+.foot .harig{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.foot .btn1{
+  width: 180rpx;
+  height: 76rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #3994FF;
+  color: #3994FF;
+  border-radius: 76rpx;
+}
+.foot .btn2{
+  margin-left: 20rpx;
+  background-color: #3994FF;
+  color: #fff;
+}
+.foot .btn1 .iconimg,.foot .btn1 .iconimg{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 8rpx;
+}
+/* 自定义分享按钮 */
+/* .tesubtn{
+  position: relative;
+  background-color: #ffffff;
+}
+.tesubtn .button {
+  position: absolute;
+  height: 60rpx;
+  width: 60rpx;
+  opacity: 0.1;
+  z-index: 999;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+} */
+
+
+.mynotice_box {
+  display: flex;
+  width: 664rpx;
+height: 62rpx;
+background: #f2f8ff;
+border-radius: 32rpx;
+  align-items: center;  
+}
+
+.mynotice_box .icon {
+  width: 36rpx;
+  height: 36rpx;
+  margin: 0 20rpx;
+}
+
+
+
+.mynotice_box .text {
+  color: #3994FF;
+  width: 80%;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+

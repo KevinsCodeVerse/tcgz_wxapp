@@ -1,0 +1,74 @@
+/* pages/register/resgister.wxss */
+.login{
+  min-height: 100vh;
+  background-color: #4F90F8;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+.logo{
+  text-align: center;
+}
+.logo image{
+  width: 300rpx;
+  height: 310rpx;
+  margin-top: 30%;
+  margin-bottom: 2%;
+}
+.handle{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 86rpx;
+  width: 82%;
+  color: #3994FF;
+  background-color: #fff;
+  font-size: 32rpx;
+  border-radius: 84rpx;
+  margin-bottom: 30rpx;
+  margin-top: 50rpx;
+}
+.handle .protocol{
+  display: flex;
+  color: #FFF59A;
+  font-size: 24rpx;
+}
+.handle text{
+  color: #fff;
+}
+/* 输入框 */
+.myinput{
+  width: 76%;
+  height: 86rpx;
+  border-radius: 86rpx;
+  margin: 0 12%;
+  border: 1px solid #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 44rpx;
+  margin-bottom: 30rpx;
+}
+.myinput input{
+  color: #fff;
+}
+.myinput text{
+  color: #FFF59A;
+  padding-right: 44rpx;
+}
+.pholder{
+  color: #fff!important;
+}
+.imgcode {
+  width: 140rpx;
+  height: 60rpx;
+  padding-right: 44rpx;
+}
+.imgcode image {
+  width: 100%;
+  height: 100%;
+}

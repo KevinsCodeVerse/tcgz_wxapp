@@ -1,0 +1,48 @@
+.bind_band{
+  padding-top: 20rpx;
+}
+.van-cell__title{
+  font-weight: bold;
+}
+.cover{
+  padding: 56rpx 120rpx;
+}
+.cover .van-button__text{
+  font-size: 32rpx;
+  letter-spacing: 14rpx;
+}
+.btna{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 56rpx;
+}
+.btna>view{
+  width: 240rpx;
+  height: 80rpx;
+  border-radius: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: #3994FF;
+  border: 1px solid #3994FF;
+  color: #fff;
+  margin: 0 15rpx;
+}
+.btna>view:last-child{
+  background-color: rgba(0, 0, 0, 0);
+  color: #3994FF;
+}
+.tesu{
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  padding: 20rpx 34rpx;
+}
+.tesu>text{
+  font-weight: bold;
+  width: 90px;
+}
+.tesu .van-switch{
+  display: block;
+}

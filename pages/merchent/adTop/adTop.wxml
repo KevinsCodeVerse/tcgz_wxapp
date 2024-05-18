@@ -1,0 +1,268 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view>
+    <view class="rules" bindtap="openRule">竞价规则</view>
+    <image mode="widthFix" class="topImg" src="https://www.tcgz.store/files/default/adTop.png"></image>
+    <view class="navbar">
+        <van-tabs id="tabs" active="{{ active }}" line-width="{{40}}" color="#3994ff" title-class="tabs_class" border="{{false}}" title-inactive-color="#000" title-active-color="#000" nav-class="tabs_class" custom-class="customClass" bind:change="onChange">
+            <van-tab title="可参与的" name="0"></van-tab>
+            <van-tab title="我参与的" name="1"></van-tab>
+            <van-tab title="我的广告" name="2"></van-tab>
+        </van-tabs>
+    </view>
+</view>
+<!-- 可参与的----可参与的----可参与的----可参与的----可参与的---- -->
+<block wx:if="{{active==0}}">
+    <view class="item_box" wx:for="{{list}}" wx:key="id">
+        <view class="item_info">
+            <view class="imgbox">
+                <view class="type_texe">{{item.typeTitle}}</view>
+                <image src="{{util.fullPath(item.cover)}}"></image>
+            </view>
+            <view class="info">
+                <view class="title">{{item.title}}</view>
+                <view class="dey_num">投放时间：{{item.advDay}}天</view>
+                <view class="count">广告位置：{{item.count}}个</view>
+                <view class="price">起拍￥{{item.amount}}</view>
+                <!-- <view>{{util.formatDateLongSS(item.advEndTime)}}</view> -->
+                <view class="btn"  wx:if="{{item.bidStatus==1}}" bindtap='openDesc' data-obj="{{item}}">参与</view>
+                <view class="btn" wx:if="{{item.merchantCount&&item.bidStatus==1}}" bindtap='openDesc' data-obj="{{item}}">
+                    再次参与
+                </view>
+            </view>
+        </view>
+        <view class="time_status">
+            <text wx:if="{{item.bidStatus==0}}">未开始</text>
+            <text wx:if="{{item.bidStatus==1}}" style="color:#3994ff">竞价中</text>
+            <block wx:if="{{item.bidStatus==0}}">
+                <block wx:if="{{item.dey*1>86400000}}">
+                    {{util.formatDateLongSS(item.bidStartTime)}} 开始
+                </block>
+                <block wx:if="{{item.dey*1<86400000}}">
+                    {{util.getTimePeriod(item.bidStartTime)=='00:00:00'?'明天':'今天'}}
+                      {{util.getTimePeriod(item.bidStartTime)}} 开始
+                </block>
+            </block>
+            <block wx:if="{{item.bidStatus==1}}">
+                <block wx:if="{{item.deyEnd*1<86400000}}">
+                    距离结束 还剩
+                    <van-count-down class="mydown" time="{{ item.deyEnd<0?0:item.deyEnd }}" format="HH时mm分ss秒" bind:finish="onFinish" />
+                </block>
+                <block wx:if="{{item.deyEnd*1>86400000}}">
+                    结束时间
+                    {{util.formatDateLongSS(item.bidEndTime)}}
+                </block>
+            </block>
+        </view>
+    </view>
+</block>
+<!-- 我参与的-----我参与的-----我参与的-----我参与的-----我参与的----- -->
+<block wx:if="{{active==1}}">
+    <view class="item_box" wx:for="{{Mylist}}" wx:key="index">
+        <view class="item_info">
+            <view class="imgbox">
+                <view class="type_texe">{{item.cityBid.typeTitle}}</view>
+                <image src="{{util.fullPath(item.cityBid.cover)}}"></image>
+            </view>
+            <view class="info">
+                <view class="title">{{item.cityBid.title}}</view>
+                <view class="dey_num">投放时长：{{item.cityBid.advDay}}天</view>
+                <view class="count">广告位置：{{item.cityBid.count}}个</view>
+                <view class="price">
+                    <text>
+                        <block>出价￥{{item.cityBidUser.offerAmount}} 排行</block>
+                    </text>
+                    <text style="margin-left: 10rpx;" wx:if="{{item.cityBidUser.sort<=item.cityBid.count}}">
+                        <text style="color:#ff9100">{{item.cityBidUser.sort}}</text>
+                    </text>
+                    <text style="margin-left: 10rpx;" wx:if="{{item.cityBidUser.sort>item.cityBid.count}}">
+                        <text>{{item.cityBidUser.sort}}</text>
+                    </text>
+                </view>
+                <view class="btn" data-obj="{{item.cityBidUser}}" wx:if="{{item.cityBidUser.advUserStatus!=1&&item.cityBidUser.advUserStatus!=0}}" bindtap="toMyBid">
+                    查看
+                </view>
+                <view class="btn" wx:if="{{item.cityBid.bidStatus==1}}" data-obj="{{item.cityBidUser}}" bindtap="adjust_onOpen">
+                    出价
+                </view>
+            </view>
+        </view>
+        <view class="time_status">
+            <text wx:if="{{item.cityBid.bidStatus==1}}" style="color:#3994ff">竞价中</text>
+            <text wx:if="{{item.cityBid.bidStatus==-1}}" style="color:#fc6641">已结束</text>
+            <block wx:if="{{item.cityBid.bidStatus==1}}">
+                <block wx:if="{{item.cityBid.deyEnd*1<86400000}}">
+                    距离结束 还剩
+                    <van-count-down class="mydown" time="{{ item.cityBid.deyEnd<0?0:item.cityBid.deyEnd}}" format="HH时mm分ss秒" bind:finish="onFinish" />
+                </block>
+                <block wx:if="{{item.cityBid.deyEnd*1>86400000}}">
+                    结束时间
+                    {{util.formatDateLongSS(item.cityBid.bidEndTime)}}
+                </block>
+            </block>
+            <block wx:if="{{item.cityBid.bidStatus==-1}}">
+                <text wx:if="{{item.cityBidUser.advUserStatus == 2||item.cityBidUser.advUserStatus == 4}}" style="color:#3994ff">
+                    <block>竞价成功</block>
+                </text>
+                <text wx:if="{{item.cityBidUser.advUserStatus == 9}}" style="color:#acacac">
+                    <block>已投放</block>
+                </text>
+                <text wx:if="{{item.cityBidUser.advUserStatus == 3}}" style="color:#ff9100">
+                    <block>待审核中</block>
+                </text>
+                <text wx:if="{{item.cityBidUser.advUserStatus == -1}}" style="color:#ff9100">
+                    <block>投放结束</block>
+                </text>
+                <text wx:if="{{item.cityBidUser.advUserStatus == 1}}" style="color:#fc4141">
+                    <block>竞价失败</block>
+                </text>
+            </block>
+            <view class="iconText" style="color:#acacac">
+                <text style="margin-right: 15rpx;" data-obj="{{item}}" bindtap="toRanking">
+                    <block>排行记录</block>
+                </text>
+                <van-icon name="arrow" size="20rpx" />
+            </view>
+        </view>
+    </view>
+</block>
+<block wx:if="{{active==2}}">
+    <view class="item_box" wx:for="{{Mylist}}" wx:key="index">
+        <view class="titles">
+            <view>{{item.cityBid.typeTitle}}</view>
+            <view class="class" wx:if="{{item.cityBid.type==3}}">类目：{{item.categoryName}}</view>
+        </view>
+        <view class="info_item_box">
+            <view class="wire"></view>
+            <view class="wire2"></view>
+            <view class="item_text">
+                <view class="num">
+                    <text>{{item.cityBid.advDay}}</text>
+                    <text>天</text>
+                </view>
+                <view class="text">可投放时长</view>
+            </view>
+            <view class="item_text">
+                <view class="num">
+                    <text>{{item.cityBidUser.sort}}</text>
+                    <text></text>
+                </view>
+                <view class="text">位置排行</view>
+            </view>
+            <view class="item_text">
+                <view class="num">
+                    <text>￥{{item.cityBidUser.offerAmount}}</text>
+                </view>
+                <view class="text">拿下金额</view>
+            </view>
+        </view>
+        <view class="time_box">
+            <text style="margin-right: 15rpx;color:rgb(12, 199, 112)" wx:if="{{item.cityBidUser.advUserStatus==9}}">
+                <block>已投放</block>
+            </text>
+            <text style="margin-right: 15rpx;;color:#ff9253" wx:if="{{item.cityBidUser.advUserStatus==2&&!item.cityBidUser.remark}}">
+                <block>待上传</block>
+            </text>
+            <text style="margin-right: 15rpx;;color:#ff9253" wx:if="{{item.cityBidUser.advUserStatus==4}}">
+                <block>待投放</block>
+            </text>
+            <text style="margin-right: 15rpx;;color:#ff5353" wx:if="{{item.cityBidUser.advUserStatus==-1}}">
+                <block>已结束</block>
+            </text>
+            <text style="margin-right: 15rpx;;color:#ff5353" wx:if="{{item.cityBidUser.advUserStatus==2&&item.cityBidUser.remark}}">
+                <block>不通过</block>
+            </text>
+            <text style="margin-right: 15rpx;;color:#ff9253" wx:if="{{item.cityBidUser.advUserStatus==3}}">
+                <block>审核中</block>
+            </text>
+            <block wx:if="{{item.cityBid.advStatus==0}}">
+                {{util.formatDateLongSS(item.cityBid.advStartTime)}} 开始投放
+            </block>
+            <block wx:if="{{item.cityBid.advStatus==-1}}">
+                {{util.formatDateLongSS(item.cityBid.advEndTime)}} 结束
+            </block>
+            <block wx:if="{{item.cityBid.advStatus== 1}}">
+                {{util.formatDateLongSS(item.cityBid.advEndTime)}} 后结束
+            </block>
+            <view class="iconText" wx:if="{{item.cityBidUser.advUserStatus== 2&&!item.cityBidUser.remark}}">
+                <text style="margin-right: 15rpx;" data-obj="{{item}}" bindtap="toUploading">
+                    <block>上传</block>
+                </text>
+                <van-icon name="arrow" size="20rpx" />
+            </view>
+            <view class="iconText" wx:if="{{item.cityBidUser.advUserStatus!= 2||item.cityBidUser.remark}}">
+                <text style="margin-right: 15rpx;" data-obj="{{item}}" bindtap="toDetail">查看</text>
+                <van-icon name="arrow" size="20rpx" />
+            </view>
+        </view>
+    </view>
+</block>
+<block>
+    <view class="loading">
+        <view wx:if="{{ loading}}" size="24px" class="loading_view">
+            <van-loading color="#0DC3FF">加载中...</van-loading>
+        </view>
+        <text class="finish" wx:if="{{finish && (list.length==0&&Mylist.length==0)}}">暂无数据</text>
+        <view class="finish" wx:if="{{ finish && (list.length!=0||Mylist.length!=0)}}">
+            -已经到底啦-
+        </view>
+    </view>
+</block>
+<van-popup show="{{ ruleShow }}" bind:close="onRuleClose" custom-style="background-color: #00000000;">
+    <view class="rule_box">
+        <view class="rule_title">竞价细则</view>
+        <view class="rule_text">
+            <rich-text nodes="{{ruleData.blodValue}}"></rich-text>
+        </view>
+        <view class="rule_btn" bindtap="onRuleClose">好的</view>
+    </view>
+</van-popup>
+<van-popup z-index="99" class="desc_bottom_box" show="{{ descShow }}" position="bottom" custom-style="height: 45%;" bind:close="desc_onClose">
+    <!-- 头部 -->
+    <view class="title" bindtap="desc_onClose">
+        参与竞价
+        <van-icon class="img" size="50rpx" color="#888888" name="arrow-down" />
+    </view>
+    <scroll-view scroll-y="{{true}}" class="page_box">
+        <picker wx:if="{{selectData.type==3}}" bindchange="deliveryChange" range="{{category}}" range-key="name">
+            <view class="row">
+                <view>选择类目:</view>
+                <view class="rest text" wx:if="{{!categoryObj.name}}">
+                    <text style="margin-right: 10rpx;">请选择</text>
+                    <van-icon name="arrow" />
+                </view>
+                <view wx:if="{{categoryObj.name}}">{{categoryObj.name}}</view>
+            </view>
+        </picker>
+        <view class="row">
+            <view>出价:</view>
+            <view class="rest text"></view>
+            <van-stepper min="{{selectData.amount}}" value="{{ count }}" bind:change="omChangeSte" integer="{{false}}" plus-class="myplus" minus-class="myminus" theme="round" input-class="myinput" />
+        </view>
+    </scroll-view>
+    <view class="bottom_close" bindtap="submitAd">确认</view>
+</van-popup>
+<van-popup z-index="99" class="desc_bottom_box" show="{{ adjustShow }}" position="bottom" custom-style="height: 45%;" bind:close="adjust_onClose">
+    <!-- 头部 -->
+    <view class="title" bindtap="adjust_onClose">
+        出价/调整
+        <van-icon class="img" size="50rpx" color="#888888" name="arrow-down" />
+    </view>
+    <scroll-view scroll-y="{{true}}" class="page_box">
+        <!-- <picker wx:if="{{selectData.type==3}}" bindchange="deliveryChange" range="{{category}}" range-key="name">
+            <view class="row">
+                <view>选择类目:</view>
+                <view class="rest text" wx:if="{{!categoryObj.name}}">
+                    <text style="margin-right: 10rpx;">请选择</text>
+                    <van-icon name="arrow" />
+                </view>
+                <view wx:if="{{categoryObj.name}}">{{categoryObj.name}}</view>
+            </view>
+        </picker> -->
+        <view class="row">
+            <view>出价:</view>
+            <view class="rest text"></view>
+            <van-stepper min="{{adjustPrice}}" wx:if="{{adjustShow}}" value="{{ adjustPrice }}" bind:change="omChangeSteAdjust" integer="{{false}}" plus-class="myplus" minus-class="myminus" theme="round" input-class="myinput" />
+        </view>
+    </scroll-view>
+    <view class="bottom_close" bindtap="submitAdAdjust">确认</view>
+</van-popup>

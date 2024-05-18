@@ -1,0 +1,198 @@
+<wxs module="util" src="../../../../utils/util.wxs" />
+<view class="highlights_detail" wx:if="{{detailInfo.title}}">
+  <!-- <image wx:if="{{activeVideo==-1}}" class="cover" mode="aspectFill" src="{{util.fullPath(detailInfo.image)}}"></image> -->
+  <video autoplay src="{{util.fullPath(activeVideo)}}"></video>
+  <view class="info">
+    <view class="detail_title">
+      <text class="title" style="width: 600rpx;">{{detailInfo.title}}</text>
+      <view class="jump">
+        <text class="text" bindtap="handTapDesc">简介</text>
+        <image src="/img/common/right.png"></image>
+      </view>
+    </view>
+    <view class="label">
+      {{detailInfo.place}}/ {{detailInfo.year}}/ {{detailInfo.label}}/ {{detailInfo.videoCount}}集全
+    </view>
+    <!-- <view class="desc">{{detailInfo.introduce}}</view> -->
+    <view class="to_comments">
+      <text>查看{{util.tenNum(detailInfo.comment)}}条热评</text>
+      <image src="/img/common/arrow-bottom.png"></image>
+    </view>
+  </view>
+  <view class="directory">
+    <view class="detail_title" bind:tap="handTapSelect">
+      <text class="title">选集</text>
+      <view class="jump">
+        <text class="text">共{{detailInfo.videoCount}}集</text>
+        <image src="/img/common/right.png"></image>
+      </view>
+    </view>
+    <scroll-view class="directory_list" scroll-x="true">
+      <view class="directory_item" wx:for="{{detailInfo.videoCollectUrlList}}" wx:for-item="videoItem" wx:key="title" data-index="{{index}}" data-id="{{videoItem.id}}" bindtap="toDetail">
+        <view class="cover">
+          <image mode="aspectFill" src="{{util.fullPath(videoItem.cover)}}"></image>
+          <text>第{{index+1}}集</text>
+        </view>
+        <view class="title" style="color:#ff6040" wx:if="{{activeVideoindex==index}}"  >
+          正在播放...
+        </view>
+        <text class="title" wx:else>{{videoItem.title}}</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="content">
+    <block wx:for="{{contentArr}}" wx:key="id">
+      <block wx:if="{{item[0].name}}">
+        <view class="store">
+          <!-- <view class="content_store_title">平台推荐({{item.length}})</view> -->
+          <view wx:for="{{item}}" wx:for-item="shopitem" class="store_item" data-item="{{shopitem}}" data-type="{{shopitem.type}}" data-id="{{shopitem.id}}" bindtap="toStore">
+            <image class="cover" mode="aspectFill" src="{{shopitem.type == 'shop'?util.fullPath(shopitem.shopPhoto):util.fullPath(shopitem.cover)}}"></image>
+            <view class="store_info">
+              <text class="store_name">{{shopitem.name}}</text>
+              <view class="other_info" wx:if="{{shopitem.type!='activity'}}">
+                <text wx:if="{{shopitem.comment || shopitem.comment === 0}}" class="sentiment">{{shopitem.comment}}条评论</text>
+                <text class="sentiment">{{shopitem.pv}}人气</text>
+              </view>
+              <view class="other_info" wx:if="{{shopitem.type=='activity'}}">
+                <text wx:if="{{shopitem.signStatus==0}}" class="step1">报名未开始</text>
+                <text wx:if="{{shopitem.signStatus==1}}" class="step2">报名进行中</text>
+                <text wx:if="{{shopitem.signStatus==-1}}" class="step3">报名已结束</text>
+                <text wx:if="{{shopitem.status==0}}" class="step1">活动未开始</text>
+                <text wx:if="{{shopitem.status==1}}" class="step2">活动进行中</text>
+                <text wx:if="{{shopitem.status==-1}}" class="step3">活动已结束</text>
+              </view>
+            </view>
+            <view class="collection"><van-icon color="#999999" name="arrow" size="18px" /></view>
+          </view>
+        </view>
+      </block>
+      <rich-text wx:if="{{!item[0].name}}" nodes="{{item}}"></rich-text>
+    </block>
+    
+  </view>
+
+  <!-- 相关推荐 -->
+  <view class="recommend">
+    <view class="detail_title">
+      <text class="title">相关推荐</text>
+    </view>
+    <newList isRecomm="{{true}}" recommType="{{5}}" />
+  </view>
+  <!-- 评论 -->
+  <view class="comments">
+    <view class="detail_title">
+      <text class="title">评论</text>
+    </view>
+    <commentList id="commentListID" iid="{{id}}" type="{{type}}" info="{{detailInfo}}" />
+  </view>
+</view>
+<van-popup z-index="99" class="desc_bottom_box" show="{{ isDesc }}" position="bottom" custom-style="height: 65%;" bind:close="desc_onClose">
+  <!-- 头部 -->
+  <view class="title" bindtap="desc_onClose">
+    简介
+    <van-icon class="img" size="50rpx" color="#888888" name="arrow-down" />
+  </view>
+  <scroll-view scroll-y="{{true}}" class="page_box">
+    <view class="desc_box1">
+      <view>
+        {{detailInfo.place}} / {{detailInfo.year}} / {{detailInfo.label}} / {{detailInfo.videoCount}}集全
+      </view>
+      <view>导演: {{detailInfo.director}}</view>
+      <view>主演: {{detailInfo.actor}}</view>
+      <view class="desc">简介</view>
+      <view class="content">
+    <block wx:for="{{contentArr}}" wx:key="id">
+      <block wx:if="{{item[0].name}}">
+        <view class="store">
+          <!-- <view class="content_store_title">平台推荐({{item.length}})</view> -->
+          <view wx:for="{{item}}" wx:for-item="shopitem" class="store_item" data-item="{{shopitem}}" data-type="{{shopitem.type}}" data-id="{{shopitem.id}}" bindtap="toStore">
+            <image class="cover" mode="aspectFill" src="{{shopitem.type == 'shop'?util.fullPath(shopitem.shopPhoto):util.fullPath(shopitem.cover)}}"></image>
+            <view class="store_info">
+              <text class="store_name">{{shopitem.name}}</text>
+              <view class="other_info" wx:if="{{shopitem.type!='activity'}}">
+                <text wx:if="{{shopitem.comment || shopitem.comment === 0}}" class="sentiment">{{shopitem.comment}}条评论</text>
+                <text class="sentiment">{{shopitem.pv}}人气</text>
+              </view>
+              <view class="other_info" wx:if="{{shopitem.type=='activity'}}">
+                <text wx:if="{{shopitem.signStatus==0}}" class="step1">报名未开始</text>
+                <text wx:if="{{shopitem.signStatus==1}}" class="step2">报名进行中</text>
+                <text wx:if="{{shopitem.signStatus==-1}}" class="step3">报名已结束</text>
+                <text wx:if="{{shopitem.status==0}}" class="step1">活动未开始</text>
+                <text wx:if="{{shopitem.status==1}}" class="step2">活动进行中</text>
+                <text wx:if="{{shopitem.status==-1}}" class="step3">活动已结束</text>
+              </view>
+            </view>
+            <view class="collection"><van-icon color="#999999" name="arrow" size="18px" /></view>
+          </view>
+        </view>
+      </block>
+      <rich-text wx:if="{{!item[0].name}}" nodes="{{item}}"></rich-text>
+    </block>
+    
+  </view>
+    </view>
+  </scroll-view>
+  <view class="bottom_close" bindtap="desc_onClose">关闭</view>
+</van-popup>
+<van-popup class="select_bottom_box" show="{{ isSelect }}" position="bottom" custom-style="height: 65%;" bind:close="select_onClose">
+  <!-- 头部 -->
+  <view class="title" bindtap="select_onClose">
+    选集
+    <van-icon class="img" size="36rpx" color="#888888" name="arrow-down" />
+  </view>
+  <scroll-view scroll-y="{{true}}" class="page_box">
+    <view class="select_box">
+      <view class="cover" wx:for="{{detailInfo.videoCollectUrlList}}" wx:key="title" data-index="{{index}}" data-id="{{item.id}}" bindtap="toDetail">
+        <view class="index">
+          <image mode="aspectFill" src="{{util.fullPath(item.cover)}}"></image>
+          <text>第{{index+1}}集</text>
+        </view>
+        <text class="titles">{{item.title}}</text>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="bottom_close" bindtap="select_onClose">关闭</view>
+</van-popup>
+
+<view wx:if="{{recommendList.length > 0}}" class="store_show" bindtap="openStore">相关推荐({{recommendList.length}})</view>
+
+<van-popup
+    show="{{ storeShow }}"
+    position="bottom"
+    close-on-click-overlay
+    bind:close="closeStore"
+  >
+    <view class="store_title" bindtap="closeStore">
+      TA的推荐
+      <van-icon class="img" size="32rpx" color="#888888" name="arrow-down" />
+    </view>
+    <view class="store_list">
+      <view wx:for="{{recommendList}}" class="store_item">
+        <image class="cover" mode="aspectFill" src="{{item.type == 'shop'?util.fullPath(item.shopPhoto):util.fullPath(item.cover)}}"></image>
+        <view class="store_info">
+          <view class="store_top">
+            <text class="store_name">{{item.name}}</text>
+            <view class="sentiment" wx:if="{{item.type!='activity'}}">
+              <text wx:if="{{item.comment || item.comment === 0}}">{{item.comment}}条评价</text>
+              <text>{{item.pv}}人气</text>
+            </view>
+            
+          </view>
+          <view class="price" >
+            <view class="sentiment2" wx:if="{{item.type=='activity'}}">
+              <text wx:if="{{item.signStatus==0}}" class="step1">报名未开始</text>
+              <text wx:if="{{item.signStatus==1}}" class="step2">报名进行中</text>
+              <text wx:if="{{item.signStatus==-1}}" class="step3">报名已结束</text>
+              <text wx:if="{{item.status==0}}" class="step1">活动未开始</text>
+              <text wx:if="{{item.status==1}}" class="step2">活动进行中</text>
+              <text wx:if="{{item.status==-1}}" class="step3">活动已结束</text>
+            </view>
+            <view class="price_num"><block wx:if="{{item.price}}">￥{{item.price}} <text class="since">起</text></block></view>
+            <button data-item="{{item}}" data-type="{{item.type}}" data-item="{{item}}"  data-id="{{item.id}}" bindtap="toStore">{{item.type=='activity'?'前往':'预定'}}</button>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="store_close" bindtap="closeStore">关闭</view>
+  </van-popup>

@@ -1,0 +1,107 @@
+/* pages/my/spread/withdraw/withdraw.wxss */
+.withdraw{
+  background-color: #fff;
+  height: 100vh;
+  padding: 0 30rpx;
+}
+.wiremark{
+  font-weight: bold;
+  font-size: 32rpx;
+  padding-top: 50rpx;
+  padding-bottom: 20rpx;
+}
+.myinput{
+  font-size: 56rpx;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f1f1f1;
+  padding: 30rpx 0;
+}
+.myinput input{
+  height: 80rpx;
+}
+.blan{
+  font-size: 24rpx;
+  color: #999;
+  padding: 30rpx 0;
+}
+.handle{
+  text-align: center;
+}
+.handle .btn{
+  background-color: #3994FF;
+  height: 76rpx;
+  width: 480rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 76rpx;
+  border-radius: 76rpx;
+  display: inline-block;
+  margin-top: 20rpx;
+}
+.handle .btn2{
+  color: #3994FF;
+  background-color: #fff;
+}
+
+/* 弹窗 */
+.box_base {
+	position: relative;
+  overflow: hidden;
+  
+	width: 583rpx;
+	height: 556rpx;
+	background: #ffffff;
+	border-radius: 17rpx;
+	text-align: center;
+}
+.box_base .title {
+	font-size: 33rpx;
+	font-weight: 700;
+	color: #333333;
+	line-height: 100rpx;
+	margin-bottom: 25rpx;
+	border-bottom: 1px solid #66666615;
+}
+.box_base .title {
+	font-size: 33rpx;
+	font-weight: 700;
+	color: #333333;
+	line-height: 100rpx;
+	border-bottom: 1px solid #66666615;
+}
+.bor_bt {
+	padding: 0 50rpx;
+}
+.box_base .price {
+	font-size: 58rpx;
+	font-weight: 700;
+	padding: 15rpx;
+	color: #333333;
+	line-height: 100rpx;
+	border-bottom: 1px solid #66666615;
+}
+.flex_text {
+	display: flex;
+	justify-content: space-between;
+	line-height: 50rpx;
+	margin-top: 20rpx;
+	color: #666666;
+}
+.btns {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	height: 92rpx;
+	background: #3994ff;
+	line-height: 92rpx;
+	font-size: 29rpx;
+	font-weight: 400;
+	text-align: center;
+	color: #ffffff;
+}
+.btns_active{
+	background: #85bbfa;
+}

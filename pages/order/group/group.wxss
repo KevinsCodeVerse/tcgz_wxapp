@@ -1,0 +1,208 @@
+.tabs{
+  color: #666666;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 20rpx;
+  background-color: #fff;
+}
+.tabs .active{
+  color: #3994FF;
+  font-weight: bold;
+}
+.tabs>text{
+  height: 78rpx;
+  line-height: 78rpx;
+}
+.active1{
+  color: #FF6040;
+}
+.active2{
+  color: #FF7800;
+}
+.active3{
+  color: #3994FF;
+}
+.active4{
+  color: #999999;
+}
+.active5{
+  color: #86CC14;
+}
+.orlist{
+  padding: 20rpx 26rpx;
+}
+.orcard{
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin-bottom: 26rpx;
+}
+.orcard .shop{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80rpx;
+  padding: 0 20rpx;
+  border-bottom: 1px solid #f1f1f1;
+  font-size: 24rpx;
+}
+.orcard .shop>view:nth-child(1){
+  width: 400rpx;
+}
+.orcard .shop>view{
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  text-overflow: ellipsis;
+
+}
+.orcard .shname{
+  width: calc(100% - 50rpx);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.orcard .shopimg{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+.orcard .cover{
+  border: 1rpx solid #66666623;
+
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 12rpx;
+}
+.orcard .goods{
+  display: flex;
+  align-items: center;
+  padding: 22rpx 20rpx;
+}
+.orcard .goinfo{
+  padding-left: 20rpx;
+  width: calc(100% - 120rpx);
+  box-sizing: border-box;
+}
+.orcard .gotit{
+  display: flex;
+  justify-content: space-between;
+}
+.orcard .gotit >text{
+  font-size: 18rpx;
+  border-radius: 10rpx;
+  word-break:keep-all;
+  line-height: 36rpx;
+  padding: 0rpx 8rpx;
+  background-color: green;
+}
+.orcard .gotit .logistics{
+  background-color: #FFF2F2;
+  color: #FF3333;
+
+}
+.orcard .gotit .local{
+  color: #FF7800;
+
+  background-color: #FFF2E6;
+
+}
+.orcard .gotit >view{
+  font-weight: bold;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+}
+
+.orcard .gospec{
+  font-size: 20rpx;
+  color: #AAAAAA;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.orcard .count{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10rpx;
+}
+.orcard .goprice{
+  color: #FF7800;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.orcard .original{
+  font-size: 20rpx;
+  color: #AAAAAA;
+  text-decoration: line-through;
+  margin: 0 10rpx;
+}
+.orcard .freight{
+  font-size: 20rpx;
+  color: #AAAAAA;
+}
+.orcard .gonum{
+  font-size: 24rpx;
+  color: #aaa;
+}
+.orcard .handle{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx;
+  border-top: 1px solid #f1f1f1;
+}
+.orcard .total{
+  font-weight: bold;
+}
+.orcard .money{
+  font-size: 32rpx;
+  color: #86CC14;
+  margin-left: 16rpx;
+}
+.orcard .orbtn{
+  display: flex;
+}
+.orcard .btn1{
+  width: 144rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+  border-radius: 52rpx;
+  text-align: center;
+  border: 1px solid #666666;
+  font-size: 22rpx;
+  margin-left: 20rpx;
+  font-weight: bold;
+}
+.orcard .btn2{
+  color: #FF6040;
+  border-color: #FF6040;
+}
+.orcard .btn3{
+  color: #86CC14;
+  border-color: #86CC14;
+}
+
+.loading {
+  text-align: center;
+  padding: 30rpx 0;
+}
+.finish {
+  font-size: 28rpx;
+  color: #999999;
+  padding-bottom: 20rpx;
+}
+
+/* 二维码弹框 */
+.ewmpop{
+  padding: 40rpx 80rpx;
+  text-align: center;
+}
+.ewmpop >image{
+  width: 280rpx;
+  height: 280rpx;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}

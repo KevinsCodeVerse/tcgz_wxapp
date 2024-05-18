@@ -1,0 +1,105 @@
+<wxs module="util" src="../../../../utils/util.wxs" />
+<view wx:if="{{shop.name}}" class="confirm_order {{type==2? 'seckill':''}}">
+  <view class="mybg"></view>
+  <view class="step">
+    <image  mode="widthFix" src="https://www.tcgz.store/files/default/stepseckill.png"></image>
+  </view>
+  <!-- 商品信息 -->
+  <view class="goods">
+    <view class="shop">{{shop.name}}</view>
+    <view class="info">
+      <image mode="aspectFill" src="{{util.fullPath(skuInfo.cover)}}"></image>
+      <view class="goname">
+        <view class="gotit">{{goods.title}}</view>
+        <view>{{skuInfo.remark}}</view>  
+        <view class="price">
+          <text>￥{{skuInfo.curPrice}}</text>
+          <text class="orgprice">￥{{skuInfo.rioPrice}}</text>
+          <text class="freight" wx:if="{{goods.freight}}"> 运费￥{{goods.freight}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="spec" wx:for="{{specList}}" wx:key="oneIndex" wx:for-index="oneIndex">
+      <text class="labtit">{{item.parentName}}</text>
+      <view class="splist">
+        <view class="spcard {{twoitem.check? 'active':''}}" wx:for="{{item.sonName}}" wx:for-item="twoitem" wx:key="index"
+          bindtap="chooseSpec" data-name="{{twoitem.name}}" data-index="{{oneIndex}}">
+          {{twoitem.name}}
+        </view>
+        <!-- <text class="spcard">套餐二</text>
+        <text class="spcard">套餐三</text>
+        <text class="spcard">套餐四</text>
+        <text class="spcard">套餐五</text> -->
+      </view>
+    </view>
+    <view class="money">
+      <text class="labtit">单价</text>
+      <view class="d_money">
+        <text class="bag">秒杀价</text>
+        <text>￥{{skuInfo.curPrice}}</text>
+      </view>
+    </view>
+    <view class="money">
+      <text class="labtit">数量</text>
+      <van-stepper value="{{ count }}" bind:change="omChangeSte"
+        plus-class="myplus" minus-class="myminus" input-class="myinput"/>
+    </view>
+  </view>
+
+  <!-- 配送方式 -->
+  <!-- <view class="delivery">
+    
+    <view class="address">
+      <text>地址</text>
+      <view>{{shop.address}}</view>
+    </view>
+  </view> -->
+   <!-- 优惠券 -->
+   <coupon wx:if="{{shop.merchantId}}" type="{{type}}" shopId="{{shop.merchantId}}" price="{{allPrice}}" bind:coupon="handCouponPrice"></coupon>
+  <!-- 配送方式 -->
+  <view class="delivery">
+    <view class="deremark">
+      <text>配送方式</text>
+      <picker bindchange="deliveryChange" range="{{deliveryList}}" range-key="name" disabled="{{deliveryList.length==1}}">
+        <view class="rest">
+          <text>{{deliveryName}}</text>
+          <van-icon name="arrow-down" />
+        </view>
+      </picker>
+    </view>
+    <view class="address" wx:if="{{deliveryType==1}}">
+      <text>商户地址</text>
+      <view>{{shop.address}}</view>
+    </view>
+    <view class="address" bindtap="goAddress" wx:else>
+      <view class="adcon" wx:if="{{address.name}}">
+        <view>
+          <text class="name">{{address.name}}</text>
+          {{address.phone}}
+        </view>
+        <view>{{address.region}} {{address.address}}</view>
+      </view>
+      <view class="name" wx:else>选择收货地址</view>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+
+  <!-- 预留手机号 -->
+  <view class="phone" wx:if="{{deliveryType==1}}">
+    <view>预留手机号</view>
+    <input placeholder="请填写" maxlength="11" bindinput="bindPhone"></input>
+  </view>
+  <view class="userRemark" wx:if="{{deliveryType==1}}">
+    <view>备注</view>
+    <textarea placeholder="备注仅商家可见 如:到店用餐时备注碗筷" bindinput="bindUserRemark" maxlength="{{100}}" 	auto-height="{{true}}" rows="1"></textarea>
+  </view>
+  <!-- 底部栏 -->
+  <view class="foot">
+    <view class="fotesu">
+      <text>合计:</text>
+      <text class="total">￥{{allPrice>0.01?allPrice:0.01}}</text>
+    </view>
+    <view class="mybtn fobtn" bindtap="toSubmit">提交订单</view>
+  </view>
+</view>
+<van-dialog id="van-dialog" />

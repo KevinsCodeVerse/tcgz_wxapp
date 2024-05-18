@@ -1,0 +1,12 @@
+<view class="{{['nav',istype==2?'nav2':'',istype==3?'nav3':'']}}" style="height:{{navBarHeight}}px;{{isWhite?'background:rgba(255,255,255,0);color: #333333;':''}}">
+  <view class="nav-main">
+    <!-- 胶囊区域 -->
+    <view 
+      class="capsule-box" 
+      style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; bottom:{{menuBotton}}px;"
+    >
+    <!-- 导航内容区域 -->
+      <slot></slot>
+    </view>
+  </view>
+</view>

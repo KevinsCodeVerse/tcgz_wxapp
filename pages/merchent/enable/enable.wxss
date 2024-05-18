@@ -1,0 +1,55 @@
+/* pages/merchent/enable/enable.wxss */
+.mercbg{
+  width: 100%;
+  background: #3994FF;
+  height: 330rpx;
+  position: absolute; 
+  z-index: -1;
+  left: 0;
+  top: 0;
+}
+.remark{
+  font-size: 24rpx;
+  color: #fff;
+  text-align: center;
+  padding-top: 30rpx;
+}
+.name{
+  font-size: 40rpx;
+  color: #fff;
+  text-align: center;
+  padding: 30rpx 10%;
+  font-weight: bold;
+}
+.info{
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin: 40rpx;
+  padding: 36rpx 36rpx;
+}
+.info .inname{
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  padding-bottom: 40rpx;
+}
+.info .incard{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 28rpx;
+}
+.info .incard view{
+  color: #999999;
+  width: calc(100% - 160rpx);
+}
+.btn{
+  background-color: #3994FF;
+  color: #fff;
+  font-size: 32rpx;
+  height: 80rpx;
+  border-radius: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  margin: 40rpx 16%;
+}

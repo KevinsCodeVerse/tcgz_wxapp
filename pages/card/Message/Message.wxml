@@ -1,0 +1,76 @@
+<!--pages/card/Message/Message.wxml-->
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="page">
+  <van-sticky >
+    <van-search bind:change="changeValue" bind:clear="clearKeyword" model:value="{{ keywords }}" shape="round" background="#fff" placeholder="需求方姓名/公司" clearable />
+  </van-sticky>
+
+  <view class="main">
+    <view wx:for="{{list}}" wx:key="id">
+      <view class="card">
+        <view class="box">
+          <view class="top">
+            <view>
+              <image src="{{util.fullPath(item.nAvatar)}}" mode="" />
+            </view>
+            <view>
+              <text class="name">{{item.nName}}</text>
+              <text class="text">{{item.nPosition}}</text>
+              <view class="tit">
+                {{item.nCompany}}
+              </view>
+            </view>
+          </view>
+          <view class="context">
+            {{item.nTitle}}
+          </view>
+          <view class="tag-flex" slot="label">
+            <van-tag size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.needCity}}</van-tag>
+            <van-tag size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.needIndustry}}</van-tag>
+            <van-tag size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.needClass}}</van-tag>
+          </view>
+        </view>
+        <view class="join">
+          <van-icon size="50rpx" color="#3994ff" name="sort" />
+        </view>
+        <view class="join">
+          <view wx:if="{{item.status === 1}}" class="status warning">对接中</view>
+          <view wx:if="{{item.status === 2}}" class="status success">对接成功</view>
+          <view wx:if="{{item.status === -2}}" class="status error">无法配对</view>
+        </view>
+
+        <view class="box">
+          <view class="top">
+            <view>
+              <image src="{{util.fullPath(item.rAvatar)}}" mode="" />
+            </view>
+            <view>
+              <text class="name">{{item.rName}}</text>
+              <text class="text">{{item.rPosition}}</text>
+              <view class="tit">
+                {{item.rCompany}}
+              </view>
+            </view>
+          </view>
+          <view class="context">
+            {{item.rTitle}}
+          </view>
+          <view class="tag-flex" slot="label">
+            <van-tag size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.resourceCity}}</van-tag>
+            <van-tag size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.resourceIndustry}}</van-tag>
+            <van-tag size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.resourceClass}}</van-tag>
+          </view>
+        </view>
+        <!-- <view class="divider"></view> -->
+      </view>
+
+    </view>
+    <view class="loading">
+    <van-loading wx:if="{{loading}}" size="24px" color="#0DC3FF">加载中...</van-loading>
+    <text class="finish" wx:if="{{finish}}">{{list.length>0?'没有更多了': '暂无数据'}}</text>
+  </view>
+
+  </view>
+
+</view>
+<custom-tabbar />

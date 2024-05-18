@@ -1,0 +1,15 @@
+{
+  "usingComponents": {
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "van-search": "/miniprogram/miniprogram_npm/@vant/weapp/search/index",
+    "van-loading": "/miniprogram/miniprogram_npm/@vant/weapp/loading/index",
+    "van-sticky": "/miniprogram/miniprogram_npm/@vant/weapp/sticky/index",
+    "van-empty": "/miniprogram/miniprogram_npm/@vant/weapp/empty/index",
+    "custom-tabbar": "/components/custom-tabbar/custom-tabbar",
+    "van-tag": "/miniprogram/miniprogram_npm/@vant/weapp/tag/index",
+    "van-card": "/miniprogram/miniprogram_npm/@vant/weapp/card/index"
+    
+  },
+  "navigationBarTitleText": "对接记录"
+  
+}

@@ -1,0 +1,67 @@
+<!--pages/goods/detail/detail.wxml-->
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="detail">
+  <view class="myswiper">
+    <swiper indicator-dots="{{true}}" autoplay="{{false}}" interval="{{2000}}" duration="{{500}}" style="height: 100vw">
+      <block wx:for="{{bannerList}}" wx:key="*this">
+        <swiper-item>
+          <image class="bannimg" mode="aspectFill" src="{{util.fullPath(item)}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <!-- <view class="browse">{{goods.favor}}人感兴趣</view> -->
+  </view>
+  
+  <view class="mycon">
+    <!-- 标题 -->
+    <view class="cotit">{{goods.name}}</view>
+    <view class="price">
+      <view class="d_price">
+        <view class="curre">￥{{goods.price}}</view>
+      </view>
+    </view>
+
+  </view>
+
+  <!-- 商品评价 -->
+  <view class="evaluate">
+    <view class="tit {{type==2? 'tit2':''}}"><text>商品评价</text></view>
+    <view wx:if="{{evaluate.nick}}">
+      <view class="evcard">
+        <image class="avatar" mode="aspectFill" src="{{util.fullPath(evaluate.avatar)}}"></image>
+        <view class="name">
+          <view class="time">
+            <text>{{evaluate.nick}}</text>
+            <text>{{util.formatDateShort(evaluate.createTime)}}</text>
+          </view>
+          <van-rate readonly value="{{ evaluate.level }}" bind:change="onChange" color="#FF7800" size="30rpx" gutter="0px"/>
+        </view>
+      </view>
+      <view class="evcon">{{evaluate.content}}</view>
+      <view class="evimgs">
+        <image mode="aspectFill" wx:for="{{evaluate.imgArr}}" wx:key="index" src="{{util.fullPath(item)}}"></image>
+      </view>
+    </view>
+    <view wx:if="{{evaluate.nick}}" class="more" style="color:{{type==2? '#FF6040':''}}" bindtap="goEvaluate">
+      查看全部评价<van-icon name="arrow" />
+    </view>
+    <view class="nodata2" wx:if="{{!evaluate.nick}}">暂无评价</view>
+  </view>
+
+  <!-- 商品详情 -->
+  <view class="mycont" wx:if="{{goods.description}}">
+    <view class="tit {{type==2? 'tit2':''}}"><text>商品详情</text></view>
+    <view class="richtext">
+      <rich-text nodes="{{goods.description}}"></rich-text>
+    </view>
+  </view>
+
+  <view class="floor">-已经到底啦-</view>
+
+  <!-- 底部栏 -->
+  <view class="foot">
+    <view class="mybtn btn" style="background-color: {{type==2? '#FF6040': '#3994FF'}}" bindtap="goSettle">立即购买</view>
+  </view>
+  
+</view>
+

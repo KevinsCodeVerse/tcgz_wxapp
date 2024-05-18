@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "城市详情",
+  "usingComponents": {
+    "newList": "/components/newList/newList"
+  }
+}

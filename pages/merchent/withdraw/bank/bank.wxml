@@ -1,0 +1,46 @@
+<!-- pages/my/spread/bank/bank.wxml -->
+<wxs module="util" src="../../../../utils/util.wxs"></wxs>
+<view class="bank">
+    <view class="tip">请绑定银行卡后进行手动提现</view>
+    <picker bindchange="deliveryChange" range="{{arrBank}}" range-key="name" range-key="idcardName">
+        <view class="myinput">
+            <view class="labl">当前银行卡</view>
+             <text style="width: 400rpx;padding:0 30rpx 0 0;color:#9999" wx:if="{{active==-1}}">请选择您的银行卡</text>
+            <text style="width: 400rpx;padding:0 15rpx" wx:if="{{active!=-1}}">{{arrBank[active].idcardName}}</text>
+            <van-icon name="arrow" style="float: right;" />
+        </view>
+    </picker>
+    <picker bindchange="bankChange" range="{{banList}}" range-key="bank">
+        <view class="myinput">
+        <view class="labl">银行名称</view>
+        <text style="width: 430rpx;color:#9999" wx:if="{{!activeBank.bank}}">请选择银行卡</text>
+        <text style="width: 430rpx;" wx:if="{{activeBank.bank}}">{{activeBank.bank}}</text>
+        <van-icon name="arrow" style="float: right;" />
+    </view>
+    </picker>
+    
+    <view class="myinput">
+        <view class="labl">银行卡号</view>
+        <input placeholder="请输入银行卡号" value="{{idcard}}" placeholder-class="pholder" maxlength="22" bindinput="bindCardNum"></input>
+    </view>
+    <view class="myinput">
+        <view class="labl">持卡人</view>
+        <input placeholder="请输入持卡人姓名" value="{{name}}" placeholder-class="pholder" maxlength="11" bindinput="bindName"></input>
+    </view>
+    <view class="myinput">
+        <view class="labl">手机号码</view>
+        <input placeholder="请输入持卡人手机号码" value="{{phone}}" placeholder-class="pholder" maxlength="11" bindinput="bindphone"></input>
+    </view>
+    <view class="myinput">
+        <view class="labl">是否默认</view>
+        <checkbox-group bindchange="checkboxChange">
+            <checkbox value="{{1}}" checked="{{defaultIdcard}}"/>默认提现银行卡
+        </checkbox-group>
+    </view>
+    
+    <view class="handle" wx:if="{{active!=-1}}">
+        <view class="mybtn btn btn2" bindtap="toSubmit" wx:if="{{active==0}}">新增银行卡</view>
+        <view class="mybtn btn" bindtap="toSubmit" wx:if="{{active!=0}}">提交修改</view>
+    </view>
+</view>
+<van-toast id="van-toast" />

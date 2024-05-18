@@ -1,0 +1,27 @@
+<!--pages/goods/evaluate/evaluate.wxml-->
+<wxs module="util" src="../../../utils/util.wxs" />
+<!-- 商品评价 -->
+<view class="evaluate">
+  <view class="evlist">
+    <view class="evacard" wx:for="{{list}}" wx:key="index">
+      <view class="evcard">
+        <image class="avatar" mode="aspectFill" src="{{util.fullPath(item.avatar)}}"></image>
+        <view class="name">
+          <view class="time">
+            <text>{{item.nick}}</text>
+            <text>{{util.formatDateShort(item.createTime)}}</text>
+          </view>
+          <van-rate readonly value="{{ item.level }}" bind:change="onChange" color="#FF7800" size="30rpx" gutter="0px"/>
+        </view>
+      </view>
+      <view class="evcon">{{item.content}}</view>
+      <view class="evimgs">
+        <image mode="aspectFill" wx:for="{{item.imgArr}}" wx:for-item="i" src="{{util.fullPath(i)}}"></image>
+      </view>
+    </view>
+  </view>
+  <view class="loading">
+    <van-loading wx:if="{{loading}}" size="24px"  color="#0DC3FF">加载中...</van-loading>
+    <text class="finish" wx:if="{{finish && !loading}}">{{list.length>0?'没有更多了': '暂无数据'}}</text>
+  </view>
+</view>

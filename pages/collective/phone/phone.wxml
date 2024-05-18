@@ -1,0 +1,21 @@
+<!--pages/collective/phone/phone.wxml-->
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="phlist">
+  <view class="phcard" wx:for="{{list}}" wx:key="index">
+    <image class="avatar" src="{{util.fullPath(item.avatar)}}"></image>
+    <view class="attr">
+      <view class="name">
+        <text class="d_name">{{item.nick}}</text>
+        <image class="person" src="/img/myicon/person.png" wx:if="{{item.roleName}}"></image>
+        <text class="job">{{item.roleName}}</text>
+      </view>
+      <view class="company">{{item.shopName}}</view>
+    </view>
+    <view class="links">
+      <image wx:if="{{item.shopName}}" class="icon" src="/img/myicon/shop.png" bindtap="goShop" data-shopid="{{item.merchantShopId}}"></image>
+      <image wx:if="{{item.phone}}" class="icon icon2" src="/img/myicon/phone2.png" bindtap="freeTell" data-phone="{{item.phone}}"></image>
+    </view>
+    
+  </view>
+  <view class="floor">-已经到底了-</view>
+</view>

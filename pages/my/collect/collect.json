@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-loading": "/miniprogram/miniprogram_npm/@vant/weapp/loading/index",
+    "van-count-down": "/miniprogram/miniprogram_npm/@vant/weapp/count-down/index"
+
+  },
+  "navigationBarTitleText": "我的收藏"
+}

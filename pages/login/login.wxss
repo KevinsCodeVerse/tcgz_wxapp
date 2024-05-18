@@ -1,0 +1,39 @@
+/* pages/login/login.wxss */
+.login{
+  min-height: 100vh;
+  background-color: #4F90F8;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  text-align: center;
+}
+.logo image{
+  width: 300rpx;
+  height: 310rpx;
+  margin-top: 30%;
+  margin-bottom: 30%;
+}
+.handle{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 86rpx;
+  width: 480rpx;
+  color: #3994FF;
+  background-color: #fff;
+  font-size: 32rpx;
+  border-radius: 84rpx;
+  margin-bottom: 30rpx;
+}
+.handle .protocol{
+  display: flex;
+  color: #FFF59A;
+  font-size: 24rpx;
+}
+.handle text{
+  color: #fff;
+}

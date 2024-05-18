@@ -1,0 +1,20 @@
+<!--pages/collective/news_detail/news_detail.wxml-->
+<wxs module="util" src="../../../utils/util.wxs" />
+<image class="share" wx:if="{{showShare}}" src="/img/common/share.png" bindtap="shareColse"></image>
+<view class="news_detail">
+  <view class="tit">{{news.title}}</view>
+  <view class="time">
+    <view wx:if="{{news.createTime}}">{{name}}　{{util.formatDateShort(news.createTime)}}</view>
+    <text>阅读次数：{{news.pv}}</text>
+  </view>
+  <view class="d_con" >
+    <rich-text nodes="{{news.content}}"></rich-text>
+    <!-- <view>7月8日下午，中山市南头镇党委书记徐宁军、副镇长张泽武、经信局局长何前华等领导莅临我会参观指导。</view>
+    <image mode="widthFix" src="/img/common/news.png"></image>
+    <view>在参观过程中，南头镇党委书记徐宁军与协会秘书长李文霞亲切交谈，深入了解协会发展情况，并饶有兴致地体验了会员企业产品。</view>
+    <image mode="widthFix" src="/img/common/news.png"></image>
+    <view>协会秘书长李文霞对南头镇政府一直以来给予协会的关心支持表示由衷的感谢。她提到，协会将以南头镇打造的品牌家电智能制造服务公共平台为载体，
+    整合社会各类优质服务资源开展质量强企活动，协助南头镇政府打造好全国首个“中国家电品牌基地”，积极引导中山家电产业高质量发展。</view> -->
+  </view>
+  <view class="floor">- 已经到底啦 -</view>
+</view>

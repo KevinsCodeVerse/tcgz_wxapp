@@ -1,0 +1,64 @@
+<!--pages/attention/noattent/index.wxml-->
+<wxs module="util" src="../../../utils/util.wxs" />
+<view>
+  <image mode="widthFix" class="banner" src="https://www.tcgz.store/files/default/20210804212816.png"></image>
+  <!-- 自定义搜索框 -->
+  <view class="mysearch">
+    <view class="atsearch">
+      <input class="input" placeholder="搜索集体名称" value="{{value}}" bindinput="onSearch"></input>
+      <icon class="myicon icon-small" type="search" size="14" color="#A9A9AA"></icon>
+      <image class="colse" src="/img/myicon/colse.png" wx:if="{{value}}" bindtap="toColse"></image>
+      <view class="mybtn sear" bindtap="startSearch">搜索</view>
+    </view>
+    <view class="record" wx:if="{{showSearch && searchList.length>0 && value}}">
+      <view style="background-color: #fff;height: 30rpx"></view>
+      <view class="rerow" wx:for="{{searchList}}" wx:key="index" bindtap="toAssign" data-name="{{item.name}}">
+        <image class="group" src="{{util.fullPath(item.avatar)}}" mode="aspectFill"></image>
+        <view class="card">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 筛选 -->
+  <view class="screen">
+    <view class="sccard" bindtap="toAreaCal">{{cityName? cityName:'地级市选择'}}</view>
+    <view class="sccard" bindtap="toAll">全部集体</view>
+    <!-- <picker bindchange="addressChange" mode = "region">
+      <view class="sccard" wx:if="{{address}}">{{address  }}</view>
+      <view class="sccard" wx:else>地级市选择</view>
+    </picker> -->
+    <view class="sccard" bindtap="toIndustryCal">{{industryName? industryName:'行业筛选'}}</view>
+    <!-- <view class="industry" wx:if="{{showIndustry}}">
+        <view class="card {{index==0? 'active':''}}" wx:for="{{14}}" wx:key="index">商标/专利</view>
+    </view> -->
+  </view>
+
+  <!-- 列表 -->
+  <view class="list">
+    <view class="card" wx:for="{{list}}" wx:key="index" bindtap="goDetail" data-id="{{item.id}}">
+      <image class="avatar" src="{{util.fullPath(item.avatar)}}" mode="aspectFill" alt="图标"></image>
+      <view class="name">
+        <view class="titl">{{item.name}}</view>
+        <view class="titl label">{{item.cityName}}　{{item.industryName}}</view>
+        <view class="titl con">{{item.overview}}</view>
+      </view>
+      <van-icon name="arrow" size="38rpx" color="#ccc"/>
+    </view>
+    <view class="loading">
+      <van-loading wx:if="{{loading}}" size="24px"  color="#0DC3FF">加载中...</van-loading>
+      <text class="finish" wx:if="{{finish}}">{{list.length>0?'没有更多了': '暂无数据'}}</text>
+    </view>
+  </view>
+  
+  <!-- 入驻广告 -->
+  <image class="advert" bindtap="toPublicJoin" wx:if="{{isFirm=='1'}}" src="/img/common/advert.png"></image>
+  <!-- 行业筛选 -->
+  <van-action-sheet show="{{ showIndustry }}" round="{{false}}">
+    <van-picker columns="{{ columns }}" bind:change="onChange" bind:cancel="toIndustryCal" bind:confirm="toIndustryCrm" show-toolbar/>
+  </van-action-sheet>
+  <van-action-sheet show="{{ showArea }}" round="{{false}}">
+    <van-area area-list="{{ areaList }}" columns-num="{{ 2 }}" bind:change="onAreaChange" bind:cancel="toAreaCal" bind:confirm="toAreaCrm" show-toolbar/>
+  </van-action-sheet>
+  
+</view>
+

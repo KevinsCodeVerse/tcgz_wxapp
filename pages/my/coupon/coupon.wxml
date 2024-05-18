@@ -1,0 +1,35 @@
+<!--pages/my/coupon/coupon.wxml-->
+<view class="coupon">
+  <image class="couponimg" mode="widthFix" src="https://www.tcgz.store/files/default/default_coupon.png"></image>
+  <view class="no_coupon" wx:if="{{list.length==0}}">
+    <image src="/img/my/nocoupon.png"></image>
+  </view>
+  <!-- 列表 -->
+  <view class="cnlist">
+    <view class="cncard" wx:for="{{list}}" wx:key="index">
+      <view class="price">8</view>
+      <view class="cninfo">
+        <view>
+          <view class="money">
+            <text>8元代金券</text>
+            <text class="meet">满88可用</text>
+          </view>
+          <view class="time">限2020.12.01至2020.12.31使用</view>
+        </view>
+        <view class="handle">
+          <view class="attr">
+            <view class="cnremark">
+              <view>发放</view>
+              <view>时间</view>
+            </view>
+            <view class="time">
+              <view>2020.12.01</view>
+              <view>-2020.12.10</view>
+            </view>
+          </view>
+          <view class="mybtn btn">领取</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

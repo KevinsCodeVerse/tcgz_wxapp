@@ -1,0 +1,107 @@
+<!--pages/collective/settled/settled.wxml-->
+<view class="settled">
+  <view class="regular">
+    <image mode="widthFix" src="https://www.tcgz.store/files/default/default_firm_in.png"></image>
+    <!-- 通告轮播 -->
+    <view class="notice">
+      <swiper autoplay="true" vertical="true" circular="true">
+        <swiper-item class="switem" wx:for='{{noticeList}}'>
+          <image src="/img/myicon/notice2.png"></image>
+          <text>{{item.cityName}} {{item.remark}}</text>
+          <text>{{item.name}}</text>
+          <text>已入驻</text>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+  <!-- 填写 -->
+  <view class="fillin">
+    <view class="titimg"><image src="/img/common/settled2.png"></image></view>
+    <view class="myinput">
+      <view class="labl">集体名称</view>
+      <input placeholder="名称" placeholder-class="pholder" maxlength="30" bindinput="bindName"></input>
+    </view>
+    <view class="myinput">
+      <view class="labl">集体类别</view>
+      <view bindtap="toIndustryCal">
+        <view class="myselect" wx:if="{{industryName}}">{{industryName}}</view>
+        <view class="myselect pholder" wx:else>请选择</view>
+      </view>
+    </view>
+    <view class="myinput mycode" bindtap="moveToLocation">
+      <view class="labl">地区信息</view>
+      <!-- <picker bindchange="addressChange" mode = "region">
+        <view class="myselect" wx:if="{{address}}">{{address}}</view>
+        <view class="myselect pholder" wx:else>请选择</view>
+      </picker> -->
+      <view>
+        <view class="myselect" wx:if="{{address}}">{{address}}</view>
+        <view class="myselect pholder" wx:else>请选择</view>
+      </view>
+      <view class="joimg">
+        <image src="/img/myicon/address.png"></image>
+      </view>
+    </view>
+    <view class="myinput mytextarea">
+      <view class="labl">详细地址</view>
+      <textarea placeholder="街道门牌信息" value="{{detail}}" placeholder-class="pholder textarea" bindinput="bindDetail"></textarea>
+    </view>
+    <view class="myinput">
+      <view class="labl">管理账号</view>
+      <input placeholder="请填写，并妥善保管" placeholder-class="pholder" maxlength="20" bindinput="bindAccount"></input>
+    </view>
+    <view class="myinput">
+      <view class="labl">账号密码</view>
+      <input placeholder="请填写，至少8位，并妥善保管" placeholder-class="pholder" maxlength="18" bindinput="bindPwd"></input>
+    </view>
+    <view class="myinput">
+      <view class="labl">是否试用</view>
+      <view class="myswitch">
+        <van-switch checked="{{ type }}" size="34rpx" active-value="1" inactive-value="" inactive-color="#999" active-color="#fcda92" bind:change="typeChange"/>
+        <text class="pholder">{{type==1?'是':'否'}}</text>
+      </view>
+    </view>
+
+    <!-- 手机验证相关 -->
+    <view class="myinput">
+      <view class="labl">手机号</view>
+      <input placeholder="请填写手机号" placeholder-class="pholder" maxlength="18" bindinput="setPhone"></input>
+    </view>
+    <view class="verifys">
+      <view class="verinput">
+        <view class="labl">图片码</view>
+        <input placeholder="请填写图片验证码" placeholder-class="pholder" maxlength="4" bindinput="setVerifyCode"></input>
+      </view>
+      <view><imgCode id="imgCode" bind:sign="getSign" /></view>
+    </view>
+    <view class="verifys">
+      <view class="verinput">
+        <view class="labl">验证码</view>
+        <input placeholder="请填写短信验证码" placeholder-class="pholder" maxlength="6" bindinput="setCode"></input>
+      </view>
+      <text wx:if="{{smsShow}}" bindtap="getSms" class="button">获取验证码</text>
+      <text wx:if="{{!smsShow}}" class="button">{{getVerification}}</text>
+    </view>
+
+    <view class="myinput">
+      <view class="labl">邀请码</view>
+      <input placeholder="选填，若有，可填写" value="{{inviteCode}}" placeholder-class="pholder" maxlength="8" bindinput="bindInviteCode"></input>
+    </view>
+
+    <view class="protocol">
+      <image class="radio" src="/img/myicon/radio.png" wx:if="{{!flag}}" bindtap="toAgree"></image>
+      <image class="radio" src="/img/myicon/radio_active2.png" wx:else bindtap="toAgree"></image>
+      <text bindtap="toAgree">加入代表您同意</text>
+      <navigator url="/pages/collective/protocol/protocol">集体入驻协议</navigator>
+    </view>
+
+    <view class="foot mybtn step2" bindtap="toSubmit">提交申请</view>
+    
+  </view>
+
+  <van-action-sheet show="{{ showIndustry }}" round="{{false}}">
+    <van-picker columns="{{ columns }}" bind:cancel="toIndustryCal" bind:confirm="toIndustryCrm" show-toolbar/>
+  </van-action-sheet>
+</view>
+
+<van-toast id="van-toast" />

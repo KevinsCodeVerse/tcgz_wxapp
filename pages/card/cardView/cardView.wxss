@@ -1,0 +1,483 @@
+/* pages/card/cardView/cardView.wxss */
+.page {
+  padding: 20rpx 0;
+  background: #fff;
+}
+
+.page .bottom-main {
+  height: 200rpx;
+}
+.foot {
+  height: 10vh;
+  overflow: hidden;
+  margin: 10rpx 0;
+  padding: 10rpx 0 30rpx 10rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100rpx;
+  background-color: #fff;
+  z-index: 99;
+  border-top: 1px solid #ddd;
+}
+.card {
+  width: 690rpx;
+  height: 360rpx;
+  padding: 32rpx 40rpx;
+  border-radius: 8px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+.top {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+.card .name {
+  display: flex;
+  font-size: 38rpx;
+  font-weight: 700;
+  margin-bottom: 10rpx;
+}
+.pos {
+  font-size: 22rpx;
+  font-weight: 400;
+  margin: 15rpx 0;
+}
+.right image {
+  position: absolute;
+  top: 0;
+  right: 30%;
+  width: 128rpx;
+  height: 128rpx;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 68rpx;
+}
+.card view {
+  text-align: left;
+  color: #ffffff;
+}
+.card view text {
+  text-align: left;
+  color: #ffffff;
+  font-size: 26rpx;
+  font-weight: 400;
+}
+.cardc {
+  width: 670rpx;
+  height: 246rpx;
+  padding: 32rpx 30rpx;
+  border-radius: 24rpx;
+  border: 10rpx solid #fff;
+  box-sizing: border-box;
+  margin-bottom: 30rpx;
+}
+.cardc view {
+  text-align: left;
+  color: #ffffff;
+}
+.cardc view text {
+  text-align: left;
+  color: #ffffff;
+  font-size: 26rpx;
+  font-weight: 400;
+}
+.icon {
+  width: 24rpx;
+  height: 24rpx;
+  margin: -5rpx 12rpx -2rpx 0;
+}
+.flex-box {
+  display: flex;
+  justify-content: space-around;
+  margin: 30rpx 0;
+  text-align: center;
+}
+.flex-box image {
+  width: 44rpx;
+  height: 44rpx;
+  margin: 0 20rpx;
+}
+.flex-box view {
+  text-align: center;
+}
+.flex-box .view-margin {
+  text-align: center;
+  height: 44rpx;
+  margin: 10rpx 0;
+}
+.cirle-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 92%;
+  height: 282rpx;
+  background: #ffffff;
+  border: 2rpx solid #eeeeee;
+  border-radius: 20rpx;
+}
+.reputation-view {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.reputation {
+  position: relative;
+  width: 710rpx;
+  height: 290rpx;
+}
+.reputation-view .num {
+  margin: 0 auto;
+  position: absolute;
+  z-index: 99;
+  top: 45%;
+  text-align: center;
+  color: #333333;
+  font-size: 70rpx;
+  font-weight: 900;
+}
+.reputation .text {
+  position: absolute;
+  left: 43%;
+  top: 70%;
+  text-align: center;
+  color: #fff;
+  font-size: 20rpx;
+}
+.reputation .tit {
+  font-size: 25rpx;
+}
+.reputation-view .reputation .left {
+  position: absolute;
+  width: 100rpx;
+  left: 11%;
+  top: 39%;
+  text-align: center;
+  background-color: #56a6f1;
+  border-radius: 10rpx;
+  color: #fff;
+  font-size: 23rpx;
+  padding: 0 5rpx;
+}
+.reputation-view .reputation .right {
+  position: absolute;
+  width: 100rpx;
+  right: 11%;
+  top: 39%;
+  text-align: center;
+  background-color: #56a6f1;
+  border-radius: 10rpx;
+  color: #fff;
+  font-size: 23rpx;
+  padding: 0 5rpx;
+}
+.reputation-view .reputation .left-1 {
+  position: absolute;
+  width: 100rpx;
+  left: 11%;
+  top: 44%;
+  text-align: center;
+  background-color: #56a6f1;
+  border-radius: 10rpx;
+  color: #fff;
+  font-size: 23rpx;
+  padding: 0 5rpx;
+}
+.reputation-view .reputation .right-1 {
+  position: absolute;
+  width: 100rpx;
+  right: 11%;
+  top: 44%;
+  text-align: center;
+  background-color: #56a6f1;
+  border-radius: 10rpx;
+  color: #fff;
+  font-size: 23rpx;
+  padding: 0 5rpx;
+}
+.element .tag {
+  display: block;
+  height: 48rpx;
+  font-size: 26rpx;
+  line-height: 48rpx;
+  background: #ecf5ff;
+  border-radius: 12px;
+}
+.tag-flex {
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  margin-top: 15rpx;
+}
+.shop-box {
+  background: #fff;
+  padding: 5rpx 0;
+}
+.box-flex {
+  display: flex;
+  align-items: center;
+ 
+}
+.box-bg{
+    background: #fff;
+    padding: 15rpx 0;
+    /* height: 156rpx; */
+    border: 2rpx solid #eeeeee;
+    border-radius: 20rpx;
+    margin: 15rpx;
+}
+
+.center {
+  /* flex: 7; */
+  width: 70%;
+}
+.card .right {
+  position: relative;
+  display: flex;
+  /* flex: 1; */
+  justify-content: center;
+  align-items: center;
+}
+.circle-yes {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35rpx;
+  height: 35rpx;
+  background: #0080ff;
+  border: 1px solid #0080ff;
+  border-radius: 50%;
+}
+.star-text {
+  border: 2rpx solid rgba(0, 0, 0, 0);
+  font-size: 24rpx;
+  font-weight: 400;
+  text-align: left;
+  color: #ff7800;
+}
+.label-title {
+  font-size: 32rpx;
+  font-family: PingFang SC, PingFang SC-Bold;
+  font-weight: 700;
+  color: #333333;
+}
+.label-text {
+  font-size: 30rpx;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  color: #666666;
+}
+.note {
+  max-width: 100%;
+  margin: 15rpx 0;
+}
+.tit-note {
+  max-width: 100%;
+  font-size: 25rpx;
+  color: #969799;
+  margin-left: 10rpx;
+  margin-top: 10rpx;
+}
+.text-list {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.distance {
+  margin: 0 10rpx;
+  border: 2rpx solid rgba(0, 0, 0, 0);
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #999999;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pic {
+  width: 116rpx;
+  height: 116rpx;
+  margin: 0 20rpx;
+}
+.element {
+  margin-bottom: 20rpx;
+  margin: 20rpx 0;
+  padding: 10rpx 25rpx;
+  background: #fff;
+  /* height: 100%; */
+}
+.element .item {
+  margin: 25rpx 0;
+  height: 100%;
+}
+.element .item .item-margin {
+  margin: 15rpx 0;
+  padding: 10rpx 0;
+}
+.element .item-margin text {
+  font-size: 30rpx;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  color: #666666;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin: 10rpx 0;
+}
+.img {
+  width: 100%;
+  /* height: 100%; */
+  /* margin: 0 auto; */
+}
+.video {
+  width: 100%;
+  margin: 0 auto;
+}
+.data {
+  margin: 20rpx 30rpx;
+  padding: 30rpx;
+  background: #fff;
+  border-radius: 3%;
+}
+.data text {
+  display: inline-block;
+  margin: 10rpx 0;
+}
+.circle-icon {
+  width: 35rpx;
+  height: 35rpx;
+  border: 1px solid #666666;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: PingFang SC, PingFang SC-Bold;
+  font-size: 26rpx;
+  margin-right: 10rpx;
+}
+
+.foot-icon {
+  width: 44rpx;
+  height: 44rpx;
+}
+.share-btn {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #0080ff;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  font-family: PingFang SC, PingFang SC-Bold;
+  font-weight: 700;
+  text-align: center;
+  color: #ffffff;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 80rpx;
+  background-color: #fff;
+  z-index: 99;
+  /* border-top: 1px solid #ddd; */
+}
+.line {
+  background-color: #ddd;
+  color: #ddd;
+  height: 1rpx;
+  width: 100%;
+}
+.have-card {
+  position: fixed;
+  display: flex;
+  border-radius: 10rpx;
+  background: #fff;
+  height: 120rpx;
+  line-height: 120rpx;
+  padding: 10rpx 20rpx;
+  margin: 20rpx 20rpx;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
+  bottom: 13%;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+.have-card .name {
+  color: #1b1b1b;
+  font-size: 32rpx;
+  line-height: 80rpx;
+  font-weight: bold;
+}
+.have-card .text {
+  color: #969799;
+  line-height: 10rpx;
+}
+.have-card .right-btn {
+  flex: 7;
+}
+.displayNonefooter {
+  position: fixed;
+  bottom: 70rpx;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+.notice {
+  height: 112rpx;
+  z-index: 119;
+}
+.notice-view {
+  padding: 20rpx;
+  color: #1989fa;
+  background: #ecf9ff;
+}
+.foot-btn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  padding: 0 0 30rpx 0rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+}
+.btn1 view {
+  font-size: 20rpx;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  text-align: center;
+  color: #222222;
+}
+.btn1 {
+  flex: 1.5;
+}
+.btn2 {
+  flex: 6;
+}
+.wx {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dialog-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40rpx 0;
+}
+.vip-icon {
+  display: block;
+  width: 110rpx;
+  height: 55rpx;
+  margin-left: 10rpx;
+}

@@ -1,0 +1,56 @@
+/* pages/my/spread/fillin_edit/index.wxss */
+.fillin_edit{
+  background-color: #fff;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-top: 20rpx;
+}
+/* 输入框 */
+.myinput{
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 28rpx 0;
+  font-size: 30rpx;
+  margin: 0 60rpx;
+}
+.myinput .labl{
+  width: 180rpx;
+}
+.myinput input{
+  width: calc(100% - 180rpx - 40rpx);
+  color: #666;
+}
+.myinput .joimg{
+  width: 60rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 48rpx;
+}
+.feimg{
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 10rpx;
+}
+.nobor{
+  border-bottom: none;
+}
+/* 按钮 */
+.fillbtn{
+  background-color: #3994FF;
+  color: #fff;
+  margin: 30rpx 14%;
+  height: 76rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 76rpx;
+  font-size: 32rpx;
+}
+.fillbtn2{
+  background-color: #fff;
+  color: #3994FF;
+  font-size: 28rpx;
+  height: 60rpx;
+}

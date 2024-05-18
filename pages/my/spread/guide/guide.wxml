@@ -1,0 +1,33 @@
+<wxs module="util" src="../../../../utils/util.wxs" />
+<scroll-view scroll-y="true" class="guide" lower-threshold="200" bindscrolltolower='getList'>
+  <!-- <view class="info">
+    <image class="ewmimg" mode="aspectFill" src="{{util.fullPath(qrCode)}}"></image>
+    <view>
+      <view class="inremark">平台推广专家二维码</view>
+      <view class="mybtn inbtn" bindtap="saveLocal">保存到本地</view>
+    </view>
+  </view> -->
+  <van-tabs active="{{ status }}" bind:change="onChange" color="#3994ff" tab-class="tabs_class" tab-active-class="active_tab">
+  <van-tab title="图文资讯" name="1"></van-tab>
+  <van-tab title="视频资讯" name="2"></van-tab>
+</van-tabs>
+  <view class="gulist">
+    <view wx:for="{{list}}" wx:key="id" class="gucard gucard2" bindtap="goDetail" data-item="{{item}}" data-type="{{item.type}}">
+      <!-- <view class="time">
+        <view class="tit">16</view>
+        <view>2020.12</view>
+      </view> -->
+      <image wx:if="{{item.type == 2}}"  class="ed" src="/img/common/player.png"></image>
+      <image src="{{util.fullPath(item.cover)}}" mode="aspectFill"></image>
+      <view class="name">
+        <view wx:if="{{item.type == 2}}" class="tits">{{item.title}}</view>
+        <view wx:if="{{item.type == 1}}" class="tit">{{item.title}}</view>
+        <view wx:if="{{item.type == 1}}" class="subtit">{{item.intros}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="loading">
+    <van-loading wx:if="{{loading}}" size="24px"  color="#0DC3FF">加载中...</van-loading>
+    <text class="finish" wx:if="{{finish}}">没有数据了</text>
+  </view>
+</scroll-view>

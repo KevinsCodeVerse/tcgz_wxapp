@@ -1,0 +1,290 @@
+/* pages/order/join_group/index.wxss */
+.join_group {
+	padding-bottom: 20rpx;
+	padding-top: 20rpx;
+}
+.jprbg {
+	width: 100%;
+	background: #86cc14;
+	height: 520rpx;
+	border-radius: 0px 0px 180rpx 80rpx;
+	position: absolute;
+	z-index: -1;
+	left: 0;
+	top: 0;
+}
+.master {
+	display: flex;
+	background-color: #fff;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10rpx 0;
+	margin: 0 20rpx;
+	border-radius: 70rpx;
+	font-size: 24rpx;
+	color: #86cc14;
+	padding-right: 30rpx;
+}
+.master .name {
+	display: flex;
+	align-items: center;
+	width: calc(100% - 150rpx);
+	color: #333;
+}
+.master .name image {
+	border-radius: 50%;
+}
+.master .name .nick {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+  overflow: hidden;
+  word-wrap: break-word;
+	text-overflow: ellipsis;
+	width: 350rpx;
+}
+.master image {
+	width: 52rpx;
+	height: 52rpx;
+	margin-right: 20rpx;
+	margin-left: 10rpx;
+}
+/* 商品信息 */
+.goods {
+	background-color: #fff;
+	border-radius: 20rpx;
+	margin: 20rpx 20rpx;
+}
+.goods .house {
+	font-size: 32rpx;
+	font-weight: bold;
+	padding: 24rpx 30rpx;
+	border-bottom: 1px solid #f1f1f1;
+}
+.goods .d_goods {
+	display: flex;
+	padding: 26rpx 30rpx;
+}
+.goods .cover {
+	position: relative;
+}
+.goods .cover image {
+	width: 120rpx;
+	height: 120rpx;
+	border-radius: 12rpx;
+}
+.goods .bag {
+	position: absolute;
+	background-color: #86cc14;
+	color: #fff;
+	top: 0;
+	left: 0;
+	font-size: 18rpx;
+	border-radius: 12rpx 0px 12rpx 0px;
+	padding: 2rpx 10rpx;
+}
+.goods .goinfo {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: calc(100% - 120rpx);
+	padding-left: 20rpx;
+}
+.goods .name {
+	font-weight: bold;
+}
+.goods .spec {
+	font-size: 20rpx;
+	color: #ccc;
+}
+.goods .price {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.goods .jgr_price {
+	display: flex;
+	align-items: center;
+}
+.goods .currprice {
+	font-size: 32rpx;
+	font-weight: bold;
+	color: #86cc14;
+}
+.goods .oriprice {
+	color: #ccc;
+	text-decoration: line-through;
+	font-size: 20rpx;
+}
+.goods .label {
+	background-color: #86cc14;
+	color: #fff;
+	display: flex;
+	align-items: flex-end;
+	border-radius: 6rpx;
+	padding: 2rpx 10rpx;
+	font-size: 16rpx;
+	margin-left: 10rpx;
+}
+.goods .label .pintuan {
+	position: relative;
+	top: -10rpx;
+}
+
+.goods .label text {
+	font-size: 32rpx;
+	font-weight: bold;
+}
+.goods .count {
+	color: #aaa;
+	font-size: 24rpx;
+}
+/* 参团列表 */
+.joins {
+	background-color: #fff;
+	border-radius: 20rpx;
+	padding: 0 30rpx;
+	margin: 20rpx;
+}
+.joins .joremark {
+	font-weight: bold;
+	font-size: 28rpx;
+	padding: 24rpx 0;
+	border-bottom: 1px solid #f5f5f5;
+	display: flex;
+	justify-content: space-between;
+}
+.joins .joremark text {
+	color: #86cc14;
+}
+.joins .cutoff {
+	font-weight: normal;
+	font-size: 24rpx;
+}
+.joins .avalist {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 24rpx 0;
+}
+.joins .avatar {
+	width: 52rpx;
+	height: 52rpx;
+	margin-bottom: 10rpx;
+	border-radius: 50%;
+	margin-right: 20rpx;
+}
+.joins .joadd {
+	position: relative;
+	top: -6rpx;
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+	border-radius: 50%;
+	border: 1px dashed #cccccc;
+	width: 52rpx;
+	height: 52rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #eeeeee;
+	color: #cccccc;
+}
+/* 拼团玩法 */
+.step {
+	background-color: #fff;
+	border-radius: 20rpx;
+	padding: 0 30rpx;
+	margin: 20rpx;
+}
+.step .sttit {
+	font-weight: bold;
+	padding: 20rpx 0;
+	border-bottom: 1px solid #f1f1f1;
+}
+.step .stepimg {
+	text-align: center;
+	margin-top: 26rpx;
+	padding-bottom: 24rpx;
+}
+/* 按钮 */
+
+/* 底部栏 */
+.foot {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 100rpx;
+	background-color: #fff;
+	z-index: 99;
+	border-top: 1px solid #eee;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	text-align: center;
+}
+.foot image {
+	width: 32rpx;
+	height: 32rpx;
+}
+.foot .handle {
+	width: 90rpx;
+	font-size: 20rpx;
+	color: #666666;
+	box-sizing: border-box;
+	position: relative;
+}
+.foot .handle .btn {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 99;
+	opacity: 0;
+	background-color: aqua;
+}
+.foot .btn {
+	width: calc(100% - 250rpx);
+	height: 100%;
+	display: flex;
+}
+.foot .btn1 {
+	background-color: #e2ffb3;
+	color: #86cc14;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	font-size: 28rpx;
+	width: 50%;
+}
+
+.foot .btn3 {
+	background-color: #cccccc;
+	color: #ffffff;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	font-size: 32rpx;
+	width: 100%;
+}
+.foot .btn1 view {
+	font-size: 36rpx;
+	font-weight: bold;
+}
+.foot .btn2 {
+	background-color: #86cc14;
+	color: #fff;
+}
+
+/* 时间 倒计时 */
+van-count-down {
+	display: inline-block;
+}
+.van-count-down {
+	color: #86cc14 !important;
+	font-size: 26rpx !important;
+}

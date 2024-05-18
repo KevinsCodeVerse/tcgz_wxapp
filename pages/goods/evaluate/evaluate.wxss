@@ -1,0 +1,73 @@
+/* 商品评价 */
+.evaluate{
+  background-color: #fff;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+.evalist .evacard:last-child{
+  border-bottom: none;
+}
+.evacard{
+  padding: 34rpx 0;
+  margin: 0 40rpx;
+  border-bottom: 1px solid #f1f1f1;
+}
+.evaluate .evcard{
+  display: flex;
+}
+.evaluate .avatar{
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.evaluate .name{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 24rpx;
+  width: calc(100% - 92rpx);
+}
+.evaluate .time{
+  display: flex;
+  justify-content: space-between;
+}
+.evaluate .time>text:last-child{
+  color: #B6B6B6;
+}
+.evaluate .evcon{
+  margin-top: 20rpx;
+}
+.evaluate .evimgs{
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.evaluate .evimgs image{
+  width: 210rpx;
+  height: 210rpx;
+  border-radius: 16rpx;
+  margin-right: 20rpx;
+}
+.evaluate .evimgs image:last-child{
+  margin-right: 0;
+}
+.evaluate .more{
+  color: #3994FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 26rpx;
+  padding-top: 60rpx;
+  font-size: 24rpx;
+}
+/* 滑动加载 */
+.loading {
+  text-align: center;
+  padding: 30rpx 0;
+}
+.finish {
+  font-size: 28rpx;
+  color: #999999;
+  padding-bottom: 20rpx;
+}

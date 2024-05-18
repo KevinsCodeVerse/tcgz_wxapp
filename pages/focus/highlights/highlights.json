@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "视频锦集",
+  "usingComponents": {
+    "highlightsVideo":"../../../components/content/highlightsVideo/highlightsVideo"
+  }
+}

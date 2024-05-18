@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "van-dialog": "/miniprogram/miniprogram_npm/@vant/weapp/dialog/index",
+    "referrer": "/components/referrer/referrer",
+    "van-popup": "/miniprogram/miniprogram_npm/@vant/weapp/popup/index",
+    "van-cell-group": "/miniprogram/miniprogram_npm/@vant/weapp/cell-group/index"
+  },
+  "navigationBarTitleText": "个人中心"
+}

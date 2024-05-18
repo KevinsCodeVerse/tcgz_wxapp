@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index"
+
+  },
+  "navigationBarTitleText": "进行提现"
+}

@@ -1,0 +1,4 @@
+/* pages/shop/protocol/protocol.wxss */
+.protocol{
+  padding: 46rpx;
+}

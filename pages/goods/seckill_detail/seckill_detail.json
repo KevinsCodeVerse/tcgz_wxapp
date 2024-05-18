@@ -1,0 +1,16 @@
+{
+  "usingComponents": {
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "navigation": "/components/navigation/navigation",
+    "van-rate": "/miniprogram/miniprogram_npm/@vant/weapp/rate/index",
+    "van-count-down": "/miniprogram/miniprogram_npm/@vant/weapp/count-down/index",
+    "goodscanvas": "/components/goodscanvas/goodscanvas",
+    "van-button": "/miniprogram/miniprogram_npm/@vant/weapp/button/index"
+
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "",
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#FF6040"
+}

@@ -1,0 +1,234 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="detail_order">
+  <view class="progress" wx:if="{{status==0}}">
+    <view>订单未支付，系统将在15分钟后自动关闭，请尽快支付！</view>
+    <view class="mydown">
+      <van-count-down time="{{ timedown }}" />
+      后关闭
+    </view>
+  </view>
+  <view class="progress" wx:if="{{status==5}}">
+    <view>
+      请尽快邀请好友参与哦 , 拼团时间剩余
+      <van-count-down bind:finish="onFinish" time="{{ teamTime*1000 }}" />
+    </view>
+  </view>
+  <view class="progress progress2" wx:if="{{status==1&&(order.afterSellStatus==8||order.afterSellStatus==-1||order.afterSellStatus==0)&&status!=0}}">
+    <view>拼团成功！请尽快前往商家出示二维码自提/体验</view>
+  </view>
+  <view class="progress progress5" wx:if="{{status==-1}}">
+    <view>拼团未成功！系统已自动退款.</view>
+  </view>
+  <view class="progress progress5" wx:if="{{order.afterSellStatus==10}}">
+    <view>已退款</view>
+  </view>
+  <view class="progress progress3" wx:if="{{status==2}}">
+    <view>请对商家产品进行评价，不评价系统15天后默认好评哦</view>
+  </view>
+  <view class="progress progress4" wx:if="{{status==10}}">
+    <view>支付成功！请等待商家发货</view>
+  </view>
+  <view class="progress progress4" wx:if="{{status==11&&order.afterSellStatus!=10}}">
+    <view>商家已发货！请等待物流运输并确认收货</view>
+  </view>
+  <!-- <view class="progress" wx:if="{{status==-1}}">
+    <view>拼团时间剩余00:14:59，请尽快邀请好友参与哦</view>
+  </view> -->
+  <!-- 商品信息 -->
+  <view class="orcard">
+    <view class="shop">
+      <view class="house">
+        <image class="shopimg" mode="aspectFill" src="{{util.fullPath(shop.shopPhoto)}}"></image>
+        <view class="shname">{{shop.name}}</view>
+      </view>
+      <view class="goshop" bindtap="goShopDetail">
+        <text>进店逛逛</text>
+        <van-icon name="arrow" />
+      </view>
+    </view>
+    <view class="goods" bindtap="goGoodsDetail">
+      <image class="cover" mode="aspectFill" src="{{util.fullPath(goods.avatar)}}"></image>
+      <view class="goinfo">
+        <view class="gotit">
+          <view>{{goods.title}}</view>
+          <text class="logistics" wx:if="{{order.carriage == 2}}">物流配送</text>
+          <text class="local" wx:else>线下体验</text>
+        </view>
+        <view class="gospec">{{goods.remark}}</view>
+        <view class="count">
+          <view class="coprice">
+            <text class="goprice">￥{{order.proPrice}}</text>
+            <text class="original">￥{{order.originalPrice}}</text>
+            <view class="bag">
+              <text>拼团价￥</text>
+              <text class="bigpr">{{order.price}}</text>
+            </view>
+          </view>
+          <view class="gonum">x{{order.count}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="handle" wx:if="{{order.freight}}" style="display: flex;justify-content: space-between;">
+      <view class="total">运费:</view>
+      <view style="color:#999">￥{{order.freight}}</view>
+    </view>
+    <view class="handle" wx:if="{{order.discountPrice}}" style="display: flex;justify-content: space-between;">
+      <view class="total">优惠券:</view>
+      <view style="color:rgb(253, 80, 0)">-￥{{order.discountPrice}}</view>
+    </view>
+    <view class="handle">
+      <view class="total">
+        <text bind:tap="onFinish">合计:</text>
+        <text class="money">￥{{order.payAmount}}</text>
+      </view>
+      <view class="active1">{{order.textStatus}}</view>
+    </view>
+  </view>
+  <!-- 核销二维码 -->
+  <view class="ewm" wx:if="{{(status==1 || status==2) && order.carriage==1&&order.afterSellStatus!=10}}">
+    <view class="cotit">核销二维码</view>
+    <view class="ewmcon">
+      <view>请向商家出示二维码</view>
+      <view class="ewmimg">
+        <image class="ewmimage" mode="widthFix" src="{{util.fullPath(order.qrCode)}}"></image>
+        <view class="shade" wx:if="{{status==3}}">
+          <image class="finish" src="/img/order/finish.png"></image>
+        </view>
+        <view style="color: #999;font-size: 18rpx;font-weight: 400;margin-top: -20rpx;" wx:else>有效期15天,超时自动核销</view>
+      </view>
+    </view>
+  </view>
+  <!-- 参团列表 -->
+  <view class="joins" wx:if="{{status == 5||status==1||status==2}}">
+    <view class="joremark">
+      <text>{{order.peopleCount}}</text>
+      人成团，当前有
+      <text>{{order.userCount}}</text>
+      人参团
+    </view>
+    <view class="avalist">
+      <image class="avatar" wx:for="{{users}}" wx:key="index" mode="aspectFill" src="{{util.fullPath(item)}}"></image>
+      <button class="joadd" open-type="share" wx:if="{{status !=1&&status!=2}}">
+        <van-icon name="plus" bind:tap="addRerson" />
+      </button>
+    </view>
+  </view>
+  <!-- 商家信息 -->
+  <view class="contact" wx:if="{{order.carriage==1}}">
+    <view class="cotit">商家信息</view>
+    <view class="d_contact">
+      <view class="phone">
+        <view class="address">
+          <text style="width: 110rpx">营业时间</text>
+          <text>{{shop.startTime ? shop.startTime + '-' + shop.endTime : '无'}}</text>
+        </view>
+        <view class="address">
+          <text style="width: 110rpx">电话</text>
+          <text>{{shop.phone? shop.phone: '无'}}</text>
+        </view>
+        <view class="address">
+          <text style="width: 130rpx">地址</text>
+          <text class="addre">{{shop.address}}</text>
+        </view>
+      </view>
+      <view>
+        <view class="mybtn cobtn" bindtap="freeTell">
+          <image src="/img/myicon/phone4.png"></image>
+          <text>致电</text>
+        </view>
+        <view class="mybtn cobtn" bindtap="toOpenNav">
+          <image src="/img/myicon/navigation4.png"></image>
+          <text>导航</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 订单信息 -->
+  <view class="basics">
+    <view class="cotit">订单信息</view>
+    <view class="balist">
+      <view class="bacard">
+        <view>订单编号　{{order.id}}</view>
+        <view class="label" bindtap="toCopy">复制</view>
+      </view>
+      <view class="bacard" wx:if="{{order.createTime}}">
+        <view>创建时间　{{util.formatDateLong(order.createTime)}}</view>
+      </view>
+      <view class="bacard">
+        <view>预留手机　{{order.phone}}</view>
+      </view>
+      <view class="bacard">
+        <view>配送方式　{{order.carriage==1? '自提/线下体验':'快递'}}</view>
+      </view>
+      <view class="bacard" wx:if="{{order.express}}">
+        <view>快递公司　{{order.express}}</view>
+      </view>
+      <view class="bacard" wx:if="{{order.expressNum}}">
+        <view>快递单号　{{order.expressNum}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 收货地址 -->
+  <view class="basics" wx:if="{{order.carriage==2}}">
+    <view class="cotit">收货地址信息</view>
+    <view class="delivery">
+      <view>
+        <text class="name">{{order.consignee}}</text>
+        {{order.phone}}
+      </view>
+      <view>{{order.address}}</view>
+    </view>
+  </view>
+  <view class="basics cotit" style="display: flex;justify-content: space-between;" wx:if="{{order.carriage==2}}">
+    <view>联系平台客服</view>
+    <view class="label" bindtap="freeTell" style="width: 160rpx;">点击联系</view>
+  </view>
+  <!-- 商品评价 -->
+  <view class="evaluate" wx:if="{{evaluate.nick}}">
+    <view class="cotit">商品评价</view>
+    <view style="padding: 20rpx 40rpx;">
+      <view class="evcard">
+        <image class="avatar" mode="aspectFill" src="{{util.fullPath(evaluate.avatar)}}"></image>
+        <view class="name">
+          <view class="time">
+            <text>{{evaluate.nick}}</text>
+            <text>{{util.formatDateShort(evaluate.createTime)}}</text>
+          </view>
+          <van-rate readonly readonly value="{{ evaluate.level }}" bind:change="onChange" color="#FF7800" size="30rpx" gutter="0px" />
+        </view>
+      </view>
+      <view class="evcon">{{evaluate.content}}</view>
+      <view class="evimgs">
+        <image mode="aspectFill" wx:for="{{evaluate.imgArr}}" wx:for-item="i" src="{{util.fullPath(i)}}"></image>
+      </view>
+    </view>
+  </view>
+  <view class="tip" wx:if="{{status==5}}">
+    <view>邀请好友参与拼团，满{{order.peopleCount}}人成团</view>
+    <view>成团后可到商家店铺地址出示二维码自提或体验</view>
+  </view>
+  <view class="pay_box foot" wx:if="{{status==5}}">
+    <view class="mybtn bgwhie" bindtap="cancelPays">取消拼团</view>
+    <view  class="mybtn"><button class="mybtn" style="background-color: rgb(0,0,0,0);color:#fff" open-type="share" >邀请好友拼团</button></view>
+  </view>
+  <!-- <view class="mybtn foot" wx:if="{{status==0}}" bindtap="wechatPay">立即支付</view> -->
+  <view class="pay_box foot" wx:if="{{status==0}}">
+    <view class="mybtn bgwhie" bindtap="cancelPay">取消订单</view>
+    <view class="mybtn" bindtap="wechatPay">立即支付</view>
+  </view>
+  <view class="mybtn foot bgwhie1" wx:if="{{status==10||status==1&&order.afterSellStatus==0||order.afterSellStatus==8}}" bindtap="goRefund">
+    申请退款
+  </view>
+  <view class="mybtn foot" wx:if="{{status==2}}" bindtap="goEvaluate">立即评价</view>
+  <view class="mybtn foot" wx:if="{{status==11}}" bindtap="toDelivery">确认收货</view>
+  <view class="pay_box foot" wx:if="{{status==11&&order.afterSellStatus!=10}}">
+    <view class="mybtn bgwhie2" bindtap="goRefund">申请退款</view>
+    <view class="seckill mybtn" bindtap="toDelivery">确认收货</view>
+  </view>
+  
+  <view class="mybtn foot bgwhie1" wx:if="{{order.afterSellStatus!=-1&&order.afterSellStatus!=0&&order.afterSellStatus!=12&&order.afterSellStatus!=8}}" bindtap="goRefundDetail">
+    查看售后进度
+  </view>
+</view>
+<van-dialog id="van-dialog" />

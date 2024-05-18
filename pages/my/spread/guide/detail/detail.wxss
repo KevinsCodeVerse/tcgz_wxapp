@@ -1,0 +1,12 @@
+/* pages/my/spread/guide/detail/detail.wxss */
+.guide_detail{
+  background-color: #fff;
+  min-height: 100vh;
+  padding: 0 36rpx;
+  line-height: 50rpx;
+}
+.tit{
+  font-size: 40rpx;
+  font-weight: bold;
+  padding: 40rpx 0;
+}

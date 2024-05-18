@@ -1,0 +1,16 @@
+{
+  "usingComponents": {
+    "van-button": "/miniprogram/miniprogram_npm/@vant/weapp/button/index",
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "van-circle": "/miniprogram/miniprogram_npm/@vant/weapp/circle/index",
+    "van-tag": "/miniprogram/miniprogram_npm/@vant/weapp/tag/index",
+    "van-cell": "/miniprogram/miniprogram_npm/@vant/weapp/cell/index",
+    "van-cell-group": "/miniprogram/miniprogram_npm/@vant/weapp/cell-group/index",
+    "van-field": "/miniprogram/miniprogram_npm/@vant/weapp/field/index",
+    "van-notice-bar":"/miniprogram/miniprogram_npm/@vant/weapp/notice-bar",
+    "van-action-sheet": "/miniprogram/miniprogram_npm/@vant/weapp/action-sheet/index",
+    "custom-tabbar": "/components/custom-tabbar/custom-tabbar",
+    "van-dialog": "/miniprogram/miniprogram_npm/@vant/weapp/dialog/index"
+  },
+  "navigationBarTitleText": "名片信息"
+}

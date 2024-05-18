@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "van-tab": "./../../../miniprogram/miniprogram_npm/@vant/weapp/tab/index",
+    "van-tabs": "./../../../miniprogram/miniprogram_npm/@vant/weapp/tabs/index",
+    "van-icon": "./../../../miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "van-notice-bar": "./../../../miniprogram/miniprogram_npm/@vant/weapp/notice-bar/index",
+    "phone": "./../phone/phone",
+    "activity": "./../activity/index",
+    "news": "./../news/news"
+  },
+  "navigationBarTitleText": "我的关注"
+}

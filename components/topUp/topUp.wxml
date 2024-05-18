@@ -1,0 +1,9 @@
+<view class="title">充值</view>
+<view class="box">
+    <view class="item_box" bindtap="handTotUp" data-amount="50" hover-class="hover_item">50元</view>
+    <view class="item_box" bindtap="handTotUp" data-amount="100" hover-class="hover_item">100元</view>
+    <view class="item_box" bindtap="handTotUp" data-amount="500" hover-class="hover_item">500元</view>
+    <view class="item_box" bindtap="handTotUp" data-amount="1000" hover-class="hover_item">1000元</view>
+    <view class="item_box" bindtap="handTotUp" data-amount="2500" hover-class="hover_item">2500元</view>
+    <view class="item_box" bindtap="handTotUp" data-amount="5000" hover-class="hover_item">5000元</view>
+</view>

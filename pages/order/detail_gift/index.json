@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "van-rate": "/miniprogram/miniprogram_npm/@vant/weapp/rate/index",
+    "van-count-down": "/miniprogram/miniprogram_npm/@vant/weapp/count-down/index"
+  },
+  "navigationBarTitleText": "订单详情",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black"
+}

@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "van-search": "/miniprogram/miniprogram_npm/@vant/weapp/search/index",
+    "van-tab": "/miniprogram/miniprogram_npm/@vant/weapp/tab/index",
+    "van-tabs": "/miniprogram/miniprogram_npm/@vant/weapp/tabs/index",
+    "van-progress": "/miniprogram/miniprogram_npm/@vant/weapp/progress/index",
+    "van-action-sheet": "/miniprogram/miniprogram_npm/@vant/weapp/action-sheet/index",
+    "van-cell": "/miniprogram/miniprogram_npm/@vant/weapp/cell/index",
+    "van-loading": "/miniprogram/miniprogram_npm/@vant/weapp/loading/index",
+    "van-cell-group": "/miniprogram/miniprogram_npm/@vant/weapp/cell-group/index",
+    "van-popup": "/miniprogram/miniprogram_npm/@vant/weapp/popup/index"
+  },
+  "navigationBarTitleText": "推广等级"
+}

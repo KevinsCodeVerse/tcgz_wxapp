@@ -1,0 +1,83 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="order">
+  <scroll-view class="scroll_box" scroll-x="{{true}}">
+    <view class="tabs">
+      <text class="{{active==''? 'active':''}}" data-status="" bindtap="toTabs">全部</text>
+      <text class="{{active=='0'? 'active':''}}" data-status="0" bindtap="toTabs">待支付</text>
+      <text class="{{active=='1'? 'active':''}}" data-status="1" bindtap="toTabs">待使用</text>
+      <text class="{{active=='10'? 'active':''}}" data-status="10" bindtap="toTabs">待发货</text>
+      <text class="{{active=='11'? 'active':''}}" data-status="11" bindtap="toTabs">待收货</text>
+      <text class="{{active=='2'? 'active':''}}" data-status="2" bindtap="toTabs">待评价</text>
+      <text class="{{active=='3'? 'active':''}}" data-status="3" bindtap="toTabs">已完成</text>
+      <!-- 售后新增 -->
+      <!-- <text class="{{active=='99'? 'active':''}}" data-status="99" bindtap="toTabs">退款记录</text> -->
+      <!-- <text class="{{active=='99'? 'active':''}}" data-status="99" bindtap="toTabs">已申请退货退款</text>
+      <text class="{{active=='99'? 'active':''}}" data-status="99" bindtap="toTabs">已退款</text>
+      <text class="{{active=='99'? 'active':''}}" data-status="99" bindtap="toTabs">退款失败</text> -->
+    </view>
+  </scroll-view>
+  <view class="orlist">
+    <view class="orcard" wx:for="{{list}}" wx:key="index">
+      <view class="shop">
+        <view>
+          <image class="shopimg" mode="aspectFill" src="{{util.fullPath(item.avatar)}}"></image>
+          <view class="shname">{{item.shopName}}</view>
+        </view>
+        <view class="{{[item.userOrderPay.status==2||item.userOrderPay.status==-1||item.userOrderPay.status==-2||item.userOrderPay.status==3||item.userOrderPay.status==22?'active4':'',item.userOrderPay.status==11||item.userOrderPay.status==10||item.userOrderPay.status==1||item.userOrderPay.status==20||item.userOrderPay.status==21?'active2':'',item.userOrderPay.status==0||item.userOrderPay.status==23?'active1':'',item.userOrderPay.status==2?'active3':'']}}" wx:for="{{statusList}}" wx:for-item="item2" wx:key="id" wx:if="{{item2.id == item.userOrderPay.status}}">
+          {{item2.name}}
+        </view>
+      </view>
+      <view class="goods" bindtap="goDetail" data-id="{{item.userOrderPay.id}}">
+        <image class="cover" mode="aspectFill" src="{{util.fullPath(item.proInfo.avatar)}}"></image>
+        <view class="goinfo">
+          <view class="gotit">
+            <view>{{item.proInfo.title}}</view>
+            <text class="logistics" wx:if="{{item.userOrderPay.carriage == 2}}">物流配送</text>
+            <text class="local" wx:else>线下体验</text>
+          </view>
+          <view class="gospec">{{item.proInfo.remark}}</view>
+          <view class="count">
+            <view>
+              <text class="goprice">￥{{item.userOrderPay.price||item.userOrderPay.payAmount}}</text>
+              <text class="original">￥{{item.userOrderPay.originalPrice}}</text>
+              <text class="freight" wx:if="{{item.userOrderPay.freight}}">运费￥{{item.userOrderPay.freight}}</text>
+            </view>
+            <view class="gonum">x{{item.userOrderPay.count}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="handle">
+        <view class="total">
+          <text>合计:</text>
+          <text class="money">￥{{item.userOrderPay.payAmount}}</text>
+        </view>
+        <view class="orbtn">
+          <view class="mybtn btn1" bindtap="goDetail" data-id="{{item.userOrderPay.id}}">订单详情</view>
+          <view class="mybtn btn1 btn2" wx:if="{{item.userOrderPay.status==0}}" bindtap="goDetail" data-id="{{item.userOrderPay.id}}">
+            前往支付
+          </view>
+          <view class="mybtn btn1 btn3" wx:if="{{item.userOrderPay.status==1 && item.userOrderPay.qrCode}}" bindtap="toEwm" data-qrcode="{{item.userOrderPay.qrCode}}">
+            查看二维码
+          </view>
+          <view class="mybtn btn1 btn2" wx:if="{{item.userOrderPay.status==11}}" bindtap="goDetail" data-id="{{item.userOrderPay.id}}">
+            确认收货
+          </view>
+          <view class="mybtn btn1 btn3" wx:if="{{item.userOrderPay.status==2}}" bindtap="goEvaluate" data-obj="{{item.userOrderPay}}">
+            前往评价
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="loading">
+      <van-loading wx:if="{{loading}}" size="24px" color="#0DC3FF">加载中...</van-loading>
+      <text class="finish" wx:if="{{finish}}">{{list.length>0?'没有更多了': '暂无数据'}}</text>
+    </view>
+  </view>
+</view>
+<!-- 弹框 -->
+<van-popup show="{{ show }}" bind:close="onClose" custom-style="border-radius: 20rpx;">
+  <view class="ewmpop">
+    <view>请向商家出示二维码</view>
+    <image mode="widthFix" src="{{util.fullPath(qrCode)}}"></image>
+  </view>
+</van-popup>

@@ -1,0 +1,103 @@
+<!--pages/collective/detail_my/index.wxml-->
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="coll_detail">
+    <view class="myhead">
+        <picker bindchange="attentChange" value="{{index}}" range="{{attentList}}" range-key="name">
+            <view class="dmselect">
+                <image mode="aspectFill" class="avatar" src="{{util.fullPath(attent.avatar)}}"></image>
+                <view class="selcon">{{attent.name}}</view>
+                <van-icon name="arrow-down" />
+            </view>
+        </picker>
+        <view class="mysearch" bindtap="goSearch">
+            <image src="/img/myicon/search.png"></image>
+            <text>寻找集体</text>
+        </view>
+    </view>
+
+    <view style="background-color: #fff;">
+        <!-- 信息 -->
+        <view class="move">
+            <view wx:if="{{bannerList.length!=0}}">                
+                <swiper autoplay interval="2000" duration="500" style="height: 500rpx;">
+                    <block wx:for="{{bannerList}}" wx:key="*this">
+                        <swiper-item>
+                            <image style="height: 360rpx;width: 100vw;" mode="widthFix" src="{{util.fullPath(item.image)}}"></image>
+                        </swiper-item>
+                    </block>
+                </swiper>
+            </view>
+            <view wx:else>            
+                <image mode="widthFix" class="banner" src="{{util.fullPath(info.banner)}}"></image>
+            </view>
+
+            <image class="avatar" mode="aspectFill" src="{{util.fullPath(info.avatar)}}"></image>
+        </view>
+
+        <view class="titl">{{info.name}}</view>
+        <view class="subtitl">{{info.overview? info.overview:''}}</view>
+
+        <!-- 通知 -->
+        <view class="mynotice" wx:if="{{notice}}" bindtap="goDetail">
+            <view class="d_notice">
+                <van-notice-bar left-icon="volume-o" text="{{notice}}" color="#3994FF" left-icon="/img/myicon/notice.png" />
+            </view>
+        </view>
+    </view>
+
+    <!--  -->
+    <view class="exhibition">
+        <van-tabs active="{{ active }}" color="#3994FF">
+
+            <van-tab title="组织活动">
+                <activity id="activity" wx:if="{{id}}" firmId="{{id}}" />
+            </van-tab>
+
+            <van-tab title="组织资讯">
+                <news id="news" wx:if="{{id}}" firmId="{{id}}" />
+            </van-tab>
+
+            <van-tab title="通讯录">
+                <phone id="phone" wx:if="{{id}}" firmId="{{id}}" />
+            </van-tab>
+
+            <van-tab title="关于">
+                <view class="myintro">
+                    <!-- 联系 -->
+                    <view class="contact">
+                        <view class="phone">
+                            <view class="address">
+                                <text class="addname">电话</text>
+                                <text>{{info.phone? info.phone: '暂无'}}</text>
+                            </view>
+                            <view class="address">
+                                <text class="addname">地址</text>
+                                <text class="addre">{{info.address}}</text>
+                            </view>
+                        </view>
+                        <view>
+                            <view class="mybtn cobtn" bindtap="freeTell">
+                                <image class="icon" src="/img/myicon/phone.png"></image>
+                                <text>致电</text>
+                            </view>
+                            <view class="mybtn cobtn" bindtap="toOpenNav">
+                                <image class="icon" src="/img/myicon/navigation.png"></image>
+                                <text>导航</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="intro">
+                        <view class="tit"><text>组织简介</text></view>
+                        <view wx:if="{{!info.description}}">暂无简介~</view>
+                        <rich-text nodes="{{info.description}}"></rich-text>
+                    </view>
+                </view>
+            </van-tab>
+
+        </van-tabs>
+    </view>
+
+    <!-- <view class="foot mybtn" bindtap="goMap">进入集体</view> -->
+    <!-- 入驻广告 -->
+    <image class="advert" bindtap="toPublicJoin" wx:if="{{isFrim==1}}" src="/img/common/advert.png"></image>
+</view>

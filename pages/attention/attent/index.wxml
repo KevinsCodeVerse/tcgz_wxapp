@@ -1,0 +1,102 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="attent" style="position: relative;" bindtap="toClose">
+  <map wx:if="{{mapShow}}" enable-scroll="{{true}}" enable-zoom="{{true}}" class="mymap" id="mapid" show-location  
+    longitude='{{longitude}}' latitude='{{latitude}}' markers="{{markers}}" bindmarkertap="toMarkertap">
+  </map>
+
+  <view class="myhead">
+    <picker bindchange="attentChange" value="{{index}}" range="{{attentList}}" range-key="name">
+      <view class="dmselect">
+        <image mode="aspectFill" class="avatar" src="{{util.fullPath(attent.avatar)}}"></image>
+        <view class="selcon">{{attent.name}}</view>
+        <van-icon name="arrow-down" />
+      </view>
+    </picker>
+    <view class="mysearch" bindtap="goSearch">
+      <image src="/img/myicon/search.png"></image>
+      <text>寻找集体</text>
+    </view>
+  </view>
+
+  <!-- <cover-view class="myhead">
+    <cover-view class="dmselect">
+      <cover-image class="avatar" src="/img/common/avatar.png"></cover-image>
+      <cover-view class="selcon">中山市家用电器行业</cover-view>
+      <cover-image class="icon" src="/img/myicon/select.png"></cover-image>
+    </cover-view>
+    <cover-view class="mysearch" bindtap="goSearch">
+      <cover-image class="searimg" src="/img/myicon/search.png"></cover-image>
+      <cover-view>寻找集体</cover-view>
+    </cover-view>
+  </cover-view> -->
+  
+  <!-- <cover-view class="mainly">
+    <cover-view class="search">
+      <cover-image class="icon" src="/img/myicon/search2.png"></cover-image>
+      <cover-view class='cover-input' bindtap='tapInput'>
+        <cover-view class='pholder' wx:if="{{inputInfo}}">{{inputInfo}}</cover-view>
+        <input class='input' wx:else value='{{inputModel}}' focus='{{inputFocus}}' bindblur='blurInput'></input>
+      </cover-view>
+    </cover-view>
+  </cover-view> -->
+ 
+
+  <cover-view class="sidebar">
+    <cover-view class="sbcard" data-type="0" bindtap="goDetail">
+      <cover-image class="sbimg" src="/img/myicon/map1.png"></cover-image>
+      <cover-view>活动列表</cover-view>
+    </cover-view>
+    <cover-view class="sbcard" data-type="1" bindtap="goDetail">
+      <cover-image class="sbimg" src="/img/myicon/map2.png"></cover-image>
+      <cover-view>组织资讯</cover-view>
+    </cover-view>
+    <cover-view class="sbcard" data-type="2" bindtap="goDetail">
+      <cover-image class="sbimg" src="/img/myicon/map3.png"></cover-image>
+      <cover-view>通讯录</cover-view>
+    </cover-view>
+    <cover-view class="sbcard" data-type="3" bindtap="goDetail">
+      <cover-image class="sbimg" src="/img/myicon/map4.png"></cover-image>
+      <cover-view>组织简介</cover-view>
+    </cover-view>
+  </cover-view>
+
+  <!-- 通知 -->
+  <cover-view class="mynotice" bindtap="goNewDetail">
+    <cover-view class="mynotice_box">
+      <cover-image class="icon" src="/img/myicon/notice.png"></cover-image>
+      <cover-view class="text">{{util.ellipsis(notice,19) }}</cover-view>
+    </cover-view>
+    <!-- <van-notice-bar left-icon="volume-o"  text="{{notice}}" backgroundColor="#f2f8ff" color="#3994FF" left-icon="/img/myicon/notice.png"/> -->
+  </cover-view>
+  <!-- 底部 -->
+  <cover-view class="foot" wx:if="{{showFoot}}">
+    <cover-view class="fotit">{{detail.name}}</cover-view>
+    <cover-view class="subtit">
+      <!-- <cover-view class="sense">2km</cover-view> -->
+      <cover-view class="address">{{detail.address}}</cover-view>
+    </cover-view> 
+    <cover-view class="handle">
+      <cover-view class="halef">
+        <button class="hacard tesubtn" open-type="share" id="button">
+          <cover-image class="icon" src="/img/myicon/share.png"></cover-image>
+          <cover-view class="text">分享</cover-view>
+        </button>
+        <!-- <cover-view class="hacard">
+          <cover-image class="icon" src="/img/myicon/collect.png"></cover-image>
+          <cover-view>关注</cover-view>
+        </cover-view> -->
+      </cover-view> 
+      <cover-view class="harig">
+        <cover-view class="mybtn btn1" bindtap="goShopDetail" data-obj="{{detail}}">
+          <cover-image class="iconimg" src="/img/myicon/serrch3.png"></cover-image>
+          <cover-view>详情</cover-view>
+        </cover-view>
+        <cover-view class="mybtn btn1 btn2" bindtap="toOpenNav">
+          <cover-image class="iconimg" src="/img/myicon/navigation2.png"></cover-image>
+          <cover-view>导航</cover-view>
+        </cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+</view>
+

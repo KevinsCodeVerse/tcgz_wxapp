@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "confirm": "/components/confirm/index",
+    "imgCode": "../../components/imgCode/imgCode"
+  },
+  "navigationBarTitleText": "手机号登录注册"
+}

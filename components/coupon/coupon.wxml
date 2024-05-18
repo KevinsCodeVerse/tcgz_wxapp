@@ -1,0 +1,59 @@
+<wxs module="util" src="../../utils/util.wxs" />
+
+<view class="base_box">
+    <view class="title">优惠券</view>
+    <view bindtap="openCoupon">
+        
+        <text class="texts" style="color:#ff5100" wx:if="{{conponPrice>0}}">-￥{{conponPrice}}</text>
+        <text class="texts" wx:if="{{conponPrice<=0&&list.length==0}}">无</text>
+        <text class="texts" wx:if="{{conponPrice<=0&&list.length!=0}}">使用</text>
+        <van-icon name="arrow" size="24rpx" color style="position: relative;top:5rpx" />
+    </view>
+</view>
+<van-popup show="{{ show }}" round position="bottom" custom-style="padding:0" bind:close="onClose">
+    <view class="popup">
+        <view class="title" bind:tap="onClose">优惠券</view>
+        <scroll-view scroll-y="{{true}}" class="centont_box">
+            <view class="coupon_item">
+                <view class="cnlist">
+    <view class="cnlcard" wx:for="{{list}}" hover-class="hovercnlcard" wx:key="id" wx:key="index" data-obj="{{item}}" bind:tap="select">
+      <!-- <view class="shop">
+        <image mode="spectFill" src="{{util.fullPath(item.shopPhoto)}}"></image>
+        <text>{{item.merchantName}}</text>
+      </view> -->
+      <view class="{{(price-item.useAmount+conponPrice)<0?'cncard overdue':'cncard'}}">
+        <view class="price">{{item.amount}}</view>
+        <view class="cninfo">
+          <view>
+            <view class="money">
+              <text>{{item.name}}</text>
+              <text wx:if="{{item.isShop==1}}" class="text" style="font-size: 20rpx;margin-left: 15rpx;">
+                <text>到店使用</text>
+              </text>
+              <text wx:if="{{item.isShop==0}}" class="text" style="font-size: 20rpx;margin-left: 15rpx;">
+                <text>线上使用</text>
+              </text>
+            </view>
+            <view class="time" style="line-height: 40rpx;">
+              限 {{util.formatDateShort(item.useStartTime,'.')}} 至 {{util.formatDateShort(item.useEndTime,'.')}} 使用
+            </view>
+          </view>
+          <view class="handle">
+            <text class="meet">满 {{item.useAmount}} 可用</text>
+            <!-- <view class="mybtn btn btn2" wx:if="{{item.useEndTime-nowTime>0&&item.isShop==0}}" bindtap="goGoods" data-id="{{item.shopId}}">
+              立即使用
+            </view> -->
+            <!-- <view class="mybtn btn btn2" wx:if="{{item.useEndTime-nowTime>0&&item.isShop==1}}" bindtap="QR_open" data-obj="{{item}}">
+              二维码
+            </view>
+            <view class="mybtn btn btn2" wx:if="{{item.useEndTime-nowTime<0}}">已过期</view> -->
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+            </view>
+        </scroll-view>
+        <view class="bottom" bind:tap="noConpon">不使用优惠券</view>
+    </view>
+</van-popup>

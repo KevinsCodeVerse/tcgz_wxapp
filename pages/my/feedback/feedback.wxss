@@ -1,0 +1,47 @@
+/* pages/order/evaluate/evaluate.wxss */
+.score{
+  background-color: #fff;
+  margin: 30rpx 30rpx;
+  padding: 16rpx 26rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  
+}
+.mytextarea{
+  background-color: #fff;
+  margin: 30rpx 30rpx;
+  padding: 16rpx 26rpx;
+  border-radius: 20rpx;
+  padding: 26rpx;
+}
+.mytextarea textarea{
+  width: 100%;
+  height: 160rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+}
+.mytextarea .uploadimg{
+  margin-top: 40rpx;
+}
+.btn{
+  text-align: center;
+  margin-top: 70rpx;
+}
+.btn>view{
+  font-size: 32rpx;
+  color: #fff;
+  background-color: #3994FF;
+  display: inline-block;
+  width: 360rpx;
+  height: 78rpx;
+  border-radius: 78rpx;
+  line-height: 78rpx;
+}
+
+.mybtn{
+  color: #3994FF;
+}

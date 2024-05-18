@@ -1,0 +1,19 @@
+<!-- pages/login/login.wxml -->
+<view class="login" style="background-image: url({{background}})">
+  <view class="logo">
+    <image src="/img/common/logo.png"></image>
+  </view>
+  <view class="handle">
+    <navigator wx:if="{{showVideo==0}}" class="mybtn btn" open-type="switchTab" url="/pages/focus/focus">
+      暂不登录
+    </navigator>
+    <bottom class="mybtn btn" open-type="getUserInfo"  bindtap="getUserProfile">
+      微信授权登录
+    </bottom>
+    <navigator class="mybtn btn" url="/pages/register/resgister">手机号登录注册</navigator>
+    <view class="protocol">
+      <text>登录代表您已同意</text>
+      <navigator url="/pages/protocol/protocol">《用户协议》</navigator>
+    </view>
+  </view>
+</view>

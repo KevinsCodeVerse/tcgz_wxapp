@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-tab": "/miniprogram/miniprogram_npm/@vant/weapp/tab/index",
+    "van-tabs": "/miniprogram/miniprogram_npm/@vant/weapp/tabs/index",
+    "van-count-down": "/miniprogram/miniprogram_npm/@vant/weapp/count-down/index",
+    "van-dialog": "/miniprogram/miniprogram_npm/@vant/weapp/dialog/index"
+
+  },
+  "navigationBarTitleText": "店铺详情"
+}

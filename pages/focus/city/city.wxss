@@ -1,0 +1,21 @@
+/* pages/focus/city/city.wxss */
+.city {
+  background: #ffffff;
+}
+.content {
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.end {
+  font-size: 32rpx;
+  color: #999999;
+  text-align: center;
+  margin-top: 30rpx;
+}
+.news_title {
+  font-size: 32rpx;
+  font-weight: bold;
+  padding: 30rpx;
+  padding-bottom: 10rpx;
+  box-sizing: border-box;
+}

@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "custom-tabbar": "/components/custom-tabbar/custom-tabbar",
+    "van-button": "/miniprogram/miniprogram_npm/@vant/weapp/button/index",
+    "van-popup": "/miniprogram/miniprogram_npm/@vant/weapp/popup/index",
+    "van-dialog": "/miniprogram/miniprogram_npm/@vant/weapp/dialog/index",
+    "van-share-sheet": "/miniprogram/miniprogram_npm/@vant/weapp/share-sheet",
+    "van-cell": "/miniprogram/miniprogram_npm/@vant/weapp/cell/index",
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index"
+  },
+  "navigationBarTitleText": "名片"
+}

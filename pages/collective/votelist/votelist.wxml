@@ -1,0 +1,22 @@
+<!--pages/collective/votelist/votelist.wxml-->
+<wxs module="util" src="/utils/util.wxs"></wxs>
+<view class="votelist">
+  <view class="name">
+
+    <view>{{name}}</view>
+    <text>已获得{{list.length}}票</text>
+  </view>
+  <view class="mytable">
+    <view class="tr th">
+      <view class="td">投票人员</view>
+      <view class="td">公司/店铺名称</view>
+    </view>
+    <view class="tr" wx:for="{{list}}" wx:key="index">
+      <view class="td">
+        <image src="{{util.fullPath(item.userAvatar)}}"></image>
+        <text>{{item.userNick}}</text>
+      </view>
+      <view class="td">{{item.merchantName||'无'}}</view>
+    </view>
+  </view>
+</view>

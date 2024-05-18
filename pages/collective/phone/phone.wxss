@@ -1,0 +1,65 @@
+/* pages/collective/phone/phone.wxss */
+.phlist{
+  padding: 30rpx 0;
+}
+.phcard{
+  background-color: #fff;
+  margin: 0 30rpx 20rpx 30rpx;
+  border-radius: 10rpx;
+  padding: 20rpx 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.phcard .avatar{
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  display: block;
+  margin-right: 16rpx;
+}
+.phcard .attr{
+  width: calc(100% - 258rpx);
+}
+.phcard .links{
+  width: 170rpx;
+  display: flex;
+  padding-left: 30rpx;
+  justify-content: flex-end;
+  box-sizing: border-box;
+}
+.phcard .name{
+  display: flex;
+  align-items: center;
+  margin-bottom: 4rpx;
+}
+.phcard .company{
+  font-size: 20rpx;
+  color: #999;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.phcard .d_name{
+  font-weight: bold;
+}
+.phcard .person{
+  width: 26rpx;
+  height: 26rpx;
+  margin-left: 20rpx;
+}
+.phcard .job{
+  font-size: 20rpx;
+  color: #3994FF;
+}
+.phcard .icon{
+  margin: 0 15rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.floor{
+  color: #CCC;
+  text-align: center;
+  padding: 30rpx 0;
+  font-size: 20rpx;
+}

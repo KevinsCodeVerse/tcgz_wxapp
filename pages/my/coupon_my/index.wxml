@@ -1,0 +1,64 @@
+<!-- pages/my/coupon_receive/index.wxml -->
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="conpon_my">
+  <view class="tabs">
+    <text class="{{active==''? 'active':''}}" data-status="" bindtap="toTabs">全部优惠券</text>
+    <text class="{{active=='0'? 'active':''}}" data-status="0" bindtap="toTabs">线上优惠券</text>
+    <text class="{{active=='1'? 'active':''}}" data-status="1" bindtap="toTabs">到店使用优惠券</text>
+  </view>
+  <!-- 列表 -->
+  <view class="cnlist">
+    <view class="cnlcard" wx:for="{{list}}" wx:key="index">
+      <view class="shop">
+        <image mode="spectFill" src="{{util.fullPath(item.shopPhoto)}}"></image>
+        <text>{{item.merchantName}}</text>
+      </view>
+      <view class="{{item.useStartTime-nowTime>0?'cncard overdue':'cncard'}}">
+        <view class="price">{{item.amount}}</view>
+        <view class="cninfo">
+          <view>
+            <view class="money">
+              <text>{{item.name}}</text>
+              <text wx:if="{{item.isShop==1}}" class="text" style="font-size: 20rpx;margin-left: 15rpx;">
+                <text>到店使用</text>
+              </text>
+              <text wx:if="{{item.isShop==0}}" class="text" style="font-size: 20rpx;margin-left: 15rpx;">
+                <text>线上使用</text>
+              </text>
+            </view>
+            <view class="time" style="line-height: 40rpx;">
+              限 {{util.formatDateShort(item.useStartTime,'.')}} 至 {{util.formatDateShort(item.useEndTime,'.')}} 使用
+            </view>
+          </view>
+          <view class="handle">
+            <text class="meet">满 {{item.useAmount}} 可用</text>
+            <view class="mybtn btn btn2" wx:if="{{item.useEndTime-nowTime>0&&item.isShop==0}}" bindtap="goGoods" data-id="{{item.shopId}}">
+              立即使用
+            </view>
+            <view class="mybtn btn btn2" wx:if="{{item.useEndTime-nowTime>0&&item.isShop==1}}" bindtap="QR_open" data-obj="{{item}}">
+              二维码
+            </view>
+            <view class="mybtn btn btn2" wx:if="{{item.useEndTime-nowTime<0}}">已过期</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="loading">
+  <view wx:if="{{loading}}" size="24px" class="loading_view">
+    <van-loading color="#0DC3FF">加载中...</van-loading>
+  </view>
+  <text class="finish" wx:if="{{finish && list.length==0}}">暂无优惠券</text>
+  <view class="finish" wx:if="{{ finish && list.length!=0}}">-已经到底啦-</view>
+</view>
+<van-popup show="{{ showQR }}" bind:close="onClose" >
+  <view>
+    <view style="background-color: #fff;padding:30rpx;">
+      <view style="text-align: center;font-weight: 700;font-size: 32rpx;">
+        结账时向商家出示优惠劵二维码 由商家扫码核销抵扣
+      </view>
+      <image mode="aspectFill" style="width:500rpx;height:500rpx;" src="{{util.fullPath(QR)}}"></image>
+    </view>
+  </view>
+</van-popup>

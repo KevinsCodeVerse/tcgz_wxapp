@@ -1,0 +1,97 @@
+/* pages/collective/activity/index.wxss */
+/* 组织活动 */
+.activity{
+  padding: 30rpx 30rpx;
+}
+.activity .accard{
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+.activity .accon{
+  padding: 24rpx 0 28rpx 24rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.activity .name{
+  width: calc(100% - 170rpx);
+}
+.activity .name>.acname{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-weight: bold;
+}
+.activity .name>.acname:last-child{
+  font-size: 20rpx;
+  color: #999;
+  font-weight: normal;
+  margin-top: 4rpx;
+}
+.activity .apply{
+  background-color: #4DC4FF;
+  color: #fff;
+  font-size: 24rpx;
+  border-radius: 30rpx 0 0 30rpx;
+  padding: 10rpx 22rpx 10rpx 32rpx;
+}
+.activity .time{
+  margin-right: 30rpx;
+  font-size: 20rpx;
+  color: #999;
+  position: relative;
+  padding-left: 48rpx;
+  padding-bottom: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.activity .time::before{
+  content: '.';
+  position: absolute;
+  left: 24rpx;
+  top: 10rpx;
+  height: 8rpx;
+  width: 8rpx;
+  background-color: #3994FF;
+  border-radius: 50%;
+}
+.activity .time2{
+  font-size: 20rpx;
+  color: #999;
+  position: relative;
+  border-top: 1px solid #f1f1f1;
+  margin-right: 30rpx;
+  padding: 24rpx 0 28rpx 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.activity .cover{
+  width: 100%;
+  height: 320rpx !important;
+  object-fit: cover;
+}
+.activity .vaic{
+  position: relative;
+  top: 2rpx;
+  margin-left: 4rpx;
+}
+.cate1{
+  color: #999999;
+}
+.cate2{
+  color: #3994FF;
+}
+.cate3{
+  color: #CCCCCC;
+}
+.floor{
+  color: #CCC;
+  text-align: center;
+  padding: 30rpx 0;
+  font-size: 20rpx;
+}

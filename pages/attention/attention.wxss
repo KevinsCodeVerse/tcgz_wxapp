@@ -1,0 +1,13 @@
+/* pages/attention/attention.wxss */
+.attention{
+  background-color: #fff;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+/* 覆盖vant */
+.van-picker__cancel{
+  color: #7f7f7f!important;
+}
+.van-picker__confirm{
+  color: #07c160!important;
+}

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "navigation": "/components/navigation/navigation"
+  },
+  "navigationBarTitleText": "",
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "black"
+}

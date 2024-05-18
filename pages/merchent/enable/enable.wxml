@@ -1,0 +1,27 @@
+<!--pages/merchent/enable/enable.wxml-->
+<view>
+  <view class="mercbg"></view>
+  <view class="remark">未激活店铺</view>
+  <view class="name">{{info.shopName}}</view>
+  <view class="info">
+    <view class="inname">请确认以下信息</view>
+    <view class="incard">
+      <text>您的姓名</text>
+      <view>{{info.name}}</view>
+    </view>
+    <view class="incard">
+      <text>管理账号</text>
+      <view>{{info.account}}</view>
+    </view>
+    <view class="incard">
+      <text>您的行业</text>
+      <view>{{info.industry}}</view>
+    </view>
+    <view class="incard">
+      <text>详细地址</text>
+      <view>{{info.address}}</view>
+    </view>
+  </view>
+  <view class="remark" style="color:#000">确认无误后请缴纳保证金入驻</view>
+  <view class="mybtn btn" bindtap="toEnable">确认缴纳</view>
+</view>

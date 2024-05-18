@@ -1,0 +1,101 @@
+/* 相关推荐 */
+.store_show {
+  position: fixed;
+  bottom: 160rpx;
+  right: 20rpx;
+  background-color: #0079FE;
+  color: #ffffff;
+  border-radius: 50px;
+  padding: 10rpx 20rpx;
+  font-size: 28rpx;
+}
+.store_title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:90rpx;
+  font-size: 32rpx;
+  font-weight: 400;
+  border-bottom: 1rpx solid #eeeeee;
+  position: relative;
+}
+.store_title .img {
+  position: absolute;
+  right: 20rpx;
+}
+.store_list {
+  padding-top: 10rpx;
+  padding-bottom: 30rpx;
+  box-sizing: border-box;
+}
+.store_list .store_item {
+  display: flex;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+}
+.store_list .store_item .cover {
+  width: 170rpx;
+  height: 170rpx;
+  border-radius: 5px;
+  margin-right: 20rpx;
+}
+.store_list .store_item .store_info {
+  height: 180rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5rpx 0;
+  box-sizing: border-box;
+}
+.store_list .store_item .store_info .store_name {
+  font-size: 28rpx;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.store_list .store_item .store_info .sentiment {
+  font-size: 24rpx;
+  color: #999999;
+}
+.store_list .store_item .store_info .sentiment text {
+  margin-right: 20rpx;
+}
+.store_list .store_item .store_info .price {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: #999999;
+  font-size: 28rpx;
+}
+.store_list .store_item .store_info .price .price_num {
+  color: #FF7800;
+  font-weight: bold;
+  font-size: 36rpx;
+}
+.store_list .store_item .store_info .price .price_num .since {
+  font-weight: normal;
+  font-size: 28rpx;
+}
+.store_list .store_item .store_info .price button {
+  margin: 0;
+  width: 140rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #0079FE;
+  color: #ffffff;
+  font-size: 28rpx;
+  border-radius: 50px;
+}
+.store_close {
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  color: #0079FE;
+  font-size: 28rpx;
+  box-shadow: 0 -3px 3px rgba(0,0,0,0.07);
+}

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "van-area": "/miniprogram/miniprogram_npm/@vant/weapp/area/index"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "返佣订单",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#ffffff",
+  "usingComponents": {
+    "van-loading": "/miniprogram/miniprogram_npm/@vant/weapp/loading/index",
+    "van-dropdown-menu": "/miniprogram/miniprogram_npm/@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "/miniprogram/miniprogram_npm/@vant/weapp/dropdown-item/index",
+    "van-cell": "/miniprogram/miniprogram_npm/@vant/weapp/cell/index"
+   
+  }
+}

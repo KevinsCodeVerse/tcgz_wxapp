@@ -1,0 +1,38 @@
+Page {
+    padding: 0 20rpx;
+    background-color: #ffffff;
+    color: #333;
+}
+.item_box {
+	width: 700rpx;
+	display: flex;
+	border-bottom: 1px solid #00000915;
+}
+
+.item_box .message {
+	flex: 1;
+}
+
+.item_box .message .text {
+    margin-top: 15rpx;
+    font-weight: 600;
+}
+
+.item_box .message .time {
+	margin-bottom: 15rpx;
+	font-size: 21rpx;
+	font-weight: 400;
+	text-align: left;
+	color: #999999;
+}
+
+.item_box .ranking {
+    height: 70rpx;
+    width: 70rpx;
+    margin-top: 15rpx;
+
+    line-height: 70rpx;
+    text-align: center;
+    background-color: #f2f8ff;
+    color: #53a1ff;
+}

@@ -1,0 +1,128 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="join_group">
+  <view class="jprbg"></view>
+  <view class="master" >
+    <view class="name">
+      <image src="{{util.fullPath(orderUser.avatar)}}" mode="aspectFill"></image>
+      <text class="nick">{{orderUser.nick}}</text>
+    </view>
+    <view wx:if="{{status==0}}" style="color:#86CC14">待成团</view>
+    <view wx:if="{{status==1}}" style="color:#FF7800">拼团成功</view>
+    <view wx:if="{{status==-1}}" style="color:#999999">拼团失败</view>
+  </view>
+  <!-- 商品 -->
+  <view class="goods">
+    <view class="house" bind:tap="onFinish">{{shop.name}}</view>
+    <view class="d_goods">
+      <view class="cover">
+        <image src="{{util.fullPath(order.avatar)}}" mode="aspectFill"></image>
+        <text class="bag">{{peopleCount}}人团</text>
+      </view>
+      <view class="goinfo">
+        <view>
+          <view class="name">{{order.title}}</view>
+          <view class="spec">{{peopleCount}}人团</view>
+        </view>
+        <view class="price">
+          <view class="jgr_price">
+            <text class="currprice">￥{{order.proPrice}}</text>
+            <text class="oriprice">￥{{order.proOriginPrice}}</text>
+            <view class="label">
+              <view class="pintuan">拼团价￥</view>
+              <text>{{order.price}}</text>
+            </view>
+          </view>
+          <view class="count">x1</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 参团列表 -->
+  <view class="joins">
+    <view class="joremark">
+      <view>
+        <text>{{peopleCount}}</text>
+        人成团，当前有
+        <text>{{userCount}}</text>
+        人参团
+      </view>
+      <view class="cutoff" wx:if="{{status !=1 }}">
+        剩余
+        <van-count-down bind:finish="onFinish" time="{{ time*1000 }}" />
+        结束
+      </view>
+    </view>
+    <scroll-view>
+      <view  class="avalist">
+        <image class="avatar" wx:for="{{users}}" wx:key="index" mode="aspectFill" src="{{util.fullPath(item)}}"></image>
+        <button class="joadd" open-type="share" wx:if="{{status !=1}}"><van-icon name="plus" bind:tap="addRerson" /></button>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 拼团玩法 -->
+  <view class="step">
+    <view class="sttit">拼团玩法</view>
+    <view class="stepimg">
+      <image src="https://www.tcgz.store/files/default/stepgroup2.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <!-- <view class="btn">
+    <view class="mybtn btn1">
+      <view class="money">￥79</view>
+      <view>单独购买</view>
+    </view>
+    <view class="mybtn btn1 btn2">
+      <view class="money">￥59</view>
+      <view>参与拼团</view>
+    </view>
+  </view> -->
+  <!-- 底部栏 -->
+  <view class="foot">
+    <view class="handle" style="padding-left: 30rpx" bindtap="goShopDetail">
+      <image wx:if="{{type==1}}" src="/img/myicon/shop2.png"></image>
+      <image wx:else src="/img/myicon/shop3.png"></image>
+      <view style="color:#86CC14">店铺</view>
+    </view>
+    <view class="handle" bindtap="toCollet" wx:if="{{isCollect==-1}}">
+      <image src="/img/myicon/collect2.png"></image>
+      <view>收藏</view>
+    </view>
+    <view class="handle" bindtap="toCollet" wx:else>
+      <image src="/img/myicon/collect-active.png"></image>
+      <view>已收藏</view>
+    </view>
+    <!-- <view class="handle" bindtap="shareShow">
+      <button class="btn" open-type="share"></button>
+      <image src="/img/focus/chars.png"></image>
+      <view style="color:#FF9326">分享</view>
+    </view> -->
+    <view class="btn" wx:if="{{isOrder==0}}">
+      <view class="mybtn btn1" bindtap="goDetail">
+        <view>￥{{order.proPrice}}</view>
+        <text>单独购买</text>
+      </view>
+      <view class="mybtn btn1 btn2" bindtap="goConfirm">
+        <view>￥{{order.price}}</view>
+        <text>加入拼团</text>
+      </view>
+    </view>
+    <view class="btn" wx:elif="{{isOrder==1||isOrder==2&&status ==-1}}">
+      <view class="mybtn btn3">
+        <text>拼团失败</text>
+      </view>
+    </view>
+    <view class="btn" wx:elif="{{isOrder==2&&status !=1}}">
+      <view class="mybtn btn3">
+        <text>已发起拼团 请耐心等待</text>
+      </view>
+    </view>
+    <view class="btn" wx:elif="{{isOrder==1||isOrder==2&&status ==1}}">
+      <view class="mybtn btn3">
+        <text>拼团成功</text>
+      </view>
+    </view>
+  </view>
+  <!-- <button bindtap='startConnect'>创建连接</button>
+  <button bindtap='sendOne'>发送内容</button>
+  <button bindtap='closeOne'>关闭连接</button> -->
+</view>

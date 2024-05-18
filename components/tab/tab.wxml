@@ -1,0 +1,18 @@
+<!-- tab 标签栏 -->
+<view class='tab'>
+
+  <view class='nav'>
+    <view class='nav_list'>
+      <view class="nav_item {{active_page == item.name?'active': ''}}" wx:for='{{items}}' wx:key="id" data-current='{{index}}' data-name="{{item.name}}" bindtap='toActive'>
+        <text>{{item.text}}</text>
+        
+      </view>
+    </view>
+    <view class='nav_item_active' style='{{style}}'></view>
+  </view>
+  <!--pages页面-->
+  <view wx:for="{{items}}" wx:key="id" class='pages' wx:if="{{active_page == item.name}}">
+    <slot name="{{item.name}}"></slot>
+  </view>
+
+</view>

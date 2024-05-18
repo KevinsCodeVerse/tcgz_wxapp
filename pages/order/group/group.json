@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-loading": "/miniprogram/miniprogram_npm/@vant/weapp/loading/index",
+    "van-popup": "/miniprogram/miniprogram_npm/@vant/weapp/popup/index"
+  },
+  "navigationBarTitleText": "拼团订单",
+  "navigationBarBackgroundColor": "#86CC14"
+}

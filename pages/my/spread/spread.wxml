@@ -1,0 +1,151 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="spread">
+  <view class="prompt">
+    <view>
+      <text>通过填码、扫码等方式邀请朋友入驻集体</text>
+      <text>朋友将成为我的下级并获得返佣</text>
+    </view>
+    <view class="mybtn" bindtap="goInvite">前往邀请</view>
+  </view>
+  <view class="user_info">
+    <view class="info">
+      <image class="avatar" mode="aspectFill" src="{{util.fullPath(info.avatar)}}"></image>
+      <view>
+        <view class="nick">
+          <text class="name">{{info.nick}}</text>
+          <image mode="heightFix" src="{{util.fullPath(info.icon)}}"></image>
+        </view>
+        <view class="invitation">
+          <text>邀请码：{{info.inviterCode}}</text>
+          <button bindtap="copyCode">复制</button>
+        </view>
+      </view>
+    </view>
+    <button wx:if="{{!info.inviterId}}" class="bind" bindtap="openDialog">绑定邀请码</button>
+  </view>
+
+  <view class="wallet">
+    <view class="wallet_left">
+      <text class="key">冻结金额(元)</text>
+      <text class="value">{{info.frozenMoney}}</text>
+    </view>
+    <view class="wallet_left">
+      <text class="key">总资产(元)</text>
+      <text class="value">{{info.royal}}</text>
+    </view>
+    <view class="wallet_right">
+      <text bindtap="toNo" data-url="{{'/pages/my/spread/withdraw/withdraw?money='+info.royal}}" bindtap="href">进行提现</text>
+      <text bindtap="toNo" data-url="/pages/my/spread/flow/flow" bindtap="href">收支明细</text>
+    </view>
+  </view>
+
+  <!-- 开单公告 -->
+  <view class="notice">
+    <swiper autoplay="true" vertical="true" circular="true">
+      <swiper-item class="switem" wx:for='{{noticeList}}' wx:key="index">         
+        <text>{{item.cityName}} {{item.remark}}</text>
+        <text>{{item.phone}}</text>
+        <text>{{item.name}}</text>
+        <text>{{item.nick}}</text>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <view class="plan">
+    <view class="plan_title">
+      <text>推广统计</text>
+      <!-- <text class="href" bindtap="toRegular">查看规则</text> -->
+    </view>
+    <view class="plan_list">
+      <view class="list_item">
+        <text class="value">{{money.total}}</text>
+        <text class="key">累计收益</text>
+      </view>
+      <view class="list_item">
+        <text class="value">{{money.day}}</text>
+        <text class="key">今日收益</text>
+      </view>
+      <view class="list_item">
+        <text class="value">{{money.month}}</text>
+        <text class="key">当月收益</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 推广等级 -->
+  <view class="level">
+    <view class="letit">
+      <text>推广等级</text>
+      <view bindtap="goLevel">查看规则</view>
+    </view>
+    <view class="levcon" wx:if="{{level.level!=4}}">
+      <image mode="heightFix" src="{{util.fullPath(info.icon)}}"></image>
+      <view>
+        距离升级{{level.name}}还差
+        {{(level.conditionOne - level.directly)>0? (level.conditionOne - level.directly): 0}}
+        个直推业绩和
+        {{(level.conditionTwo - level.inDirectly)>0? (level.conditionTwo - level.inDirectly): 0}}
+        个团队业绩
+      </view>
+    </view>
+    <view class="levcon" wx:else>
+      <image mode="heightFix" src="{{util.fullPath(info.icon)}}"></image>
+      <view>恭喜您，已达到最高级</view>
+    </view>
+  </view>
+
+  <view class="nav_list">
+    <view class="nav_item" data-url="/pages/my/spread/team/team" bindtap="href">
+      <image mode="widthFix" src="/img/my/spread/spread-01.png"></image>
+      <text>我的团队</text>
+    </view>
+    <view class="nav_item"  data-url="/pages/my/spread/fillin/fillin" bindtap="href">
+      <image mode="widthFix" src="/img/my/spread/spread-02.png"></image>
+      <text>开单报备</text>
+    </view>
+    <view class="nav_item" data-url="/pages/my/spread/guide/guide" bindtap="href">
+      <image mode="widthFix" src="/img/my/spread/spread-03.png"></image>
+      <text>商学教育</text>
+    </view>
+    <view class="nav_item" data-url="/pages/my/spread/order/order" bindtap="href">
+      <image mode="widthFix" src="/img/my/spread/spread-04.png"></image>
+      <text>返佣订单</text>
+    </view>
+  </view>
+  <view class="spread_box" bindtap="market">
+   <image src="https://www.tcgz.store/files/default/20210804212759.png" mode="widthFix"></image>
+  </view>
+</view>
+
+<!-- 绑定邀请码弹框 -->
+<van-dialog
+  use-slot
+  title="绑定邀请码"
+  show="{{ show }}"
+  show-cancel-button
+  bind:confirm="bindCode"
+>
+  <input class="invite_input" type="text" placeholder="请输入推荐人邀请码" value="{{code}}" bindinput="codeChange" />
+</van-dialog>
+<!-- 是否申请成为业务员弹框 -->
+<!-- <van-dialog
+  use-slot
+  title="是否申请成为业务员"
+  show="{{ applyShow }}"
+  show-cancel-button
+  bind:confirm="apply"
+  bind:cancel="cancel"
+>
+  <view class="form_list">
+    <view class="form_item">
+      <text class="key">姓名</text>
+      <input type="text" value="{{name}}" placeholder="请输入姓名" bindinput="setName" />
+    </view>
+    <view wx:if="{{!hasPhone}}" class="form_item">
+      <text class="key">手机号</text>
+      <input type="text" value="{{phone}}" placeholder="请输入手机号" bindinput="setPhone" />
+    </view>
+  </view>
+</van-dialog> -->
+
+<!-- <regular wx:if="{{ruleList.length>0 && showRegular}}" bind:change="regularChange" ruleList="{{ruleList}}"/> -->

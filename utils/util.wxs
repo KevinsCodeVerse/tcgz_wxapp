@@ -1,0 +1,185 @@
+
+// var imgUrl = 'http://tcgz.mtfsoft.cn/api/'; //公网体验服
+var imgUrl = 'http://nobug-w.natapp1.cc'; // 内网穿透
+// var imgUrl = 'https://www.tcgz.store/';// 线上
+// var imgUrl = 'http://192.168.31.196:8080/';  // 内网穿透
+
+
+var formatNumber = function (n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+/**
+ * 将时间戳转为 yyyy-MM-dd格式
+ */
+var formatDateShort = function (datetime,srt='-') {
+  var datestr = datetime + ''
+  if(datestr.length == 10) {
+    datetime = datetime * 1000
+  }
+  var date = getDate(datetime);
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  return [year, month, day].map(formatNumber).join(srt);
+}
+
+/**
+ * 将时间戳转为 yyyy-MM-dd hh:mm:ss格式
+ */
+var formatDateLong = function (datetime) {
+  var datestr = datetime + ''
+  if(datestr.length == 10) {
+    datetime = datetime * 1000
+  }
+  var date = getDate(datetime);
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+  return [year, month, day].map(formatNumber).join('-') + ' ' + [hours, minutes, seconds].map(formatNumber).join(':');
+}
+
+/**
+ * 将时间戳转为 MM-dd hh:mm格式
+ */
+var formatDateLongS = function (datetime) {
+  var datestr = datetime + ''
+  if(datestr.length == 10) {
+    datetime = datetime * 1000
+  }
+  var date = getDate(datetime);
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+  return [ month, day].map(formatNumber).join('-') + ' ' + [hours, minutes, ].map(formatNumber).join(':');
+}
+/**
+ * 将时间戳转为 YYYY-MM-dd hh:mm格式 2021年9月16日 15:30
+ */
+var formatDateLongSS = function (datetime) {
+  var datestr = datetime + ''
+  if(datestr.length == 10) {
+    datetime = datetime * 1000
+  }
+  var date = getDate(datetime);
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+  return year+'年'+month+'月'+ day+ '日 '+hours+":"+minutes
+}
+/**
+ * 将时间戳格式转为 hh:mm:ss格式
+ */
+var getTimePeriod = function (datetime) {
+  var datestr = datetime + ''
+  if(datestr.length == 10) {
+    datetime = datetime * 1000
+  }
+  var date = getDate(datetime);
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+  return [hours, minutes, seconds].map(formatNumber).join(':');
+}
+
+/**
+ * 将时间戳转为 yyyy年MM月dd日格式
+ */
+var formatDateAt = function (datetime) {
+  var datestr = datetime + ''
+  if(datestr.length == 10) {
+    datetime = datetime * 1000
+  }
+  var date = getDate(datetime);
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  return year+'年'+month+'月'+ day+ '日'
+}
+
+/**
+ * 图片链接补全
+ */
+var fullPath = function(listener){
+  var result = "";
+  if(listener && listener.search('files/') != -1){
+    result = imgUrl + listener
+  }else if(listener && listener.search('files/') == -1){
+    result = listener;
+  }
+  listener = result
+  return listener
+}
+
+var prototype = function(obj, type) {
+  if (Object.prototype.toString.call(obj) == '[object ' + type + ']') {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+var tenNum = function(num){
+  if(num>10000){
+    num =( num/10000).toFixed(2)
+    return num+"万"
+  } else{
+    return num
+  }
+  
+}
+
+  
+  var toFixed = function(num){
+    return num.toFixed(2)
+  }
+  var slice4 = function(num){
+    return num.slice(num.length-4,num.length)
+  }
+  // 转换 手续费
+  var servicePrice = function(num,num2,min=1){
+    num2 = num2/100 
+    if(num*num2>min){
+      return Number(num*num2).toFixed(2)
+    }else{
+      return min
+    }
+    // if(num>=100){
+    //  var num2 = (num*(num2/100)).toFixed(1)
+    //   return num2+'0'
+    // }else{
+    //   return min+'.00'
+    // }
+  }
+
+  var ellipsis = function(str,num){
+    str = str+''
+    if(str.length>num){
+      return str.slice(0,num)+'...'
+    }
+    return str
+  }
+module.exports = {
+  formatDateShort: formatDateShort,
+  formatDateLong: formatDateLong,
+  formatDateAt: formatDateAt,
+  getTimePeriod: getTimePeriod,
+  fullPath: fullPath,
+  prototype: prototype,
+  tenNum:tenNum,
+  formatDateLongS:formatDateLongS,
+  formatDateLongSS:formatDateLongSS,
+  toFixed:toFixed,
+  slice4:slice4,
+  servicePrice:servicePrice,
+  ellipsis:ellipsis
+}

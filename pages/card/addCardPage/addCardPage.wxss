@@ -1,0 +1,101 @@
+/* pages/card/addCardPage/addCardPage.wxss */
+
+/* 底部css */
+.myCard {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+.bgc-img {
+  /* position: absolute; */
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+}
+.box1 {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+.m {
+  margin: 30rpx 0;
+}
+.box3 {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+}
+.box3 view {
+  width: 500rpx;
+  padding: 15rpx;
+}
+.box3 view text {
+  width: 400rpx;
+  height: 180rpx;
+  line-height: 45rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  text-align: center;
+  color: #999999;
+}
+.text1 {
+  font-size: 40rpx;
+  font-family: PingFang SC, PingFang SC-Light;
+  font-weight: 300;
+  text-align: center;
+  color: #0080ff;
+  line-height: 24px;
+}
+.text2 {
+  font-size: 48rpx;
+  font-family: PingFang SC, PingFang SC-Medium;
+  font-weight: 500;
+  text-align: center;
+  color: #0080ff;
+  line-height: 24px;
+}
+.icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+.box2 {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+}
+.item {
+  margin: 15rpx 45rpx;
+  display: flex;
+  align-items: center;
+}
+.item text {
+  font-size: 32rpx;
+  font-weight: 400;
+  text-align: center;
+  color: #333333;
+  margin: 0 15rpx;
+}
+.item image {
+  height: 32rpx;
+  line-height: 32rpx;
+  vertical-align: middle; /* 垂直居中对齐 */
+}
+.foot {
+  position: absolute;
+  left: 20%;
+  width: 65%;
+  text-align: center;
+  margin-top: 54rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+  letter-spacing: 2rpx;
+  color: #ffffff;
+  border-radius: 100rpx;
+  background: linear-gradient(180deg, #00aaff, #0080ff);
+  box-shadow: 0px 8px 16px 0px rgba(0, 128, 255, 0.3);
+  height: 98rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

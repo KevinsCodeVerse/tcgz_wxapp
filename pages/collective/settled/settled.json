@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-picker": "./../../../miniprogram/miniprogram_npm/@vant/weapp/picker/index",
+    "van-popup": "./../../../miniprogram/miniprogram_npm/@vant/weapp/popup/index",
+    "van-action-sheet": "./../../../miniprogram/miniprogram_npm/@vant/weapp/action-sheet/index",
+    "van-toast": "/miniprogram/miniprogram_npm/@vant/weapp/toast/index",
+    "van-switch": "/miniprogram/miniprogram_npm/@vant/weapp/switch/index",
+    "imgCode": "/components/imgCode/imgCode"
+  },
+  "navigationBarTitleText": "集体入驻"
+}

@@ -1,0 +1,55 @@
+/* pages/my/address/address.wxss */
+.address{
+  padding-top: 20rpx;
+  padding-bottom: 120rpx;
+}
+.ascard{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #999;
+  background-color: #fff;
+  padding: 20rpx 0;
+  margin-bottom: 20rpx;
+}
+.ascard .ascon{
+  width: calc(100% - 100rpx);
+  padding: 0 30rpx;
+}
+.ascard .btn{
+  text-align: center;
+  width: 100rpx;
+  height: 60rpx;
+  border-left: 1px solid #eee;
+  line-height: 60rpx;
+}
+.ascard .ascon .d_name{
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #000;
+  margin-right: 20rpx;
+}
+.ascard .name{
+  margin-bottom: 8rpx;
+}
+.ascard .label{
+  border: 1px solid #3994ff;
+  font-size: 20rpx;
+  margin-left: 20rpx;
+  border-radius: 6rpx;
+  color: #3994ff;
+  padding: 2rpx 8rpx;
+}
+.btn2{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: #3994FF;
+  color: #fff;
+  text-align: center;
+  font-size: 36rpx;
+}

@@ -1,0 +1,45 @@
+/* pages/collective/news/news.wxss */
+/* 组织资讯 */
+.inlist{
+  padding: 30rpx 0;
+}
+.incard{
+  display: flex;
+  margin: 0 30rpx 24rpx 30rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+.incard .cover{
+  width: 216rpx;
+  height: 216rpx;
+  border-radius: 10rpx;
+  object-fit: cover;
+}
+.incard .riht{
+  width: calc(100% - 216rpx);
+  box-sizing: border-box;
+  padding: 16rpx 24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.incard .tit{
+  font-weight: bold;
+}
+.incard .con{
+  font-size: 20rpx;
+  color: #999;
+}
+.incard .time{
+  display: flex;
+  align-items: center;
+}
+.incard .time text{
+  margin-right: 30rpx;
+}
+.floor{
+  color: #CCC;
+  text-align: center;
+  padding: 30rpx 0;
+  font-size: 20rpx;
+}

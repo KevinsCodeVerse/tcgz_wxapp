@@ -1,0 +1,8 @@
+<view class="city">
+  <view class="content">
+    <rich-text nodes="{{content}}"></rich-text>
+  </view>
+  <view class="end">——END——</view>
+  <view class="news_title">资讯推荐</view>
+  <newList isRecomm="{{true}}" recommType="{{1}}" />
+</view>

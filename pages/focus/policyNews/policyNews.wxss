@@ -1,0 +1,18 @@
+.city_news {
+  padding-top: 190rpx;
+  box-sizing: border-box;
+}
+.city_news .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.search_btn {
+  width: 120rpx;
+  border-radius: 50px;
+  background-color: #3994FF;
+  color: #ffffff;
+  text-align: center;
+}

@@ -1,0 +1,60 @@
+<wxs module="util" src="../../utils/util.wxs" />
+<!-- 自定义导航 -->
+<navigation>
+  <view class="navbar" bind:tap="toAreaCal">
+    <image class="addr" mode="heightFix" src="/img/common/addr-white.png"></image>
+    <text>{{cityName?cityName:'选择城市'}}</text><van-icon name="arrow-down" />
+    <text>{{weather}}</text>
+    <!-- <image class="arrow" mode="heightFix" src="/img/common/arrow-bottom.png"></image> -->
+  </view>
+</navigation>
+<view class="focus" style="padding-top: {{paddingTop}}px;">
+  <view style="top: {{paddingTop}}px;" class="focus_bgd"></view>
+  <view class="banner">
+    <swiper autoplay circular="true">
+      <swiper-item wx:for="{{SildeList}}" data-obj="{{item}}" bindtap="handSwiper">
+        <image mode="aspectFill" src="{{util.fullPath(item.cover)}}"></image>
+      </swiper-item>
+    </swiper>
+    <view class="people_num" bindtap="toCity">
+      <text>{{util.tenNum(visitCount)}}人正在关注该城市</text>
+      <image src="/img/common/arrow-bottom.png"></image>
+    </view>
+  </view>
+  <view class="menu">
+    <view class="menu_item" data-url="/pages/focus/cityNews/cityNews" bindtap="toPages">
+      <image mode="aspectFill" src="/img/focus/menu-01.png"></image>
+      <text>城市资讯</text>
+    </view>
+    <view class="menu_item" data-url="/pages/focus/policyNews/policyNews" bindtap="toPages">
+      <image mode="aspectFill" src="/img/focus/menu-02.png"></image>
+      <text>政府政策</text>
+    </view>
+    <view class="menu_item" data-url="/pages/focus/strategyNews/strategyNews" bindtap="toPages">
+      <image mode="aspectFill" src="/img/focus/menu-04.png"></image>
+      <text>游玩攻略</text>
+    </view>
+    <view wx:if="{{showVideo == 1}}" class="menu_item" data-url="/pages/focus/wonderful/wonderful" bindtap="toPages">
+      <image mode="aspectFill" src="/img/focus/menu-05.png"></image>
+      <text>精彩视频</text>
+    </view>
+    <!-- data-url="/pages/focus/highlights/highlights" -->
+    <view wx:if="{{showVideo == 1}}" class="menu_item" data-url="/pages/focus/highlights/highlights" bindtap="toPages"> 
+      <image mode="aspectFill" src="/img/focus/menu-03.png"></image>
+      <text>视频锦集</text>
+    </view>
+  </view>
+  <view class="news">
+    <view class="tabs">
+      <van-tabs active="{{active}}" color="#3994FF" title-active-color="#3994FF" bind:change="tabChange">
+        <van-tab title="推荐" name="1"></van-tab>
+        <van-tab title="热门" name="2"></van-tab>
+        <van-tab title="活动" name="3"></van-tab>
+      </van-tabs>
+    </view>
+    <newList id="newList" isIndex="{{true}}" indexType="{{active}}" wx:if="{{active!=3}}" />
+    <activity id="activity" firmId="{{id}}" type="{{2}}"  wx:if="{{active==3}}"/>
+  </view>
+</view>
+
+<clickaddress id="clickaddress" bind:resize="handresize"></clickaddress>

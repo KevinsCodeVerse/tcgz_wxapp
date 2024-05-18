@@ -1,0 +1,218 @@
+/* pages/merchent/info/info.wxss */
+.mercbg{
+  width: 100%;
+  background: #3994FF;
+  height: 270rpx;
+  position: absolute; 
+  z-index: -1;
+  left: 0;
+  top: 0;
+}
+.b {
+  font-weight: 600;
+}
+.count{
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
+  color: #666666;
+}
+.name{
+  height: 80rpx;
+  color:  #fff;
+  font-size: 40rpx;
+  font-weight: bold;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-left: 50rpx;
+  padding-top: 46rpx;
+}
+.name>view{
+  width: calc(100% - 190rpx);
+}
+.name .outbtn{
+  background-color: #fff;
+  color: #3994FF;
+  font-size: 28rpx;
+  font-weight: bold;
+  width: 160rpx;
+  height: 52rpx;
+  text-align: center;
+  line-height: 52rpx;
+  border-radius: 30rpx 0 0 30rpx;
+  position: absolute;
+  right: 0;
+  top: 70rpx;
+
+}
+.aoOutbtn{
+  background-color: #fff;
+  color: #3994FF;
+  font-size: 28rpx;
+  font-weight: bold;
+  padding: 0px 15rpx;
+
+  height: 52rpx;
+  text-align: center;
+  line-height: 52rpx;
+  border-radius: 30rpx 0 0 30rpx;
+  position: absolute;
+  right: 0;
+  top: 0rpx;
+}
+.balance{
+  position: relative;
+  background-color: #fff;
+  position: relative;
+  margin: 30rpx 50rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  height: 288rpx;
+  padding: 30rpx 30rpx;
+  box-sizing: border-box;
+}
+.withdraw{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 70rpx;
+  width: 180rpx;
+  border-radius: 20rpx 0 0;
+  background-color: #3994ff;
+  color: #fff;
+  line-height: 70rpx;
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+.use{
+  border-radius: 20rpx;
+margin: 30rpx 50rpx 30rpx 50rpx;
+height: 104rpx;
+opacity: 1;
+background: #ffffff;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 30rpx;
+font-size: 28rpx;
+}
+.use .text{
+font-weight: 700;
+color: #333333;
+}
+
+.balance .ba_bg{
+  width: 188rpx;
+  height: 188rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.balance .baremark{
+  font-size: 28rpx;
+  color: #999;
+  font-weight: bold;
+}
+.balance .brprice{
+  font-size: 60rpx;
+}
+/* 信息列表 */
+.inlist{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 50rpx 30rpx 50rpx;
+}
+.inlist .balance{
+  width: 47%;
+  margin: 0;
+}
+.scanbtn{
+  background-color: #3994FF;
+  color: #fff;
+  font-size: 32rpx;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 80rpx 120rpx 0 120rpx;
+  border-radius: 80rpx;
+}
+.mylink{
+  color: #3994FF;
+  font-size: 24rpx;
+  text-align: center;
+  padding: 40rpx 0;
+}
+/* 订单弹框 */
+.mypop{
+
+  width: 80vw;
+}
+.mypop .potit{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 32rpx;
+  height: 90rpx;
+  padding: 0 20rpx;
+  border-bottom: 1px solid #f5f5f5;
+}
+.mypop .poicon{
+  opacity: .5;
+  font-size: 46rpx;
+  font-weight: bold;
+}
+.mypop .poinfo{
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 20rpx 30rpx;
+}
+.mypop .poimg{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 12rpx;
+}
+.mypop .poname{
+  width: calc(100% - 80rpx);
+  box-sizing: border-box;
+  padding-left: 20rpx;
+}
+.mypop .potitl{
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.mypop .spec{
+  font-size: 20rpx;
+  color: #AAAAAA;
+  margin-top: 10rpx;
+}
+.mypop .poplist{
+  border-top: 1px solid #f5f5f5;
+  font-size: 28rpx;
+  color: #666;
+  padding-bottom: 40rpx;
+}
+.mypop .popcard{
+  display: flex;
+  justify-content: space-between;
+  padding: 32rpx 30rpx 0 30rpx;
+  box-sizing: border-box;
+}
+.mypop .popcon{
+  color: #999;
+  width: calc(100% - 146rpx);
+  white-space: normal;
+  word-break: break-all;
+}
+.mypop .popbtn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90rpx;
+  text-align: center;
+  background-color: #3994FF;
+  color: #fff;
+}

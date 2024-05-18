@@ -1,0 +1,26 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="footer" style="{{platform == 'ios'?'padding-bottom:40rpx':''}}">
+    <view class="comment_input">
+        <image class="image" src="../../../img/focus/xiepinglun.png" mode="widthFix" />
+        <input class="input" focus="{{focusId == 1}}" bindblur="handingblur" type="text" confirm-type="send" bindconfirm="comment" bindinput="input" value="{{input}}" placeholder=" " />
+        <text class="placeholder_class" wx:if="{{!input}}">{{placeholder}}</text>
+    </view>
+    <view class="icons">
+        <view>
+            <text class="textT">{{util.tenNum(info.comment)}}</text>
+            <van-icon name="chat-o" size="40rpx"></van-icon>
+        </view>
+        <view>
+            <text class="textT">{{util.tenNum(info.likes)}}</text>
+            <van-icon name="{{!like?'good-job-o':'good-job'}}" color="{{!like?'':'#ff6040'}}" size="40rpx" bind:tap="like" />
+        </view>
+        <view>
+            <text class="textT">{{util.tenNum(info.favorites)}}</text>
+            <van-icon name="{{!isCollect?'star-o':'star'}}" color="{{!isCollect?'':'#ff6040'}}" size="40rpx" bind:tap="collect" />
+        </view>
+        <view>
+            <button class="foorer_button" open-type="share" bind:tap="share"></button>
+            <image class="image" src="/img/focus/data-04.png"></image>
+        </view>
+    </view>
+</view>

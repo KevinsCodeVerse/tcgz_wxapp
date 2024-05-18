@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-loading": "/miniprogram/miniprogram_npm/@vant/weapp/loading/index",
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index"
+  },
+  "navigationBarTitleText": "TA的团队"
+}

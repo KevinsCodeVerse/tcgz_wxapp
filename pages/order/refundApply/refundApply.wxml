@@ -1,0 +1,72 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="detail_order">
+  <!-- 商品信息 -->
+  <view class="orcard">
+    <view class="shop">
+      <view class="house">
+        <view class="shname">退款商品</view>
+      </view>
+    </view>
+    <view class="goods" bindtap="goGoodsDetail">
+      <image class="cover" mode="aspectFill" src="{{util.fullPath(goods.avatar)}}"></image>
+      <view class="goinfo">
+        <view class="gotit">
+          <view>{{goods.title}}</view>
+          <text class="logistics" wx:if="{{order.carriage == 2}}">物流配送</text>
+          <text class="local" wx:else>线下体验</text>
+        </view>
+        <view class="gospec">{{goods.remark}}</view>
+        <view class="count">
+          <view class="coprice">
+            <text class="goprice">￥{{order.price||order.payAmount}}</text>
+            <!-- <text class="freight" wx:if="{{order.freight}}">运费￥{{order.freight}}</text> -->
+
+            <!-- <text class="bag">秒杀价</text> -->
+          </view>
+          <view class="gonum">x{{order.count}}</view>
+
+        </view>
+      </view>
+    </view>
+    <view class="handle" wx:if="{{order.freight}}" style="display: flex;justify-content: space-between;">
+      <view class="total">运费:</view>
+      <view style="color:#999">￥{{order.freight}}</view>
+    </view>
+    <view class="handle" wx:if="{{order.discountPrice}}" style="display: flex;justify-content: space-between;">
+      <view class="total">优惠券:</view>
+      <view style="color:rgb(253, 80, 0)">-￥{{order.discountPrice}}</view>
+    </view>
+    <view class="handle">
+      <view class="total">
+        <text>合计:</text>
+        <text class="money">￥{{order.payAmount}}</text>
+      </view>
+      <view class="active1">{{order.textStatus}}</view>
+    </view>
+  </view>
+  <!-- 退款类型 -->
+  <view class="orcard">
+    <view class="shop">
+      <view class="house">
+        <view class="shname">退款商品</view>
+      </view>
+    </view>
+    <view class="select_box" wx:if="{{order.status != 2}}">
+      <view class="box" bindtap="goRefund" data-type="{{1}}">
+        <view class="textInfo">
+          <view class="title">仅退款(无需退货)</view>
+          <view class="text">没收到货，或与卖家协商同意不用退货只退款</view>
+        </view>
+        <van-icon name="arrow" color="#999" />
+      </view>
+      <van-divider />
+      <view class="box" bindtap="goRefund" data-type="{{2}}" wx:if="{{order.carriage==2&&order.status == 11}}">
+        <view class="textInfo">
+          <view class="title">我要退货退款</view>
+          <view class="text">已收到货，需要退还收到的货物</view>
+        </view>
+        <van-icon name="arrow" color="#999" />
+      </view>
+    </view>
+  </view>
+</view>

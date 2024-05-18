@@ -1,0 +1,13 @@
+<!--components/referrer/referrer.wxml-->
+<view class="confirm" style="{{mystyle}}">
+  <view class="avatar_bg">
+    <image class="avarar" src="{{avatar}}"></image>
+  </view>
+  <view class="conf">
+    <view class="coremark">您的推荐人</view>
+    <view class="name">{{name}}</view>
+    <view class="handle">
+      <view class="mybtn btn2" bindtap="onConfirm">好的</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,32 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="seckill">
+  <image class="banner" mode="widthFix" src="https://www.tcgz.store/files/default/default_spike.png"></image>
+  <view class="goods_list">
+    <view wx:for="{{list}}" wx:key="id" class="goods_item" bindtap="goDetail" data-id="{{item.id}}">
+      <image class="goods_cover" mode="aspectFill" src="{{util.fullPath(item.avatar)}}"></image>
+      <view class="goods_info">
+        <view>
+          <text class="goods_title">{{item.title}}</text>
+          <view class="inventory">
+            <text class="limit">限购{{item.buyCount}}件</text>
+            <text class="inventory_num">剩余{{item.stock}}件</text>
+          </view>
+          <van-count-down use-slot time="{{ item.overTime }}" bind:change="onChange"  bind:finish="onFinish" data-index="{{index}}" class="countdown">
+            <text class="bag">{{ item.timeData.hours + 24*item.timeData.days }}</text><text> : </text>
+            <text class="bag">{{ item.timeData.minutes }}</text><text> : </text>
+            <text class="bag">{{ item.timeData.seconds }}</text><text> 后结束</text>
+          </van-count-down>
+        </view>
+        <view class="price">
+          <text class="new">￥{{item.spikePrice}}</text>
+          <text class="old">￥{{item.originPrice}}</text>
+        </view>
+        <image class="goods_cover" mode="heightFix" class="btn" src="/img/seckill/seckill-btn.png"></image>
+      </view>
+    </view> 
+    <view class="empty_box" wx:if="{{isNull}}">
+      <image class="empty" mode="widthFix" src="/img/myicon/slide_top.png"></image>
+      <view>暂无秒杀</view>
+    </view>
+  </view>
+</view>

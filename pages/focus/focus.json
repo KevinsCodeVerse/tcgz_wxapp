@@ -1,0 +1,13 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "navigation": "/components/navigation/navigation",
+    "newList": "/components/newList/newList",
+    "van-tab": "/miniprogram/miniprogram_npm/@vant/weapp/tab/index",
+    "van-tabs": "/miniprogram/miniprogram_npm/@vant/weapp/tabs/index",
+    "clickaddress": "/components/clickaddress/clickaddress",
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "activity": "./../collective/activity/index"
+  }
+
+}

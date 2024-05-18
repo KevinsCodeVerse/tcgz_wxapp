@@ -1,0 +1,11 @@
+<!--pages/collective/firmlink/firmlink.wxml-->
+<view class="firmlink">
+  <view>
+    <view class="firemark">复制以下网址</view>
+    <view class="firemark">到电脑浏览器打开后台</view>
+    <view class="d_link" wx:if="{{type==2}}">https://www.tcgz.store/merchant</view>
+    <view class="d_link" wx:else>https://www.tcgz.store/firm</view>
+    <view class="mybtn fibtn" bindtap="copyCode">一键复制</view>
+    <view class="account" wx:if="{{account}}">我的账号: {{account}}</view>
+  </view>
+</view>

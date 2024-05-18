@@ -1,0 +1,192 @@
+/* pages/collective/detail_my/index.wxss */
+.coll_detail{
+  padding-bottom: 106rpx;
+}
+.myhead{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3994FF;
+  color: #fff;
+  padding: 14rpx 30rpx;
+}
+.myhead .avatar{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+.myhead .dmselect{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.myhead .selcon{
+  font-size: 32rpx;
+  margin: 0 16rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 314rpx;
+}
+.myhead .mysearch{
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  border: 1px solid #fff;
+  border-radius: 40rpx;
+  padding: 6rpx 14rpx;
+}
+.myhead .mysearch image{
+  width: 21rpx;
+  height: 24rpx;
+  margin-right: 8rpx;
+}
+/* 信息 */
+.move{
+  position: relative;
+  margin-bottom: 104rpx;
+}
+.move .banner{
+  width: 100%;
+  height: 360rpx;
+  display: block;
+}
+.move .avatar{
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  box-shadow: 0rpx 6rpx 12rpx rgba(0, 0, 0, 0.16);
+  position: absolute;
+  bottom: -80rpx;
+  left: calc(50% - 80rpx);
+  z-index: 9;
+  object-fit: cover;
+}
+.titl{
+  font-size: 40rpx;
+  text-align: center;
+  font-weight: bold;
+  padding: 0 30rpx;
+}
+.subtitl{
+  text-align: center;
+  color: #666;
+  margin-top: 10rpx;
+  min-height: 50rpx;
+  padding: 0 30rpx;
+}
+/* 通告栏 */
+.mynotice{
+  padding: 30rpx;
+}
+.mynotice .d_notice{
+  border-radius: 50rpx;
+  overflow: hidden;
+}
+
+/* 覆盖vant */
+.van-ellipsis{
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.van-notice-bar{
+  background-color: #F2F8FF!important;
+  height: 60rpx!important;
+}
+.van-sticky{
+  background-color: #fff;
+  padding: 0 30rpx;
+}
+/* 下面 */
+.exhibition{
+  background-color: #f5f5f5;
+  min-height: 700rpx;
+}
+.myintro{
+  padding-bottom: 30rpx;
+}
+/* 联系 */
+.contact{
+  /* box-shadow: 0px 0px 14rpx rgba(0, 0, 0, 0.14); */
+  margin: 30rpx;
+  padding: 14rpx 30rpx;
+  border-radius: 10rpx;
+  color: #999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  background-color: #fff;
+}
+.contact .phone{
+  width: calc(100% - 160rpx);
+}
+.contact .address{
+  display: flex;
+}
+.contact .address .addname{
+  width: 60rpx;
+}
+.contact .address .addre{
+  width: calc(100% - 60rpx);
+}
+.contact .cobtn{
+  width: 126rpx;
+  height: 52rpx;
+  border: 1px solid #3994FF;
+  border-radius: 52rpx;
+  color: #3994FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 14rpx 0;
+}
+.contact .cobtn .icon{
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+}
+/* 简介 */
+.intro{
+  font-size: 26rpx;
+  margin: 30rpx;
+  padding: 30rpx;
+  line-height: 52rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+.intro .tit{
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  padding-bottom: 30rpx;
+  padding-top: 10rpx;
+}
+.intro .tit text{
+  position: relative;
+  z-index: 2;
+}
+.intro .tit text::before{
+  content: '';
+  position: absolute;
+  border-bottom: 8rpx solid #3994FF;
+  bottom: 2rpx;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+/* 底部css */
+.foot{
+  position: fixed;
+  bottom: 30rpx;
+  left: 30rpx;
+  right: 30rpx;
+  text-align: center;
+  padding: 28rpx 0;
+  font-size: 36rpx;
+  background-color: #3994FF;
+  font-size: 36rpx;
+  color: #fff;
+  border-radius: 50rpx;
+  box-shadow: 0px 6rpx 20rpx rgba(0, 0, 0, 0.3);
+}

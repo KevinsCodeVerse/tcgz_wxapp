@@ -1,0 +1,37 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="box">
+    <block wx:if="{{cityBidUser.advUserStatus==3}}">
+        <view class="title">审核中</view>
+        <view class="text">平台审核中，请耐心等待</view>
+    </block>
+    <block wx:if="{{cityBidUser.advUserStatus!=3&&cityBidUser.advUserStatus!=2}}">
+        <view class="title">已通过</view>
+        <view class="text">平台已通过审核，到达投放时间将自动投放</view>
+    </block>
+    <block wx:if="{{cityBidUser.advUserStatus==2}}">
+        <view class="title">未通过</view>
+        <view class="text">{{cityBidUser.remark}}</view>
+    </block>
+    <view class="img" wx:if="{{cityBidUser.type==1||cityBidUser.type==0||cityBidUser.type==2}}">
+        <image src="{{util.fullPath(cityBidUser.cover)}}"></image>
+    </view>
+</view>
+<view class="box">
+    <view class="goods_title">设置商品</view>
+    <block wx:if="{{goods.price}}">
+        <view class="goods_item" >
+            <view class="img_box">
+                <image src="{{util.fullPath(goods.cover)}}"></image>
+            </view>
+            <view class="info">
+                <view class="goods_title TE">{{goods.name}}</view>
+                <view class="df">
+                    <view class="price">￥{{goods.price}}</view>
+                    <view class="text">销量 {{goods.deal}}</view>
+                </view>
+            </view>
+        </view>
+    </block>
+    
+</view>
+<view class="btn btnFalse" wx:if="{{cityBidUser.advUserStatus==2}}" bindtap="toUploading">重新上传</view>

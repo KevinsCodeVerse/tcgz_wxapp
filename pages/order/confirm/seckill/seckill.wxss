@@ -1,0 +1,319 @@
+.confirm_order{
+  padding-bottom: 104rpx;
+  box-sizing: border-box;
+}
+.mybg{
+  background: #86CC14;
+  width: 100%;
+  height: 320rpx;
+  border-radius: 0px 0px 180rpx 80rpx;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 0;
+}
+.step{
+  text-align: center;
+  padding: 40rpx 0 4rpx 0;
+}
+.step image{
+  width: 644rpx;
+  height: 92rpx;
+}
+/* 商品信息 */
+.goods{
+  background-color: #fff;
+  margin: 20rpx 28rpx;
+  border-radius: 20rpx;
+}
+.goods .shop{
+  font-size: 32rpx;
+  font-weight: bold;
+  padding: 22rpx 26rpx;
+  border-bottom: 1px solid #f5f5f5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.goods .info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20rpx;
+  color: #aaa;
+  padding: 26rpx;
+}
+.goods .info image{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 12rpx;
+}
+.goods .info .goname{
+  width: calc(100% - 142rpx);
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.goods .info .goname>view{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.goods .info .gotit{
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+}
+.goods .info .price{
+  margin-top: 10rpx;
+}
+.goods .info .price .orgprice{
+  margin: 0 10rpx;
+  text-decoration: line-through;
+}
+.goods .info .price>text:first-child{
+  color: #FF7800;
+  font-weight: bold;
+  font-size: 32rpx;
+}
+.goods .bag{
+  font-size: 16rpx;
+  color: #fff;
+  background: linear-gradient(180deg, #FF843E 0%, #FF4848 100%);
+  border-radius: 6rpx;
+  padding: 2rpx 10rpx;
+  margin-left: 10rpx;
+  position: relative;
+  bottom: 4rpx;
+  display: inline-block;
+}
+.goods .bag text{
+  font-size: 32rpx;
+  font-weight: bold;
+}
+/* 规格 */
+.goods .spec{
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #f5f5f5;
+  margin: 0 26rpx;
+  padding: 26rpx 0;
+}
+.goods .spec .splist{
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% - 180rpx);
+}
+.goods .spcard{
+  background-color: #F5F5F5;
+  border: 1px solid #F5F5F5;
+  font-size: 24rpx;
+  color: #666;
+  padding: 10rpx 28rpx;
+  border-radius: 50rpx;
+  margin-left: 20rpx;
+  margin-bottom: 10rpx;
+}
+.goods .active{
+  color: #3994FF;
+  border-color: #3994FF;
+  background-color: #F2F8FF;
+}
+.goods .money{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f5f5f5;
+  margin: 0 26rpx;
+  padding: 26rpx 0;
+}
+.goods .labtit{
+  font-weight: bold;
+}
+.goods .money .d_money{
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #FF7800;
+  display: flex;
+  align-items: center;
+}
+.goods .d_money .bag{
+  background-color: #FF6040;
+  color: #fff;
+  height: 30rpx;
+  padding: 0 10rpx;
+  text-align: center;
+  line-height: 30rpx;
+  font-size: 20rpx;
+  font-weight: normal;
+  border-radius: 6rpx;
+  display: inline-block;
+  margin-right: 10rpx;
+}
+/* 步进器 */
+.goods .myplus,.goods .myminus{
+  color: #86CC14;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #86CC14;
+}
+.goods .myminus{
+  color: #86CC14;
+}
+.goods .van-stepper__minus--disabled,.van-stepper__plus--disabled{
+  color: #ccc;
+  border-color: #ccc;
+}
+.goods .myinput{
+  background-color: #fff;
+}
+/* 配送方式 */
+.delivery{
+  background-color: #fff;
+  margin: 20rpx 28rpx;
+  border-radius: 20rpx;
+}
+.delivery .deremark{
+  font-weight: bold;
+  padding: 22rpx 26rpx;
+  border-bottom: 1px solid #f5f5f5;
+  display: flex;
+  justify-content: space-between;
+  color: #999;
+}
+.delivery .deremark>text:first-child{
+  color: #000;
+}
+.delivery .deremark .rest{
+  display: flex;
+}
+.delivery .deremark .rest text{
+  margin-right: 10rpx;
+}
+.delivery .address{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx 26rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+.delivery .address .name{
+  font-size: 28rpx;
+  color: #333;
+  font-weight: bold;
+  margin-right: 14rpx;
+  display: inline-block;
+}
+.delivery .adcon{
+  width: calc(100% - 40rpx);
+}
+/* 预留手机号 */
+.phone{
+  background-color: #fff;
+  margin: 20rpx 28rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22rpx 26rpx;
+}
+.phone input{
+  text-align: right;
+  width: 450rpx;
+}
+.phone view{
+  font-weight: bold;
+}
+/* 底部栏 */
+.foot{
+  background-color: #fff;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 104rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  font-weight: bold;
+  border: 2rpx solid #f1f1f1;
+}
+.foot .fotesu{
+  display: flex;
+  align-items: center;
+}
+.foot .fotesu text{
+  min-width: 65rpx;
+}
+.foot .total{
+  color: #FF7800;
+  font-size: 44rpx;
+  margin-left: 14rpx;
+}
+.foot .fobtn{
+  background-color: #86CC14;
+  font-weight: normal;
+  color: #fff;
+  width: 328rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  text-align: center;
+  border-radius: 76rpx;
+  font-size: 32rpx;
+}
+/* -------------------------------------------秒杀------------------------------------------------------------- */
+.seckill .mybg{
+  background: #FF6040;
+}
+.seckill .goods .active{
+  color: #FF6040;
+  border-color: #FF6040;
+  background-color: #FFF4F2;
+}
+.seckill .foot .fobtn{
+  background-color: #FF6040;
+}
+/* 普通订单步进器 */
+.confirm_order .goods .myplus,.goods .myminus{
+  color: red;
+  border: 1px solid red;
+}
+.confirm_order .goods .myminus{
+  color: red;
+}
+.confirm_order .goods .van-stepper__minus--disabled,.van-stepper__plus--disabled{
+  color: #ccc;
+  border-color: #ccc;
+}
+/* 秒杀步进器 */
+/* .seckill .goods .myplus,.goods .myminus{
+  color: #FF6040;
+  border: 1px solid #FF6040;
+}
+.seckill .goods .myminus{
+  color: #FF6040;
+}
+.seckill .goods .van-stepper__minus--disabled,.van-stepper__plus--disabled{
+  color: #ccc;
+  border-color: #ccc;
+} */
+/* 备注 */
+.userRemark{
+  background-color: #fff;
+  margin: 20rpx 28rpx;
+  border-radius: 20rpx;
+  padding: 22rpx 26rpx;
+}
+.userRemark view{
+  font-weight: 700;
+  margin-bottom: 12rpx;
+}
+.userRemark textarea{
+  min-height: 64rpx;
+  width: auto;
+  line-height: 34rpx;
+}

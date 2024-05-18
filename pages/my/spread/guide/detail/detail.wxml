@@ -1,0 +1,8 @@
+<!--pages/my/spread/guide/detail/detail.wxml-->
+<view class="guide_detail">
+  <view class="tit">{{detail.title}}</view>
+  <view class="content">
+    <rich-text nodes="{{detail.content}}"></rich-text>
+  </view>
+</view>
+

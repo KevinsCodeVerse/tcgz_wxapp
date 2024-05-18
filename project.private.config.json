@@ -1,0 +1,147 @@
+{
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/card/vipMessage/vipMessage",
+          "pathName": "pages/card/vipMessage/vipMessage",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/card/cardView/cardView",
+          "pathName": "pages/card/cardView/cardView",
+          "query": "id=91",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/card/Message/Message",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/collective/find/find",
+          "pathName": "pages/collective/find/find",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/collective/activity_detail/activity_detail",
+          "pathName": "pages/collective/activity_detail/activity_detail",
+          "query": "id=116&activityType=2",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/card/vip/vip",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/card/Con-tabBar/Con-tabBar",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/card/myCard/myCard",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/card/addCard/addCard",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/card/SelectCardTemplate/SelectCardTemplate",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/card/contacts/contacts",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "关注",
+          "pathName": "pages/attention/attention",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "好物",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "登录",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "好店",
+          "pathName": "pages/shop/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/loginwx/login",
+          "pathName": "pages/loginwx/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/order/confirm/seckill/seckill",
+          "pathName": "pages/order/confirm/seckill/seckill",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/collective/join/join",
+          "pathName": "pages/collective/join/join",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/goods/g_video/index",
+          "pathName": "pages/goods/g_video/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "setting": {
+    "urlCheck": false,
+    "compileHotReLoad": true,
+    "preloadBackgroundData": false
+  },
+  "projectname": "tcgz_user",
+  "libVersion": "3.2.5"
+}

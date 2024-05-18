@@ -1,0 +1,191 @@
+.btn {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100rpx;
+	line-height: 100rpx;
+	text-align: center;
+	font-weight: 600;
+	font-size: 32rpx;
+}
+.btnTrue {
+	background-color: #3994ff;
+	color: #fff;
+}
+
+.btnFalse {
+	background-color: #cccccc;
+	color: #fff;
+}
+Page {
+	padding: 25rpx;
+}
+.box {
+	width: 640rpx;
+	background: #ffffff;
+	border-radius: 21rpx;
+	padding: 30rpx 30rpx;
+	margin-bottom: 25rpx;
+}
+.title {
+	font-weight: 600;
+	font-size: 33rpx;
+	text-align: left;
+	color: #333333;
+}
+
+.text {
+	line-height: 55rpx;
+	opacity: 0.6;
+	font-size: 25rpx;
+	text-align: left;
+	color: #999999;
+}
+.box_img {
+    height: 268rpx;
+    width:630rpx;
+	border: 4rpx dashed #dddddd;
+	border-radius: 17rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.box_img image {
+	height: 100rpx;
+	width: 100rpx;
+	margin-bottom: 20rpx;
+}
+.goods_box {
+	line-height: 40rpx;
+	font-weight: 600;
+	display: flex;
+	justify-content: space-between;
+}
+/* 简介 弹窗 样式 ------------------------ */
+
+.desc_bottom_box .title,
+.select_bottom_box .title {
+	height: 90rpx;
+	display: flex;
+	font-size: 34rpx;
+	font-weight: bold;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 1px solid #99999146;
+}
+.desc_bottom_box .img,
+.select_bottom_box .img {
+	position: absolute;
+	right: 30rpx;
+	top: 27rpx;
+}
+.desc_bottom_box .bottom_close,
+.select_bottom_box .bottom_close {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 90rpx;
+	display: flex;
+	font-size: 40rpx;
+	justify-content: center;
+	align-items: center;
+	border-top: 1px solid #99999123;
+	color: #459bfd;
+}
+/* 简介 弹窗 样式 ------------------------*/
+
+.desc_bottom_box {
+	position: relative;
+}
+.page_box {
+	height: 600rpx;
+	padding: 10rpx 30rpx 22rpx 30rpx;
+	color: #444444;
+	font-size: 30rpx;
+    width: calc(100% - 60rpx);
+}
+
+.desc_box1 {
+	width: 100%;
+}
+.desc_box1 view {
+	margin: 20rpx 0;
+}
+.desc_box1 .desc {
+	color: #222;
+	margin: 30rpx 0 20rpx 0;
+	font-size: 36rpx;
+	font-weight: bold;
+}
+.desc_box1 .text {
+	line-height: 50rpx;
+}
+.saerch {
+	width: 125rpx;
+	height: 58rpx;
+	background: #3994ff;
+	border-radius: 29rpx;
+	text-align: center;
+	line-height: 58rpx;
+	color: #ffffff;
+	font-size: 30rpx;
+}
+.van-search {
+	padding-left: 0 !important;
+}
+.goods_item {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.116);
+	display: flex;
+	padding: 25rpx 0;
+}
+.img_box {
+	height: 120rpx;
+	width: 120rpx;
+	margin-right: 20rpx;
+}
+
+.img_box image {
+	height: 100%;
+	width: 100%;
+}
+
+.info {
+	flex: 1;
+}
+.goods_title {
+	font-weight: 600;
+}
+.df {
+	display: flex;
+	align-items: flex-end;
+}
+.search_box {
+	padding: 0 25rpx;
+}
+.select_btn {
+	margin-top: 40rpx;
+	margin-left: 20rpx;
+	width: 125rpx;
+	height: 58rpx;
+	background: #3994ff;
+	border-radius: 29rpx;
+	text-align: center;
+	line-height: 58rpx;
+	color: #ffffff;
+	font-size: 30rpx;
+}
+.van-search__action {
+	margin-right: 0 !important;
+	padding-right: 0 !important;
+}
+.price {
+	margin-top: 15rpx;
+	margin-right: 20rpx;
+	font-size: 42rpx;
+	font-weight: 800;
+	text-align: left;
+	color: #ff7800;
+}

@@ -1,0 +1,57 @@
+/* pages/my/spread/flow/flow.wxss */
+.remark{
+  font-weight: bold;
+  padding: 0 30rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.telist{
+  background-color: #fff;
+}
+.tecard{
+  padding: 16rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f5f5f5;
+}
+.tecard .time{
+  color: #999999;
+  font-size: 20rpx;
+  margin-top: 4rpx;
+}
+.tecard .price{
+  color: rgb(245, 86, 86);
+  font-weight: bold;
+  font-size: 40rpx;
+  letter-spacing: 0;
+}
+.tecard .add{
+  color: #32ca64;
+}
+.error{
+  color: rgb(245, 86, 86);
+
+}
+.lanse {
+  color: #3994FF !important;
+}
+.tecard .freeze {
+  color: #636363;
+}
+.tecard .toad{
+  width: calc(100% - 250rpx);
+}
+/* 滑动加载 */
+.loading {
+  text-align: center;
+  padding: 30rpx 0;
+}
+.finish {
+  font-size: 28rpx;
+  color: #999999;
+  padding-bottom: 20rpx;
+}
+

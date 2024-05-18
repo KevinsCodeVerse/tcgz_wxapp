@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "业务推广中心",
+  "usingComponents": {
+    "van-dialog": "/miniprogram/miniprogram_npm/@vant/weapp/dialog/index",
+    "regular": "/components/regular/regular"
+  }
+}

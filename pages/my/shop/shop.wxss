@@ -1,0 +1,113 @@
+/* pages/my/shop/shop.wxss */
+.myhouse{
+  padding-top: 20rpx;
+  box-sizing: border-box;
+}
+/* 店铺列表 */
+.shop_list {
+  width: 94%;
+  margin: 0 auto;
+}
+.shop_item {
+  background: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  padding: 20rpx;
+  box-sizing: border-box;
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.03);
+  margin-bottom: 20rpx;
+}
+.shop_item .shop_avatar {
+  width: 117.6rpx;
+  height: 117.6rpx;
+  display: block;
+  border-radius: 10px;
+  margin-bottom: 8rpx;
+}
+.shop_item .activity_label {
+  position: relative;
+  width: 117.6rpx;
+}
+.shop_item .activity_label image {
+  width: 117.6rpx;
+  height: 40rpx;
+}
+.shop_item .activity_label text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 22rpx;
+  width: 100%;
+  text-align: center;
+  height: 40rpx;
+  line-height: 40rpx;
+  color: #FF6040;
+}
+.shop_item .item_right {
+  width: calc(100% - 137rpx);
+  margin-left: 20rpx;
+}
+.shop_item .title {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.shop_item .shop_info {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #999999;
+}
+.shop_item .shop_info .score {
+  color: #FF7800;
+  margin-right: 10rpx;
+}
+.shop_item .shop_info .score image {
+  width: 22rpx;
+  height: 22rpx;
+}
+.shop_item .shop_info .distance {
+  padding: 4rpx 0;
+}
+.shop_item .shop_info .minus {
+  display: block;
+  background: #FFF2E6;
+  color: #FF7800;
+  padding: 4rpx 10rpx;
+  margin-left: 10rpx;
+}
+.shop_item .address {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #999999;
+  font-size: 24rpx;
+}
+.shop_item .discount .discount_item {
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx;
+}
+.shop_item .discount .discount_item image {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 10rpx;
+}
+.shop_item .discount .discount_item text {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #999999;
+  font-size: 28rpx;
+}
+/* 滑动加载 */
+.loading {
+  text-align: center;
+  padding: 30rpx 0;
+}
+.finish {
+  font-size: 28rpx;
+  color: #999999;
+  padding-bottom: 20rpx;
+}

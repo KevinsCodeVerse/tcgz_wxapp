@@ -1,0 +1,133 @@
+<wxs module="util" src="../../utils/util.wxs" />
+<!-- 自定义导航 -->
+<navigation>
+  <view class="navbar" bind:tap="toAreaCal">
+    <image class="addr" mode="heightFix" src="/img/common/addr-white.png"></image>
+    <text>{{cityName?cityName:'选择城市'}}</text>
+    <van-icon name="arrow-down" />
+    <!-- <image class="arrow" mode="heightFix" src="/img/common/arrow-bottom.png"></image> -->
+  </view>
+</navigation>
+<view style="padding-top: {{paddingTop}}px;" class="index">
+  <view style="top: {{navBarHeight}}px;" class="header">
+    <view class="tabs">
+      <view class="tab_item {{tab == 1?'active':''}}" data-id="1" bindtap="tabChange">同城优选</view>
+      <view class="tab_item {{tab == 2?'active':''}}" data-id="2" bindtap="tabChange">关注</view>
+    </view>
+    <van-search style="flex: 1;padding-right:20rpx;font-size:28rpx;" value="{{ searchValue }}" shape="round" background="#3994FF" placeholder="搜索" bind:search="toSearch" />
+  </view>
+  <view wx:if="{{tab == 1}}" class="banner">
+    <view class="banner_bgd"></view>
+    <swiper indicator-dots="{{true}}" autoplay="{{true}}" indicator-color="rgba(255,255,255,0.3)" indicator-active-color="#3994FF">
+      <swiper-item wx:for="{{SildeList}}" data-obj="{{item}}" bindtap="handSwiper" wx:key="id">
+        <image mode="aspectFill" src="{{util.fullPath(item.cover)}}"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 秒杀与平团 -->
+  <view wx:if="{{(groupSeckill.spike.length||groupSeckill.group.length)&&app.globalData.showVideo=='1'}}" class="activity">
+    <view class="activity_item">
+      <view class="activity_title">
+        <text>限时秒杀</text>
+        <view class="more" bindtap="toSeckill">
+          <text>更多秒杀</text>
+          <image mode="heightFix" src="/img/common/arrow-right.png"></image>
+        </view>
+      </view>
+      <view class="goods_list">
+        <view class="goods_item" wx:for="{{groupSeckill.spike}}" bindtap="goSeckillDetail" data-id="{{item.id}}">
+          <view class="goods_cover">
+            <image mode="aspectFill" src="{{util.fullPath(item.avatar)}}"></image>
+            <view class="seckill">
+              <van-count-down time="{{ item.time*1000 }}" />
+            </view>
+          </view>
+          <view class="price">
+            <text class="new">￥{{item.price}}</text>
+            <text class="old">￥{{item.proOriginPrice}}</text>
+          </view>
+          <text class="goods_title">{{item.title}}</text>
+        </view>
+        <image style="height:0;width:60%;margin: 0 20%;" mode="widthFix" wx:if="{{groupSeckill.spike.length==0}}" src="https://www.tcgz.store/files/index/null.png"></image>
+      </view>
+    </view>
+    <view class="activity_item">
+      <view class="activity_title">
+        <text>拼团专区</text>
+        <view class="more" bindtap="toGroup">
+          <text>更多拼团</text>
+          <image mode="heightFix" src="/img/common/arrow-right.png"></image>
+        </view>
+      </view>
+      <view class="goods_list">
+        <view class="goods_item" wx:for="{{groupSeckill.group}}" bindtap="goGroupDetail" data-id="{{item.id}}">
+          <view class="goods_cover">
+            <image mode="aspectFill" src="{{util.fullPath(item.avatar)}}"></image>
+            <text class="group">已拼{{item.count}}</text>
+          </view>
+          <view class="price">
+            <text class="new">￥{{item.price}}</text>
+            <text class="old">￥{{item.proOriginPrice}}</text>
+          </view>
+          <text class="goods_title">{{item.title}}</text>
+        </view>
+        <image style="height:0;width:60%;margin: 0 20%;" mode="widthFix" wx:if="{{groupSeckill.group.length==0}}" src="https://www.tcgz.store/files/index/null.png"></image>
+      </view>
+    </view>
+  </view>
+  <!-- 分类 -->
+  <van-sticky offset-top="{{ paddingTop }}">
+    <view class="classify_box">
+      <scroll-view class="classify" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+        <view class="classify_list">
+          <text wx:for="{{classifyList}}" wx:key="index" data-id="{{item.id}}" class="classify_item {{active == item.id?'active':''}}" bindtap="classifyChange">{{item.name}}</text>
+        </view>
+      </scroll-view>
+      <image class="shadow" src="/img/common/shadow.png"></image>
+      <view class="more" bind:tap="more">
+        <image src="/img/common/more.png"></image>
+        <text>更多</text>
+      </view>
+      <view class="more_box" wx:if="{{showMore}}">
+        <view wx:for="{{classifyList}}" wx:key="index" data-id="{{item.id}}" class="titleitem_box {{active == item.id?'active':''}}" bindtap="classifyChange">
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+  </van-sticky>
+  <!-- 商品列表 -->
+  <view class="product_list">
+    <view wx:for="{{productList}}" wx:key="index" class="product_item" data-obj="{{item}}" bindtap="goDetail">
+      <view class="product_cover">
+        <view class="video_cover">
+          <image mode="aspectFill" src="{{util.fullPath(item.cover)}}"></image>
+          <image wx:if="{{item.video}}" class="player" src="/img/common/player.png"></image>
+        </view>
+
+        <view wx:if="{{item.isInvite==1}}" class="price">
+          <view class="price_num">
+            <!-- 佣金 提示2.0.18 版本关闭 -->
+            <!-- <image mode="heightFix" class="unit" src="/img/common/money.png"></image> -->
+            <!-- <text class="num">{{item.maxReward}}</text> -->
+          </view>
+        </view>
+      </view>
+      <view class="product_info">
+        <text class="product_title">{{item.name}}</text>
+        <view class="info_bottom">
+          <view class="price">
+            <text class="new">￥{{util.tenNum(item.price)}}</text>
+            <text class="old">￥{{util.tenNum(item.originalPrice)}}</text>
+          </view>
+          <view class="sales">已售{{item.deal}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="loading">
+    <van-loading wx:if="{{loading}}" size="24px" color="#0DC3FF">加载中...</van-loading>
+    <text class="finish" wx:if="{{finish && productList.length==0}}">暂无数据</text>
+    <view class="floor" wx:if="{{finish && productList.length!=0}}">-已经到底啦-</view>
+  </view>
+</view>
+<clickaddress id="clickaddress" bind:resize="handresize"></clickaddress>

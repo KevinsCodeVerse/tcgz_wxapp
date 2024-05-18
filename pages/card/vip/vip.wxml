@@ -1,0 +1,251 @@
+<!--pages/card/vip/vip.wxml-->
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="vip-page" style="height: 100vh;background-image: url('https://tcgz-1323511707.cos.ap-nanjing.myqcloud.com/vip-bgc.png');background-size: contain; ">
+  <view wx:if="{{isVip===0&&!vipInfo.isExpired}}" class="top-text">开通VIP,加入六度人脉权益</view>
+  <view wx:if="{{vipInfo.isExpired===0&&isVip===1}}" class="top-text">正在享受VIP权益，还有{{day}}天过期</view>
+  <view wx:if="{{vipInfo.isExpired===1&&isVip===0}}" class="top-text">已过期，立即续费，继续享受VIP权益</view>
+  <view class="main">
+    <view class="tit">VIP权益</view>
+    <view class="item">
+      <view wx:if="{{isVip==1&&cityInfo.cityName}}" class="check-flex">
+        <view class="t-text text">
+          <view>
+            {{cityInfo.cityName}}
+          </view>
+          <view class="label_text">
+            正在助力，努力为您匹配资源…
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{isVip==1&&firmInfo.name}}" class="check-flex">
+        <view>
+          <!-- <image class="check-img" src="{{firmInfo.banner}}" mode="aspectFill" /> -->
+        </view>
+        <view class="t-text text">
+          <view>
+            {{firmInfo.name}}
+          </view>
+          <view class="label_text">
+            正在助力，努力为您匹配资源…
+          </view>
+        </view>
+      </view>
+      <view class="item-flex">
+        <view class="left">
+          <image src="/img/card/vip-icon1.png" mode="aspectFill" />
+        </view>
+        <view>
+          <view class="t-text">VIP专属标识</view>
+          <view class="b-text">尊贵的VIP身份专属标识展示</view>
+        </view>
+      </view>
+      <view class="item-flex">
+        <view class="left">
+          <image src="/img/card/vip-icon2.png" mode="aspectFill" />
+        </view>
+        <view>
+          <view class="t-text">尊贵身份信用提升</view>
+          <view class="b-text">尊贵的VIP身份，人脉圈信用值加分</view>
+        </view>
+      </view>
+      <view class="item-flex">
+        <view class="left">
+          <image src="/img/card/vip-icon3.png" mode="aspectFill" />
+        </view>
+        <view>
+          <view class="t-text">解锁名片视频介绍</view>
+          <view class="b-text">支持上传介绍视频，丰富名片内容，更直观您的价值</view>
+        </view>
+      </view>
+      <view class="item-flex">
+        <view class="left">
+          <image src="/img/card/vip-icon4.png" mode="aspectFill" />
+        </view>
+        <view>
+          <view class="t-text">添加微信，增加人脉</view>
+          <view class="b-text">支持上传微信二维码，让客户快速添加微信好友</view>
+        </view>
+      </view>
+      <view class="item-flex">
+        <view class="left">
+          <image src="/img/card/vip-icon5.png" mode="aspectFill" />
+        </view>
+        <view>
+          <view class="t-text">个性设置，任意选择</view>
+          <view class="b-text">支持更多名片个性设置，打造个人主题品牌形象</view>
+        </view>
+      </view>
+      <view class="item-flex">
+        <view class="left">
+          <image src="/img/card/vip-icon6.png" mode="aspectFill" />
+        </view>
+        <view>
+          <view class="t-text">解锁创建多张名片</view>
+          <view class="b-text">支持创建多张名片，不同项目或圈子，随意切换精准打造个人IP</view>
+        </view>
+      </view>
+      <view class="item-flex">
+        <view class="left">
+          <image src="/img/card/vip-icon7.png" mode="aspectFill" />
+        </view>
+        <view>
+          <view class="t-text">访客查看，随心预览</view>
+          <view class="b-text">支持查看所有访客成员及详情，不错过任何商业和职业对接机会</view>
+
+        </view>
+      </view>
+      <view class="item-flex">
+        <view class="left">
+          <image src="/img/card/vip-icon8.png" mode="aspectFill" />
+        </view>
+        <view>
+          <view class="t-text">深度理解，精确匹配</view>
+          <view class="b-text">更深入了解具体需求和资源特点，确保最佳匹配，高效资源对接加速项目融合</view>
+
+        </view>
+      </view>
+      <view class="item-flex">
+        <view class="left">
+          <image src="/img/card/vip-icon9.png" mode="aspectFill" />
+        </view>
+        <view>
+          <view class="t-text">多方助力，连接无界</view>
+          <view class="b-text">精确主动寻求集体组织，城市运营，借助平台六度人脉体系的强大数据为您匹配资源</view>
+
+        </view>
+      </view>
+      <view class="item-flex">
+        <view class="left">
+          <image src="/img/card/vip-icon10.png" mode="aspectFill" />
+        </view>
+        <view>
+          <view class="t-text">高效匹配，无缝对接</view>
+          <view class="b-text">后台AI人工智能精准高效自动匹配，替您寻求潜在的合作伙伴</view>
+
+        </view>
+      </view>
+      <view class="item-flex">
+        <view class="left">
+          <image src="/img/card/vip-icon11.png" mode="aspectFill" />
+        </view>
+        <view>
+          <view class="t-text">专业专员，贴心服务</view>
+          <view class="b-text">线下专员随时协助，后台桥梁作用为您精准筛选资源，专业服务协助沟通确保每一个对接都精确高效</view>
+
+        </view>
+      </view>
+      <view class="item-flex">
+        <view class="left">
+          <image src="/img/card/vip-icon12.png" mode="aspectFill" />
+        </view>
+        <view>
+          <view class="t-text">尊贵身份，更多权益</view>
+          <view class="b-text">获得尊贵的VIP身份，获得申请升级平台黄金会员业务推广权限，推广获得更高分配收益</view>
+
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="box-footer">
+    <view>
+      <van-button bind:tap="openVip" round type="info" size="large">{{vipPrice}}/年 {{isVip===1?'立即续费':'立即开通'}}</van-button>
+      <view class="text">
+        开通VIP，加入六度人脉，让世界看到更好的您！
+      </view>
+    </view>
+  </view>
+</view>
+<custom-tabbar />
+<van-popup show="{{ show }}" round position="bottom" custom-style="height: 49%" bind:close="onClose">
+  <view class="title">{{isVip===1?'续费':'开通'}}VIP</view>
+  <view class="show">
+    <view>
+      <view class="tit1">请选择助力角色</view>
+      <view class="tit2">解锁更多名片功能，打造更完善的个人IP，</view>
+      <view class="tit2">请求所在城市运营或服务团队助力精准资源匹配。</view>
+      <view>
+        <van-cell bind:tap="openSociety" title="助力的集体" is-link value="{{SocietyName?SocietyName:'请选择集体'}}" />
+        <van-cell bind:tap="openCity" title="助力的城市" is-link value="{{CityName?CityName:'请选择城市'}}" />
+      </view>
+    </view>
+    <view class="protocol">
+      <image class="radio" src="/img/myicon/radio.png" wx:if="{{!flag}}" bindtap="toAgree"></image>
+      <image class="radio" src="/img/myicon/radio_active3.png" wx:else bindtap="toAgree"></image>
+      <text bindtap="toAgree">(勾选)购买表示您同意</text>
+      <navigator url="/pages/card/protocol/protocol">人脉圈VIP技术服务协议</navigator>
+    </view>
+    <view class="btn-footer">
+      <van-button bind:tap="buyVip" round type="info" size="large">{{isVip===1?'立即续费':'立即开通'}}</van-button>
+    </view>
+  </view>
+</van-popup>
+
+<!-- 集体 -->
+<van-popup show="{{ showSociety }}" round position="bottom" custom-style="height: 43%" bind:close="openSociety">
+  <view class="title">选择集体</view>
+  <view wx:if="{{SocietyItems.length>0}}" class="box">
+    <view class="box-view">
+      <view class="label-flex" wx:for="{{SocietyItems}}" wx:key="value">
+        <view bindtap="checkboxChangeSociety" data-item="{{item.value}}">
+          <view class="flex">
+            <view>
+              <view class="left-flex">
+                <image class="shop_avatar" src="{{util.fullPath(item.firmInfo.avatar) }}" mode="aspectFill" />
+                <view class="name">{{item.firmInfo.name}}</view>
+              </view>
+            </view>
+            <view style="margin: 5rpx 0;">
+              <van-icon wx:if="{{item.checked}}" size="40rpx" color="#0080ff" name="passed" />
+            </view>
+          </view>
+        </view>
+
+      </view>
+
+    </view>
+  </view>
+  <view class="not" wx:else>
+    <view class="not-text">当前未加入任何集体，请选择加入集体或跳过</view>
+    <view class="button-container">
+      <van-button bind:tap="goSociety" round type="info" size="large">
+        <view>加入集体</view>
+        <view>(加入集体享受集体福利，资源融助力)</view>
+      </van-button>
+    </view>
+    <view class="button-container">
+      <van-button bind:tap="openSociety" round type="info" size="large">
+        <view>跳过</view>
+        <view>(暂无集体，请注意开通后无法继续设置)</view>
+      </van-button>
+    </view>
+  </view>
+
+</van-popup>
+<!-- 城市 -->
+<van-popup show="{{ showCity }}" round position="bottom" custom-style="height: 43%" bind:close="openCity">
+  <view class="title">选择城市</view>
+  <view class="box">
+    <view class="box-view">
+      <view class="label-flex" wx:for="{{CityItems}}" wx:key="id">
+        <view bind:tap="checkboxChangeCity" data-item="{{item.value}}">
+          <view class="flex">
+            <view>
+              <view class="left-flex">
+                <view class="name">{{item.cityName}}</view>
+              </view>
+            </view>
+            <view>
+              <view style="margin: 5rpx 0;">
+                <van-icon wx:if="{{item.checked}}" size="40rpx" color="#0080ff" name="passed" />
+              </view>
+            </view>
+          </view>
+        </view>
+
+      </view>
+
+
+    </view>
+  </view>
+
+</van-popup>

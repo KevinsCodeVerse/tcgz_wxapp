@@ -1,0 +1,4 @@
+/* pages/card/messageDetail/messageDetail.wxss */
+page {
+ background-color: #fff;
+}

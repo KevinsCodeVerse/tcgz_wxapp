@@ -1,0 +1,40 @@
+<!-- pages/my/spread/invite/invite.wxml -->
+<wxs module="util" src="../../../../utils/util.wxs" />
+<view class="invite">
+  <!-- <view class="inremark">
+    <view>通过填码、扫码等方式邀请朋友入驻 集体</view>
+    <view>朋友将成为我的下级并获得返佣</view>
+  </view> -->
+  <view class="incon">
+    <view class="intit">我的邀请码</view>
+    <view class="incode">{{invite}}</view>
+    <view class="mybtn copy" bindtap="copyCode">一键复制</view>
+    <view class="intit">我的邀请链接</view>
+    <button class="myshare" id="button" bindtap="shareShowFunc">点击分享给好友</button>
+    <!-- <button open-type="share" class="myshare" id="button" >点击分享给好友</button> -->
+    <view class="intit">我的邀请二维码</view>
+    <image class="ewm" src="{{util.fullPath(ewm.qrCode)}}" bindlongpress="handtapSave"></image>
+  </view>
+</view>
+<van-popup show="{{ shareShow }}" round closeable close-icon-position="top-right" close-icon="close" position="bottom" custom-style="height: 660rpx;padding:15" bind:close="onClose">
+  <view class="select_box">
+    <view class="title">选择分享海报</view>
+    <view style="display: flex;margin-bottom: 15rpx;">
+      <van-icon class="right_j" name="arrow-left" />
+      <scroll-view class="select_img_box" scroll-x="{{true}}">
+        <view class="bxx">
+          <view class="{{indexs==index?'imgs hoverimgs':'imgs'}}" wx:for="{{ewm.poster}}" bindtap="shareImg" data-index="{{index}}">
+            <image class="acImg" src="{{util.fullPath(item)}}"></image>
+          </view>
+        </view>
+      </scroll-view>
+      <van-icon class="left_j" name="arrow" />
+    </view>
+    <van-cell-group>
+      <van-field model:value="{{ message }}" label="分享文案" type="textarea" placeholder="请输入分享文案" autosize border="{{ false }}" />
+    </van-cell-group>
+    <view style="margin: 40rpx 30rpx;">
+      <van-button round type="primary" open-type="share" block>分享</van-button>
+    </view>
+  </view>
+</van-popup>

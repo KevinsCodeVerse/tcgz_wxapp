@@ -1,0 +1,11 @@
+<!--components/confirm/index.wxml-->
+<view class="confirm">
+  <view class="conf">
+    <view>推荐授权绑定微信号</view>
+    <view>下次可直接使用微信一键登录</view>
+    <view class="handle">
+      <view class="mybtn btn1" bindtap="onCancel">跳过</view>
+      <view class="mybtn btn2" bindtap="onConfirm">授权微信</view>
+    </view>
+  </view>
+</view>

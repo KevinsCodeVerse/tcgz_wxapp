@@ -1,0 +1,24 @@
+/* components/commentList/commentList.wxss */
+.comment_list {
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 70rpx;
+}
+.comment_list .childs {
+  padding-left: 70rpx;
+  box-sizing: border-box;
+}
+.comment_list .childs .more {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.expand{
+  display: flex;
+}
+.expand view{
+  flex:1;
+}
+.expand > view{
+  flex:0.5;
+}

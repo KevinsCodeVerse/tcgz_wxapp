@@ -1,0 +1,109 @@
+/* pages/collective/vote/vote.wxss */
+.vote{
+  background-color: #f5f5f5;
+  height: 100vh;
+}
+/* 信息css */
+.d_status{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #999;
+  font-size: 20rpx;
+  padding: 30rpx 36rpx 16rpx 36rpx;
+}
+.d_status .mylabel text{
+  padding: 6rpx 16rpx;
+  color: #fff;
+  display: inline-block;
+  text-align: center;
+  margin-right: 16rpx;
+  border-radius: 6rpx;
+}
+.info{
+  padding: 0 36rpx 36rpx 36rpx;
+  font-size: 20rpx;
+  color: #999;
+}
+.info .tit{
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+.info .subtit{
+  font-size: 24rpx;
+  margin-bottom: 32rpx;
+  margin-top: 14rpx;
+}
+.info .time{
+  margin-bottom: 10rpx;
+}
+/* 单选框 */
+.racard{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  font-size: 24rpx;
+  color: #666;
+  padding: 0 40rpx;
+  height: 100rpx;
+}
+.racard .iconimg{
+  width: 34rpx;
+  height: 34rpx;
+}
+.racard .bill{
+  display: flex;
+  align-items: center;
+  color: #3994FF;
+}
+.racard .d_bill{
+  color: #999;
+}
+.racard .rst{
+  padding-left: 40rpx;
+}
+/* 提示 */
+.tip{
+  color: #999;
+  font-size: 20rpx;
+  padding-left: 40rpx;
+  padding-top: 12rpx;
+  line-height: 36rpx;
+}
+.tip .tip2{
+  color: #3994FF;
+}
+/* 底部css */
+.foot{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 30rpx 0;
+  font-size: 36rpx;
+  background-color: #3994FF;
+  font-size: 36rpx;
+  color: #fff;
+}
+.anonymity{
+  color: #999999;
+  font-size: 28rpx;
+  text-align: center;
+  margin-top: 30rpx;
+}
+.step{
+  background-color: #4DC4FF;
+}
+.step1{
+  background-color: #999;
+}
+.step2{
+  background-color: #3994FF;
+}
+.step3{
+  background-color: #ccc;
+}

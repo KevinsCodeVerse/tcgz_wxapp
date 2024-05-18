@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build": "gulp css"
+  },
+  "dependencies": {
+    "@vant/weapp": "^1.7.2",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^8.0.0",
+    "postcss-pxtransform": "^3.0.5"
+  }
+}

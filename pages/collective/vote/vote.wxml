@@ -1,0 +1,52 @@
+<!--pages/collective/vote/vote.wxml-->
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="vote">
+  <view class="d_status">
+    <view class="mylabel">
+      <text class="step">投票活动</text>
+      <text wx:if="{{activity.status==0}}" class="step1">未开始</text>
+      <text wx:if="{{activity.status==1}}" class="step2">投票中</text>
+      <text wx:if="{{activity.status==-1}}" class="step3">已结束</text>
+    </view>
+    <view>发起人：{{activity.sponsor}}</view>
+  </view>
+  <view class="info">
+    <view class="tit">{{activity.name}}</view>
+    <view class="subtit">{{activity.simpleInfo}}</view>
+    <view class="time">投票时间：{{util.formatDateAt(activity.activityStartTime)}}~{{util.formatDateAt(activity.activityEndTime)}}</view>
+  </view>
+
+  <!-- 单选 -->
+  <van-radio-group value="{{ radio }}" bind:change="onChange" wx:if="{{!currentVote.id}}">
+    <view class="racard" wx:for="{{list}}" wx:key="index">
+      <text>{{item.name}}</text>
+      <van-radio use-icon-slot value="{{ radio }}" name="{{item.id}}">
+        <image class="iconimg" slot="icon" src="{{ radio === item.id ? icon.active : icon.normal }}" />
+      </van-radio>
+    </view>
+  </van-radio-group>
+
+  <view wx:else>
+    <view class="racard" wx:for="{{list}}" wx:key="index" >
+      <text>{{item.name}}</text>
+      <view class="bill" bindtap="goList" data-id="{{item.id}}" >
+        <text class="d_bill">{{item.voteNum}}票</text>
+        <text class="rst" wx:if="{{activity.anonymous!=1}}">详情</text>
+        <van-icon name="arrow" wx:if="{{activity.anonymous!=1}}"/>
+      </view>
+    </view>
+
+  </view>
+
+
+
+  <!-- 提示 -->
+  <view class="tip" wx:if="{{!currentVote.id}}">
+    <view>单选，最少选择1项/最多选择1项</view>
+    <view class="tip2" wx:if="{{anonymous==1}}">当前为匿名投票，我们不会公开您的个人资料</view>
+  </view>
+  <view class="anonymity" wx:if="{{anonymous==1}}">当前为匿名投票，无法查看投票者列表</view>
+
+  <view wx:if="{{currentVote.id}}" class="foot mybtn step1">您已投票</view>
+  <view wx:if="{{!currentVote.id && activity.status==1}}" class="foot mybtn step2" bindtap="toSubmit">确认投票</view>
+</view>

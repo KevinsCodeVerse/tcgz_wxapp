@@ -1,0 +1,8 @@
+<highlightsVideo wx:for="{{list}}" videoInfo="{{item}}" wx:key="id"></highlightsVideo>
+<view class="tit" wx:if="{{istit}}">
+    没有更多了
+</view>
+
+<view class="tit" wx:else>
+    加载中...
+</view>

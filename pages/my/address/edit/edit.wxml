@@ -1,0 +1,24 @@
+<view class="bind_band">
+  <van-field model:value="{{ name }}" label="收货人" placeholder="请输入收货人姓名" border/>
+  <van-field model:value="{{ phone }}" label="手机号码" placeholder="请输入收货人手机号码" border maxlength="11" />
+  <van-field model:value="{{ region }}" label="所在地区" placeholder="请选择所在地区" right-icon="arrow" bindtap="tosel" border readonly/>
+  <van-field model:value="{{ address }}" label="详细地址" placeholder="如道路、门牌号、小区等" />
+  <view class="tesu">
+    <text>设为默认</text>
+    <van-switch checked="{{ isDefault }}" size="44rpx" bind:change="onChange" active-value="1" inactive-value="0"/>
+  </view>
+</view>
+<view class="cover" wx:if="{{!id}}">
+  <van-button type="primary" color="#3994FF" bindtap="toSubmit" round block>保存</van-button>
+</view>
+<view class="btna" wx:else>
+  <view class="mybtn" bindtap="toSubmit">保 存</view>
+  <view class="mybtn" bindtap="toRemove">删除地址</view>
+</view>
+
+<!-- 省市区弹框 -->
+<van-popup show="{{ show }}" position="bottom">
+  <van-area area-list="{{ area }}" value="110101"  bind:cancel="tosel" bind:confirm="onConfirm" />
+</van-popup>
+
+

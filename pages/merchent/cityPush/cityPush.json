@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "同城推送",
+  "usingComponents": {
+    "van-search": "/miniprogram/miniprogram_npm/@vant/weapp/search/index",
+    "van-uploader": "/miniprogram/miniprogram_npm/@vant/weapp/uploader/index",
+    "van-tab": "/miniprogram/miniprogram_npm/@vant/weapp/tab/index",
+    "van-tabs": "/miniprogram/miniprogram_npm/@vant/weapp/tabs/index",
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index"
+  }
+}

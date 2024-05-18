@@ -1,0 +1,167 @@
+.banner{
+  width: 100%;
+  height: 360rpx;
+}
+/* 搜索框 */
+.mysearch{
+  position: relative;
+}
+.mysearch .atsearch{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 24rpx;
+  margin-top: 20rpx;
+}
+.mysearch .input{
+  background-color: #ECECEC;
+  width: calc(100% - 140rpx);
+  padding-left: 60rpx;
+  padding-right: 60rpx;
+  box-sizing: border-box;
+  height: 60rpx;
+  border-radius: 60rpx;
+}
+.mysearch .myicon{
+  position: absolute;
+  left: 44rpx;
+  top: 18rpx;
+}
+.mysearch .sear{
+  background-color: #3994FF;
+  color: #fff;
+  width: 130rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 60rpx;
+}
+.mysearch .colse{
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  right: 180rpx;
+}
+.mysearch .record{
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  min-height: calc(100vh - 450rpx);
+  background-color: #f5f5f5;
+  /* box-shadow: 0px 3rpx 5rpx rgba(0, 0, 0, 0.07); */
+}
+.mysearch .rerow{
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  border-bottom: 1px solid #E0E0E0;
+  padding: 22rpx 30rpx;
+}
+.mysearch .rerow:last-child{
+  border-bottom: none;
+}
+.mysearch .group{
+  width: 72rpx;
+  height: 72rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+}
+/* 筛选 */
+.screen{
+  display: flex;
+  justify-content: space-around;
+  padding: 0 20rpx;
+  box-shadow: 0px 3rpx 5rpx rgba(0, 0, 0, 0.07);
+  position: relative;
+}
+.screen .industry{
+  position: absolute;
+  top: 92rpx;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 199;
+  height: 500rpx;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 3vw;
+  box-shadow: 0px 5rpx 14rpx rgba(0, 0, 0, 0.07);
+}
+.industry .card{
+  background-color: #f5f5f5;
+  font-size: 24rpx;
+  color: #666;
+  padding: 20rpx 0;
+  width: 28vw;
+  text-align: center;
+  margin-right: 4.5vw;
+  margin-bottom: 3vw;
+  border-radius: 6rpx;
+}
+.industry .card:nth-child(3n){
+  margin-right: 0;
+}
+.industry .active{
+  background-color: #F2F8FF;
+  color: #3994FF;
+}
+.screen .sccard{
+  padding: 26rpx 0;
+}
+
+/* 列表 */
+.list .card{
+  padding: 24rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 32rpx;
+  border-bottom: 1px solid #eee;
+}
+.list .avatar{
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+}
+.list .name{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: calc(100% - 200rpx);
+}
+.list .name .titl{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.list .label{
+  font-size: 26rpx;
+  color: #666;
+}
+.list .con{
+  color: #ccc;
+  font-size: 24rpx;
+}
+/* 入驻广告 */
+.advert{
+  width: 120rpx;
+  height: 120rpx;
+  position: fixed;
+  right: 0;
+  bottom: 25%;
+  z-index: 99;
+}
+/* 滑动加载 */
+.loading {
+  text-align: center;
+  padding: 30rpx 0;
+}
+.finish {
+  font-size: 28rpx;
+  color: #999999;
+  padding-bottom: 20rpx;
+}

@@ -1,0 +1,106 @@
+.page {
+  position: relative;
+  height: 89vh;
+  background: #f9f9f9;
+  /* padding: 30rpx 0; */
+}
+.main{
+  height: 92%;
+  overflow-y: auto;
+  padding: 0 10rpx;
+}
+.main .card{
+  padding: 15rpx;
+  margin: 20rpx 10rpx;
+  border:1rpx solid #ccc;
+  border-radius: 8px;
+  background: #ffffff;
+}
+.main .divider{
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin: 10rpx 0;
+}
+.main .box {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 10rpx 0;  
+  height: 190rpx;
+  /* border:1rpx solid #ccc; */
+  
+}
+.main .box .top{
+  display:flex;
+  height: 90rpx;
+}
+.box .top .name{
+  font-size: 30rpx;
+  font-family: PingFang SC, PingFang SC-Bold;
+  font-weight: 700;
+  text-align: left;
+  color: #333333;
+}
+.tag-flex{
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  margin-top: 15rpx;
+}
+.box .top .text {
+  margin-left: 20rpx;
+  font-size: 26rpx;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #3994ff;
+  
+}
+.box .top .tit{
+  max-width: 540rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 26rpx;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #999999;
+}
+.box .context{
+  margin-left: 20rpx;
+  font-size: 26rpx;
+  text-align: left;
+  max-width: 640rpx;
+  height: 40rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.main .join{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  /* margin: 10rpx 0; */
+  height: 50rpx;
+  background: #fff;
+}
+
+.box image {
+  display: flex;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin:0 20rpx;
+}
+
+/* 滑动加载 */
+.loading {
+  text-align: center;
+  padding: 30rpx 0;
+}
+.finish {
+  font-size: 28rpx;
+  color: #999999;
+  padding-bottom: 20rpx;
+}

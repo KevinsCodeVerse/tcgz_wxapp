@@ -1,0 +1,104 @@
+page {
+	background-color: rgb(252, 252, 252);
+}
+.vanclass{
+  height: 90rpx;
+}
+.header{
+  background-color: rgb(252, 252, 252);
+  box-shadow: 0 2rpx 4rpx rgba(44, 44, 44, 0.123);
+}
+.city_news {
+	padding-top: 190rpx;
+	box-sizing: border-box;
+}
+.city_news .header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
+}
+.search_btn {
+	width: 120rpx;
+	border-radius: 50px;
+	background-color: #3994ff;
+	color: #ffffff;
+	text-align: center;
+}
+.van-tabs__line {
+	background-color: none !important;
+}
+
+::-webkit-scrollbar {
+	display: none !important;
+	width: 0;
+	height: 0;
+	color: transparent !important;
+}
+.van-tabs__scroll--card {
+	background-color: rgb(245, 245, 245) !important;
+	border-radius: 16rpx !important;
+	overflow: hidden;
+  height: 70rpx !important;
+
+}
+.nav_class {
+	border-radius: 16rpx !important;
+	color: #444;
+	padding: 6rpx;
+  height: 70rpx !important;
+
+	border: none !important;
+}
+.custom_class {
+	background-color: rgb(255, 255, 255) !important;
+  height: 70rpx !important;
+	color: #444;
+	border: none !important;
+}
+.custom_class .van-tabs__wrap  {
+    height: 70rpx !important;
+}
+.tab_class {
+	background-color: rgba(255, 255, 255, 0) !important;
+  border: none !important;
+  
+}
+
+.tab_active_class {
+	border-radius: 16rpx !important;
+	background-color: rgb(255, 255, 255) !important;
+	font-weight: 600 !important;
+  border: none !important;
+  
+}
+
+.nav_class2 {
+	border-radius: 16rpx !important;
+	color: #444;
+	background-color: rgb(255, 255, 255) !important;
+  border: none !important;
+
+}
+.custom_class2 {
+	color: #444;
+  margin-top: 10rpx;
+	border: none !important;
+	background-color: rgb(255, 255, 255) !important;
+}
+.tab_class2 {
+  border: none !important;
+  height: 90% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab_active_class2 {
+	border-radius: 16rpx !important;
+	background-color: rgb(245, 245, 245) !important;
+	font-weight: 600 !important;
+  border: none !important;
+  
+}

@@ -1,0 +1,109 @@
+/* pages/goods/g_video/index.wxss */
+.g_video{
+  padding-bottom: 100rpx;
+  background-color: #000000;
+  height: 100vh;
+  box-sizing: border-box;
+}
+/* 返回胶囊 */
+.myback{
+  position: absolute;
+  top: 6rpx;
+  left: 20rpx;
+  background-color: rgba(255, 255, 255, .6);
+  font-size: 40rpx;
+  border-radius: 10rpx;
+  border-radius: 88rpx;
+  padding: 12rpx 0;
+  display: flex;
+}
+.myback>.back{
+  display: flex;
+  padding: 0 20rpx;
+}
+.myback>.back:first-child{
+  border-right: 1px solid #000;
+}
+/* 轮播图css */
+.mySwiper{
+  width: 100%;
+}
+.switem{
+  height: 99vh;
+  display: flex;
+  align-items: center;
+}
+.myvideo{
+  width: 100%;
+  height: 100vh;
+}
+/* 底部 */
+.foot{
+  background-color: #fff;
+  position: fixed;
+  left: 26rpx;
+  right: 90rpx;
+  bottom: 26rpx;
+  z-index: 99;
+  height: 160rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 6rpx;
+  box-sizing: border-box;
+
+}
+.foot image{
+  width: 148rpx;
+  height: 148rpx;
+  border-radius: 16rpx;
+  display: block;
+}
+.foot .name{
+  width: calc(100% - 278rpx);
+  height: 148rpx;
+  box-sizing: border-box;
+  padding-right: 30rpx;
+  padding-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.foot .payimg{
+  width: 100rpx;
+  height: 100rpx;
+}
+.foot .tit{
+  overflow:hidden;
+  text-overflow: ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+}
+.foot .foprice{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20rpx;
+  color: #AAAAAA;
+  margin-top: 8rpx;
+}
+.foot .curr{
+  color: #FF7800;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-right: 2rpx;
+}
+.foot .origial{
+  text-decoration: line-through;
+}
+.slide_top{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slide_top image{
+  width: 400rpx;
+  height: 500rpx;
+}

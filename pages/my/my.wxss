@@ -1,0 +1,220 @@
+/* pages/my/my.wxss */
+.my {
+  padding: 0 26rpx 50rpx 26rpx;
+}
+.mybg {
+  width: 100%;
+  background: #3994ff;
+  height: 320rpx;
+  border-radius: 0px 0px 180rpx 80rpx;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 0;
+}
+.title {
+  display: flex;
+  justify-content: center;
+  font-size: 30rpx;
+  padding: 15rpx 0;
+  border-bottom: 1rpx solid #ccc;
+}
+/* 个人信息 */
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 24rpx;
+  margin-bottom: 20rpx;
+}
+.info .avatar {
+  position: relative;
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 12rpx;
+  border-radius: 50%;
+  border: 6rpx solid #c3dfff;
+
+  /* background-color: #efefef; */
+}
+.info .tit {
+  position: absolute;
+  text-align: center;
+  font-size: 4rpx;
+  left: 0%;
+  bottom: 0px;
+}
+.avatar-btn {
+  color: #fcfcfc;
+  display: block;
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 30rpx;
+  text-align: center;
+  font-size: 24rpx;
+  background: transparent;
+}
+
+.info .name {
+  width: calc(100% - 112rpx - 170rpx);
+  /* height: 96rpx; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.info .inname {
+  font-size: 36rpx;
+  font-weight: bold;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 350rpx;
+}
+.info .invite {
+  display: flex;
+  align-items: center;
+}
+.info .copy {
+  border: 1px solid #fff;
+  border-radius: 30rpx;
+  padding: 2rpx 14rpx;
+  font-size: 20rpx;
+  margin-left: 12rpx;
+}
+.info .inbtn {
+  width: 170rpx;
+  border-radius: 40rpx;
+  border: 1px solid #fff;
+  padding: 14rpx 0;
+  text-align: center;
+}
+/* 绑定手机 */
+.phone {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  font-size: 24rpx;
+  color: #3994ff;
+  border-radius: 62rpx;
+  padding: 10rpx 10rpx 10rpx 26rpx;
+  margin-bottom: 20rpx;
+}
+.phone .phbtn {
+  background-color: #3994ff;
+  color: #fff;
+  width: 136rpx;
+  height: 46rpx;
+  line-height: 46rpx;
+  text-align: center;
+  border-radius: 46rpx;
+}
+/* 订单 */
+.order {
+  background-color: #fff;
+  font-size: 24rpx;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20rpx;
+  height: 164rpx;
+  margin-bottom: 20rpx;
+}
+.order image {
+  width: 64rpx;
+  height: 64rpx;
+  margin-bottom: 6rpx;
+}
+.order .orcard {
+  width: 25%;
+}
+/* 链接link */
+.linklist {
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 0 26rpx;
+  margin-bottom: 20rpx;
+}
+.linklist > view:last-child {
+  border-bottom: none;
+}
+.licard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f1f1f1;
+  color: #999999;
+  height: 108rpx;
+  display: flex;
+  align-items: center;
+}
+.licard image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 16rpx;
+}
+.licard .liremark {
+  font-weight: bold;
+  color: #333;
+}
+.licard > view {
+  display: flex;
+  align-items: center;
+}
+.licard .commission {
+  background-color: #fff8f2;
+  color: #ff7800;
+  font-size: 20rpx;
+  padding: 6rpx 14rpx;
+  margin-left: 30rpx;
+}
+/* 弹框 */
+.invite_input {
+  display: block;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+  height: 100rpx;
+  font-size: 28rpx;
+}
+.logout {
+  opacity: 0.1;
+}
+.show .avatar {
+  position: relative;
+  width: 120rpx;
+  height: 120rpx;
+  margin: 20rpx 0;
+  border-radius: 50%;
+  border: 1rpx solid #ccc;
+  /* background-color: #efefef; */
+}
+.flex {
+  display: flex;
+  border: 1rpx solid #f1f1f1;
+  padding: 15rpx 0;
+}
+.flex .weui-input{
+  height: 40rpx;
+  line-height: 40rpx;
+  margin: -4rpx 0;
+}
+.flex .label{
+  margin-left: 30rpx;
+}
+.show .btn-foot{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  padding: 10rpx 0;
+}
+.show .save{
+  margin: 0 10rpx;
+  color: #fff;
+  background: #0080ff;
+  border-radius: 20px;
+}
+.avatar-wrapper {
+  background: #fff;
+}

@@ -1,0 +1,118 @@
+/* pages/my/spread/invite/invite.wxss */
+page {
+}
+.invite {
+	background-color: #3994ff;
+	background-image: url("https://www.tcgz.store/files/default/default_share.jpg");
+	background-size: 100vw;
+	height: 100vh;
+}
+.invite .inremark {
+	font-size: 24rpx;
+	text-align: center;
+	padding-top: 60rpx;
+}
+.invite .incon {
+	position: absolute;
+	top: 48vw;
+	left: 12%;
+	right: 12%;
+	background-color: #fff;
+	border-radius: 20rpx;
+	text-align: center;
+	padding: 20rpx 20rpx;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.invite .intit {
+	font-weight: bold;
+	margin-bottom: 10rpx;
+}
+.invite .incode {
+	font-size: 34rpx;
+	font-weight: bold;
+	margin: 5rpx 0;
+}
+.invite .copy {
+	background-color: #3994ff;
+	width: 320rpx;
+	height: 76rpx;
+	text-align: center;
+	line-height: 76rpx;
+	text-align: center;
+	color: #fff;
+	border-radius: 76rpx;
+	margin-top: 14rpx;
+	margin-bottom: 60rpx;
+	font-size: 32rpx;
+}
+.invite .ewm {
+	width: 300rpx;
+	height: 300rpx;
+}
+.myshare {
+	background-color: #3994ff;
+	color: #fff;
+	border-radius: 76rpx;
+	width: 320rpx;
+	height: 76rpx;
+	margin-top: 14rpx;
+	margin-bottom: 60rpx;
+	font-size: 32rpx;
+}
+
+@media screen and (max-height: 720px) {
+	.incon {
+		transform: scale(0.9);
+		bottom: 0% !important;
+	}
+}
+
+.select_box {
+	margin: 30rpx;
+	.title {
+		font-size: 32rpx;
+		font-weight: 600;
+	}
+	.select_img_box {
+    width: calc(100vw - 120rpx);
+    padding: 0 !important;
+		.bxx {
+			display: flex;
+    }
+    .bxx::-webkit-scrollbar {
+      display: none !important;
+      color: transparent !important;
+    }
+		.imgs {
+			padding: 20rpx 10rpx;
+			display: flex;
+			justify-content: space-around;
+			button {
+				padding: 0 !important;
+				line-height: 0;
+				background-color: rgba(0, 0, 0, 0);
+			}
+			.acImg {
+				margin: 45rpx 15rpx 15rpx 5rpx;
+				width: 200rpx;
+				height: 140rpx;
+				border-radius: 10rpx;
+			}
+		}
+		.hoverimgs .acImg {
+			box-shadow: 0 0 12rpx 8rpx #0093c071;
+		}
+		
+	}
+	.select_img_box::-webkit-scrollbar {
+		display: none !important;
+		color: transparent !important;
+	}
+	
+}
+.select_box > view::-webkit-scrollbar {
+	display: none !important;
+	color: transparent !important;
+}

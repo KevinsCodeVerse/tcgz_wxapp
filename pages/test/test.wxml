@@ -1,0 +1,5 @@
+<view>123</view>
+<button bindtap="btn" type="primary">按钮</button>
+<button bindtap="mess" type="primary">发送</button>
+<button bindtap="close" type="warn">关闭连接</button>
+

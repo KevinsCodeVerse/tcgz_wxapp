@@ -1,0 +1,19 @@
+<!--pages/merchent/login/login.wxml-->
+<view class="login">
+  <image class="loginbg" mode="widthFix" src="https://www.tcgz.store/files/default/merchantBanner.png"></image>
+  <view class="handle">
+    <view class="myinput">
+      <input placeholder="请输入商家账号" value="{{phone}}" placeholder-class="pholder" maxlength="20" bindinput="bindPhone"></input>
+    </view>
+    <view class="myinput">
+      <input placeholder="请输入密码" type="password" placeholder-class="pholder" maxlength="18" bindinput="bindPwd"></input>
+    </view>
+    <view class="myinput">
+      <input placeholder="请输入图形验证码" placeholder-class="pholder" maxlength="4" bindinput="bindVerifyCode"></input>
+      <view class="imgcode"><imgCode id="imgCode" bind:sign="getSign" /></view>
+    </view>
+    <view class="mybtn btn" bindtap="toLogin">登录</view>
+    <navigator class="mylink" url="/pages/collective/firmlink/firmlink?type=2">电脑版商家后台</navigator>
+  </view>
+</view>
+

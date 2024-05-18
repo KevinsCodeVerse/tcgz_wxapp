@@ -1,0 +1,127 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="box" wx:if="{{type==2||type==0||type==1}}">
+    <view class="title">待上传</view>
+    <view class="text">请上传广告轮播图和设置关联商品</view>
+    <van-uploader bind:after-read="imgSelect">
+        <view class="box_img text" wx:if="{{!img}}">
+            <image src="https://test.zihewy.cn/files/user/default/add.png"></image>
+            <view>上传轮播图(705*150)</view>
+        </view>
+        <image wx:if="{{img}}" class="box_img" src="{{img}}"></image>
+    </van-uploader>
+</view>
+<view class="box  " bind:tap="desc_open">
+    <view class="goods_box">
+        <text>设置商品</text>
+        <van-icon name="arrow" wx:if="{{!goods.name}}" />
+    </view>
+    <block wx:if="{{active==1}}">
+        <view class="goods_item" wx:if="{{goods.name}}">
+            <view class="img_box">
+                <image src="{{util.fullPath(goods.cover)}}"></image>
+            </view>
+            <view class="info">
+                <view class="goods_title TE">{{goods.name}}</view>
+                <view class="df">
+                    <view class="price">￥{{goods.price}}</view>
+                    <view class="text">销量 {{goods.deal}}</view>
+                </view>
+            </view>
+            <view class="select_btn" bind:tap="desc_open">更换</view>
+        </view>
+    </block>
+    <block wx:if="{{active==2}}">
+        <view class="goods_item" wx:if="{{goods.spikePrice}}">
+            <view class="img_box">
+                <image src="{{util.fullPath(goods.avatar)}}"></image>
+            </view>
+            <view class="info">
+                <view class="goods_title TE">{{goods.title}}</view>
+                <view class="df">
+                    <view class="price">￥{{goods.spikePrice}}</view>
+                    <view class="text">销量 {{goods.sales}}</view>
+                </view>
+            </view>
+            <view class="select_btn" bind:tap="desc_open">更换</view>
+        </view>
+    </block>
+    <block wx:if="{{active==3}}">
+        <view class="goods_item" wx:if="{{goods.groupPurchaseTime}}">
+            <view class="img_box">
+                <image src="{{util.fullPath(goods.avatar)}}"></image>
+            </view>
+            <view class="info">
+                <view class="goods_title TE">{{goods.title}}</view>
+                <view class="df">
+                    <view class="price">￥{{goods.price}}</view>
+                    <view class="text">销量 {{goods.sales}}</view>
+                </view>
+            </view>
+            <view class="select_btn" bind:tap="desc_open">更换</view>
+        </view>
+    </block>
+</view>
+<view class="btn btnTrue" wx:if="{{(type==3||type==4||type==5||img)&&((active==1&&goods.name)||(active==2&&goods.spikePrice)||(active==3&&goods.groupPurchaseTime))&&goods.id}}" bind:tap="handSubmit">提交</view>
+<view class="btn btnFalse" wx:else>提交</view>
+<van-popup z-index="99" class="desc_bottom_box" show="{{ isDesc }}" position="bottom" custom-style="" bind:close="desc_onClose">
+    <!-- 头部 -->
+    <view class="title" bindtap="desc_onClose">设置商品</view>
+    <van-tabs id="tabs" active="{{active}}" bind:disabled="onClickDisabled" color="#3994ff" title-class="tabs_class" border="{{false}}" title-active-color="#3994ff" nav-class="tabs_class" custom-class="customClass" bind:change="onChange">
+        <van-tab title="普通" name="{{1}}" disabled="{{type==3||type==4||type==5}}"></van-tab>
+        <van-tab title="秒杀" name="{{2}}" disabled="{{type==3||type==4||type==5}}"></van-tab>
+        <van-tab title="拼团" name="{{3}}" disabled="{{type==3||type==4||type==5}}"></van-tab>
+    </van-tabs>
+    <view class="search_box">
+        <van-search shape="round" value="{{ value }}" placeholder="请输入商品名称" bind:search="onSearch" use-action-slot bind:change="onSearchChange">
+            <view slot="action" bind:tap="onSearch" class="saerch">搜索</view>
+        </van-search>
+    </view>
+    <scroll-view scroll-y="{{true}}" class="page_box" bindscrolltolower="bindscrolltolower" lower-threshold="50">
+        <block wx:if="{{active==1}}">
+            <view class="goods_item" wx:for="{{list}}" wx:key="id">
+                <view class="img_box">
+                    <image src="{{util.fullPath(item.cover)}}"></image>
+                </view>
+                <view class="info">
+                    <view class="goods_title TE">{{item.name}}</view>
+                    <view class="df">
+                        <view class="price">￥{{item.price}}</view>
+                        <view class="text">销量 {{item.deal}}</view>
+                    </view>
+                </view>
+                <view class="select_btn" data-obj="{{item}}" bindtap="handselect">选择</view>
+            </view>
+        </block>
+        <block wx:if="{{active==2}}">
+            <view class="goods_item" wx:for="{{list}}" wx:key="id">
+                <view class="img_box">
+                    <image src="{{util.fullPath(item.avatar)}}"></image>
+                </view>
+                <view class="info">
+                    <view class="goods_title TE">{{item.title}}</view>
+                    <view class="df">
+                        <view class="price">￥{{item.spikePrice}}</view>
+                        <view class="text">销量 {{item.sales}}</view>
+                    </view>
+                </view>
+                <view class="select_btn" data-obj="{{item}}" bindtap="handselect">选择</view>
+            </view>
+        </block>
+        <block wx:if="{{active==3}}">
+            <view class="goods_item" wx:for="{{list}}" wx:key="id">
+                <view class="img_box">
+                    <image src="{{util.fullPath(item.avatar)}}"></image>
+                </view>
+                <view class="info">
+                    <view class="goods_title TE">{{item.title}}</view>
+                    <view class="df">
+                        <view class="price">￥{{item.price}}</view>
+                        <view class="text">销量 {{item.sales}}</view>
+                    </view>
+                </view>
+                <view class="select_btn" data-obj="{{item}}" bindtap="handselect">选择</view>
+            </view>
+        </block>
+    </scroll-view>
+    <view class="bottom_close" bindtap="desc_onClose">关闭</view>
+</van-popup>

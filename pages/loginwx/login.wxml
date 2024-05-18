@@ -1,0 +1,17 @@
+<!--pages/login/login.wxml-->
+<view class="login">
+  <view class="logo">
+    <image src="https://www.tcgz.store//files/default_firm_info.png"></image>
+    <text>同城关注</text>
+  </view>
+  <view class="authority">
+    <text class="title">该小程序申请获取以下授权：</text>
+    <text class="li">获取您的公开信息（昵称和头像等）</text>
+    <text class="li">获取您的位置信息</text>
+  </view>
+  <view class="btns">
+    <!-- <text>请完成微信授权以继续使用</text> -->
+    <button class="get_cancel" bindtap="goCancel">暂不授权</button>
+    <button class="get_info" open-type="getUserInfo" bindtap="getUserProfile">确定授权</button>
+  </view>
+</view>

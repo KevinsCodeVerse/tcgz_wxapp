@@ -1,0 +1,45 @@
+/* pages/my/spread/guide/detail2/index.wxss */
+/* 返回胶囊 */
+.myback{
+  position: absolute;
+  top: 6rpx;
+  left: 20rpx;
+  background-color: rgba(255, 255, 255, .6);
+  font-size: 40rpx;
+  border-radius: 10rpx;
+  border-radius: 88rpx;
+  padding: 12rpx 0;
+  display: flex;
+}
+.myback>.back{
+  display: flex;
+  padding: 0 20rpx;
+}
+.myback>.back:first-child{
+  border-right: 1px solid #000;
+}
+/*  */
+.detail{
+  background-color: #000;
+  color: #fff;
+  height: 100vh;
+}
+.totit{
+  position: fixed;
+  bottom: 100rpx;
+  left: 30rpx;
+  right: 30rpx;
+}
+.remark{
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+.demain{
+  display: flex;
+  align-items: center;
+}
+.demain .myvideo{
+  width: 100vw;
+  height: 100vh;
+}

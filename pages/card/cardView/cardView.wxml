@@ -1,0 +1,231 @@
+<!--pages/card/cardView/cardView.wxml-->
+<wxs module="util" src="../../../utils/util.wxs" />
+<canvas type="2d" id="myCanvas" style="width: 210px; height: 168px;left:9000px;position:fixed;"></canvas>
+<view class="page">
+    <view class="card" style="background-image: url({{backgroundImg}});background-size:cover;background-position: center; ">
+        <view class="top">
+            <view class="left">
+                <view class="name">
+                    <view> {{name?name:'暂未填写姓名'}}</view>
+                    <image wx:if="{{isVip===1}}" class="vip-icon" src="/img/card/isVip-icon.png" mode="aspectFill" />
+                </view>
+                <view wx:for="{{position}}" wx:key="id">
+                    <text wx:if="{{item}}">{{item}}</text>
+                    <text wx:else>暂未填写职务</text>
+                </view>
+            </view>
+            <view class="right">
+                <image src="{{avatar}}" mode="aspectFill" />
+            </view>
+
+        </view>
+        <view>
+            <image class="icon" src="/img/card/card-phone.png" mode="aspectFill" />
+            <text>{{phone?phone:'暂未填写手机号码'}}</text>
+        </view>
+        <view>
+            <image class="icon" src="/img/card/corporation.png" mode="aspectFill" />
+            <text>{{company?company:'暂未填写公司名'}}</text>
+        </view>
+        <view>
+            <image class="icon" src="/img/card/orientation.png" mode="aspectFill" />
+            <text>{{address?address:'暂未填写地址'}}</text>
+        </view>
+    </view>
+    <!-- isMe：{{isMe}} exchangedCard：{{exchangedCard}}-exchanged：{{exchanged}}userCards：{{userCards}} -->
+    <view class="box">
+        <view class="flex-box">
+            <view>
+                <!-- type 1收藏 2点赞 3踩 4访问 5关注 -->
+                <view class="view-margin">
+                    <van-icon size="40rpx" name="fire-o" />
+                </view>
+                <view>{{cardSocialContacts.popularity}}</view>
+            </view>
+            <view bind:tap="star" data-item="{{cardSocialContacts}}">
+                <view class="view-margin">
+                    <image wx:if="{{socialContactRecord.isFavorites===-1}}" src="/img/card/star.png" mode="" />
+                    <image wx:if="{{socialContactRecord.isFavorites===1}}" src="/img/card/starOK.png" mode="aspectFill" />
+                </view>
+                <view>{{cardSocialContacts.favorites}}</view>
+            </view>
+            <view bind:tap="like" data-item="{{cardSocialContacts}}">
+                <view class="view-margin">
+                    <image wx:if="{{socialContactRecord.isLikes===-1}}" src="/img/card/doGood.png" mode="aspectFill" />
+                    <image wx:if="{{socialContactRecord.isLikes===1}}" src="/img/card/goodOK.png" mode="aspectFill" />
+                </view>
+                <view>{{cardSocialContacts.likes}}</view>
+            </view>
+            <view bind:tap="Dislikes" data-item="{{cardSocialContacts}}">
+                <view class="view-margin">
+                    <image wx:if="{{socialContactRecord.isDislikes===-1}}" src="/img/card/doNotGood.png" mode="aspectFill" />
+                    <image wx:if="{{socialContactRecord.isDislikes===1}}" src="/img/card/notGoodOk.png" mode="aspectFill" />
+                </view>
+                <!-- <view>{{cardSocialContacts.dislikes}}</view> -->
+                <view>保密</view>
+            </view>
+        </view>
+
+    </view>
+    <!-- 信誉值 -->
+    <view class="reputation-view">
+        <image class="reputation" src="https://tcgz-1323511707.cos.ap-nanjing.myqcloud.com/reputation.png" alt="" mode="aspectFit">
+            <view class="left-1">
+                <view class="tit">六度人脉</view>
+            </view>
+
+            <!-- <view class="left">
+        <view class="tit">六度人脉</view>
+        <view>{{sixNum}}</view>
+      </view> -->
+
+            <!-- <view class="right">
+        <view class="tit">信誉评分</view>
+        <view>{{reputationNum}}</view>
+      </view> -->
+            <view class="right-1">
+                <view class="tit">信誉评分</view>
+            </view>
+            <view class="text">信誉分极好</view>
+        </image>
+        <view class="num">
+            <view>{{totalNum}}</view>
+        </view>
+    </view>
+    <view class="element">
+        <view class="item">
+            <text class="label-title">个人简介</text>
+            <view class="label-text">
+                {{introduction?introduction:'暂未填写'}}
+            </view>
+        </view>
+        <view class="item">
+            <view class="label-title">我的商户</view>
+            <view class="shop-box">
+                <view class="label-text" wx:if="{{merchantInfos.length===0}}">暂未选择</view>
+                <view bind:tap="toDetail" class="box-bg" wx:for="{{merchantInfos}}" wx:key="id" data-id="{{item.id}}">
+                    <view class="box-flex">
+                        <view class="left">
+                            <image class="pic" src="{{util.fullPath(item.shopPhoto)}}" mode="" />
+                        </view>
+                        <view class="center">
+                            <view class="name">{{item.name}}</view>
+                            <view>
+                                <van-icon color="#FF7800" name="star" /><text class="star-text">{{item.score}}</text><text class="distance" wx:if="{{item.distance}}">{{item.distance}}km</text>
+                            </view>
+                            <view class="distance">{{item.address}}</view>
+                        </view>
+
+                    </view>
+                    <view style="margin-left: 150rpx;display: flex;align-items: center;" wx:for="{{item.goodsNames}}">
+                        <image style="width: 30rpx;height: 30rpx;" src="/img/shop/tag-01.png"></image>
+                        <view style="margin-left: 5rpx;width: 40rpx;">
+                            <span style="color: #999999;font-size: 24rpx;width: 400rpx;display: inline-block;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">{{item.name}}</span>
+                        </view>
+                    </view>
+                </view>
+                
+            </view>
+        </view>
+        <view class="item">
+            <text class="label-title">业务介绍</text>
+            <view class="label-text" wx:if="{{cardPictures.length===0}}">暂未填写</view>
+            <view class="item-margin" wx:for="{{cardPictures}}" wx:key="id">
+                <view wx:if="{{item.type === 'text'}}">
+                    <view class="note">
+                        <text>{{item.content}}</text>
+                    </view>
+                </view>
+                <image class="img" wx:elif="{{item.type === 'image'}}" src="{{util.fullPath(item.content)}}" mode="widthFix"></image>
+                <video class="video" wx:elif="{{item.type === 'video'}}" src="{{util.fullPath(item.content)}}" objectFit="fill" controls autoplay="true"></video>
+            </view>
+        </view>
+        <view class="item">
+            <text class="label-title">我的需求</text>
+            <view class="label-text" wx:if="{{RequirementData.length===0}}">
+                暂未选择
+            </view>
+            <view class="item-margin" wx:for="{{RequirementData}}" wx:key="id">
+                <text>{{index+1}}. {{ item.title}}</text>
+                <view class="tag-flex" slot="label">
+                    <van-tag custom-class="tag" size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.className}}</van-tag>
+                    <van-tag custom-class="tag" size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.industryName}}</van-tag>
+                    <van-tag custom-class="tag" size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary">{{item.city}}</van-tag>
+                </view>
+            </view>
+        </view>
+        <view class="item">
+            <!-- 资源 -->
+            <text class="label-title">我的资源</text>
+            <view class="label-text" wx:if="{{AssetsData.length===0}}">暂未选择</view>
+            <view class="item-margin" wx:for="{{AssetsData}}" wx:key="id">
+                <text>{{index+1}}. {{ item.title}}</text>
+                <view class="tag-flex" slot="label">
+                    <van-tag wx:if="{{item.className}}" size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary" custom-class="tag">{{item.className}}</van-tag>
+                    <van-tag wx:if="{{item.industryName}}" size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary" custom-class="tag">{{item.industryName}}</van-tag>
+                    <van-tag wx:if="{{item.city}}" size="medium" color="#ecf5ff" text-color="#0080FF" round type="primary" custom-class="tag">{{item.city}}</van-tag>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 底部 -->
+    <view class="bottom-main">
+        <view wx:if="{{exchangedCard===0&&exchanged!==1}}" class="have-card">
+            <view>
+                <view class="name">
+                    您好，我是{{name}}
+                </view>
+                <view class="text">
+                    这是我的名片，请收下！
+                </view>
+            </view>
+            <view class="right-btn">
+                <van-button bind:tap="haveCard" round type="info" size="large">收下名片</van-button>
+            </view>
+        </view>
+        <view class="footer" wx:if="{{isMe!==true}}">
+            <view wx:if="{{userCards!==1}}" class="notice">
+                <view class="notice-view" bind:tap="CreatedCard">
+                    <view style="text-align: center;">
+                        点击免费创建名片，开通独立店铺 >
+                    </view>
+                </view>
+            </view>
+
+            <view class="foot-btn">
+                <view bind:tap="addContact" class="btn1">
+                    <image class="foot-icon" src="/img/card/upload.png" mode="" />
+                    <view class="text">存至手机</view>
+                </view>
+                <view bind:tap="showWx" class="btn1">
+                    <image class="foot-icon" src="/img/card/wechat.png" mode="" />
+                    <view class="text">加微信</view>
+                </view>
+                <view class="btn2">
+                    <van-button wx:if="{{exchanged===1}}" block round disabled type="info">已相互收下名片</van-button>
+                    <button wx:else bindtap="onShare" data-id="{{myCardId}}" class="share-btn" openType="share" round type="info" size="large">回递名片</button>
+                </view>
+            </view>
+
+        </view>
+    </view>
+
+
+</view>
+
+<!-- 底部 -->
+<!-- <custom-tabbar /> -->
+<van-action-sheet bind:close="showWx" show="{{ Wxshow }}" title="{{wxQrcode?'扫一扫二维码添加好友':'暂未上传二维码'}}">
+    <view class="wx">
+        <image src="{{util.fullPath(wxQrcode)}}" mode="aspectFill" />
+    </view>
+</van-action-sheet>
+<van-dialog use-slot title="提示" show="{{ addCardShow }}" show-cancel-button bind:close="onCreatedClose" bind:confirm="CreatedCard">
+    <view class="dialog-view">当前没有名片，是否前往创建名片?</view>
+</van-dialog>
+<!-- <ec-canvas
+    id="mychart-dom-bar"
+    canvas-id="mychart-bar"
+    ec="{{ ec }}"
+  ></ec-canvas> -->

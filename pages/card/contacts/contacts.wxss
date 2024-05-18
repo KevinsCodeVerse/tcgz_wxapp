@@ -1,0 +1,114 @@
+.page {
+  position: relative;
+  height: 89vh;
+}
+.main{
+  height: 85%;
+  overflow-y: auto;
+}
+.main-box {
+  padding: 10rpx 30rpx;
+  height: 100%;
+}
+/* .nodata-view{
+  width: 500rpx;
+  height: 100%;
+} */
+.nodata{
+  position: absolute;
+  left: 25%;
+  bottom: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-box .flex {
+  display: flex;
+  /* justify-content: space-around; */
+  height: 120rpx;
+  background: #ffffff;
+  border-radius: 8px;
+  margin: 15rpx 0;
+  padding: 5rpx 0;  
+}
+
+
+.main-box image {
+  display: flex;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin: 20rpx;
+}
+.main-box .right{
+  margin: 20rpx 0;
+}
+.main-box .text {
+  margin-left: 20rpx;
+  font-size: 26rpx;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #3994ff;
+}
+.main-box .txt {
+  max-width: 540rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 26rpx;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #999999;
+}
+
+.main-box .name {
+  font-size: 32rpx;
+  font-family: PingFang SC, PingFang SC-Bold;
+  font-weight: 700;
+  text-align: left;
+  color: #333333;
+}
+/* 标签样式 */
+.tabs {
+  display: flex;
+  background-color: #fff;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 10rpx 0;
+  color: #646566;
+  cursor: pointer;
+}
+.active {
+  color: #323233;
+  font-weight: 700;
+  border-bottom: 6rpx solid #0080ff;
+}
+.tab-pane {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 用于隐藏水平滚动条 */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background-color: transparent;
+}
+/* 滑动加载 */
+.loading {
+  text-align: center;
+  padding: 30rpx 0;
+}
+.finish {
+  font-size: 28rpx;
+  color: #999999;
+  padding-bottom: 20rpx;
+}

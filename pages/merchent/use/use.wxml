@@ -1,0 +1,48 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="city_news">
+    <view class="header">
+        <van-tabs active="{{active}}" line-width="{{40}}" color="#fff" title-class="tabs_class" border="{{false}}" title-inactive-color="#afd3ff" title-active-color="#fff" nav-class="tabs_class" bind:change="tabChange">
+            <van-tab wx:for="{{categoryList}}" title="{{item.name}}" name="{{item.id}}"></van-tab>
+        </van-tabs>
+    </view>
+</view>
+<view wx:if="{{active==1}}" class="box" >
+    <view class="main_box" wx:for="{{list}}">
+        <view class="img_box">
+            <image src="{{util.fullPath(item.cover)}}"></image>
+        </view>
+        <view class="text_box">
+            <view class="title">
+                {{item.name}}
+                <text class="parice">{{!item.amount?'免费':item.amount+'元/年'}}</text>
+            </view>
+            <view class="text">{{item.introduce}}</view>
+            <view class="btn_box">
+                <view class="btn_detail" data-info="{{item}}" data-id="{{item.id}}" bindtap="toDetail">详情</view>
+                <view data-info='{{item}}' bindtap="wechatPay" class="{{item.status!=1?'btn_open':'btn_open2'}}">{{item.status!=1?'立刻开通':'已开通'}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view wx:if="{{active==2}}" class="box" >
+    <view class="main_box" wx:for="{{list2}}">
+        <view class="img_box">
+            <image src="{{util.fullPath(item.cover)}}"></image>
+            <view class="time_box">
+                <view>有效期至</view>
+                <view>{{util.formatDateLong(item.dueTime)}}</view>
+            </view>
+        </view>
+        <view class="text_box">
+            <view class="title">
+                {{item.name}}
+                <text class="parice">{{!item.amount?'免费':item.amount+'元/年'}}</text>
+            </view>
+            <view class="text">{{item.introduce}}</view>
+            <view class="btn_box">
+                <view class="btn_detail" data-info="{{item}}" data-id="{{item.id}}" bindtap="toDetail">详情</view>
+                <view class="btn_open" data-info='{{item}}' bindtap="wechatPay">立即续费</view>
+            </view>
+        </view>
+    </view>
+</view>

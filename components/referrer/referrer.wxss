@@ -1,0 +1,66 @@
+/* components/referrer/referrer.wxss */
+.confirm{
+  background-color: rgba(0, 0, 0, .5);
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.confirm .avarar{
+  width: 136rpx;
+  height: 136rpx;
+  box-shadow: 0px 6rpx 12rpx rgba(0, 0, 0, 0.16);
+  border-radius: 50%;
+  position: relative;
+  top: 68rpx;
+  border: 12rpx solid #fff;
+}
+.confirm .conf{
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding-top: 40rpx;
+  overflow: hidden;
+  width: 560rpx;
+  text-align: center;
+  margin-bottom: 200rpx;
+}
+.confirm .coremark{
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-top: 50rpx;
+}
+.confirm .name{
+  font-size: 28rpx;
+  color: #666;
+  margin-top: 6rpx;
+}
+.confirm .handle{
+  display: flex;
+  margin-top: 30rpx;
+}
+.confirm .btn2{
+  color: #fff;
+  background-color: #3994FF;
+  height: 90rpx;
+  line-height: 90rpx;
+  width: 100%;
+  border-top: 1px solid #3994FF;
+  text-align: center;
+}
+
+@keyframes fade-in {  
+  0% {opacity: 0;}/*初始状态 透明度为0*/  
+  40% {opacity: 0;}/*过渡状态 透明度为0*/  
+  100% {opacity: 1;}/*结束状态 透明度为1*/  
+}  
+@keyframes toSmall{
+  from {transform: scale(1);}
+  to {transform: scale(0);}
+}

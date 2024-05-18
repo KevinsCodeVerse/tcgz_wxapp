@@ -1,0 +1,101 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="detail_order">
+  <!-- 商品信息 -->
+  <view class="orcard">
+    <view class="shop">
+      <view class="house">
+        <view class="shname">退款商品</view>
+      </view>
+    </view>
+    <view class="goods" bindtap="goGoodsDetail">
+      <image class="cover" mode="aspectFill" src="{{util.fullPath(goods.avatar)}}"></image>
+      <view class="goinfo">
+        <view class="gotit">
+          <view>{{goods.title}}</view>
+          <text class="logistics" wx:if="{{order.carriage == 2}}">物流配送</text>
+          <text class="local" wx:else>线下体验</text>
+        </view>
+        <view class="gospec">{{goods.remark}}</view>
+        <view class="count">
+          <view class="coprice">
+            <text class="goprice">￥{{order.price||order.payAmount}}</text>
+            <!-- <text class="freight" wx:if="{{order.freight}}">运费￥{{order.freight}}</text> -->
+            <!-- <text class="bag">秒杀价</text> -->
+          </view>
+          <view class="gonum">x{{order.count}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="handle" wx:if="{{order.freight}}" style="display: flex;justify-content: space-between;">
+      <view class="total">运费:</view>
+      <view style="color:#999">￥{{order.freight}}</view>
+    </view>
+    <view class="handle" wx:if="{{order.discountPrice}}" style="display: flex;justify-content: space-between;">
+      <view class="total">优惠券:</view>
+      <view style="color:rgb(253, 80, 0)">-￥{{order.discountPrice}}</view>
+    </view>
+    <view class="handle">
+      <view class="total">
+        <text>合计:</text>
+        <text class="money">￥{{order.payAmount}}</text>
+      </view>
+      <view class="active1">{{order.textStatus}}</view>
+    </view>
+  </view>
+  <!-- 退款类型 -->
+  <view class="orcard">
+    <view class="shop">
+      <view class="house">
+        <view class="shname">退款商品</view>
+      </view>
+    </view>
+    <view>
+      <van-cell is-link title-class="titleCell" bind:tap="select">
+        <view slot="title" space="nbsp">
+          退款原因
+          <text style="color:red">*</text>
+        </view>
+        <view style="font-size: 24rpx;flex:1.5">{{reason}}</view>
+      </van-cell>
+      <van-cell title="退款金额" title-class="titleCell" bind:tap="setInput">
+        <view class="goprice">￥{{price}}</view>
+      </van-cell>
+    </view>
+  </view>
+  <view class="orcard">
+    <view class="shop">
+      <view class="house">
+        <view class="shname">
+          补充描述和凭证
+          <text style="color:#66666655">(选填)</text>
+        </view>
+      </view>
+    </view>
+    <view class="select_box">
+      <textarea class="textareab_box" bindinput="onInput" maxlength="3000" placeholder="补充描述，有助于商家更好的处理售后问题" name="" id="text"></textarea>
+      <van-uploader file-list="{{ fileList }}" max-count="3" bind:after-read="afterRead" bind:delete="imgDelete" />
+      <text style="color:#66666666" wx:if="{{!fileList[0].url}}">上传凭证(最多3张)</text>
+    </view>
+  </view>
+  <!-- 退款类型 -->
+  <view class="orcard" wx:if="{{type ==2 }}">
+    <view class="shop">
+      <view class="house">
+        <view class="shname">寄回方式</view>
+      </view>
+    </view>
+    <view class="bacard">
+      <view>
+        <view class="title">自行联系快递寄回</view>
+        <view class="text">如遇运费问题，运费问题请与商家协商</view>
+      </view>
+      <view class="label" bindtap="freeTell">联系卖家</view>
+    </view>
+  </view>
+  <view class="btn_box">
+    <view class="btnSub" hover-class="btnSub1" bindtap="sub">提交</view>
+  </view>
+</view>
+<van-dialog use-slot title="请输入退款金额" show="{{ show }}" show-cancel-button confirm-button-open-type="getUserInfo" bind:close="onClose" bind:getuserinfo="getUserInfo">
+  <input style="margin: 30rpx;" type="text" value="{{price}}" bindinput="onInput2" />
+</van-dialog>

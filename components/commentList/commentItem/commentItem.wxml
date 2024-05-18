@@ -1,0 +1,21 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="comment_item">
+  <view class="comment_left">
+    <image mode="aspectFill" class="avatar" src="{{util.fullPath(list.userAvatar)}}"></image>
+    <view class="info">
+      <text class="name">{{list.userName}}{{list.parentName?" 回复:  "+list.parentName:""}}</text>
+      <text class="content">{{list.comment}}</text>
+      <view class="time">
+        <text class="text">{{list.releaseTime}}</text>
+        <view class="textReply" bindtap="handtapreply">
+          回复
+          <view class="textReply_box" data-id="{{list.id}}" bindtap="handtapreply"/>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="comment_right">
+    <text class="{{list.isLike==1?'text2':'text1'}}">{{util.tenNum(list.likeNum)}}</text>
+    <van-icon class="icon" size="40rpx" name="{{list.isLike==1?'good-job':'good-job-o'}}" color="{{list.isLike==1?'#ff6040':''}}" bindtap="handtapislike" />
+  </view>
+</view>

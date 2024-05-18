@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "秒杀专区",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "van-count-down": "/miniprogram/miniprogram_npm/@vant/weapp/count-down/index"
+  }
+}

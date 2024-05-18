@@ -1,0 +1,42 @@
+<!-- pages/my/spread/withdraw/withdraw.wxml -->
+<wxs src="../../../../utils/util.wxs" module="util"></wxs>
+<view class="withdraw">
+    <picker bindchange="deliveryChange" range="{{banList}}" range-key="name" range-key="idcardName">
+        <view class="myinput2">
+            <view class="labl">银行卡</view>
+            <text style="width: 400rpx;padding:0 80rpx">{{banList[active].idcardName}}</text>
+            <van-icon name="arrow" style="float: right;" />
+        </view>
+    </picker>
+    <view class="wiremark">提现金额</view>
+    <view class="myinput">
+        <view>￥</view>
+        <input placeholder="请输入" value="{{money}}" bindinput="bindMoney"></input>
+    </view>
+    <view class="blan">目前余额￥{{blance}}，最低提现金额为￥10.00</view>
+    <view class="handle">
+        <view class="mybtn btn" bindtap="openShow">申请提现至银行卡</view>
+        <view class="btn btn2" bindtap="goBnak">查看/修改卡号信息</view>
+    </view>
+</view>
+<van-popup show="{{ show }}" bind:close="onClose" close-icon="close" custom-style="background: #3994ff00" closeable>
+    <view class="box_base">
+        <view class="title">确认提现</view>
+        <view class="bor_bt">
+            <view class="fs24">提现</view>
+            <view class="price">￥{{money}}</view>
+            <view class="flex_text" >
+                <view>服务费</view>
+                <view>￥{{util.servicePrice(money,serviceCharge,serviceChargeLimit)}}</view>
+            </view>
+            <view class="flex_text"  wx:if="{{serviceCharge!=='0'}}">
+                <view>费率</view>
+                <view>
+                    <text>{{serviceCharge}}%</text>
+                    <text>(最低￥{{serviceChargeLimit}})</text>
+                </view>
+            </view>
+            <view class="btns" hover-class="btns_active" bindtap="toWithdraw">确认提现</view>
+        </view>
+    </view>
+</van-popup>

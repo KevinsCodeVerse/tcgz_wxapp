@@ -1,0 +1,83 @@
+<!--pages/collective/detail/detail.wxml-->
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="coll_detail">
+    <view class="move">
+        <image mode="widthFix" class="banner" src="{{util.fullPath(info.banner)}}" wx:if="{{bannerList.length==0}}"></image>
+        <!-- <view style="height: 1rpx;width: 350rpx;"></view> -->
+        <swiper autoplay interval="2000" duration="500" style="height: 500rpx;" wx:else>
+            <block wx:for="{{bannerList}}" wx:key="*this">
+                <swiper-item>
+                    <image class="banner" mode="widthFix" src="{{util.fullPath(item.image)}}"></image>
+                </swiper-item>
+            </block>
+        </swiper>
+
+        <image class="avatar" mode="aspectFill" src="{{util.fullPath(info.avatar)}}"></image>
+    </view>
+    <view class="titl">{{info.name}}</view>
+    <view class="subtitl">{{info.overview}}</view>
+
+    <!-- 联系 -->
+    <view class="contact">
+        <view class="phone">
+            <view class="address">
+                <text>电话</text>
+                <text>{{info.phone? info.phone: '暂无'}}</text>
+            </view>
+            <view class="address">
+                <text>地址</text>
+                <text class="addre">{{info.address}}</text>
+            </view>
+        </view>
+        <view>
+            <view class="mybtn cobtn" bindtap="freeTell">
+                <image src="/img/myicon/phone.png"></image>
+                <text>致电</text>
+            </view>
+            <view class="mybtn cobtn" bindtap="toOpenNav">
+                <image src="/img/myicon/navigation.png"></image>
+                <text>导航</text>
+            </view>
+        </view>
+    </view>
+
+    <van-tabs active="{{ active }}" bind:change="onChange" color="#3994FF">
+        <van-tab title="组织简介">
+            <view class="intro">
+                <rich-text nodes="{{info.description}}"></rich-text>
+                <view wx:if="{{!info.description}}">暂无简介</view>
+            </view>
+        </van-tab>
+        <van-tab title="组织资讯">
+            <view class="inlist">
+                <view class="incard" wx:for="{{newsList}}" wx:key="index" bindtap="goInformation" data-id="{{item.id}}">
+                    <image class="cover" mode="aspectFill" src="{{util.fullPath(item.banner)}}"></image>
+                    <view class="riht">
+                        <view class="tit">{{item.title}}</view>
+                        <view class="con">{{item.overview}}</view>
+                        <view class="con time">
+                            <text>{{util.formatDateShort(item.createTime)}}</text>
+                            <van-icon name="eye-o" size="34rpx" />
+                            <text style="margin-left: 4rpx;">{{item.pv}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="floor">- 已经到底啦 -</view>
+            </view>
+        </van-tab>
+    </van-tabs>
+
+    <view class="tryout" wx-if="{{day!==''}}">
+        <text>试用倒计时</text>
+        <text class="atday">{{day}}</text>
+        <text>天</text>
+        <view class="trybtn" bindtap="toEnable">立即激活</view>
+    </view>
+    <view class="foot mybtn" bindtap="goJoin" wx:if="{{isJoin==-1}}">马上加入</view>
+    <view class="foot mybtn" style="background-color: #999;" wx:else>
+        已加入
+        <text class="aduit" wx:if="{{isJoin==0}}">(等待审核中)</text>
+    </view>
+    <!-- 入驻广告 -->
+    <image class="advert" bindtap="toPublicJoin" wx:if="{{isFrim==1}}" src="/img/common/advert.png"></image>
+</view>

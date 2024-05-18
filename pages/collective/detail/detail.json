@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-tab": "./../../../miniprogram/miniprogram_npm/@vant/weapp/tab/index",
+    "van-tabs": "./../../../miniprogram/miniprogram_npm/@vant/weapp/tabs/index",
+    "van-icon": "./../../../miniprogram/miniprogram_npm/@vant/weapp/icon/index"
+  },
+  "navigationBarTitleText": "集体详情"
+}

@@ -1,0 +1,290 @@
+<!-- pages/goods/detail/detail.wxml -->
+<wxs module="util" src="../../../utils/util.wxs" />
+<navigation isWhite="{{mybar}}">
+  <view class="myback">
+    <navigator class="back" open-type="navigateBack">
+      <van-icon name="arrow-left" />
+    </navigator>
+    <navigator class="back" url="/pages/index/index" open-type="switchTab">
+      <van-icon name="wap-home" />
+    </navigator>
+  </view>
+</navigation>
+<view class="ss" wx:if="{{isLoging==-1}}">
+  商品不存在或商品已下架
+  <view>
+    <van-button size="small" bind:tap="handRefresh">刷新试试</van-button>
+  </view>
+</view>
+<view class="detail" wx:if="{{isLoging==1}}">
+  <view class="myswiper">
+    <swiper indicator-dots="{{true}}" autoplay="{{false}}" interval="{{2000}}" duration="{{500}}" style="height: 100vw">
+      <block wx:for="{{bannerList}}" wx:key="*this">
+        <swiper-item>
+          <image class="bannimg" mode="aspectFill" src="{{util.fullPath(item)}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="browse">{{goods.favor}}人感兴趣</view>
+    <!-- 佣金 提示2.0.18 版本关闭 -->
+    <!-- <view class="commission" wx:if="{{goods.isInvite==1}}">
+      佣金最高￥
+      <image mode="widthFix" src="/img/shop/gold.png" />
+      {{goods.maxReward}}
+    </view> -->
+  </view>
+  <!-- 限时秒杀 -->
+  <view class="seck_at" wx:if="{{type==2}}" >
+    <view class="seckill">
+      <view class="seinfo">
+        <view class="seremark">
+          <image src="/img/seckill/seckill.png"></image>
+          <view>
+            <view class="setit">限时限量秒杀</view>
+            <view>每人限购3件</view>
+          </view>
+        </view>
+        <view class="stock">
+          <view>当前剩余</view>
+          <view class="stprice">168</view>
+        </view>
+      </view>
+      <view class="time">
+        <view style="margin-bottom: 4rpx">距结束还有</view>
+        <van-count-down class="mytimedown" use-slot time="{{ time }}" bind:change="onChange">
+          <text class="timeitem">{{ timeData.hours }}</text>
+          <text class="mytimedown">:</text>
+          <text class="timeitem">{{ timeData.minutes }}</text>
+          <text class="mytimedown">:</text>
+          <text class="timeitem">{{ timeData.seconds }}</text>
+        </van-count-down>
+      </view>
+    </view>
+  </view>
+  <view class="mycon">
+    <!-- 标题 -->
+    <view class="cotit">{{goods.name}}</view>
+    <view class="price">
+      <view class="d_price">
+        <view class="curre">￥{{goods.price}}</view>
+        <view class="original">￥{{goods.originalPrice}}</view>
+        <view class="freight" wx:if="{{goods.freight}}">运费￥{{goods.freight}}</view>
+        <view class="freight" wx:if="{{!goods.freight&&app.globalData.showVideo==1&&(goods.carriage.length==1?goods.carriage[0]==2:true)}}">
+          包邮
+        </view>
+        <!-- <view class="old">
+          <text>佣金最高￥</text>
+          <view>{{goods.friendPrice}}</view>
+        </view> -->
+      </view>
+      <view>{{type==1? '已售': '已抢'}}{{goods.deal}}</view>
+    </view>
+    <!-- 标识 -->
+    <scroll-view wx:if="{{afterSellIdent.length&&app.globalData.showVideo==1}}" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+      <view class="label_box">
+        <view class="label_item" wx:for="{{afterSellIdent}}" wx:key="index">{{item}}</view>
+      </view>
+    </scroll-view>
+    <!-- 优惠券 -->
+    <view class="discount_box" wx:if="{{coupon.length&&app.globalData.showVideo==1}}" >
+      <scroll-view scroll-x="{{true}}" style="width:580rpx">
+        <view class="reduction">
+          <text wx:for="{{coupon}}" wx:key="index">{{item.name}}</text>
+        </view>
+      </scroll-view>
+      <view class="icon" bindtap="reductionShow">
+        <text>领劵</text>
+        <van-icon name="arrow" color="#FF3333" />
+      </view>
+    </view>
+    <!-- 联系 -->
+    <view class="contact">
+      <view class="house">
+        <view class="housename">{{shop.name}}</view>
+        <view class="holink" bindtap="goShop">
+          进店逛逛
+          <van-icon name="arrow" />
+        </view>
+      </view>
+      <view class="d_contact">
+        <view class="phone">
+          <view class="address">
+            <text>电话</text>
+            <text>{{shop.phone}}</text>
+          </view>
+          <view class="address">
+            <text>地址</text>
+            <text class="addre">{{shop.address}}</text>
+          </view>
+        </view>
+        <view wx:if="{{type==1}}">
+          <view class="mybtn cobtn" bindtap="freeTell">
+            <image src="/img/myicon/phone.png"></image>
+            <text>致电</text>
+          </view>
+          <view class="mybtn cobtn" bindtap="toOpenNav">
+            <image src="/img/myicon/navigation.png"></image>
+            <text>导航</text>
+          </view>
+        </view>
+        <view wx:else>
+          <view class="mybtn cobtn cobtn2" bindtap="freeTell">
+            <image src="/img/myicon/phone3.png"></image>
+            <text>致电</text>
+          </view>
+          <view class="mybtn cobtn cobtn2" bindtap="toOpenNav">
+            <image src="/img/myicon/navigation3.png"></image>
+            <text>导航</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 商品评价 -->
+  <view class="evaluate">
+    <view class="tit {{type==2? 'tit2':''}}">
+      <text>商品评价</text>
+    </view>
+    <view wx:if="{{evaluate.nick}}">
+      <view class="evcard">
+        <image class="avatar" mode="aspectFill" src="{{util.fullPath(evaluate.avatar)}}"></image>
+        <view class="name">
+          <view class="time">
+            <text>{{evaluate.nick}}</text>
+            <text>{{util.formatDateShort(evaluate.createTime)}}</text>
+          </view>
+          <van-rate readonly value="{{ evaluate.level }}" bind:change="onChange" color="#FF7800" size="30rpx" gutter="0px" />
+        </view>
+      </view>
+      <view class="evcon">{{evaluate.content}}</view>
+      <view class="evimgs">
+        <image mode="aspectFill" wx:for="{{evaluate.imgArr}}" wx:key="index" src="{{util.fullPath(item)}}"></image>
+      </view>
+    </view>
+    <view wx:if="{{evaluate.nick}}" class="more" style="color:{{type==2? '#FF6040':''}}" bindtap="goEvaluate">
+      查看全部评价
+      <van-icon name="arrow" />
+    </view>
+    <view class="nodata2" wx:if="{{!evaluate.nick}}">暂无评价</view>
+  </view>
+  <!-- 商品详情 -->
+  <view class="mycont" wx:if="{{goods.description}}">
+    <view class="tit {{type==2? 'tit2':''}}">
+      <text>商品详情</text>
+    </view>
+    <view class="richtext">
+      <rich-text nodes="{{goods.description}}"></rich-text>
+    </view>
+  </view>
+  <!-- 人气推荐 -->
+  <!-- <view class="recommend">
+    <view class="tit {{type==2? 'tit2':''}}"><text>人气推荐</text></view>
+    <view class="product_list">
+      <view wx:for="{{productList}}" wx:key="index" class="product_item" data-id="{{item.id}}" bindtap="goDetail">
+        <view class="product_cover">
+          <image mode="aspectFill" src="{{item.cover}}"></image>
+          <view wx:if="{{item.countrymen}}" class="price">
+            <text>会员专享{{item.discount}}折</text>
+            <view class="price_num">
+              <image mode="heightFix" class="unit" src="/img/common/money.png"></image>
+              <text class="num">{{item.countrymenPrice}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="product_info">
+          <text class="product_title">{{item.title}}</text>
+          <view class="info_bottom">
+            <view class="price">
+              <text class="new">￥{{item.currentPrice}}</text>
+              <text class="old">￥{{item.originalPrice}}</text>
+            </view>
+            <view class="sales">已售{{item.sales}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view> -->
+  <view class="floor">-已经到底啦-</view>
+  <!-- 底部栏 -->
+  <view class="foot">
+    <view class="handle" style="padding-left: 30rpx" bindtap="goShop">
+      <image wx:if="{{type==1}}" src="/img/myicon/shop2.png"></image>
+      <image wx:else src="/img/myicon/shop3.png"></image>
+      <view style="color:{{type==1? '#3994FF': '#FF6040'}}">店铺</view>
+    </view>
+    <view class="handle" bindtap="toCollet" wx:if="{{isCollect==-1}}">
+      <image src="/img/myicon/collect2.png"></image>
+      <view>收藏</view>
+    </view>
+    <view class="handle" bindtap="toCollet" wx:else>
+      <image src="/img/myicon/collect-active.png"></image>
+      <view>已收藏</view>
+    </view>
+    <!-- <view class="handle" bindtap="shareShow">
+      <image src="/img/focus/data-04.png"></image>
+      <view>分享</view>
+    </view> -->
+    <!-- wx:if="{{goods.isInvite}}" -->
+    <van-button  round type="info" color="#4DC4FF" custom-class="btn_custom_class" bindtap="getShareInfo">
+      分享
+    </van-button>
+    <!-- <van-button wx:else round type="info" open-type="share" color="#4DC4FF" custom-class="btn_custom_class">
+      分享
+    </van-button> -->
+    <van-button round type="info" custom-class="btn_custom_class" bindtap="goSettle" wx:if="{{app.globalData.showVideo==1}}">
+      立即购买
+    </van-button>
+    <van-button round type="info" custom-class="btn_custom_class" bindtap="toOpenNav" wx:else>
+      前往购买
+    </van-button>
+    <!-- <view class="mybtn btn" style="background-color: {{type==2? '#FF6040': '#3994FF'}}" >
+      立即购买
+    </view> -->
+  </view>
+</view>
+<!-- 优惠券弹窗 -->
+<van-popup z-index="99" custom-class="desc_bottom_box" show="{{ isDesc }}" position="bottom" custom-style="height: 65%;" closeable round
+  close-icon="close" bind:close="reductionShow">
+  <!-- 头部 -->
+  <view class="title" bindtap="reductionShow">
+    领取优惠券
+    <!-- <van-icon class="img" size="50rpx" color="#888888" name="arrow-down" /> -->
+  </view>
+  <scroll-view scroll-y="{{true}}" class="page_box">
+    <view class="desc_box1">
+      <view class="discountList_box" wx:for="{{coupon}}" wx:key="index">
+        <view class="discountList_num">
+          <view class="coupon_price">
+            <text style="font-size: 34rpx;">￥</text>
+            <text>{{item.amount}}</text>
+          </view>
+          <view class="totol_aomunt">满{{item.useAmount}}可用</view>
+        </view>
+        <view class="discountList_info">
+          <view class="price_num">
+            {{item.name}}
+            <text wx:if="{{item.isShop==1}}" style="font-size: 20rpx;position: relative;top:-5rpx;">到店使用</text>
+            <text wx:if="{{item.isShop==0}}" style="font-size: 20rpx;position: relative;top:-5rpx;">线上使用</text>
+            <!-- <text>满88可用</text> -->
+          </view>
+          <view>有效期至{{util.formatDateShort(item.useEndTime,'.')}}</view>
+          <view class="astrict">
+            <text>每人领{{item.userLimitCount==-1?'999':item.userLimitCount}}张</text>
+           <text wx:if="{{item.stock!=-1}}"> 剩{{item.stock}}张</text>
+          </view>
+          <view class="discountList_bt">
+            <view class="discountList_bt_text" data-id="{{item.id}}" wx:if="{{item.stock!=0}}" bind:tap="bindCoupon">立刻领取</view>
+            <view class="discountList_bt_img" wx:if="{{item.stock==0}}"></view>
+            <!-- <van-button size="small" round custom-style="font-size: 28rpx;color:#fff;" color="linear-gradient(to bottom, #FF7800, #FF4B33)">
+              领取
+            </van-button> -->
+            <!-- <van-button size="small" round custom-style="font-size: 28rpx;color:#fff;" color="#99999955" hairline="false">已领</van-button> -->
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="bottom_close" bindtap="reductionShow">返回</view>
+</van-popup>
+<!-- 分享弹窗 -->
+<goodscanvas ids="{{id}}" id="goodscanvas"></goodscanvas>

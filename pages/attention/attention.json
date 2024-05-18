@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "noattent": "./noattent/index",
+    "attent": "./attent/index"
+  },
+  "navigationBarTitleText": "我的关注"
+}

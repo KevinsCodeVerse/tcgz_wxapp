@@ -1,0 +1,31 @@
+/* components/topUp/topUp.wxss */
+.title {
+    line-height: 100rpx;
+    text-align: center;
+    color: #333;
+    font-size: 32rpx;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.055);
+}
+.box{
+    padding: 10rpx;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 320rpx;
+    align-content: space-around;
+}
+.item_box{
+    flex-grow: 3;
+    flex: 0 0 27%;
+    text-align: center;
+    line-height: 130rpx;
+    color: #3994ff;
+    background-color: #3995ff13;
+    border: 1px solid #3995ff85;
+}
+.hover_item{
+    color: #3994ff;
+    background-color: rgba(36, 97, 167, 0.116);
+    border: 1px solid #3994ff;
+}

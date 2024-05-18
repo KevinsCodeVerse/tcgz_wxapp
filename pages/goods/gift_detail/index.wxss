@@ -1,0 +1,270 @@
+/* pages/goods/detail/detail.wxss */
+.detail{
+  padding-bottom: 100rpx;
+}
+/* 返回胶囊 */
+.myback{
+  position: absolute;
+  top: 6rpx;
+  left: 20rpx;
+  background-color: rgba(255, 255, 255, .6);
+  font-size: 40rpx;
+  border-radius: 10rpx;
+  border-radius: 88rpx;
+  padding: 12rpx 0;
+  display: flex;
+}
+.myback>.back{
+  display: flex;
+  padding: 0 20rpx;
+}
+.myback>.back:first-child{
+  border-right: 1px solid #000;
+}
+/* 轮播图css */
+.myswiper{
+  position: relative;
+}
+.myswiper .browse{
+  background-color: rgba(0, 0, 0, .7);
+  position: absolute;
+  bottom: 100rpx;
+  right: 0;
+  color: #fff;
+  font-size: 20rpx;
+  padding: 10rpx 20rpx;
+  border-radius: 40rpx 0 0 40rpx;
+}
+.bannimg{
+  width: 100vw;
+  height: 100vw;
+}
+/* 内容 */
+.mycon{
+  background-color: #fff;
+  padding: 36rpx 30rpx 40rpx 30rpx;
+  margin-bottom: 18rpx;
+}
+.mycon .cotit{
+  padding: 0 10rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.mycon .price{
+  padding: 0 10rpx;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #AAAAAA;
+  margin-top: 16rpx;
+}
+.mycon .d_price{
+  display: flex;
+  align-items: flex-end;
+}
+.mycon .curre{
+  color: #FF7800;
+  font-size: 44rpx;
+  font-weight: bold;
+  margin-right: 10rpx;
+  position: relative;
+  top: 6rpx;
+}
+.mycon .original{
+  text-decoration: line-through;
+}
+.mycon .old{
+  background: linear-gradient(180deg, #FF843E 0%, #FF4848 100%);
+  color: #fff;
+  padding: 0 16rpx 10rpx 16rpx;
+  border-radius: 10rpx;
+  margin-left: 10rpx;
+  display: flex;
+  align-items: flex-end;
+}
+.mycon .old view{
+  font-size: 44rpx;
+  font-weight: bold;
+  position: relative;
+  top: 8rpx;
+}
+/* 联系 */
+.contact{
+  box-shadow: 0px 0px 14rpx rgba(0, 0, 0, 0.14);
+  margin-top: 46rpx;
+  padding: 14rpx 30rpx;
+  border-radius: 10rpx;
+}
+.contact .d_contact{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  color: #999;
+}
+.contact .phone{
+  width: calc(100% - 160rpx);
+}
+.contact .address{
+  display: flex;
+}
+.contact .address>text:first-child{
+  width: 60rpx;
+}
+.contact .address .addre{
+  width: calc(100% - 60rpx);
+}
+.contact .cobtn{
+  width: 126rpx;
+  height: 52rpx;
+  border: 1px solid #3994FF;
+  border-radius: 52rpx;
+  color: #3994FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 14rpx 0;
+}
+.contact .cobtn image{
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+}
+.contact .cobtn2{
+  border-color: #FF6040;
+  color: #FF6040;
+}
+.contact .house{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20rpx;
+  padding-top: 6rpx;
+  margin-bottom: 10rpx;
+}
+.contact .housename{
+  width: calc(100% - 140rpx);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.contact .holink{
+  display: flex;
+  align-items: center;
+  font-size: 20rpx;
+  color: #999;
+}
+/* 特殊标题 */
+.tit{
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  padding-bottom: 30rpx;
+  padding-top: 10rpx;
+}
+.tit text{
+  position: relative;
+  z-index: 2;
+}
+.tit text::before{
+  content: '';
+  position: absolute;
+  border-bottom: 8rpx solid #3994FF;
+  bottom: 2rpx;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+.tit2 text::before{
+  border-color: #FF6040;
+}
+/* 商品评价 */
+.evaluate{
+  background-color: #fff;
+  padding: 34rpx 40rpx;
+  margin-bottom: 18rpx;
+}
+.evaluate .evcard{
+  display: flex;
+}
+.evaluate .avatar{
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.evaluate .name{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 24rpx;
+  width: calc(100% - 92rpx);
+}
+.evaluate .time{
+  display: flex;
+  justify-content: space-between;
+}
+.evaluate .time>text:last-child{
+  color: #B6B6B6;
+}
+.evaluate .evcon{
+  margin-top: 20rpx;
+}
+.evaluate .evimgs{
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.evaluate .evimgs image{
+  width: 210rpx;
+  height: 210rpx;
+  border-radius: 16rpx;
+  margin-right: 20rpx;
+}
+.evaluate .evimgs image:last-child{
+  margin-right: 0;
+}
+.evaluate .more{
+  color: #3994FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 26rpx;
+  padding-top: 60rpx;
+  font-size: 24rpx;
+}
+/* 商品详情 */
+.mycont{
+  background-color: #fff;
+  padding: 34rpx 40rpx;
+  margin-bottom: 18rpx;
+}
+.mycont .richtext{
+  line-height: 54rpx;
+}
+.mycon .richtext .graphic{
+  width: 100%;
+}
+/* 底部栏 */
+.foot{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100rpx;
+  background-color: #fff;
+  z-index: 99;
+  border-top: 1px solid #ddd;
+  text-align: center;
+}
+.foot .btn{
+  background-color: #3994FF;
+  color: #fff;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+}

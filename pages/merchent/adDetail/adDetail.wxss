@@ -1,0 +1,102 @@
+.box {
+	margin: 25rpx;
+	padding: 30rpx;
+	border-radius: 20rpx;
+	background-color: #ffffff;
+}
+.btn {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100rpx;
+	line-height: 100rpx;
+	text-align: center;
+	font-weight: 600;
+	font-size: 32rpx;
+}
+.btnFalse{
+	color: #fff;
+	background-color: #3994ff;
+}
+.title {
+	font-weight: 600;
+	font-size: 33rpx;
+}
+
+.text {
+	opacity: 0.6;
+    font-size: 25rpx;
+    line-height: 40rpx;
+	font-weight: 400;
+	text-align: left;
+	color: #999999;
+}
+
+.img {
+    margin-top: 15rpx;
+	height: 270rpx;
+	border-radius: 20rpx;
+	overflow: hidden;
+}
+.img image {
+	width: 100%;
+	height: 100%;
+}
+.goods_title{
+	font-weight: 600;
+    font-size: 30rpx;
+}
+.goods_item {
+	/* border-bottom: 1px solid rgba(0, 0, 0, 0.116); */
+	display: flex;
+	padding: 25rpx 0;
+}
+.img_box {
+	height: 120rpx;
+	width: 120rpx;
+	margin-right: 20rpx;
+}
+
+.img_box image {
+	height: 100%;
+	width: 100%;
+}
+
+.info {
+	flex: 1;
+}
+.goods_title {
+	font-weight: 600;
+}
+.df {
+	display: flex;
+	align-items: flex-end;
+}
+.search_box {
+	padding: 0 25rpx;
+}
+.select_btn {
+	margin-top: 40rpx;
+	margin-left: 20rpx;
+	width: 125rpx;
+	height: 58rpx;
+	background: #3994ff;
+	border-radius: 29rpx;
+	text-align: center;
+	line-height: 58rpx;
+	color: #ffffff;
+	font-size: 30rpx;
+}
+.van-search__action {
+	margin-right: 0 !important;
+	padding-right: 0 !important;
+}
+.price {
+	margin-top: 15rpx;
+	margin-right: 20rpx;
+	font-size: 42rpx;
+	font-weight: 800;
+	text-align: left;
+	color: #ff7800;
+}

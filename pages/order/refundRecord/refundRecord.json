@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "van-dialog": "/miniprogram/miniprogram_npm/@vant/weapp/dialog/index",
+    "referrer": "/components/referrer/referrer"
+  },
+  "navigationBarTitleText": "退款申请记录"
+}

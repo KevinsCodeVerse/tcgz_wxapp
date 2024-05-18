@@ -1,0 +1,61 @@
+<!--pages/my/spread/fillin_flow/index.wxml-->
+<wxs module="util" src="../../../../utils/util.wxs" />
+<view class="fillin_flow">
+  <view class="flcard" wx:for="{{list}}" wx:key="index">
+    <view class="flhead">
+      <text>{{item.type==1?'市级运营账号': '集体账号'}}</text>
+      <text class="status1">{{item.status==1?'审核通过': item.status==-1?'审核未通过': '审核中'}}</text>
+    </view>
+    <view class="d_card">
+      <view class="flleft">
+        <view class="account">
+          <view>账号 {{item.account}}</view>
+          <!-- <view>密码 88888888</view> -->
+        </view>
+        <view class="flremark">平台收款账号 {{item.collectionAccount}}</view>
+        <view class="flremark">客户支付渠道 {{item.paymentChannel}}</view>
+        <view class="price">打款金额 <text>￥{{item.money}}</text> </view>
+      </view>
+      <view class="voucher">
+        <image mode="aspectFill" src="{{util.fullPath(item.img)}}"></image>
+        <view>支付凭证</view>
+      </view>
+    </view>
+    <view class="reason" wx:if="{{item.status==-1}}">
+      <view>原因：{{item.refuseReason}}</view>
+      <view class="mybtn btn" bindtap="toEdit" data-id="{{item.id}}">前往修改</view>
+    </view>
+  </view>
+
+  <view class="loading">
+    <van-loading wx:if="{{loading}}" size="24px" color="#0DC3FF">加载中...</van-loading>
+    <text class="finish" wx:if="{{finish}}">{{list.length>0?'没有更多了': '暂无数据'}}</text>
+  </view>
+  
+
+  <!-- <view class="flcard">
+    <view class="flhead">
+      <text>市级运营账号</text>
+      <text class="status3">未通过</text>
+    </view>
+    <view class="d_card">
+      <view class="flleft">
+        <view class="account">
+          <view>账号 18888888888</view>
+          <view>密码 88888888</view>
+        </view>
+        <view class="flremark">平台收款账号 6228488888888888888</view>
+        <view class="flremark">客户支付渠道 中国建设银行</view>
+        <view class="price">打款金额 <text>￥20000</text> </view>
+      </view>
+      <view class="voucher">
+        <image src="https://www.tcgz.store/files/default/default_pro.png"></image>
+        <view>支付凭证</view>
+      </view>
+    </view>
+    <view class="reason">
+      <view>原因：打款金额信息不一致</view>
+      <view class="mybtn btn" bindtap="toEdit">前往修改</view>
+    </view>
+  </view> -->
+</view>

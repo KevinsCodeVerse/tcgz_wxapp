@@ -1,0 +1,5 @@
+<!--pages/my/spread/gift_c/gift_c.wxml-->
+<view class="gift">
+  <image class="giftbg" mode="widthFix" src="https://www.tcgz.store/files/default/superBanner.png"></image>
+  <view class="mybtn btn" bindtap="wechatPay">支付{{money}}元 马上升级</view>
+</view>

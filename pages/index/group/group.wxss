@@ -1,0 +1,96 @@
+.group {
+  background: #86CC14;
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+  box-sizing: border-box;
+}
+.banner {
+  width: 100%;
+  display: block;
+}
+.goods_list {
+  width: 94%;
+  margin: 0 auto;
+  margin-top: -220rpx;
+}
+.goods_list .goods_item {
+  background: #ffffff;
+  display: flex;
+  border-radius: 10px;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+.goods_list .goods_item .goods_cover {
+  width: 22vw;
+  height: 22vw;
+  border-radius: 5px;
+  display: block;
+  margin-right: 20rpx;
+}
+.goods_list .goods_item .goods_info {
+  width: calc(72vw - 60rpx);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.goods_list .goods_item .goods_info .goods_title {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.goods_list .goods_item .goods_info .inventory .limit {
+  display: inline-block;
+  background: #FFF2E6;
+  color: #FF7800;
+  font-size: 20rpx;
+  padding: 4rpx 20rpx;
+  margin-right: 20rpx;
+}
+.goods_list .goods_item .goods_info .inventory .inventory_num {
+  font-size: 24rpx;
+  color: #aaaaaa;
+}
+.goods_list .goods_item .goods_info .btn {
+  height: 56rpx;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.goods_list .goods_item .goods_info .price .new {
+  font-size: 36rpx;
+  color: #FF7800;
+  font-weight: bold;
+}
+.goods_list .goods_item .goods_info .price .old {
+  font-size: 20rpx;
+  color: #AAAAAA;
+  text-decoration-line: line-through;
+  margin-left: 6rpx;
+}
+
+.empty_box{
+  background-color: #fff;
+  height: 500rpx;
+  border-radius: 20rpx;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:column;
+}
+.empty {
+  width: 60%;
+  display: block;
+}
+.empty_box view{
+  position: relative;
+  top: -13%;
+  color: rgb(195,203,214);
+}

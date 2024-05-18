@@ -1,0 +1,71 @@
+<wxs module="util" src="../../../../utils/util.wxs" />
+<view class="confirm_order">
+  <view class="mybg"></view>
+  <view class="step">
+    <image wx:if="{{type==2}}" mode="widthFix" src="https://www.tcgz.store/files/default/stepseckill.png"></image>
+    <image wx:else mode="widthFix" src="https://www.tcgz.store/files/default/stepgift.png"></image>
+  </view>
+  <!-- 商品信息 -->
+  <view class="goods">
+    <view class="info">
+      <image mode="aspectFill" src="{{util.fullPath(skuInfo.cover)}}"></image>
+      <view class="goname">
+        <view class="gotit">{{goods.name}}</view>
+        <view>{{skuInfo.remark}}</view>  
+        <view class="price">
+          <text>￥{{skuInfo.curPrice}}</text>
+          <!-- <text>￥{{skuInfo.rioPrice}}</text>
+          <view class="bag">会员价￥<text>{{skuInfo.firmPrice}}</text></view> -->
+        </view>
+      </view>
+    </view>
+    <view class="spec" wx:for="{{specList}}" wx:key="oneIndex" wx:for-index="oneIndex">
+      <text class="labtit">选择{{item.parentName}}</text>
+      <view class="splist">
+        <view class="spcard {{twoitem.check? 'active':''}}" wx:for="{{item.sonName}}" wx:for-item="twoitem" wx:key="index"
+          bindtap="chooseSpec" data-name="{{twoitem.name}}" data-index="{{oneIndex}}">
+          {{twoitem.name}}
+        </view>
+        <!-- <text class="spcard">套餐二</text>
+        <text class="spcard">套餐三</text>
+        <text class="spcard">套餐四</text>
+        <text class="spcard">套餐五</text> -->
+      </view>
+    </view>
+    <view class="money">
+      <text class="labtit">单价</text>
+      <view class="d_money">
+        <!-- <text wx:if="{{isFriend==1}}" class="bag">会员价</text> -->
+        <text>￥{{skuInfo.curPrice}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 配送方式 -->
+  <view class="delivery">
+    <view class="deremark">
+      <text>配送方式</text>
+      <text>快递</text>
+    </view>
+    <view class="address" bindtap="goAddress">
+      <view class="adcon" wx:if="{{address.name}}">
+        <view>
+          <text class="name">{{address.name}}</text>
+          {{address.phone}}
+        </view>
+        <view>{{address.region}} {{address.address}}</view>
+      </view>
+      <view class="name" wx:else>选择收货地址</view>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+
+  <!-- 底部栏 -->
+  <view class="foot">
+    <view class="fotesu">
+      <text>合计:</text>
+      <text class="total">￥{{allPrice}}</text>
+    </view>
+    <view class="mybtn fobtn" bindtap="toSubmit">提交订单</view>
+  </view>
+</view>

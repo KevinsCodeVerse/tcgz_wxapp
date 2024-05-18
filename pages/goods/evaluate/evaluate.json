@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-rate": "/miniprogram/miniprogram_npm/@vant/weapp/rate/index",
+    "van-loading": "/miniprogram/miniprogram_npm/@vant/weapp/loading/index"
+  },
+  "navigationBarTitleText": "全部评价"
+}

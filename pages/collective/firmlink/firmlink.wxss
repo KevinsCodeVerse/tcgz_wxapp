@@ -1,0 +1,31 @@
+/* pages/collective/firmlink/firmlink.wxss */
+.firmlink{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+.firemark{
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.d_link{
+  color: #999;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+}
+.fibtn{
+  width: 360rpx;
+  height: 76rpx;
+  text-align: center;
+  line-height: 76rpx;
+  background-color: #3994FF;
+  color: #fff;
+  border-radius: 76rpx;
+  font-size: 32rpx;
+  display: inline-block;
+}
+.account{
+  padding-top: 30rpx;
+}

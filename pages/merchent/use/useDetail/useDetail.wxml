@@ -1,0 +1,45 @@
+<wxs module="util" src="/utils/util.wxs" />
+<view wx:if="{{info.name}}">
+    <view class="top_box">
+        <view class="main_box">
+            <view class="img_box">
+                <image src="{{util.fullPath(info.cover)}}" mode="widthFix"></image>
+            </view>
+            <view class="text_box">
+                <view class="title">
+                    {{info.name}}
+                    <view class="parice" wx:if="{{type==2}}">
+                        {{!info.amount?'免费':info.amount+'元/年'}}
+                    </view>
+                </view>
+                <view class="timer" wx:if="{{type==2}}">
+                    有效期至：{{util.formatDateLong(info.dueTime)}}
+                </view>
+                <view class="timer" wx:if="{{type==1}}">
+                    <text class="parice">{{!info.amount?'免费':info.amount+'元/年'}}</text>
+                    <view class="{{info.status==1?'btn_open':'btn_open2'}}" data-info='{{info}}' bindtap="wechatPay">
+                        {{info.status!=1?'立刻开通':'已开通'}}
+                    </view>
+                </view>
+                <view class="text">{{info.introduce}}</view>
+                <!-- <view class="btn_box">
+                    <view class="btn_detail" data-id="{{1}}" bindtap="toDetail">详情</view>
+                    <view class="{{1?'btn_open':'btn_open2'}}">{{1?'立刻开通':'已开通'}}</view>
+                </view> -->
+            </view>
+        </view>
+    </view>
+    <view class="detail_box">
+        <view class="title">详情介绍
+        <view class="title_bottom"></view>
+
+        </view>
+        <view class="" hover-class="none" hover-stop-propagation="false">
+            <rich-text class="" nodes="{{info.content}}"></rich-text>
+        </view>
+    </view>
+    <view wx:if="{{type==1}}" class="bottom_btn  {{info.status!=1?'btnC1':'btnC2'}}"  data-info='{{info}}' data-type="{{1}}" bindtap="wechatPay">
+        {{!info.amount?'免费':info.amount+'元/年'}} {{info.status!=1?'立刻开通':'已开通'}}
+    </view>
+    <view  wx:if="{{type==2}}" class="bottom_btn" data-info='{{info}}' data-type="{{1}}" bindtap="wechatPay">立刻续费</view>
+</view>

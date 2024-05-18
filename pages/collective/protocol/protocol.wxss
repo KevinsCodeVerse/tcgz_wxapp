@@ -1,0 +1,4 @@
+/* pages/collective/protocol/protocol.wxss */
+.protocol{
+  padding: 46rpx;
+}

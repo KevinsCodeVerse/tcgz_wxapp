@@ -1,0 +1,88 @@
+<!--pages/my/spread/fillin/fillin.wxml-->
+<view class="fillin">
+  <view class="fillbg"></view>
+  <view class="step">
+    <image src="https://www.tcgz.store/files/default/step.png"></image>
+  </view>
+  <view class="form">
+    <view class="foremark">
+      <view>提交线下开单申请</view>
+      <view class="theme" bindtap="toPayee">查看平台收款信息</view>
+    </view>
+    <picker bindchange="typeChange" range="{{typeList}}">
+      <view class="myinput">
+        <view class="labl">账号类型</view>
+        <text wx:if="{{typeName}}">{{typeName}}</text>
+        <text wx:else class="pholder">请选择</text>
+        <!-- <text>市级运营账号</text> -->
+      </view>
+    </picker>
+    
+    <view class="myinput">
+      <view class="labl">设置账号</view>
+      <input placeholder="请输入账号" placeholder-class="pholder" maxlength="11" bindinput="bindAccount"></input>
+    </view>
+    <view class="myinput">
+      <view class="labl">名称</view>
+      <input placeholder="请输入集体名称或运营商名称" placeholder-class="pholder" maxlength="11" bindinput="bindName"></input>
+    </view>
+    <view class="myinput">
+      <view class="labl">初始密码</view>
+      <input placeholder="请输入初始密码" placeholder-class="pholder" maxlength="11" bindinput="bindPwd"></input>
+    </view>
+    <view class="myinput">
+      <view class="labl">打款金额</view>
+      <input placeholder="请输入打款金额" placeholder-class="pholder" maxlength="11" bindinput="bindPrice"></input>
+    </view>
+    <view class="myinput">
+      <view class="labl">支付渠道</view>
+      <input placeholder="请输入支付渠道" placeholder-class="pholder" maxlength="11" bindinput="bindChannel"></input>
+    </view>
+    <view class="myinput">
+      <view class="labl">收款账号</view>
+      <text>{{bankCard[0]}}</text>
+    </view>
+    <view class="myinput mycode" bindtap="moveToLocation">
+      <view class="labl">地区信息</view>
+      <!-- <picker bindchange="addressChange" mode = "region">
+        <view class="myselect" wx:if="{{address}}">{{address}}</view>
+        <view class="myselect pholder" wx:else>请选择</view>
+      </picker> -->
+      <view>
+        <view class="myselect" wx:if="{{address}}">{{address}}</view>
+        <view class="myselect pholder" wx:else>请选择</view>
+      </view>
+      <view class="joimg">
+        <image src="/img/myicon/address.png"></image>
+      </view>
+    </view>
+    <view class="myinput mytextarea">
+      <view class="labl">详细地址</view>
+      <textarea placeholder="街道门牌信息" value="{{detail}}" placeholder-class="pholder textarea" bindinput="bindDetail"></textarea>
+    </view>
+    <view class="myinput nobor">
+      <view class="labl">上传凭证</view>
+      <view>
+        <van-uploader file-list="{{fileList}}" max-count="1" preview-size="130rpx" 
+          bind:after-read="afterRead" bind:delete="removeImg"/>
+      </view>
+    </view>
+    <view class="mybtn fillbtn" bindtap="toSubmit">提交</view>
+    <view class="fillbtn fillbtn2" bindtap="goFillinFlow">查看申请记录</view>
+  </view>
+</view>
+
+<van-toast id="van-toast" />
+<van-popup show="{{ show }}" bind:close="onClose" custom-style="border-radius: 16rpx;">
+  <view class="vanpop">
+    <view class="attr">
+      <view class="vacard">收款户名　<text>{{bankCard[1]}}</text> </view>
+      <view class="vacard">收款账号　<text>{{bankCard[0]}}</text> </view>
+      <view class="vacard">开户银行　<text>{{bankCard[2]}}</text> </view>
+    </view>
+    <view class="mybtn vabtn" bindtap="toPayee">好的</view>
+  </view>
+</van-popup>
+<van-action-sheet show="{{ showIndustry }}" round="{{false}}">
+    <van-picker columns="{{ columns }}" bind:cancel="toIndustryCal" bind:confirm="toIndustryCrm" show-toolbar/>
+  </van-action-sheet>

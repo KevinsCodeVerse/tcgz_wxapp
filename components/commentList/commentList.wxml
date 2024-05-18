@@ -1,0 +1,30 @@
+<view class="comment_list">
+  <view class="comment_box">
+    <block wx:for="{{commentList.list}}" wx:key="id">
+      <commentItem list="{{item}}" bindreply="reply" type="{{1}}" />
+      <view class="childs">
+        <commentItem wx:if="{{isnum[index]==false&&item.replyList[0]}}" list="{{item.replyList[0]}}" type="{{2}}" bindreply="reply" />
+        <commentItem wx:if="{{isnum[index]==false&&item.replyList[1]}}" list="{{item.replyList[1]}}" type="{{2}}" bindreply="reply" />
+        <view wx:if="{{isnum[index]==false&&item.replyList.length-2>0}}" class="more" data-index="{{index}}" bind:tap="handtapnum">
+          —— 展开{{item.replyList.length-2}}条回复
+        </view>
+        <view wx:if="{{isnum[index]==true}}">
+          <commentItem  wx:for="{{item.replyList}}" wx:for-index="index2" wx:for-item="item2" wx:key="index" list="{{item2}}"  type="{{2}}" bindreply="reply" wx:if="{{index2<ADDnum[index]}}"/>
+          <view class="expand">
+            <view wx:if="{{isnum[index]==true&&item.replyList.length-2>0}}" class="more" style="color:#5C7899" data-index="{{index}}" bind:tap="handtapnum">
+            —— 折叠 ——
+          </view>
+          <view wx:if="{{isnum[index]==true&&item.replyList.length-2>0&&item.replyList.length>ADDnum[index]}}" class="more" style="color:#5C7899" data-index="{{index}}" bind:tap="handtapnumADD">
+            —— 加载更多 ——
+          </view>
+          </view>
+            
+        </view>
+      </view>
+    </block>
+    <view style="padding: 15rpx;" wx:if="{{!commentList.list.length}}">暂无评论，快来抢沙发！</view>
+    <view wx:else style="text-align: center;font-size:24rpx;color:#555555">{{istit?"没有更多了":"加载中..."}}</view>
+  </view>
+</view>
+<!-- 底栏  监听事件: 点赞 like   收藏 collect -->
+<footers id="footers_id" bindcomment="comment" bindblur="blur" bindlike="like" bindcollect="collect" bindshare="share" info="{{info}}" like="{{info.isLike==1?true:false}}" isCollect="{{info.isFavor==1?true:false}}"></footers>

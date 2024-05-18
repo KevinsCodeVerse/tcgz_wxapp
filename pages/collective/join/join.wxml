@@ -1,0 +1,65 @@
+<!--pages/collective/join/join.wxml-->
+<view class="fillin">
+  <image mode="widthFix" class="banner" src="https://www.tcgz.store/files/default/20210804212810.png"></image>
+  <view class="join">
+    <view class="myinput">
+      <view class="labl">姓名</view>
+      <input placeholder="姓名" placeholder-class="pholder" maxlength="6" bindinput="bindName"></input>
+    </view>
+    <view class="myinput">
+      <view class="labl">手机号码</view>
+      <input placeholder="11位手机号" placeholder-class="pholder" maxlength="11" bindinput="bindPhone"></input>
+    </view>
+    <!-- <view class="myinput">
+      <view class="labl">登录密码</view>
+      <input placeholder="至少6位" placeholder-class="pholder" maxlength="20" bindinput="bindPwd"></input>
+    </view> -->
+    <view class="myinput">
+      <view class="labl">企业/单位</view>
+      <input placeholder="企业单位名称" placeholder-class="pholder" bindinput="bindShopName"></input>
+    </view>
+    <view class="myinput">  
+      <view class="labl">您的行业</view>  
+      <view bindtap="toIndustryCal">
+        <view class="myselect" wx:if="{{industryName}}">{{industryName}}</view>
+        <view class="myselect pholder" wx:else>请选择</view>
+      </view>
+    </view>
+    <view class="myinput mycode" >
+      <view class="labl">地区信息</view>
+      <picker bindchange="addressChange" mode = "region">
+        <view class="myselect" wx:if="{{address}}">{{address}}</view>
+        <view class="myselect pholder" wx:else>请选择</view>
+      </picker>
+    </view>
+    <view class="myinput mytextarea">
+      <view class="labl">详细地址</view>
+      <textarea placeholder="街道门牌信息" value="{{detail}}" placeholder-class="pholder textarea" bindinput="bindDetail"></textarea>
+      <view class="joimg"  bindtap="moveToLocation">
+        <image src="/img/myicon/address.png"></image>
+      </view>
+    </view>
+    <view class="myinput mytextarea">
+      <view class="labl">验证信息</view>
+      <textarea placeholder="我是企业创始人" value="{{remark}}" placeholder-class="pholder textarea" bindinput="bindRemark"></textarea>
+    </view>
+    
+    <view class="protocol">
+      <image class="radio" src="/img/myicon/radio.png" wx:if="{{!flag}}" bindtap="toAgree"></image>
+      <image class="radio" src="/img/myicon/radio_active.png" wx:else bindtap="toAgree"></image>
+      <text bindtap="toAgree">加入代表您同意</text>
+      <navigator url="/pages/protocol/protocol">会员入驻协议</navigator>
+    </view>
+
+    
+
+  </view>
+
+  <view class="foot mybtn step2" bindtap="toSubmit">提交申请</view>
+
+  <van-action-sheet show="{{ showIndustry }}" round="{{false}}">
+    <van-picker columns="{{ columns }}" bind:change="onChange" bind:cancel="toIndustryCal" bind:confirm="toIndustryCrm" show-toolbar/>
+  </van-action-sheet>
+  
+</view>
+<van-toast id="van-toast" />

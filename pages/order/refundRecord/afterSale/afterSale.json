@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "van-rate": "/miniprogram/miniprogram_npm/@vant/weapp/rate/index",
+    "van-count-down": "/miniprogram/miniprogram_npm/@vant/weapp/count-down/index",
+    "van-steps": "/miniprogram/miniprogram_npm/@vant/weapp/steps/index",
+    "van-dialog": "/miniprogram/miniprogram_npm/@vant/weapp/dialog/index",
+    "van-field": "/miniprogram/miniprogram_npm/@vant/weapp/field/index"
+
+  },
+  "navigationBarTitleText": "售后详情",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black"
+}

@@ -1,0 +1,39 @@
+/* components/confirm/index.wxss */
+.confirm{
+  background-color: rgba(0, 0, 0, .5);
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+.confirm .conf{
+  background-color: #fff;
+  margin: 50rpx;
+  border-radius: 16rpx;
+  text-align: center;
+  padding-top: 60rpx;
+  overflow: hidden;
+  margin-top: calc(50vh - 200rpx);
+}
+.confirm .handle{
+  display: flex;
+  margin-top: 60rpx;
+}
+.confirm .btn1{
+  color: #666;
+  height: 90rpx;
+  line-height: 90rpx;
+  width: 50%;
+  border-top: 1px solid #eee;
+}
+.confirm .btn2{
+  color: #fff;
+  background-color: #3994FF;
+  height: 90rpx;
+  line-height: 90rpx;
+  width: 50%;
+  border-top: 1px solid #3994FF;
+}

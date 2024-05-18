@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-uploader": "/miniprogram/miniprogram_npm/@vant/weapp/uploader/index",
+    "van-toast": "/miniprogram/miniprogram_npm/@vant/weapp/toast/index",
+    "van-popup": "/miniprogram/miniprogram_npm/@vant/weapp/popup/index",
+    "van-action-sheet": "/miniprogram/miniprogram_npm/@vant/weapp/action-sheet/index",
+    "van-switch": "/miniprogram/miniprogram_npm/@vant/weapp/switch/index"
+  },
+  "navigationBarTitleText": "开单报备"
+}

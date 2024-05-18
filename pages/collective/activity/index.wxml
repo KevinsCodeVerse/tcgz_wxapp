@@ -1,0 +1,44 @@
+<!--pages/collective/activity/index.wxml-->
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="activity">
+  <view class="accard" wx:for="{{list}}" wx:key="id" bindtap="goActivity" data-obj="{{item}}">
+    <image class="cover" src="{{util.fullPath(item.avatar)}}" wx:if="{{item.avatar}}"></image>
+    <view class="accon">
+      <view class="name">
+        <view class="acname">{{item.name}}</view>
+        <view class="acname">{{item.simpleInfo}}</view>
+      </view>
+      <view class="mybtn apply">{{item.type==0? '报名': '投票'}}活动</view>
+    </view>
+    <view class="time" wx:if="{{item.type==0}}">
+      <view>
+        活动时间：{{util.formatDateAt(item.activityStartTime)}}~{{util.formatDateAt(item.activityEndTime)}}
+      </view>
+      <view class="{{item.status==1? 'cate2':item.status==-1 ?'cate3':'cate1'}}">
+        {{item.status==1? '活动进行中':item.status==-1 ?'活动已结束':'活动未开始'}}
+        <van-icon name="arrow" class="vaic"/>
+      </view>
+    </view>
+
+    <view class="time2" wx:if="{{item.type==0}}">
+      <view>
+        报名时间：{{util.formatDateAt(item.registerStartTime)}}~{{util.formatDateAt(item.registerEndTime)}}
+      </view>
+      <view class="{{item.signStatus==1? 'cate2':item.signStatus==-1 ?'cate3':'cate1'}}">
+        {{item.signStatus==1? '报名进行中':item.signStatus==-1 ?'报名已结束':'报名未开始'}}
+        <van-icon name="arrow" class="vaic"/>
+      </view>
+    </view>
+    <view class="time2" wx:if="{{item.type==1}}">
+      <view>
+        投票时间：{{util.formatDateAt(item.activityStartTime)}}~{{util.formatDateAt(item.activityEndTime)}}
+      </view>
+      <view class="{{item.status==1? 'cate2':item.status==-1 ?'cate3':'cate1'}}">
+        {{item.status==1? '进行中':item.status==-1 ?'已结束':'未开始'}}
+        <van-icon name="arrow" class="vaic"/>
+      </view>
+    </view>
+  </view>
+
+  <view class="floor" >-已经到底了-</view>
+</view>

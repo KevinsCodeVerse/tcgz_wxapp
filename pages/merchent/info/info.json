@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-popup": "/miniprogram/miniprogram_npm/@vant/weapp/popup/index",
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "topUp": "../../../components/topUp/topUp"
+  },
+  "navigationBarTitleText": "商家后台"
+}

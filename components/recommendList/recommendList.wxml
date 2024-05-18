@@ -1,0 +1,32 @@
+<!-- 相关推荐 -->
+<view wx:if="{{recommendList.length > 0}}" class="store_show" bindtap="openStore">相关推荐({{recommendList.length}})</view>
+<van-popup
+  show="{{ storeShow }}"
+  position="bottom"
+  close-on-click-overlay
+  bind:close="closeStore"
+>
+  <view class="store_title" bindtap="closeStore">
+    TA的推荐
+    <van-icon class="img" size="32rpx" color="#888888" name="arrow-down" />
+  </view>
+  <view class="store_list">
+    <view wx:for="{{recommendList}}" class="store_item">
+      <image class="cover" mode="aspectFill" src="{{item.type == 'shop'?util.fullPath(item.shopPhoto):util.fullPath(item.cover)}}"></image>
+      <view class="store_info">
+        <view class="store_top">
+          <text class="store_name">{{item.name}}</text>
+          <view class="sentiment">
+            <text wx:if="{{item.comment || item.comment === 0}}">{{item.comment}}条评价</text>
+            <text>{{item.pv}}人气</text>
+          </view>
+        </view>
+        <view class="price">
+          <view class="price_num">￥{{item.price}} <text class="since">起</text></view>
+          <button data-item="{{item}}" data-type="{{item.type}}" data-id="{{item.id}}" bindtap="toStore">预订</button>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="store_close" bindtap="closeStore">关闭</view>
+</van-popup>

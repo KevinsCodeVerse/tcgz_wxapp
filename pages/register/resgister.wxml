@@ -1,0 +1,24 @@
+<!--pages/register/resgister.wxml-->
+<view class="login" style="background-image: url({{background}})">
+  <view class="logo">
+    <image src="/img/common/logo.png"></image>
+  </view>
+  <view class="handle">
+    <view class="myinput">
+      <input placeholder="请输入手机号" placeholder-class="pholder" maxlength="11" bindinput="setPhone"></input>
+    </view>
+    <view class="myinput">
+      <input placeholder="请输入手机验证码" placeholder-class="pholder" maxlength="11" bindinput="setVerifyCode"></input>
+      <view class="imgcode"><imgCode id="imgCode" bind:sign="getSign" /></view>
+    </view>
+    <view class="myinput">
+      <input placeholder="请输入手机验证码" placeholder-class="pholder" maxlength="11" bindinput="setCode"></input>
+      <text wx:if="{{smsShow}}" bindtap="getSms" class="button">获取验证码</text>
+      <text wx:if="{{!smsShow}}" class="button">{{getVerification}}</text>
+    </view>
+    <view class="mybtn btn" bindtap="bind">下一步</view>
+  </view>
+</view>
+<view wx:if="{{wechat}}">
+  <confirm bindchange="toConfirm"/>
+</view>

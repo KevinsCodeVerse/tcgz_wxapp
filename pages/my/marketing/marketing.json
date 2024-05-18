@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "销售中心",
+  "usingComponents": {
+    "goodscanvas": "/components/goodscanvas/goodscanvas",
+    "van-search": "/miniprogram/miniprogram_npm/@vant/weapp/search/index",
+    "van-tab": "/miniprogram/miniprogram_npm/@vant/weapp/tab/index",
+    "van-tabs": "/miniprogram/miniprogram_npm/@vant/weapp/tabs/index"
+  }
+}

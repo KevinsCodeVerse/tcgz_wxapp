@@ -1,0 +1,46 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="search">
+  <view class="search_tab">
+    <van-search
+      value="{{ searchValue }}"
+      shape="round"
+      use-action-slot
+      placeholder="搜索"
+      bind:change="toChange"
+    >
+      <view slot="action" class="search_btn" bind:tap="onClick">搜索</view>
+    </van-search>
+  </view>
+  <view class="goods_list">
+    <view wx:for="{{list}}" wx:key="index" class="goods_item">
+      <view class="goods_cover">
+        <image mode="aspectFill" src="{{util.fullPath(item.avatar)}}"></image>
+        <text wx:if="{{item.type == 3}}" class="countdown">00:09:32</text>
+      </view>
+      <view class="goods_info">
+        <view>
+          <text class="goods_title">{{item.title}}</text>
+          <view class="inventory">
+            <!-- <text wx:if="{{item.type == 1}}" class="countrymen">会员价￥{{item.friendPrice}}</text> -->
+            <text wx:if="{{item.type == 1}}" class="inventory_num">已售{{item.sales}}</text>
+            <text wx:if="{{item.type == 2}}" class="group">{{item.limit}}人团</text>
+            <text wx:if="{{item.type == 2}}" class="inventory_num">已拼{{item.inventory}}</text>
+            <text wx:if="{{item.type == 3}}" class="seckill">限购{{item.limit}}件</text>
+            <text wx:if="{{item.type == 3}}" class="inventory_num">剩余{{item.inventory}}件</text>
+          </view>
+        </view>
+        <view class="price">
+          <text class="new {{item.type == 3?'seckill':''}}">￥{{item.price}}</text>
+          <text class="old">￥{{item.originPrice}}</text>
+        </view>
+        <button class="buy_btn" wx:if="{{item.type == 1}}" bindtap="goDetail" data-obj="{{item}}">前往购买</button>
+        <image wx:if="{{item.type == 2}}" mode="heightFix" class="btn" src="/img/group/group-btn.png"></image>
+        <image wx:if="{{item.type == 3}}" mode="heightFix" class="btn" src="/img/seckill/seckill-btn.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="loading">
+    <van-loading wx:if="{{loading}}" size="24px" color="#0DC3FF">加载中...</van-loading>
+    <text class="finish" wx:if="{{finish}}">{{list.length>0?'没有更多了': '暂无数据'}}</text>
+  </view>
+</view>

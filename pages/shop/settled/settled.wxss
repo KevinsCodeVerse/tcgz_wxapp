@@ -1,0 +1,199 @@
+.settled{
+  background-color: #08194D;
+  min-height: 100vh;
+  padding-bottom: 1rpx;
+}
+.regular{
+  position: relative;
+}
+.regular image{
+  width: 100%;
+  height: 1300rpx;
+  display: block;
+}
+/* 通告 */
+.notice {
+  margin-top: 20rpx;
+  height: 50rpx;
+  color: #2447B3;
+  font-size: 22rpx;
+  position: absolute;
+  top: 30rpx;
+  left: 30rpx;
+  right: 30rpx;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  background-color: #FFFACC;
+  border-radius: 40rpx;
+  padding: 0 20rpx;
+}
+.notice image{
+  width: 30rpx;
+  height: 28rpx;
+  margin-right: 20rpx;
+}
+.notice .myswiper{
+  width: calc(100% - 54rpx);
+}
+.notice swiper {
+  height: 50rpx;
+}
+.notice swiper-item {
+  display: flex;
+  height: 50rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+.notice .switem text{
+  margin-right: 10rpx;
+}
+.notice .switem .swtit{
+  width: calc(100% - 350rpx);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.notice .swname{
+  width: 280rpx;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+/* 填写信息 */
+.fillin{
+  margin:0 30rpx 30rpx 30rpx;
+  border-radius: 10rpx;
+  padding: 0 40rpx 50rpx 40rpx;
+  box-sizing: border-box; 
+}
+.fillin .titimg{
+  text-align: center;
+}
+.fillin .titimg image{
+  width: 360rpx;
+  height: 42rpx;
+  margin-bottom: 20rpx;
+}
+.myinput{
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #3D5DDE;
+  padding: 24rpx 0;
+  font-size: 30rpx;
+}
+.myinput .labl{
+  width: 180rpx;
+  color: #fff;
+}
+.myinput input{
+  width: calc(100% - 180rpx);
+  color: #fff;
+}
+.mycode input{
+  width: calc(100% - 180rpx - 40rpx);
+  color: #fff;
+}
+.myinput .joimg{
+  width: 60rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 48rpx;
+}
+.myinput image{
+  width: 34rpx;
+  height: 34rpx;
+  text-align: right;
+  display: block;
+}
+.mytextarea{
+  align-items: flex-start;
+}
+.mytextarea textarea{
+  width: calc(100% - 180rpx - 40rpx);
+  color: #fff;
+  height: 100rpx;
+}
+.pholder{
+  color: #999!important;
+}
+.protocol{
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #fff;
+  margin-top: 30rpx;
+}
+.protocol .radio{
+  width: 22rpx;
+  height: 22rpx;
+  margin-right: 12rpx;
+}
+.protocol navigator{
+  color: #8095FF;
+}
+/* 图片验证码框 */
+.verifys{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #3D5DDE;
+  padding: 14rpx 0;
+  font-size: 26rpx;
+}
+.verifys image{
+  height: 60rpx;
+  width: 120rpx;
+  display: block;
+}
+.verifys .verinput{
+  display: flex;
+  align-items: center;
+}
+.verifys .labl{
+  width: 180rpx;
+  color: #fff;
+}
+.verifys input{
+  width: 230rpx;
+  color: #fff;
+}
+.verifys .button{
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 20rpx;
+  padding: 12rpx 20rpx;
+  border-radius: 40rpx;
+}
+
+/* 底部css */
+.foot{
+  text-align: center;
+  margin-top: 54rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+  letter-spacing: 2rpx;
+  color: #fff;
+  border-radius: 100rpx;
+  background: #8095FF;
+  height: 98rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/*选择器 */
+.myselect{
+  width: 360rpx;
+  color: #fff;
+  min-height: 1.4rem;
+  line-height: 1.4rem;
+}
+/* 覆盖vant */
+.van-picker__cancel{
+  color: #7f7f7f!important;
+}
+.van-picker__confirm{
+  color: #07c160!important;
+}

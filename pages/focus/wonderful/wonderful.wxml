@@ -1,0 +1,13 @@
+<view class="city_news"> 
+  <view class="header">
+    <van-search shape="round" value="{{ searchValue }}" bind:change="searchChange" placeholder="请输入搜索内容" bind:search="onSearch" use-action-slot>
+      <view class="search_btn" slot="action" bind:tap="onSearch">搜索</view>
+    </van-search>
+    <van-tabs active="{{active}}" color="#3994FF" title-active-color="#3994FF" bind:change="tabChange">
+      <van-tab title="最新" name="-1"></van-tab>
+      <van-tab title="热门" name="-2"></van-tab>
+      <van-tab wx:for="{{categoryList}}" title="{{item.name}}" name="{{item.id}}"></van-tab>
+    </van-tabs>
+  </view>
+  <newList id="newList" title="{{title}}" active="{{active}}" type="{{4}}" />
+</view>

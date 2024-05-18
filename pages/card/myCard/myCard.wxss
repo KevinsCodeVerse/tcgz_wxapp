@@ -1,0 +1,733 @@
+/* pages/card/myCard/myCard.wxss */
+
+.page {
+  padding: 20rpx 0;
+  overflow: hidden;
+  font-family: PingFang SC, PingFang SC-Bold;
+}
+.foot {
+  height: 10vh;
+  overflow: hidden;
+  margin: 10rpx 0;
+  padding: 10rpx 0 30rpx 10rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100rpx;
+  background-color: #fff;
+  z-index: 99;
+  border-top: 1px solid #ddd;
+}
+.card {
+  width: 680rpx;
+  height: 360rpx;
+  padding: 32rpx 30rpx;
+  border-radius: 8px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  /* margin-bottom: 30rpx; */
+}
+
+.name {
+  display: flex;
+  font-size: 38rpx;
+  font-weight: 700;
+  margin-bottom: 10rpx;
+}
+.vip-icon{
+  display: block;
+  width: 110rpx;
+  height: 55rpx;
+  margin-left: 10rpx;
+}
+.pos {
+  font-size: 22rpx;
+  font-weight: 400;
+  margin: 15rpx 0;
+}
+.right image {
+  width: 128rpx;
+  height: 128rpx;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 68rpx;
+}
+.card view {
+  text-align: left;
+  color: #ffffff;
+}
+.card view text {
+  text-align: left;
+  color: #ffffff;
+  font-size: 26rpx;
+  font-weight: 400;
+}
+.cardc {
+  /* width: 680rpx; */
+  height: 360rpx;
+  padding: 32rpx 30rpx;
+  border-radius: 24rpx;
+  border: 10rpx solid #fff;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+.cardc .top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+.isCheck .top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+.isCheck .img {
+  z-index: 97;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30%;
+  margin: auto;
+  width: 120rpx;
+  height: 120rpx;
+}
+.isCheck {
+  position: relative;
+  /* width: 680rpx; */
+  height: 360rpx;
+  padding: 32rpx 30rpx;
+  border: 10rpx solid #0080ff;
+  border-radius: 24rpx;
+  box-sizing: border-box;
+  margin-bottom: 30rpx;
+  color: #fff;
+}
+.isCheck::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.7;
+  /* background: rgba(255, 255, 255, 0.7); */
+  /* background-color: rgba(0, 0, 0, 0.5);  */
+  box-shadow: 0px 8px 16px 0px rgba(0, 128, 255, 0.3);
+  z-index: 1;
+}
+
+.cardc view {
+  text-align: left;
+  color: #ffffff;
+}
+.cardc view text {
+  text-align: left;
+  color: #ffffff;
+  font-size: 26rpx;
+  font-weight: 400;
+}
+
+.icon {
+  width: 24rpx;
+  height: 24rpx;
+  margin: -5rpx 12rpx -2rpx 0;
+}
+.box {
+  margin: 30rpx auto;
+  /* overflow: hidden; */
+  width: 95%;
+  height: 70vh;
+}
+.box .btn-box {
+  margin: 30rpx auto;
+  width: 470rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background: linear-gradient(180deg, #00aaff, #0080ff);
+  border-radius: 50rpx;
+  box-shadow: 0 16rpx 32rpx 0 rgba(0, 128, 255, 0.3);
+  font-size: 32rpx;
+  font-family: PingFang SC, PingFang SC-Bold;
+  font-weight: 700;
+  color: #ffffff;
+}
+.box .text {
+  text-align: center;
+  font-size: 28rpx;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  text-align: center;
+  color: #333333;
+}
+.flex-box {
+  display: flex;
+  justify-content: space-around;
+  margin: 30rpx 0;
+  text-align: center;
+}
+.list .flex-box {
+  display: flex;
+  justify-content: space-around;
+  margin: 30rpx 0;
+  padding: 10rpx 25rpx 25rpx 25rpx;
+  text-align: center;
+}
+.list .flex-box .tit {
+  font-size: 24rpx;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  text-align: center;
+  color: #999999;
+}
+.list .flex-box .num {
+  font-size: 32rpx;
+  font-family: PingFang SC, PingFang SC-Bold;
+  font-weight: 700;
+  text-align: center;
+  color: #333333;
+}
+.list .flex-box .line {
+  width: 1px;
+  height: 48rpx;
+  background: #f3f3f3;
+}
+.flex-box image {
+  width: 60rpx;
+  height: 60rpx;
+  margin: 0 20rpx;
+}
+.list {
+  margin: 70rpx 0;
+  background: #f8f9fb;
+  border-radius: 24rpx;
+}
+.list .list-card {
+  border-radius: 24rpx;
+}
+.list .text {
+  border-radius: 24rpx 24rpx 0px 0px;
+  text-align: left;
+  width: 670rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: linear-gradient(90deg, #e6f3ff, #ffffff);
+}
+.list .text view {
+  margin: 0 30rpx;
+  font-size: 32rpx;
+  font-family: PingFang SC, PingFang SC-Bold;
+  font-weight: 700;
+  color: #333333;
+}
+
+.sheet-box {
+  height: 100%;
+  overflow-y: auto;
+}
+.sheet-box .box {
+  height: 90%;
+  padding-bottom: 30rpx;
+}
+
+.box-footer {
+  margin-top: 20rpx;
+  padding: 20rpx 15rpx 40rpx 15rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 99;
+  border-top: 1px solid #ddd;
+}
+.Btn {
+  display: flex;
+  justify-content: space-between;
+}
+.btn1 {
+  flex: 3;
+}
+.btn2 {
+  flex: 7;
+}
+.dialog .title {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  height: 128rpx;
+}
+.dialog .text {
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  justify-content: center;
+  height: 128rpx;
+}
+/* 分享 */
+/* components/goodscanvas/goodscanvas.wxss */
+.share {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.582);
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.share .share_box {
+  height: 960rpx;
+  width: 540rpx;
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  background-color: #999;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.share .share_box .images {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.share .share_box view {
+  z-index: 120;
+}
+.shop_title {
+  display: flex;
+  margin-top: 160rpx;
+  width: 400rpx;
+  height: 64rpx;
+  opacity: 1;
+  background: #ffffff;
+  border: 2rpx solid #4dc4ff;
+  border-radius: 10rpx;
+  align-items: center;
+}
+.shop_title .text {
+  width: 304rpx;
+  height: 52rpx;
+  opacity: 1;
+  font-size: 20rpx;
+  font-weight: 700;
+  text-align: left;
+  color: #333333;
+  line-height: 24rpx;
+}
+.shop_img {
+  margin-top: 20rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+.shop_img image {
+  width: 100%;
+}
+.user_info {
+  width: 90px;
+  overflow: hidden;
+  position: absolute;
+  bottom: 18rpx;
+  left: 18rpx;
+  display: flex;
+}
+.user_info .text {
+  line-height: 40rpx;
+  opacity: 1;
+  font-size: 18rpx;
+  color: #ffffff;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+.prive_box {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  margin-top: 20rpx;
+}
+
+.prive_box .price_new {
+  height: 36rpx;
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #ff7800;
+  line-height: 34rpx;
+  margin-right: 10rpx;
+}
+.prive_box .price_used {
+  margin-right: 20rpx;
+
+  width: 68rpx;
+  height: 34rpx;
+  font-size: 24rpx;
+  text-decoration: line-through;
+  color: #aaaaaa;
+}
+
+.price_boon {
+  opacity: 1;
+  background: linear-gradient(90deg, #ff843e, #ff4848);
+  border-radius: 4rpx;
+  font-size: 20rpx;
+  font-weight: 400;
+  text-align: left;
+  color: #ffffff;
+  padding: 3rpx 10rpx;
+  line-height: 34rpx;
+}
+
+.share_box .title {
+  width: 400rpx;
+  height: 72rpx;
+  opacity: 1;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  font-weight: 700;
+  text-align: center;
+  color: #333333;
+  line-height: 32rpx;
+  letter-spacing: -2rpx;
+}
+
+.QT_box {
+  position: absolute;
+  right: 36rpx;
+  bottom: 36rpx;
+  width: 112rpx;
+  height: 112rpx;
+  opacity: 1;
+  background: #ffffff;
+  box-shadow: 0px 0px 10rpx 0px rgba(0, 0, 0, 0.16);
+}
+.QT {
+  margin: 10rpx;
+  width: 92rpx !important;
+  height: 92rpx !important;
+}
+.sharebtn {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0%;
+  opacity: 0;
+}
+.btn_share {
+  position: absolute;
+  bottom: 5%;
+  left: 100rpx;
+  width: 240rpx;
+  height: 76rpx;
+  opacity: 1;
+  background: #4dc4ff;
+  border-radius: 38rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: #ffffff;
+}
+.btn_save {
+  position: absolute;
+  bottom: 5%;
+  right: 100rpx;
+  width: 240rpx;
+  height: 76rpx;
+  opacity: 1;
+  background: #3994ff;
+  border-radius: 38rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: #ffffff;
+}
+.bt_icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+.canvasclasss {
+  width: 100%;
+  height: 100%;
+  z-index: 150;
+}
+.canvasclass {
+  position: absolute;
+  top: 200%;
+  left: -300%;
+  width: 540px;
+  height: 960px;
+}
+.canvasclassstext {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  justify-content: center;
+  z-index: 110;
+  flex-direction: column;
+  color: #fff;
+}
+.loding {
+  display: flex;
+  margin-bottom: 50rpx;
+}
+/* vip */
+.vip-bgc-title {
+  height: 90rpx;
+  display: flex;
+  font-size: 34rpx;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #99999146;
+}
+.v-title {
+  display: flex;
+  justify-content: center;
+  font-size: 30rpx;
+  padding: 15rpx 0;
+  margin: 20rpx 0;
+  border-bottom: 1rpx solid #ccc;
+}
+.box-footer .text {
+  margin: 10rpx 0;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #0080ff;
+}
+
+.btn-footer {
+  padding: 5rpx 15rpx 10rpx 15rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 145rpx;
+  background-color: #fff;
+  z-index: 99;
+  border-bottom: 1px solid #ddd;
+}
+.show {
+  padding: 0 20rpx;
+}
+.show .tit1 {
+  font-size: 33rpx;
+}
+.show .tit2 {
+  font-size: 28rpx;
+  color: #515151;
+  margin: 10rpx 0;
+}
+.vip .box-view {
+
+  padding: 0 30rpx;
+}
+.vip .flex {
+  display: flex;
+  justify-content: space-between;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 10rpx 0;
+  margin: 10rpx 0;
+  border-bottom: 1rpx solid #ccc;
+}
+.vip .left-flex {
+  display: flex;
+}
+.vip .left-flex .shop_avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.vip .left-flex .name {
+  margin: 0 10rpx;
+  font-size: 30rpx;
+}
+.vip-page {
+  position: relative;
+}
+
+.vip-page .top-text {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  margin: 20rpx 0;
+  top: 2.5%;
+  font-size: 22rpx;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  color: #ffffff;
+}
+.vip-page .main {
+  position: absolute;
+  top: 26%;
+  left: 3%;
+  width: 688rpx;
+  height: 768rpx;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 6px solid #bfd6ff;
+  border-radius: 10px;
+}
+.vip-page .main .tit {
+  top: -1.5%;
+  left: 35%;
+  position: absolute;
+  text-align: center;
+  margin: 0 auto;
+  width: 218rpx;
+  height: 58rpx;
+  line-height: 58rpx;
+  font-size: 36rpx;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1.8px;
+  background: linear-gradient(135deg, #3878ff, #3e42ff);
+  border-radius: 0px 0px 32rpx 32rpx;
+}
+.vip-page .main .item {
+  margin: 20rpx auto;
+  height: 90%;
+  padding: 20rpx 30rpx;
+  overflow-y: auto;
+}
+.vip-page .main .check-flex {
+  display: flex;
+  width: 95%;
+  margin: 10rpx auto;
+  border: 1rpx solid #ccc;
+  border-radius: 10rpx;
+  padding: 10rpx 0;
+  height: 80rpx;
+}
+.vip-page .check-img {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin: 0 10rpx;
+}
+.vip-page .check-flex .text {
+  margin: 15rpx 0;
+  width: 95%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.vip-page .main .item .item-flex {
+  display: flex;
+  margin: 20rpx 0;
+}
+.vip-page .main .t-text {
+  font-size: 32rpx;
+  font-family: PingFang SC, PingFang SC-Bold;
+  font-weight: 700;
+  text-align: left;
+  color: #242633;
+  letter-spacing: -0.32px;
+}
+.vip-page .main .b-text {
+  font-size: 24rpx;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #525566;
+  line-height: 14px;
+  letter-spacing: -0.24px;
+}
+.protocol {
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  justify-content: flex-start;
+  font-size: 24rpx;
+  margin-top: 30rpx;
+}
+.protocol .radio {
+  width: 22rpx;
+  height: 22rpx;
+  margin-right: 12rpx;
+}
+.protocol navigator {
+  color: #8095ff;
+}
+.vip-page .left image {
+  width: 68rpx;
+  height: 68rpx;
+  margin: 0 10rpx;
+}
+.vip .box-footer .text {
+  margin: 10rpx 0;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #0080ff;
+}
+.vip .box-footer {
+  padding: 5rpx 15rpx 10rpx 15rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 11%;
+  height: 145rpx;
+  background-color: #fff;
+  z-index: 99;
+  border-bottom: 1px solid #ddd;
+}
+.vip .btn-footer {
+  padding: 5rpx 15rpx 10rpx 15rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 145rpx;
+  background-color: #fff;
+  z-index: 99;
+  border-bottom: 1px solid #ddd;
+}
+.vip-title {
+  display: flex;
+  justify-content: center;
+  font-size: 30rpx;
+  padding: 15rpx 0;
+  margin: 20rpx 0;
+  border-bottom: 1rpx solid #ccc;
+}
+.vip .not {
+  margin: 30rpx auto;
+  /* overflow: hidden; */
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.vip .button-container {
+  margin: 40rpx auto; /* 调整按钮与文字之间的间距 */
+  width: 95%;
+}
+.vip .not-text{
+  font-size: 30rpx;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #666666;
+}

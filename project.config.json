@@ -1,0 +1,133 @@
+{
+  "description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": true,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": true,
+    "lazyloadPlaceholderEnable": false,
+    "useMultiFrameRuntime": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "enableEngineNative": false,
+    "useIsolateContext": true,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "showES6CompileOption": false,
+    "useSummerCompiler": false,
+    "useStaticServer": true,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "minifyWXML": true,
+    "ignoreUploadUnusedFiles": true,
+    "condition": true
+  },
+  "compileType": "miniprogram",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "关注",
+          "pathName": "pages/attention/attention",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "好物",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "登录",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "好店",
+          "pathName": "pages/shop/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/loginwx/login",
+          "pathName": "pages/loginwx/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/order/confirm/seckill/seckill",
+          "pathName": "pages/order/confirm/seckill/seckill",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/order/confirm/order/order",
+          "pathName": "pages/order/confirm/order/order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/order/confirm/seckill/seckill",
+          "pathName": "pages/order/confirm/seckill/seckill",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/collective/activity_detail/activity_detail",
+          "pathName": "pages/collective/activity_detail/activity_detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/collective/join/join",
+          "pathName": "pages/collective/join/join",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/goods/g_video/index",
+          "pathName": "pages/goods/g_video/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  },
+  "appid": "wx5d64b4efc5076c1f",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  }
+}

@@ -1,0 +1,34 @@
+<!-- pages/my/spread/flow/flow.wxml -->
+<wxs module="util" src="../../../../utils/util.wxs" />
+<view>
+  <view class="remark">
+    <text>账单详情</text>
+    <text>收入/支出</text>
+  </view>
+  <tab class="tabss" items="{{[{name:1,text:'可用余额'},{name:2,text:'冻结余额'}]}}" active="{{1}}" bind:change="tabChange"></tab>
+  <view class="telist">
+    <view class="tecard" wx:for="{{list}}" wx:key="index">
+      <view class="toad">
+        <view>{{item.remark}}</view>
+        <view class="time">{{util.formatDateLong(item.createTime)}}</view>
+      </view>
+      <view wx:if="{{active==1}}">
+        
+        <view class="price" wx:if="{{item.type==1}}">{{'-'}}￥{{item.amount}}</view>
+
+        <view class="price add" wx:if="{{item.type==2}}">{{'+'}}￥{{item.amount}}</view>
+
+        <view class="price freeze" wx:if="{{item.type==3}}">{{'+'}}￥{{item.amount}}</view>
+      </view>
+      <view wx:if="{{active==2}}">
+        <view class="price lanse" wx:if="{{item.status==1}}">{{'+'}}￥{{item.secAmount}}</view>
+        <view class="price add" wx:if="{{item.status==2}}">{{'-'}}￥{{item.secAmount}}</view>
+        <view class="price freeze" wx:if="{{item.status==3}}">{{'-'}}￥{{item.secAmount}}</view>
+      </view>
+    </view>
+    <view class="loading">
+      <van-loading wx:if="{{loading}}" size="24px" color="#0DC3FF">加载中...</van-loading>
+      <text class="finish" wx:if="{{finish}}">{{list.length>0?'没有更多了': '暂无数据'}}</text>
+    </view>
+  </view>
+</view>

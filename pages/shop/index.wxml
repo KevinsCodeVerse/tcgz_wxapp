@@ -1,0 +1,122 @@
+<!-- 自定义导航 -->
+<wxs module="util" src="../../utils/util.wxs" />
+<navigation>
+  <view class="navbar" bind:tap="toAreaCal">
+    <image class="addr" mode="heightFix" src="/img/common/addr-white.png"></image>
+    <text>{{cityName?cityName:'选择城市'}}</text><van-icon name="arrow-down" />
+    <!-- <image class="arrow" mode="heightFix" src="/img/common/arrow-bottom.png"></image> -->
+  </view>
+</navigation>
+<view style="padding-top: {{paddingTop}}px;" class="shop">
+  <view style="top: {{navBarHeight}}px;" class="header">
+    <van-search
+      style="font-size:28rpx;"
+      value="{{ searchValue }}"
+      shape="round"
+      background="#3994FF"
+      placeholder="搜索"
+      bind:search="toSearch"
+    />
+    <view class="tabs">
+      <view class="tab_item {{tab == 1?'active':''}}" data-id="1" bindtap="tabChange">附近好店</view>
+      <!-- <view class="tab_item {{tab == 2?'active':''}}" data-id="2" bindtap="tabChange">优选好店</view> -->
+      <view class="tab_item {{tab == 3?'active':''}}" data-id="3" bindtap="tabChange">关注</view>
+    </view>
+  </view>
+  <view wx:if="{{tab != 3}}" class="banner">
+    <view class="banner_bgd"></view>
+    <swiper
+    indicator-dots="{{true}}"
+    autoplay="{{true}}"
+    indicator-color="rgba(255,255,255,0.3)"
+    indicator-active-color="#3994FF">
+    <swiper-item wx:for="{{SildeList}}" data-obj="{{item}}" bindtap="handSwiper">
+        <image mode="aspectFill" src="{{util.fullPath(item.cover)}}"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 分类 -->
+  <van-sticky wx:if="{{tab != 3}}" offset-top="{{ paddingTop }}">
+    <view class="classify_box">
+      <scroll-view
+      class="classify"
+      scroll-x="{{true}}"
+      enhanced="{{true}}"
+      show-scrollbar="{{false}}">
+        <view class="classify_list">
+          <text 
+          wx:for="{{classifyList}}"
+          wx:key="index"
+          data-id="{{item.id}}"
+          class="classify_item {{active == item.id?'active':''}}" 
+          bindtap="classifyChange">{{item.name}}</text>
+        </view>
+      </scroll-view>
+      <image class="shadow" src="/img/common/shadow.png"></image>
+      <view class="more" bindtap="more">
+        <image src="/img/common/more.png"></image>
+        <text>更多</text>
+      </view>
+      <view class="more_box" wx:if="{{showMore}}">
+        <view wx:for="{{classifyList}}" wx:key="index" data-id="{{item.id}}" class="titleitem_box {{active == item.id?'active':''}}" bindtap="classifyChange">
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+    <!-- <van-dropdown-menu>
+      <van-dropdown-item id="item" title="自定义标题">
+        这是自定义内容
+      </van-dropdown-item>
+    </van-dropdown-menu> -->
+  </van-sticky>
+  <!-- 店铺列表 -->
+  <view class="shop_list" style="{{tab == 3?'padding-top: 20rpx;':''}}">
+    <view class="shop_item" wx:for="{{shopList}}" wx:key="index" bindtap="toDetail" data-id="{{item.id}}">
+      <view class="item_left">
+        <image class="shop_avatar" mode="aspectFill" src="{{util.fullPath(item.shopPhoto)?util.fullPath(item.shopPhoto):'/img/shop/shopimg.svg'}}"></image>
+        <view class="activity_label" wx:if="{{item.spike}}">
+          <image mode="heightFix" src="/img/shop/border.png"></image>
+          <text>限时秒杀</text>
+        </view>
+        <view class="activity_label" wx:if="{{item.group>0}}">
+          <image mode="heightFix" src="/img/shop/border.png"></image>
+          <text>{{item.group}}人拼团</text>
+        </view>
+      </view>
+      <view class="item_right">
+        <text class="title">{{item.name}}</text>
+        <view class="shop_info">
+          <view class="score">
+            <image src="/img/shop/star.png"></image>
+            <text>{{item.score}}</text>
+          </view>
+          <view class="distance" wx:if="{{item.distance}}">{{item.distance}}km</view>
+          <text class="minus" wx:if="{{item.couponUseAmount}}">店铺券满{{item.couponUseAmount}}减{{item.couponAmount}}</text>
+        </view>
+        <view class="address">{{item.address}}</view>
+        <view class="discount">
+          <view class="discount_item" wx:for="{{item.productNameList}}">
+            <image src="/img/shop/tag-01.png"></image>
+            <text>{{item}}</text>
+          </view>
+          
+          <view class="discount_item" wx:if="{{item.couponUseAmount}}">
+            <image src="/img/shop/tag-02.png"></image>
+            <text>店铺券满{{item.couponUseAmount}}减{{item.couponAmount}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="loading">
+    <van-loading wx:if="{{loading}}" size="24px" color="#0DC3FF">加载中...</van-loading>
+    <text class="finish" wx:if="{{finish && shopList.length==0}}">暂无数据</text>
+    <view class="floor" wx:if="{{finish && shopList.length!=0}}">-已经到底啦-</view>
+  </view>
+
+  <!-- 入驻广告  -->
+  <image class="advert" bindtap="toPublicJoin" wx:if="{{isIcon==1}}" src="/img/common/advert2.png"></image>
+</view>
+
+<clickaddress id="clickaddress" bind:resize="handresize"></clickaddress>

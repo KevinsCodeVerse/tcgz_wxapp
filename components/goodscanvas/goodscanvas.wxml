@@ -1,0 +1,49 @@
+<view wx:if="{{isShare}}" class="share" catchtap="shareShow">
+  <view class="share_box">
+    <image class="canvasclasss" src="{{shareImagePath}}" mode="widthFix" />
+    <view class="canvasclassstext" wx:if="{{!shareImagePath}}">
+      <van-loading custom-class="loding" type="spinner" color="#fff" />
+      <view class="" hover-class="none" hover-stop-propagation="false">
+        正在生成中请稍后...
+      </view>
+    </view>
+    <!-- <view>
+      <image class="images" src="https://www.tcgz.store/files/default/20210814161723.png" />
+    </view>
+    <view class="shop_title">
+        <view><image style="width:50rpx;height:50rpx;margin:0 10rpx;border-radius: 50%;" src="{{util.fullPath(ShareInfo.merchantShop.shopPhoto)}}" /></view>
+      <view class="text">{{ShareInfo.merchantShop.name}}</view>
+    </view>
+    <view class="shop_img">
+      <image class="" src="{{util.fullPath(ShareInfo.merchantPro.cover)}}" mode="" />
+    </view>
+    <view class="prive_box">
+      <view class="price_new">￥{{ShareInfo.merchantPro.price}}</view>
+      <view class="price_used">￥{{ShareInfo.merchantPro.originalPrice}} </view>
+      <view wx:if="{{ShareInfo.merchantPro.originalPrice<-99}}" class="price_boon">满888减88</view>
+    </view>
+    <view class="title">{{ShareInfo.merchantPro.name}}</view>
+    <view class="QT_box">
+      <image class="QT" src="{{util.fullPath(ShareInfo.merchantPro.inviteImage)}}" />
+    </view>
+    <view class="user_info">
+        <view><image style="width:40rpx;height:40rpx;margin:0 10rpx;border-radius: 50%;" src="{{util.fullPath(ShareInfo.userInfo.avatar)}}" /></view>
+      <view class="text">{{ShareInfo.userInfo.nick}}</view>
+    </view> -->
+  </view>
+  <view class="btn_share">
+    <button class="sharebtn" open-type="share" catchtap="handShare"></button>
+    <image class="bt_icon" src="/img/shop/wx.png" />
+    转发链接
+  </view>
+  <view class="btn_save" catchtap="seveImgs">
+    <image class="bt_icon" src="/img/shop/doc.png" />
+    下载海报
+  </view>
+</view>
+<canvas  canvas-id="mycanvass" class="canvasclass" ></canvas>
+<canvas
+  type="2d"
+  id="canvas"
+  class="canvasclass"
+></canvas>

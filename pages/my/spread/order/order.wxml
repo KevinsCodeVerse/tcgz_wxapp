@@ -1,0 +1,140 @@
+<wxs module="util" src="../../../../utils/util.wxs" />
+<van-dropdown-menu class="topbox">
+  <van-dropdown-item title="业务类型" id="item">
+    <view class="filter_item">
+      <view class="options">
+        <view class="options_item {{type==''?'active':''}}" data-type="" bindtap="typeChange">
+          全部类型
+        </view>
+        <view class="options_item {{type=='1'?'active':''}}" data-type="1" bindtap="typeChange">
+          平台
+        </view>
+        <view class="options_item {{type=='2'?'active':''}}" data-type="2" bindtap="typeChange">
+          商品推广
+        </view>
+      </view>
+    </view>
+  </van-dropdown-item>
+  <van-dropdown-item id="item" title="{{statusTitle}}">
+    <view class="filter_item">
+      <view class="options">
+        <view class="options_item {{status==''?'active':''}}" data-status="" bindtap="statusChange">
+          全部状态
+        </view>
+        <view class="options_item {{status=='0'?'active':''}}" data-status="0" bindtap="statusChange">
+          审核中
+        </view>
+        <view class="options_item {{status=='2'?'active':''}}" data-status="2" bindtap="statusChange">
+          已付款
+        </view>
+        <view class="options_item {{status=='1'?'active':''}}" data-status="1" bindtap="statusChange">
+          已通过
+        </view>
+        <view class="options_item {{status=='-1'?'active':''}}" data-status="-1" bindtap="statusChange">
+          已拒绝
+        </view>
+        
+      </view>
+    </view>
+  </van-dropdown-item>
+  <van-dropdown-item id="item" value="{{ isDirect }}" options="{{ option1 }}" bindchange="directChange"></van-dropdown-item>
+  <van-dropdown-item id="item" value="{{ isTimer }}" options="{{ option2 }}" bindchange="timerChange"></van-dropdown-item>
+</van-dropdown-menu>
+<!-- <view class="filter">
+  <view class="filter_item">
+    <text class="key">账号类型：</text>
+    <view class="options">
+      <text class="options_item {{type==''?'active':''}}" data-type="" bindtap="typeChange">全部类型</text>
+      <text class="options_item {{type=='1'?'active':''}}" data-type="1" bindtap="typeChange">市级运营</text>
+      <text class="options_item {{type=='2'?'active':''}}" data-type="2" bindtap="typeChange">集体账号</text>
+    </view>
+  </view>
+  <view class="filter_item">
+    <text class="key">状态类型：</text>
+    <view class="options">
+      <text class="options_item {{status==''?'active':''}}" data-status="" bindtap="statusChange">全部类型</text>
+      <text class="options_item {{status=='0'?'active':''}}" data-status="0" bindtap="statusChange">审核中</text>
+      <text class="options_item {{status=='1'?'active':''}}" data-status="1" bindtap="statusChange">已通过</text>
+      <text class="options_item {{status=='-1'?'active':''}}" data-status="-1" bindtap="statusChange">已拒绝</text>
+    </view>
+  </view>
+</view> -->
+<scroll-view scroll-y="true" class="order" lower-threshold="200" bindscrolltolower='getList'>
+  <view class="helist">
+    <view class="hecard" wx:for="{{list}}" wx:key="index">
+      <view class="heremark">
+        <view class="image_box">
+          <image src="{{util.fullPath(item.avatar)}}"></image>
+          <view class="retit">{{item.nick}}</view>
+        </view>
+        <!-- <view class="{{item.status==1?'status1': item.status==-1?'status3': 'status2'}}">
+          {{item.status==1?'审核通过': item.status==-1?'审核未通过': '审核中'}}
+        </view> -->
+        <view class="status1" wx:if="{{item.type==1}}">已通过</view>
+        <view class="status5" wx:if="{{item.type==-1}}">已拒绝</view>
+        <view class="status3" wx:if="{{item.type==2}}">已付款</view>
+        <view class="status2" wx:if="{{item.type==0}}">审核中</view>
+      </view>
+      <view class="name_box" wx:if="{{item.queryType != 4}}">
+        <view class="name" wx:if="{{item.queryType == 1}}">集体名称： {{item.name}}</view>
+        <view class="name" wx:if="{{item.queryType == 3}}">购买应用： {{item.name}}</view>
+        <view class="name" wx:if="{{item.queryType == 2}}">市级名称： {{item.name}}</view>
+        <view class="status">{{item.pushType==1?'直推':'间推'}}</view>
+      </view>
+      <view class="name_box" wx:if="{{item.queryType == 1}}">
+        <view class="name">集体地区： {{item.cityName}}</view>
+      </view>
+      <view class="name_box" wx:if="{{item.queryType == 2}}">
+        <view class="name">市级地区： {{item.cityName}}</view>
+      </view>
+      <!-- 分销商品 -->
+      <view class="name_box" wx:if="{{item.queryType == 4}}">
+        <view class="image_box">
+          <image src="{{util.fullPath(item.name.avatar)}}"></image>
+        </view>
+        <view class="shopInfo">
+          <view class="shopName">{{item.name.shopName}}</view>
+          <view class="shopTiele">{{item.name.title}}</view>
+        </view>
+        <view class="status">{{item.pushType==1?'直推':'间推'}}</view>
+      </view>
+      <view class="priceInfo">
+        <view class="price_box">
+          <view class="text">付款金额</view>
+          <view class="price">￥{{item.orderAmount}}</view>
+        </view>
+        <view class="bili">
+          <view class="text">提成比</view>
+          <view class="price">{{util.toFixed(item.secAmount /item.orderAmount==1?100:item.secAmount /item.orderAmount)+"%"}}</view>
+        </view>
+        <view class="deduct">
+          <view class="text">预估提成</view>
+          <view class="price">￥{{item.secAmount}}</view>
+        </view>
+        <view class="newtime">
+          <view class="text">创建时间</view>
+          <view class="price">{{util.formatDateLongS(item.createTime)}}</view>
+        </view>
+      </view>
+      <!-- <view class="hecon">
+
+        <view class="helef">
+          <view>
+            <text class="account">{{item.account}}</text>
+            <text class="label">{{item.type==1?'市级运营': '集体账号'}}</text>
+          </view>
+          <view>运营商名称: {{item.name}}</view>
+        </view>
+        <view class="herig">
+          <view class="price">￥{{item.remark}}</view>
+          <view>申请时间:{{util.formatDateShort(item.createTime)}}</view>
+        </view>
+      </view> -->
+      <view class="reason" wx:if="{{item.refuseReason}}">原因：{{item.refuseReason}}</view>
+    </view>
+  </view>
+  <view class="loading">
+    <van-loading wx:if="{{loading}}" size="24px" color="#0DC3FF">加载中...</van-loading>
+    <text class="finish" wx:if="{{finish}}">没有数据了</text>
+  </view>
+</scroll-view>

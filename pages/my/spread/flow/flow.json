@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-loading": "/miniprogram/miniprogram_npm/@vant/weapp/loading/index",
+    "tab":"/components/tab/tab"
+    
+  },
+  "navigationBarTitleText": "收支明细"
+}

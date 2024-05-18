@@ -1,0 +1,2 @@
+<!--components/imgCode/imgCode.wxml-->
+<image src="data:image/png;base64,{{imgData}}" bindtap="getCode"></image>

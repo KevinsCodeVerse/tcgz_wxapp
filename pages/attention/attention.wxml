@@ -1,0 +1,9 @@
+<!--pages/attention/attention.wxml-->
+<view class="attention" wx:if="{{isAttent==11}}">
+  <attent id="attent" firmList="{{firmList}}" />
+</view>
+<view class="attention" wx:if="{{isAttent==10}}">
+  <noattent id="noattent"/>
+</view>
+
+

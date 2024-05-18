@@ -1,0 +1,106 @@
+/* pages/my/spread/team/team.wxss */
+.team {
+	background-color: #fff;
+	min-height: 100vh;
+}
+.teamtotal {
+	background-color: #3994ff;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20rpx 20rpx 40rpx 20rpx;
+	text-align: center;
+}
+.teamtotal .tocard {
+	width: 33.33%;
+}
+.teamtotal .count {
+	font-size: 48rpx;
+	margin-bottom: 8rpx;
+}
+/* 列表 */
+.tecard {
+	padding: 16rpx 30rpx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #f5f5f5;
+}
+.tecard .d_card {
+	display: flex;
+	align-items: center;
+	font-size: 20rpx;
+	width: calc(100% - 170rpx);
+}
+.tecard .avatar {
+	min-width: 104rpx;
+	width: 104rpx;
+	height: 104rpx;
+	margin-right: 20rpx;
+	border-radius: 104rpx;
+}
+.tecard .tebtn {
+	width: 144rpx;
+	height: 52rpx;
+	line-height: 52rpx;
+	font-size: 22rpx;
+	color: #3994ff;
+	border: 1px solid #3994ff;
+	border-radius: 52rpx;
+	text-align: center;
+}
+.tecard .earnings {
+	background-color: #f2f8ff;
+	color: #3994ff;
+	font-size: 20rpx;
+	border-radius: 4rpx;
+	padding: 2rpx 10rpx;
+}
+.tecard .name {
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-break: break-all;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	word-break: break-all;
+	font-size: 28rpx;
+}
+.tecard .time {
+	color: #999;
+}
+.tecard .telab {
+	padding-top: 4rpx;
+	padding-bottom: 4rpx;
+	display: flex;
+	align-items: center;
+}
+.tecard .levelimg {
+	height: 32rpx;
+	width: 100rpx;
+	margin-right: 20rpx;
+}
+.tecard .handle {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	height: 104rpx;
+}
+.tecard .tehand {
+	font-size: 24rpx;
+	color: #999;
+	display: flex;
+	align-items: center;
+}
+/* 滑动加载 */
+.loading {
+	text-align: center;
+	padding: 30rpx 0;
+}
+.finish {
+	font-size: 28rpx;
+	color: #999999;
+	padding-bottom: 20rpx;
+}

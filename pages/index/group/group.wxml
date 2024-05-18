@@ -1,0 +1,29 @@
+<wxs module="util" src="../../../utils/util.wxs"></wxs>
+<view class="group">
+  <image class="banner" mode="widthFix" src="https://www.tcgz.store/files/default/default_spell_group.png"></image>
+  <view class="goods_list">
+    <block wx:if="{{list}}">
+      <view wx:for="{{list}}" wx:key="index" class="goods_item" data-id="{{item.id}}" bindtap="goDetail">
+        <image class="goods_cover" mode="aspectFill" src="{{util.fullPath(item.avatar)}}"></image>
+        <view class="goods_info">
+          <view>
+            <text class="goods_title">{{item.title}}</text>
+            <view class="inventory">
+              <text class="limit">{{item.pepoleCount}}人团</text>
+              <text class="inventory_num">已拼{{item.sales}}</text>
+            </view>
+          </view>
+          <view class="price">
+            <text class="new">￥{{item.price}}</text>
+            <text class="old">￥{{item.proOriginPrice}}</text>
+          </view>
+          <image class="empty" mode="heightFix" class="btn" src="/img/group/group-btn.png"></image>
+        </view>
+      </view>
+    </block>
+    <view class="empty_box" wx:if="{{isNull}}">
+      <image class="empty" mode="widthFix" src="/img/myicon/slide_top.png"></image>
+      <view>暂无团购</view>
+    </view>
+  </view>
+</view>

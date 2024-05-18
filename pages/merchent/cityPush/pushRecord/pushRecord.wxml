@@ -1,0 +1,29 @@
+<wxs module="util" src="../../../../utils/util.wxs" />
+<view class="goods_item" wx:for="{{list}}" wx:key="id">
+    <view class="goods_box">
+        <view class="img_box">
+            <image src="{{util.fullPath(item.merchantPro.cover)}}"></image>
+        </view>
+        <view class="info">
+            <view class="goods_title TE">{{item.merchantPro.name}}</view>
+            <view class="df">
+                <view class="price">￥{{item.merchantPro.price}}</view>
+                <view class="text">销量 {{item.merchantPro.deal}}</view>
+            </view>
+        </view>
+        <view class="select_btn" wx:if="{{item.merchantProScore.status==1}}" data-obj="{{item.merchantPro}}" bindtap="handSubmit">
+            续费
+        </view>
+        <view class="select_btn select_btn2" wx:if="{{!item.merchantProScore.status==1}}">已过期</view>
+    </view>
+    <view class="time">
+        结束时间: {{util.formatDateLong(item.merchantProScore.endTime)}}
+    </view>
+</view>
+<view class="loading">
+    <view wx:if="{{ loading}}" size="24px" class="loading_view">
+        <van-loading color="#0DC3FF">加载中...</van-loading>
+    </view>
+    <text class="finish" wx:if="{{finish && list.length==0}}">暂无数据</text>
+    <view class="finish" wx:if="{{ finish && list.length!=0}}">-已经到底啦-</view>
+</view>

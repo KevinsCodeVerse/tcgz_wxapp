@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "van-stepper": "/miniprogram/miniprogram_npm/@vant/weapp/stepper/index",
+    "van-dialog": "/miniprogram/miniprogram_npm/@vant/weapp/dialog/index",
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "coupon": "../../../../components/coupon/coupon"
+
+  },
+  "navigationBarTitleText": "确认订单",
+  "navigationBarBackgroundColor": "#86CC14"
+
+}

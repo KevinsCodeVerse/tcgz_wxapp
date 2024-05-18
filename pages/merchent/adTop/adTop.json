@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "广告置顶竞价",
+  "usingComponents": {
+    "van-tab": "/miniprogram/miniprogram_npm/@vant/weapp/tab/index",
+    "van-tabs": "/miniprogram/miniprogram_npm/@vant/weapp/tabs/index",
+    "van-count-down": "/miniprogram/miniprogram_npm/@vant/weapp/count-down/index",
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index",
+    "van-loading": "/miniprogram/miniprogram_npm/@vant/weapp/loading/index",
+    "van-stepper": "/miniprogram/miniprogram_npm/@vant/weapp/stepper/index"
+  }
+}

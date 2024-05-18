@@ -1,0 +1,51 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="myhouse">
+  <!-- <view class="nodata">您还没有关注店铺哦</view> -->
+  <!-- 店铺列表 -->
+  <view class="shop_list">
+    <view class="shop_item" wx:for="{{shopList}}" wx:key="index" bindtap="toDetail" data-id="{{item.id}}">
+      <view class="item_left">
+        <image class="shop_avatar" mode="aspectFill" src="{{util.fullPath(item.shopPhoto)}}"></image>
+        <!-- <view class="activity_label">
+          <image mode="heightFix" src="/img/shop/border.png"></image>
+          <text>限时秒杀</text>
+        </view>
+        <view class="activity_label">
+          <image mode="heightFix" src="/img/shop/border.png"></image>
+          <text>3人拼团</text>
+        </view> -->
+      </view>
+      <view class="item_right">
+        <text class="title">{{item.name}}</text>
+        <view class="shop_info">
+          <!-- <view class="score">
+            <image src="/img/shop/star.png"></image>
+            <text>4.9</text>
+          </view> -->
+          <view class="distance">{{item.distance}}km</view>
+          <!-- <text class="minus">店铺券满88减3</text> -->
+        </view>
+        <view class="address">{{item.address}}</view>
+        <!-- <view class="discount">
+          <view class="discount_item">
+            <image src="/img/shop/tag-01.png"></image>
+            <text>潮汕牛肉火锅特价7人套餐限时秒杀特惠套餐</text>
+          </view>
+          <view class="discount_item">
+            <image src="/img/shop/tag-01.png"></image>
+            <text>牛肉火锅拼团特价3人套餐</text>
+          </view>
+          <view class="discount_item">
+            <image src="/img/shop/tag-02.png"></image>
+            <text>店铺券满88减3</text>
+          </view>
+        </view> -->
+      </view>
+    </view>
+  </view>
+  
+  <view class="loading">
+    <van-loading wx:if="{{loading}}" size="24px" color="#0DC3FF">加载中...</van-loading>
+    <text class="finish" wx:if="{{finish}}">{{shopList.length>0?'没有更多了': '您还没有关注店铺哦'}}</text>
+  </view>
+</view>

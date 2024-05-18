@@ -1,0 +1,25 @@
+<!--components/regular/regular.wxml-->
+<view class="confirm">
+  <view class="conf">
+    <view class="cocard">
+      <text class="corenark">直接推广开拓一个城市运营中心可获得</text>
+      <view class="money">{{ruleList[0]}}元佣金</view>
+    </view>
+    <view class="cocard">
+      <text class="corenark">团队成员开拓一个城市运营中心可获得</text>
+      <view class="money rowtwo">{{ruleList[1]}}元管理佣金</view>
+    </view>
+    <view class="cocard">
+      <text class="corenark">直接推广开拓一个集体入驻可获得</text>
+      <view class="money">{{ruleList[2]}}元佣金</view>
+    </view>
+    <view class="cocard">
+      <text class="corenark">团队成员开拓一个集体入驻可获得</text>
+      <view class="money rowtwo">{{ruleList[3]}}元管理佣金</view>
+    </view>
+    <view class="handle">
+      <view class="mybtn btn2" bindtap="onConfirm">好的</view>
+    </view>
+  </view>
+</view>
+

@@ -1,0 +1,18 @@
+<wxs module="util" src="../../../../../utils/util.wxs" />
+<view class="detail">
+  <navigation isWhite="{{true}}">
+    <view class="myback">
+      <navigator class="back" open-type="navigateBack"><van-icon name="arrow-left" /></navigator>
+      <navigator class="back" url="/pages/index/index" open-type="switchTab"><van-icon name="wap-home" /></navigator>
+    </view>
+  </navigation>
+
+  <view class="demain" wx:if="{{detail}}">
+    <video class="myvideo" src="{{util.fullPath(detail.video)}}"></video>
+  </view>
+
+  <view class="totit">
+    <view class="remark">{{detail.title}}</view>
+    <view>{{detail.intros}}</view>
+  </view>
+</view>

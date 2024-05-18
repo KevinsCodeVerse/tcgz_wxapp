@@ -1,0 +1,6 @@
+.tit{
+    margin: 40rpx 0 40rpx 0;
+    text-align: center;
+    font-size: 25rpx;
+    color: #66666666;
+}

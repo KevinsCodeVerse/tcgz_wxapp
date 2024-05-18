@@ -1,0 +1,57 @@
+/* pages/focus/highlights/highlights.wxss */
+.highlights_item {
+    background-color: #ffffff;
+    padding: 40rpx;
+    border-bottom: 1rpx solid #eeeeee;
+    box-sizing: border-box;
+  }
+  .highlights_item .title {
+    font-size: 30rpx;
+    font-weight: bold;
+    margin-bottom: 10rpx;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .highlights_item .desc {
+    font-size: 24rpx;
+    color: #999999;
+    display: block;
+    line-height: 1.6;
+    margin-bottom: 20rpx;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+  .highlights_item .cover {
+    position: relative;
+  }
+  .highlights_item .cover image {
+    width: 100%;
+    height: 350rpx;
+    display: block;
+  }
+  .highlights_item .cover .text {
+    position: absolute;
+    bottom: 20rpx;
+    background-color: #00000048;
+    padding: 5rpx 10rpx;
+    right: 20rpx;
+    font-size: 28rpx;
+    color: #ffffff;
+  }
+   .player{
+    position: absolute;
+    left: 50%;
+    top : 50%;
+    transform: translate(-50%,-50%);
+    width: 80rpx !important;
+    height: 80rpx !important;
+}
+  

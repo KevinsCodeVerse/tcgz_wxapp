@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-button": "/miniprogram/miniprogram_npm/@vant/weapp/button/index",
+    "custom-tabbar": "/components/custom-tabbar/custom-tabbar",
+    "van-popup": "/miniprogram/miniprogram_npm/@vant/weapp/popup/index",
+    "van-cell": "/miniprogram/miniprogram_npm/@vant/weapp/cell/index",
+    "van-cell-group": "/miniprogram/miniprogram_npm/@vant/weapp/cell-group/index",
+    "van-icon": "/miniprogram/miniprogram_npm/@vant/weapp/icon/index"
+  },
+  "navigationBarTitleText": "开通VIP"
+}

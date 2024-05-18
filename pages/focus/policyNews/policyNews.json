@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "政府政策",
+  "usingComponents": {
+    "van-search": "/miniprogram/miniprogram_npm/@vant/weapp/search/index",
+    "van-tab": "/miniprogram/miniprogram_npm/@vant/weapp/tab/index",
+    "van-tabs": "/miniprogram/miniprogram_npm/@vant/weapp/tabs/index",
+    "newList": "/components/newList/newList"
+  }
+}

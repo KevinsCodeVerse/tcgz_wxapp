@@ -1,0 +1,200 @@
+<!--pages/my/my.wxml-->
+<wxs module="util" src="../../utils/util.wxs" />
+<view class="my">
+  <view class="mybg" style="height: {{!info.mobile? '320rpx': '260rpx'}}"></view>
+  <view class="info">
+   
+    <image bind:tap="showEditInfo"  class="avatar" mode="aspectFill" src="{{info.avatar?util.fullPath(info.avatar):avatarUrl}}">
+    <!-- <image bind:tap="showEditInfo"  class="avatar" mode="aspectFill" src="{{util.fullPath(info.avatar)}}"> -->
+      <!-- bindtap="getUserProfile" -->
+      <!-- <view class="tit">
+        <button class="avatar-btn" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar" bind:tap="getUserProfile"></button>
+      </view> -->
+    </image>
+
+    <view class="name">
+      <view class="inname">{{info.nick}}</view>
+      <!-- <view class="inname"> <input bindnicknamereview="bindnicknamereview" type="nickname" class="weui-input" model:value="{{ nick  }}" placeholder="请输入昵称" /></view> -->
+      <view class="invite">
+        <text>邀请码：{{info.inviterCode}}</text>
+        <text class="copy" bindtap="copyCode">复制</text>
+      </view>
+    </view>
+    <view class="mybtn inbtn" wx:if="{{!info.inviterId}}" bindtap="openDialog">绑定邀请码</view>
+    <view class="mybtn inbtn" bindtap="toReferrer" wx:else>查看推荐人</view>
+  </view>
+
+  <view class="phone" wx:if="{{!info.mobile}}">
+    <view>绑定手机号码，保障账户安全！</view>
+    <view class="mybtn phbtn" data-url="/pages/bindphone/bindphone" bindtap="href">点击绑定</view>
+  </view>
+  <!-- 订单 -->
+  <view class="order">
+    <view class="orcard" data-url="/pages/order/order/order?type=1" bindtap="href">
+      <image src="/img/my/order1.png"></image>
+      <view>普通订单</view>
+    </view>
+    <!-- /pages/order/group/group -->
+    <view class="orcard" data-url="/pages/order/group/group" bindtap="href">
+      <image src="/img/my/order2.png"></image>
+      <view>拼团订单</view>
+    </view>
+    <!-- /pages/order/order/order?type=2 -->
+    <view class="orcard" data-url="/pages/order/order/order?type=2" bindtap="href">
+      <image src="/img/my/order3.png"></image>
+      <view>秒杀订单</view>
+    </view>
+    <!-- /pages/order/gift/gift -->
+    <view class="orcard" data-url="/pages/order/gift/gift" bindtap="href">
+      <image src="/img/my/order4.png"></image>
+      <view>礼品订单</view>
+    </view>
+  </view>
+
+  <!-- 链接link -->
+  <view class="linklist">
+
+    <view class="licard" bindtap="toCard">
+      <view>
+        <image src="/img/my/card.png"></image>
+        <text class="liremark">我的名片</text>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="licard" data-url="/pages/order/refundRecord/refundRecord" bindtap="href">
+      <view>
+        <image src="/img/my/order.png"></image>
+        <text class="liremark">退款申请记录</text>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+
+    <view class="licard" data-url="/pages/my/collect/collect" bindtap="href">
+      <view>
+        <image src="/img/my/my1.png"></image>
+        <text class="liremark">我收藏的商品</text>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="licard" bindtap="goShop">
+      <view>
+        <image src="/img/my/my2.png"></image>
+        <text class="liremark">我关注的店铺</text>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="licard" data-url="/pages/my/message/message" bindtap="href">
+      <view>
+        <image src="/img/my/my9.png"></image>
+        <text class="liremark">我收藏的资讯</text>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="licard" data-url="/pages/my/coupon_my/index" bindtap="href">
+      <view>
+        <image src="/img/my/my3.png"></image>
+        <text class="liremark">我的优惠券</text>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+    <!-- <view class="licard" data-url="/pages/my/coupon/coupon"  bindtap="href">
+      <view>
+        <image src="/img/my/my4.png"></image>
+        <text class="liremark">领取优惠券</text>
+      </view>
+      <van-icon name="arrow" />
+    </view> -->
+    <view class="licard" data-url="/pages/my/address/address" bindtap="href">
+      <view>
+        <image src="/img/my/my8.png"></image>
+        <text class="liremark">我的收货地址</text>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+
+  <view class="linklist">
+    <view class="licard" bindtap="goIndex">
+      <view>
+        <image src="/img/my/my5.png"></image>
+        <text class="liremark">我的集体</text>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="licard" wx:if="{{info.isMerchant==1}}" data-url="/pages/merchent/info/info" bindtap="href">
+      <view>
+        <image src="/img/my/my7.png"></image>
+        <text class="liremark">商家后台</text>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+    <view class="licard" wx:if="{{info.isMerchant==1}}" data-url="/pages/my/spread/spread" bindtap="href">
+      <view>
+        <image src="/img/my/my6.png"></image>
+        <text class="liremark">业务推广中心</text>
+        <view class="commission">
+          <view>参与平台业务推广</view>
+          <view>最高可获2万元佣金！</view>
+        </view>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+
+  </view>
+  <view class="linklist">
+    <view class="licard" data-url="/pages/my/feedback/feedback" bindtap="href">
+      <view>
+        <van-icon name="records" size="36rpx" style="width:30rpx;margin-right: 20rpx;" />
+        <text class="liremark">反馈</text>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+  <!-- <view class="linklist">
+    <view class="licard" data-url="/pages/my/spread/spread" bindtap="exploit">
+      <view>
+        <van-icon name="setting-o" size="36rpx" style="width:30rpx;margin-right: 20rpx;" />
+        <text class="liremark">开发调试</text>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+  </view> -->
+  <!-- <text data-url="/pages/login/login" bindtap="href" class="logout">退出</text> -->
+</view>
+
+<van-dialog use-slot title="绑定邀请码" show="{{ show }}" show-cancel-button bind:confirm="bindCode">
+  <input class="invite_input" type="text" placeholder="请输入推荐人邀请码" value="{{code}}" bindinput="codeChange" />
+</van-dialog>
+
+<referrer wx:if="{{showReferrer}}" bind:change="toReferrer" name="{{invite.nick}}" avatar="{{util.fullPath(invite.avatar)}}" />
+
+<!-- showEditInfo -->
+<van-popup show="{{ showEdit}}" round position="bottom" custom-style="height: 40%">
+  <view class="title">修改资料</view>
+  <view class="show">
+    <view>
+      <van-cell-group>
+        <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+          <image  class="avatar" src="{{info.avatar?util.fullPath(info.avatar):avatarUrl}}"></image>
+          
+          <!-- <image wx:else class="avatar" src="{{avatarUrl}}"></image> -->
+        </button>
+        <view class="flex">
+          <view class="label">昵称：</view>
+          <input model:value="{{ nick  }}" type="nickname" class="weui-input" placeholder="请输入昵称" />
+        </view>
+          <view class="btn-foot">
+            <button class="save" bind:tap="getUserProfile">保 存</button>
+          </view>
+      
+      </van-cell-group>
+    </view>
+
+  </view>
+
+</van-popup>
+<van-dialog class="dialog" bind:confirm="showEditInfo" bind:cancel="showInfo" round show="{{ showInfo }}" id="van-dialog" showCancelButton="{{false}}" use-slot use-title-slot>
+  <view class="title" slot="title">
+    请先完善头像、昵称资料
+  </view>
+</van-dialog>

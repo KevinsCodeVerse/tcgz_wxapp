@@ -1,0 +1,8 @@
+<wxs module="util" src="../../../utils/util.wxs" />
+<view class="item_box" wx:for="{{list}}" wx:key="id">
+    <view class="message">
+        <view class="text">{{item.content}}</view>
+        <view class="time">{{util.formatDateLongSS(item.createTime)}}</view>
+    </view>
+    <view class="ranking">{{item.remark}}</view>
+</view>
