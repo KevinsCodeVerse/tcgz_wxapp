@@ -51,6 +51,12 @@ Page({
         this.setData({
           load: false
         })
+        var totalCount=0;
+        this.data.messageList.forEach(item=>{
+          console.log("item:",item); 
+          totalCount+=item.unCount     
+        })
+        wx.setStorageSync('messageCount', totalCount)        
       },
     });
   },
@@ -76,7 +82,7 @@ Page({
   },
 
 
-  onPullDownRefresh() {
+  onPullDownRefresh() { 
     this.getList()
   },
 

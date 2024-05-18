@@ -1,6 +1,6 @@
 
-// var imgUrl = 'http://tcgz.mtfsoft.cn/api/'; //公网体验服
-var imgUrl = 'http://nobug-w.natapp1.cc'; // 内网穿透
+var imgUrl = 'http://tcgz.mtfsoft.cn/api/'; //公网体验服
+// var imgUrl = 'http://nobug-w.natapp1.cc'; // 内网穿透
 // var imgUrl = 'https://www.tcgz.store/';// 线上
 // var imgUrl = 'http://192.168.31.196:8080/';  // 内网穿透
 

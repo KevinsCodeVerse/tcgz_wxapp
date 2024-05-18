@@ -1,11 +1,9 @@
 <!-- tab 标签栏 -->
 <view class='tab'>
-
   <view class='nav'>
     <view class='nav_list'>
       <view class="nav_item {{active_page == item.name?'active': ''}}" wx:for='{{items}}' wx:key="id" data-current='{{index}}' data-name="{{item.name}}" bindtap='toActive'>
-        <text>{{item.text}}</text>
-        
+        <text>{{item.text}}</text>        
       </view>
     </view>
     <view class='nav_item_active' style='{{style}}'></view>

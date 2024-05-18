@@ -18,6 +18,23 @@ Page({
     messageHight:""
   },
 
+  getList() {
+    app.request.post({
+      url: "us/cardInfo/pairListNew",
+      params: {
+        pageNo:1,
+        pageSize:1000
+      },
+      success: (res) => {         
+        var totalCount=0;
+        res.list.forEach(item=>{
+          console.log("item:",item); 
+          totalCount+=item.unCount     
+        })
+        wx.setStorageSync('messageCount', totalCount)     
+      },
+    });
+  },
   chuDi() {
     this.messageDetail()
   },
@@ -80,7 +97,6 @@ Page({
             }
           })
         }else{       
-          console.log(456456);    
            this.setData({
             messageType:0,
             messageHight:'50vh'
@@ -147,13 +163,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide() {
-
+      console.log("页面隐藏");
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {
+  onUnload() {    
+    console.log("页面关闭");
 
   },
 
