@@ -4,7 +4,6 @@
 
 const app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -13,10 +12,9 @@ Page({
     messageList: [],
     params: {
       pageNo: 1,
-      pageSize: 1000
-    }
+      pageSize: 1000,
+    },
   },
-
 
   search(e) {
     //搜索
@@ -24,39 +22,41 @@ Page({
     this.setData({
       params: {
         ...this.data.params,
-        keyword: e.detail
-      }
-    })
-    this.getList()
+        keyword: e.detail,
+      },
+    });
+    this.getList();
   },
   goDetail(obj) {
     console.log(obj);
     wx.navigateTo({
-      url: "/pages/card/messageDetail/messageDetail?id=" + obj.currentTarget.dataset.id,
-    }).catch(e => {
+      url:
+        "/pages/card/messageDetail/messageDetail?id=" +
+        obj.currentTarget.dataset.id,
+    }).catch((e) => {
       console.log("e:", e);
-    })
+    });
   },
   getList() {
     this.setData({
-      load: false
-    })
+      load: false,
+    });
     app.request.post({
       url: "us/cardInfo/pairListNew",
       params: this.data.params,
       success: (res) => {
         this.setData({
-          messageList: res.list
-        })
+          messageList: res.list,
+        });
         this.setData({
-          load: false
-        })
-        var totalCount=0;
-        this.data.messageList.forEach(item=>{
-          console.log("item:",item); 
-          totalCount+=item.unCount     
-        })
-        wx.setStorageSync('messageCount', totalCount)        
+          load: false,
+        });
+        var totalCount = 0;
+        this.data.messageList.forEach((item) => {
+          console.log("item:", item);
+          totalCount += item.unCount;
+        });
+        wx.setStorageSync("messageCount", totalCount);
       },
     });
   },
@@ -64,33 +64,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.getList()
+    this.getList();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {
-
-  },
+  onReady() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.getList()
+    const tabbar = this.selectComponent("#tabbar");
+    if (tabbar) {
+      tabbar.getList();
+    }
+    this.getList();
   },
 
-
-  onPullDownRefresh() { 
-    this.getList()
+  onPullDownRefresh() {
+    this.getList();
   },
-
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
-
-  }
-})
+  onShareAppMessage() {},
+});

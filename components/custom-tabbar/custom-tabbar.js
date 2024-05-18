@@ -51,8 +51,6 @@ Component({
     this.getList()
   },
   attached() {
-  
-    console.log("啊啊啊");
     // 在 attached 生命周期中判断当前页面路径
     const pages = getCurrentPages();
     const currentPage = pages[pages.length - 1];
@@ -71,6 +69,7 @@ Component({
   },
   methods: {    
     getList() {
+    
       app.request.post({
         url: "us/cardInfo/pairListNew",
         params: {

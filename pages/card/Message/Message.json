@@ -7,8 +7,8 @@
     "van-empty": "/miniprogram/miniprogram_npm/@vant/weapp/empty/index",
     "custom-tabbar": "/components/custom-tabbar/custom-tabbar",
     "van-tag": "/miniprogram/miniprogram_npm/@vant/weapp/tag/index",
-    "van-card": "/miniprogram/miniprogram_npm/@vant/weapp/card/index"
-    
+    "van-card": "/miniprogram/miniprogram_npm/@vant/weapp/card/index",
+    "van-field": "/miniprogram/miniprogram_npm/@vant/weapp/field/index"
   },
   "navigationBarTitleText": "对接记录"
   

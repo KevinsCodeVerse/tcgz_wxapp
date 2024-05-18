@@ -29,4 +29,4 @@
 
   <!-- <view style="height: 100px;"></view> -->
 </view>
-<custom-tabbar />
+<custom-tabbar id="tabbar" />
