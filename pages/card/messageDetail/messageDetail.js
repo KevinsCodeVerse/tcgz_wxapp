@@ -98,6 +98,10 @@ Page({
   },
   sendMessage() {
     if (this.data.content === '') {
+      wx.showToast({
+        title: '请输入内容',
+        icon:'none'
+      })
       return;
     }
     app.request.post({

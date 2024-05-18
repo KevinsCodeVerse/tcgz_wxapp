@@ -1,8 +1,8 @@
 <!--pages/card/messageDetail/messageDetail.wxml-->
 <wxs module="util" src="../../../utils/util.wxs" />
 
-<view style="padding: 25rpx;">
-  <view wx:if="{{messageType===0}}">
+<view style="padding: 15rpx;">
+  <view class="top" wx:if="{{messageType===0}}">
     <view style="color: #00B312;">需求匹配成功</view>
     <view style="margin-top: 20rpx;" wx:if="{{myInfo}}">
       <span style="font-weight: bold;">我的信息:</span>
@@ -10,7 +10,7 @@
         <!-- 头像 -->
         <view>
           <!-- <image src="https://tcgz.mtfsoft.cn/admin/static/img/logo.32357178.png" mode="" style="width: 80rpx;height: 80rpx;" /> -->
-          <image src="{{util.fullPath(myInfo.avatar)}}" mode="" style="width: 80rpx;height: 80rpx;" />
+          <image src="{{util.fullPath(myInfo.avatar)}}" mode="" style="width: 80rpx;height: 80rpx;border-radius: 50%;" />
         </view>
         <!-- 信息 -->
         <view style="margin-left: 15rpx;">
@@ -26,7 +26,7 @@
         <!-- 头像 -->
         <view>
           <!-- <image src="https://tcgz.mtfsoft.cn/admin/static/img/logo.32357178.png" mode="" style="width: 80rpx;height: 80rpx;" /> -->
-          <image src="{{util.fullPath(otherInfo.avatar)}}" mode="" style="width: 80rpx;height: 80rpx;" />
+          <image src="{{util.fullPath(otherInfo.avatar)}}" mode="" style="width: 80rpx;height: 80rpx;border-radius: 50%;" />
         </view>
         <!-- 信息 -->
         <view style="margin-left: 15rpx;">
@@ -36,9 +36,10 @@
         </view>
       </view>
     </view>
-    <van-divider />
+
   </view>
-  <view wx:if="{{messageType===1}}">
+
+  <view class="top" wx:if="{{messageType===1}}">
     <view style="margin-top: 20rpx;">
       <span style="font-weight: bold;">{{otherInfo.type===0?'平台':otherInfo.type===1?'集体':'城市运营商'}}方信息:</span>
       <view style="display: flex;margin-top: 20rpx;align-items: center;">
@@ -53,7 +54,7 @@
         </view>
       </view>
     </view>
-    <van-divider />
+
   </view>
   <scroll-view style="height: {{messageHight}}" id="scrollContainer" scroll-y="true" scroll-into-view="{{scrollIntoView}}" bindscrolltolower="chuDi">
     <view style="display: flex;justify-content: center;margin-top: 40rpx;">
@@ -75,17 +76,18 @@
   <!-- <view style="height: 50vh;overflow: auto;" id="messageRef" scroll-top="{{scrollTop}}"> -->
 
 </view>
-
-
-<view style="position: fixed;width: 100vw;background-color: #fff">
-  <van-divider />
+<view style="position: fixed;width: 100vw;background-color: #fff;padding: 0 10rpx;">
   <van-cell-group>
-    <van-field model:value="{{content}}" placeholder="请输入内容">
+
+    <van-field size="large" clickable model:value="{{content}}"  placeholder="请输入内容">
       <van-button slot="button" type="primary" bind:click="sendMessage">
         发送
       </van-button>
     </van-field>
+
+
   </van-cell-group>
 
-  <view style="height: 30rpx;"></view>
+
+  <!-- <view style="height: 30rpx;"></view> -->
 </view>

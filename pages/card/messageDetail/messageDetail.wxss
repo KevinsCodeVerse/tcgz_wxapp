@@ -1,4 +1,20 @@
 /* pages/card/messageDetail/messageDetail.wxss */
 page {
- background-color: #fff;
+ /* background-color: #fff; */
+ background: #eff2f5;
 }
+.top{
+  background: #fff;
+  border-radius: 5%;
+ padding: 20rpx 15rpx;
+ margin-bottom: 10rpx;
+}
+/* .msg_fixed{
+  width: 80%;
+}
+ .van-field__body--text{
+  background: #ececec;
+  border-radius: 34rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+} */

@@ -4,6 +4,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "",
+          "pathName": "pages/card/vipMessage/vipMessage",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/card/vipMessage/vipMessage",
           "pathName": "pages/card/vipMessage/vipMessage",
           "query": "",

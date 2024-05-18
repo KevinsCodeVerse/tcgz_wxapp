@@ -1,29 +1,32 @@
 <wxs module="util" src="../../../utils/util.wxs" />
 <van-search value="{{ value }}" placeholder="请输入搜索关键词" bind:search='search' />
-<view style="display: flex;justify-content: center;margin-top: 40rpx;">
+<view style="display: flex;justify-content: center;margin-top: 30rpx;">
   <van-loading type="spinner" color="#1989fa" wx:if="{{load}}">加载中</van-loading>
 </view>
-<view style="max-height: 75vh;overflow-y: auto;">
-  <van-empty description="暂无消息" wx:if="{{messageList.length===0}}" />
-  <view style="background-color: #D7D7D7;min-height: 150rpx;padding: 20rpx;margin-bottom: 20rpx;" wx:for="{{messageList}}" wx:key="value" >
-    
-    <view data-id="{{item.sessionId}}" bindtap="goDetail">
-      <view style="display: flex;align-items: center;position: relative;">      
-      <view style="width: 13rpx;height: 13rpx;background-color: #ff4757;display: flex;padding: 10rpx;justify-content: center;align-items: center;border-radius: 50%;color: #fff;font-weight: bold;font-size: 20rpx;position: absolute;top: 1rpx;left: 50rpx;" wx:if="{{item.unCount}}">{{item.unCount}}</view>
-        <!-- <image src="https://tcgz.mtfsoft.cn/admin/static/img/logo.32357178.png" mode="" style="width: 80rpx;height: 80rpx;" /> -->
-        <image src="{{util.fullPath(item.avatar)}}" mode="" style="width: 80rpx;height: 80rpx;border-radius: 50%;" />
-        <span style="margin-left: 20rpx;">{{item.itemName}}</span>
-      </view>
-      <view>
-        {{item.content}}
-      </view>
-      <view style="display: flex;justify-content: flex-end;margin-top: 10rpx;">
-        <van-button type="info" size="small" round block data-id="{{item.sessionId}}" bindtap="goDetail">留言</van-button>
-      </view>
-    </view>
+<view style="height: 89vh;overflow-y: auto; background: #eff2f5;">
+  <view style="height: 85%; overflow-y: auto;padding: 0 15rpx;">
+    <van-empty description="暂无消息" wx:if="{{messageList.length===0}}" />
+    <view style="background-color: #fff;min-height: 150rpx;padding: 20rpx;margin-bottom: 20rpx;border-radius: 20rpx ;box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.2);" wx:for="{{messageList}}" wx:key="value">
 
+      <view data-id="{{item.sessionId}}" bindtap="goDetail">
+        <view style="display: flex;align-items: center;position: relative;">
+          <view style="width: 13rpx;height: 13rpx;background-color: #ff4757;display: flex;padding: 10rpx;justify-content: center;align-items: center;border-radius: 50%;color: #fff;font-weight: bold;font-size: 20rpx;position: absolute;top: 1rpx;left: 50rpx;" wx:if="{{item.unCount}}">{{item.unCount}}</view>
+          <!-- <image src="https://tcgz.mtfsoft.cn/admin/static/img/logo.32357178.png" mode="" style="width: 80rpx;height: 80rpx;" /> -->
+          <image src="{{util.fullPath(item.avatar)}}" mode="" style="width: 80rpx;height: 80rpx;border-radius: 50%;" />
+          <span style="margin-left: 20rpx;">{{item.itemName}}</span>
+        </view>
+        <view>
+          {{item.content}}
+        </view>
+        <view style="display: flex;justify-content: flex-end;margin-top: 10rpx;">
+          <van-button type="info" size="small" round block data-id="{{item.sessionId}}" bindtap="goDetail">留言</van-button>
+        </view>
+      </view>
+
+    </view>
   </view>
-  
+
+
   <!-- <view style="height: 100px;"></view> -->
 </view>
 <custom-tabbar />
