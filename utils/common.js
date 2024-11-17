@@ -1,13 +1,13 @@
-// const baseUrl = 'https://www.tcgz.store/api/'; // 线上
-const baseUrl = 'http://tcgz.mtfsoft.cn/api/';  // 公网体验服
+const baseUrl = 'https://www.tcgz.store/api/'; // 线上
+// const baseUrl = 'http://tcgz.mtfsoft.cn/api/';  // 公网体验服
 // const baseUrl = 'http://nobug-w.natapp1.cc/';  // 内网穿透
 // const baseUrl = 'http://192.168.31.196:8080/';  // 内网穿透
 
 
 
-// const imgUrls = 'https://www.tcgz.store/'; // 线上
+const imgUrls = 'https://www.tcgz.store/'; // 线上
 // const imgUrls = 'http://nobug-w.natapp1.cc'; // 内网穿透
-const imgUrls = 'http://tcgz.mtfsoft.cn/api/'; // 公网体验服
+// const imgUrls = 'http://tcgz.mtfsoft.cn/api/'; // 公网体验服
 
 
 const wsUrl = "wss://www.tcgz.store";
@@ -97,7 +97,7 @@ const fwbData = (result) => {
 			}
 		}
 	} else {
-		contentArr2 = [result.content];
+    contentArr2 = [result.content];
 		isGoods = true;
 	}
 	return { result, contentArr2, recommendList,isGoods };

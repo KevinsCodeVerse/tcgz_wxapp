@@ -223,6 +223,7 @@ Page({
 		app.request.post({
 			url: "user/info/public/proCategory",
 			success: (res) => {
+        console.log('res',res);
 				res.unshift({ id: "-1", name: "推荐" });
 				this.setData({ classifyList: res });
 			},

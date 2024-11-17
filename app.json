@@ -6,7 +6,6 @@
     "pages/login/login",
     "pages/loginwx/login",
     "pages/bindphone/bindphone",
-    "pages/center/center",
     "pages/collective/detail/detail",
     "pages/collective/join/join",
     "pages/collective/detail_my/index",
